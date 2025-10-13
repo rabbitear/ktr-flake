@@ -1,0 +1,7 @@
+keys:
+  - &otterktr age1ygmszd82lgrcmmt8kc0hv78t38k0djfx9ff6gn0le2m4he4yu99sczqtxl
+creation_rules:
+  - path_regex: crypt/.*\.yaml$
+    key_groups:
+    - age:
+      - *otterktr
