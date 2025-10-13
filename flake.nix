@@ -35,10 +35,5 @@
         }
       ];
     };
-    environment.systemPackages = [ 
-      nix-ai-tools.packages.opencode
-      nix-ai-tools.packages.crush
-      nix-ai-tools.packages.copilot-cli
-    ];
   };
 }

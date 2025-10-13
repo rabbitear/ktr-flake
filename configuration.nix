@@ -84,6 +84,9 @@
       glow
       ripgrep
       rsync
+      opencode
+      crush
+      copilot-cli
     ];
   };
 
