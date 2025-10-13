@@ -36,10 +36,4 @@
       ];
     };
   };
-
-  environment.systemPackages = with inputs.nix-ai-tools.packages.${pkgs.system}; [
-    opencode
-    crush
-    copilot-cli
-  ];
 }
