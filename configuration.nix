@@ -20,6 +20,26 @@
 
   time.timeZone = "America/Anchorage";
 
+  # Path to SOPS file
+  sops.defaultSopsFile = ./crypt/ghkey.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
+
+  # Where the decrypted key should live
+  sops.secrets."github_ssh_key" = {
+    mode = "0600";
+    owner = "kreator";
+    path = "/home/kreator/.ssh/theshack";
+  };
+
+  programs.ssh = {
+    extraConfig = ''
+      Host github.com
+        IdentityFile ~/.ssh/theshack
+        IdentitiesOnly yes
+    '';
+  };
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -84,9 +104,8 @@
       glow
       ripgrep
       rsync
-      opencode
-      crush
-      copilot-cli
+      nix-ai-tools.crush
+      nix-ai-tools.copilot-cli
     ];
   };
 
@@ -112,6 +131,8 @@
     curl
     jq
     git
+    sops
+    age
     flatpak
     flatpak-xdg-utils
     xdg-desktop-portal-gnome

@@ -6,7 +6,17 @@
     homeDirectory = "/home/kreator";
     stateVersion = "25.05";
   };
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Jon Bradley";
+    userEmail = "weatchu@gmail.com";
+
+    extraConfig = {
+      core.editor = "hx";
+      pull.rebase = true;
+      init.defaultBranch = "main";
+    };
+  };
   programs.bash = {
     enable = true;
     shellAliases = {
