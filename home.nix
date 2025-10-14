@@ -47,4 +47,23 @@
       export EDITOR=hx
     '';
   };
+  home.packages = with pkgs; [
+    (pkgs.writeShellApplication {
+      name = "ns";
+      runtimeInputs = with pkgs; [
+        fzf
+        nix-search-tv
+      ];
+      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    })
+    rustup
+    superTuxKart
+    mutt
+    w3m
+    lynx
+    fd
+    dmenu
+    bemenu
+    fuzzel
+  ];
 }
