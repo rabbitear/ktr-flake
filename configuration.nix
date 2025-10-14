@@ -104,6 +104,7 @@
       glow
       ripgrep
       rsync
+      gh
       nix-ai-tools.crush
       nix-ai-tools.copilot-cli
     ];
