@@ -129,11 +129,21 @@
       fzf
       bat
       glow
+      nix-search-tv
+      rustup
+      superTuxKart
       ripgrep
       rsync
       gh
       duf
       ncdu
+      mutt
+      w3m
+      lynx
+      fd
+      dmenu
+      bemenu
+      fuzzel
       duckdb
       abduco
       dvtm
@@ -151,7 +161,7 @@
       kitty
       alacritty
       foot
-      view-viewer
+      virt-viewer
       imv
       flameshot
     ];
@@ -204,14 +214,14 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-  }
-  enviroment.variables = {
-    GSK_RENDERER = "ngl";
-    EDITOR = "vim";
   };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-
+  environment.variables = {
+    EDITOR = "vim";
+    VISUAL = "vim";
+    #GSK_RENDERER = "ngl";
+  };
   system.stateVersion = "25.05"; # Did you read the comment?
 }

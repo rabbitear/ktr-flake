@@ -41,29 +41,11 @@
     shellAliases = {
       p = "bat -np";
       e = "hx";
+      ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
     };
     profileExtra = ''
       echo echo welcome to kreators bash shell on nix
       export EDITOR=hx
     '';
   };
-  home.packages = with pkgs; [
-    (pkgs.writeShellApplication {
-      name = "ns";
-      runtimeInputs = with pkgs; [
-        fzf
-        nix-search-tv
-      ];
-      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-    })
-    rustup
-    superTuxKart
-    mutt
-    w3m
-    lynx
-    fd
-    dmenu
-    bemenu
-    fuzzel
-  ];
 }
