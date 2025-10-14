@@ -11,9 +11,12 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 1;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # ktr- could add "kvm-intel" or "kvm-amd" here.
+  boot.kernelModules = [ "fuse" "coretemp" ];
 
   networking.hostName = "otternode"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -65,6 +68,9 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+  # These may not be needed...
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-settings-daemon.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -75,6 +81,23 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  # Hotkey? we'll see, experimental.
+  services.kanata.enable = true;
+  # Tailscale :)
+  services.tailscale.enable = true;
+  services.tailscale.interfaceName = "userspace-networking";
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        tailscale = prev.tailscale.overrideAttrs (old: {
+          doCheck = false;
+        });
+      })
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -94,6 +117,10 @@
     isNormalUser = true;
     description = "Jon";
     extraGroups = [ "networkmanager" "wheel" "flatpak" ];
+    openssh.authorizedKeys.keys = [
+      # Add SSH public keys here.
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEzV4VriIYwSvx8e3Pq2hKjJDPsyj1hJAgrsiXJG/BVR kreator@theshack"
+    ];
     packages = with pkgs; [
     #  thunderbird
       helix
@@ -105,8 +132,28 @@
       ripgrep
       rsync
       gh
+      duf
+      ncdu
+      duckdb
+      abduco
+      dvtm
+      zip
+      unzip
+      gcc
+      gnumake
+      btop
+      pass
+      iotop
+      iftop
       nix-ai-tools.crush
       nix-ai-tools.copilot-cli
+      wl-clipboard
+      kitty
+      alacritty
+      foot
+      view-viewer
+      imv
+      flameshot
     ];
   };
 
@@ -122,33 +169,49 @@
   programs.firefox.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # ktr- set above next to tailscale overlay to stop network check.
+  #nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    tree
+    file
     curl
     jq
+    yq
     git
+    findutils
     sops
     age
+    dig
+    nmap
     flatpak
     flatpak-xdg-utils
     xdg-desktop-portal-gnome
   ];
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+  };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  }
+  enviroment.variables = {
+    GSK_RENDERER = "ngl";
+    EDITOR = "vim";
+  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }

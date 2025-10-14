@@ -40,6 +40,7 @@
     enable = true;
     shellAliases = {
       p = "bat -np";
+      e = "hx";
     };
     profileExtra = ''
       echo echo welcome to kreators bash shell on nix

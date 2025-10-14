@@ -2,8 +2,6 @@
   description = "kreator, A very basic flake";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
