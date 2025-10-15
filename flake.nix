@@ -1,3 +1,7 @@
+
+let
+  hostname = builtins.getEnv "HOSTNAME";
+in
 {
   description = "kreator, A very basic flake";
 
@@ -18,26 +22,28 @@
   };
 
   outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, ... }: {
-    nixosConfigurations.otternode = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        sops-nix.nixosModules.sops
-        home-manager.nixosModules.home-manager
-        {
-          nixpkgs.overlays = [
-            (final: prev: {
-              nix-ai-tools = nix-ai-tools.packages.${prev.system};
-            })
-          ];
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.kreator = import ./home.nix;
-            backupFileExtension = "backup";
-          };
-        }
-      ];
+    nixosConfigurations = {
+      ${hostname} = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/${hostname}/configuration.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                nix-ai-tools = nix-ai-tools.packages.${prev.system};
+              })
+            ];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.kreator = import ./home.nix;
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
     };
   };
 }
