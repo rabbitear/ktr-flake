@@ -22,7 +22,7 @@
   time.timeZone = "America/Anchorage";
 
   # Path to SOPS file
-  sops.defaultSopsFile = ./crypt/ghkey.yaml;
+  sops.defaultSopsFile = ./../../crypt/cipher.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
 
@@ -175,7 +175,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-  programs.qutebrowser.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
