@@ -15,8 +15,6 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # ktr- could add "kvm-intel" or "kvm-amd" here.
-  boot.kernelModules = [ "fuse" "coretemp" ];
 
   networking.hostName = "otternode"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -177,10 +175,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Allow unfree packages
-  # ktr- set above next to tailscale overlay to stop network check.
-  #nixpkgs.config.allowUnfree = true;
+  programs.qutebrowser.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

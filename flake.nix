@@ -1,7 +1,3 @@
-
-let
-  hostname = builtins.getEnv "HOSTNAME";
-in
 {
   description = "kreator, A very basic flake";
 
@@ -21,12 +17,13 @@ in
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, ... }: {
+  outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, ... }@inputs: {
     nixosConfigurations = {
-      ${hostname} = nixpkgs.lib.nixosSystem {
+      otternode = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/${hostname}/configuration.nix
+          ./hosts/otternode/configuration.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
@@ -44,6 +41,53 @@ in
           }
         ];
       };
+      # hacknet
+      hacknet = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/hacknet/configuration.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                nix-ai-tools = nix-ai-tools.packages.${prev.system};
+              })
+            ];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.kreator = import ./home.nix;
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
+      # yoshi
+      yoshi = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/yoshi/configuration.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                nix-ai-tools = nix-ai-tools.packages.${prev.system};
+              })
+            ];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.kreator = import ./home.nix;
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
+      # toga, next?
     };
   };
 }
