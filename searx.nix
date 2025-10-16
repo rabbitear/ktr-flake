@@ -1,3 +1,6 @@
+# This build fails if the env is not setup in the home directory.
+# FIXME:
+#   * Do not depend on the env files in that home directory!
 {config, pkgs, lib, ...}:
 {
   services.searx = {

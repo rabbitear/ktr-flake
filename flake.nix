@@ -24,6 +24,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/otternode/configuration.nix
+          # ktr - searx.nix is not ready yet, searx.env needs attention.
+          #./searx.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
