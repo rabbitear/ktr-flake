@@ -27,10 +27,15 @@
   sops.age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
 
   # Where the decrypted key should live
-  sops.secrets."github_ssh_key" = {
-    mode = "0600";
-    owner = "kreator";
-    path = "/home/kreator/.ssh/theshack";
+  sops.secrets = {
+    "kreator" = {
+      neededForUsers = true;
+    };
+    "github_ssh_key" = {
+      mode = "0600";
+      owner = "kreator";
+      path = "/home/kreator/.ssh/theshack";
+    };
   };
 
   programs.ssh = {
@@ -114,7 +119,8 @@
   users.users.kreator = {
     isNormalUser = true;
     description = "Jon";
-    extraGroups = [ "networkmanager" "wheel" "flatpak" ];
+    hashedPasswordFile = config.sops.secrets.kreator.path;
+    extraGroups = [ "networkmanager" "wheel" "flatpak" "video" ];
     openssh.authorizedKeys.keys = [
       # Add SSH public keys here.
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEzV4VriIYwSvx8e3Pq2hKjJDPsyj1hJAgrsiXJG/BVR kreator@theshack"
