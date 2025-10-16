@@ -16,7 +16,7 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "otternode"; # Define your hostname.
+  networking.hostName = "hacknet"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Anchorage";
