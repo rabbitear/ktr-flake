@@ -70,6 +70,9 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/yoshi/configuration.nix
+          ./ollama-cuda.nix
+          ./openwebui.nix
+          ./searx.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
