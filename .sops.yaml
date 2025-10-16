@@ -2,6 +2,7 @@ keys:
   - &foxbox age1872lqrk56cdfr76f5hydyfsq4gtn0rm0c7c6hqwshadv6s4s6des2h8n5p
   - &otterktr age1ygmszd82lgrcmmt8kc0hv78t38k0djfx9ff6gn0le2m4he4yu99sczqtxl
   - &hacknet age1w0frazvazzm20gsmpdsnttu6xujqy5quevw2eyh50e65eqtev5zqzx0jsj
+  - &yodacon age1dqmcu3486qdstke592m27g7hryujp6x22y52qw36594u6f379yaqmxqw8a
 creation_rules:
   - path_regex: crypt/.*\.yaml$
     key_groups:
@@ -9,3 +10,4 @@ creation_rules:
       - *otterktr
       - *foxbox
       - *hacknet
+      - *yodacon
