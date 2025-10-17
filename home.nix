@@ -1,4 +1,18 @@
 { config, pkgs, ... }:
+let
+  duckduckgo-search = pkgs.writeShellApplication {
+    name = "duckduckgo-search";
+    text = ''
+      #!/bin/sh
+      query="$*"
+      if [ -z "$query" ]; then
+        echo "Usage: ? <search terms>"
+        exit 1
+      fi
+      w3m -o editor=hx -o confirm_qq=no "https://duckduckgo.com/lite?q=$query"
+    '';
+  };
+in
 
 {
   imports = [
@@ -25,7 +39,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "base16";
+      theme = "ayu_evolve";
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
@@ -42,9 +56,10 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      p = "bat -np";
+      p = "bat --style=header-filename,header-filesize --paging=never";
       e = "hx";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
+      "?" = "${duckduckgo-search}/bin/duckduckgo-search";
     };
     profileExtra = ''
       echo echo welcome to kreators bash shell on nix
