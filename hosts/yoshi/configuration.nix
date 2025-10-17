@@ -201,6 +201,7 @@
     flatpak
     flatpak-xdg-utils
     xdg-desktop-portal-gnome
+    tts
   ];
 
   # List services that you want to enable:

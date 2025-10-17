@@ -201,6 +201,10 @@
     flatpak
     flatpak-xdg-utils
     xdg-desktop-portal-gnome
+    tts
+    mbrola
+    mbrola-voices
+    espeak-ng
   ];
 
   # List services that you want to enable:
