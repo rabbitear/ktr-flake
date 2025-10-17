@@ -30,7 +30,7 @@
     #};
     "org/gnome/desktop/interface" = {
       accent-color = "green";
-      text-scaling-factor = 2.0;
+      #text-scaling-factor = 2.0;
     };
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "ctrl:nocaps" ];
