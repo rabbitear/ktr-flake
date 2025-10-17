@@ -90,6 +90,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.kreator = import ./home.nix;
+              #users.kreator = import ./gnome.nix;
               backupFileExtension = "backup";
             };
           }
