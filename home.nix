@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./home-gnome.nix
+  ];
   home = {
     username = "kreator";
     homeDirectory = "/home/kreator";
