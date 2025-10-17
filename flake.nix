@@ -26,6 +26,8 @@
           ./hosts/otternode/configuration.nix
           # ktr - searx.nix is not ready yet, searx.env needs attention.
           #./searx.nix
+          ./tips.nix
+          ./n8n.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
