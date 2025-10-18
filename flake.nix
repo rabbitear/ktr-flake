@@ -52,7 +52,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/hacknet/configuration.nix
-          ./n8n.nix
+          ./common-station.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
