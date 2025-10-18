@@ -77,7 +77,7 @@ in
 
 {
   imports = [
-    ./home-gnome.nix
+    ./gnome.nix
   ];
   home.packages = [
     journalApp

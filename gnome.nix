@@ -63,8 +63,8 @@
 	  };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom0/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom1/"
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom0/"
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom1/"
         # "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom2/"
       ];
       magnifier = [ "<Super>Z" ];
