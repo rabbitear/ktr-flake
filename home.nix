@@ -83,6 +83,9 @@ in
     journalApp
     #fshow
     duckduckgo-search
+    pkgs.nerd-fonts.fira-mono
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.fantasque-sans-mono
   ];
   home = {
     username = "kreator";
@@ -115,6 +118,23 @@ in
         space.w = ":w";
         space.q = ":q";
         esc = [ "collapse_selection" "keep_primary_selection" ];
+      };
+    };
+  };
+
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        term = "xterm-256color";
+        font = "Monospace:size=28";
+        dpi-aware = "yes";
+        initial-window-size-chars = "80x11";
+        initial-window-mode = "windowed";
+      };
+    
+      mouse = {
+        hide-when-typing = "yes";
       };
     };
   };

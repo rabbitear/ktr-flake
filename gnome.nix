@@ -63,7 +63,8 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom0" = {
       binding = "<Super>Return";
-      command = "xterm +sb -sl 3000 -fn xft:Noto:size=17 -g 80x12 -fg lightyellow -bg grey16 -bd black -cr yellow -bc -hm -selbg grey90 -selfg grey60";
+      #command = "xterm +sb -sl 3000 -fn xft:Noto:size=17 -g 80x12 -fg lightyellow -bg grey16 -bd black -cr yellow -bc -hm -selbg grey90 -selfg grey60";
+      command = "foot";
       name = "FastTerm";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom1" = {
