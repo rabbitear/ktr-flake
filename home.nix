@@ -124,12 +124,13 @@ in
     shellAliases = {
       p = "bat --style=header-filename,header-filesize --paging=never";
       e = "hx";
+      j = "journal";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
       ga = "git add";
       gs = "git status --short";
-      gl = "fshow";
+      #gl = "fshow";
     };
     profileExtra = ''
       echo echo welcome to kreators bash shell on nix

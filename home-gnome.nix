@@ -3,6 +3,10 @@
 { lib, config, pkgs, ... }:
 
 {
+  # TODO:
+  # - Super-Q to close window
+  # - Super-Return open an xterm 
+  #     - display something useful 
   home.packages = with pkgs; [
     gnomeExtensions.no-overview
     gnomeExtensions.appindicator
@@ -45,10 +49,6 @@
       picture-uri-dark = "file:///home/kreator/.dotfiles/wallpaper.png";
     };
     "org/gnome/desktop/wm/keybindings" = {
-      #switch-to-workspace-1 = [ "F1" ];
-      #switch-to-workspace-2 = [ "F2" ];
-      #switch-to-workspace-3 = [ "F3" ];
-      #switch-to-workspace-4 = [ "F4" ];
   	  switch-to-workspace-1 = [ "<Control>1" ];
       switch-to-workspace-2 = [ "<Control>2" ];
       switch-to-workspace-3 = [ "<Control>3" ];
@@ -58,46 +58,40 @@
       move-to-workspace-3 = [ "<Control><Shift>3" ];
       move-to-workspace-4 = [ "<Control><Shift>4" ];
 	    toggle-fullscreen = [ "<Super>F" ];
+	    close = [ "<Super>q" ];
       activate-window-menu = [ "<Shift><Super>M" ];
-	};
+	  };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom1/"
+        # "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom2/"
       ];
-      #custom-keybindings = {
-      #  custom0 = {
-      #];
-      #    binding = [ "<Super>Y" ];
-      #    command = "flameshot gui";
-      #    name = "Screenshot Note";
-      #  };
-      #  custom1 = {
-      #    binding = [ "<Super>Return" ];
-      #    command = "alacritty";
-      #    name = "Alacritty Term";
-      #  };
-      #};
       magnifier = [ "<Super>Z" ];
     };
-
-    "org/gnome/settings-daemon/plugins/meida-keys/custom-keybindings/custom0" = {
-      binding = [ "<Super>Y" ];
-      command = "flameshot gui";
-      name = "Flameshot";
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" = {
+        binding = [ "<Super>Y" ];
+        command = "flameshot gui";
+        name = "Screenshot Note";
     };
-    "com/github/amezin/ddterm" = {
-      ddterm-toggle-hotkey = [ "<Alt>space" ];
-      bold-is-bright = false;
-      background-color = "rgb(0,0,0)";
-      foreground-color = "rgb(0,255,0)";
-      use-system-font = false;
-      use-theme-colors = false;
-      custom-font = "Monospace 18";
-      shortcut-window-size-inc = [ "<Alt>Down" ];
-      shortcut-window-size-dec = [ "<Alt>Up" ];
-      shortcut-next-tab = [ "<Alt>Right" ];
-      shortcut-prev-tab = [ "<Alt>Left" ];
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" = {
+        binding = [ "<Super>Return" ];
+        command = "xterm -font xft:Noto:size=17 +sb -sl 3000 -g 80x12 -fg lightyellow -bg grey16 -bd black -cr yellow -bc -hm -selbg grey90 -selfg grey60";
+        name = "FastTerm";
     };
+    #"com/github/amezin/ddterm" = {
+    #  ddterm-toggle-hotkey = [ "<Alt>space" ];
+    #  bold-is-bright = false;
+    #  background-color = "rgb(0,0,0)";
+    #  foreground-color = "rgb(0,255,0)";
+    #  use-system-font = false;
+    #  use-theme-colors = false;
+    #  custom-font = "Monospace 18";
+    #  shortcut-window-size-inc = [ "<Alt>Down" ];
+    #  shortcut-window-size-dec = [ "<Alt>Up" ];
+    #  shortcut-next-tab = [ "<Alt>Right" ];
+    #  shortcut-prev-tab = [ "<Alt>Left" ];
+    #};
     "org/gnome/desktop/screensaver".lock-enabled = false;
     "org/gnome/desktop/interface".clock-show-weekday = true;
   };
