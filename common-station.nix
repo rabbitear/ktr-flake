@@ -186,6 +186,10 @@
     nmap # A utility for network discovery and security auditing
     ipcalc  # it is a calculator for the IPv4/v6 addresses
     nmap
+    # system call monitoring
+    strace # system call monitoring
+    ltrace # library call monitoring
+    lsof # list open files
     # other misc tools
     flatpak
     flatpak-xdg-utils
