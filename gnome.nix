@@ -25,13 +25,6 @@
         appindicator.extensionUuid
       ];
     };
-    #"org/gnome/shell" = {
-    #  enabled-extensions = [
-    #    "no-overview@fthx"
-    #    "ddterm@amezin.github.com"
-    #    "appindicatorsupport@rgcjonas.gmail.com"
-    #  ];
-    #};
     "org/gnome/desktop/interface" = {
       accent-color = "green";
       #text-scaling-factor = 2.0;
@@ -63,35 +56,21 @@
 	  };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
-        "org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom0/"
-        "org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom1/"
-        # "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom2/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom1/"
       ];
       magnifier = [ "<Super>Z" ];
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" = {
-        binding = [ "<Super>Y" ];
-        command = "flameshot gui";
-        name = "Screenshot Note";
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom0" = {
+      binding = "<Super>Return";
+      command = "xterm +sb -sl 3000 -fn xft:Noto:size=17 -g 80x12 -fg lightyellow -bg grey16 -bd black -cr yellow -bc -hm -selbg grey90 -selfg grey60";
+      name = "FastTerm";
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" = {
-        binding = [ "<Super>Return" ];
-        command = "xterm -font xft:Noto:size=17 +sb -sl 3000 -g 80x12 -fg lightyellow -bg grey16 -bd black -cr yellow -bc -hm -selbg grey90 -selfg grey60";
-        name = "FastTerm";
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybinding/custom1" = {
+      binding = "<Super>y";
+      command = "flameshot gui";
+      name = "FlameShot";
     };
-    #"com/github/amezin/ddterm" = {
-    #  ddterm-toggle-hotkey = [ "<Alt>space" ];
-    #  bold-is-bright = false;
-    #  background-color = "rgb(0,0,0)";
-    #  foreground-color = "rgb(0,255,0)";
-    #  use-system-font = false;
-    #  use-theme-colors = false;
-    #  custom-font = "Monospace 18";
-    #  shortcut-window-size-inc = [ "<Alt>Down" ];
-    #  shortcut-window-size-dec = [ "<Alt>Up" ];
-    #  shortcut-next-tab = [ "<Alt>Right" ];
-    #  shortcut-prev-tab = [ "<Alt>Left" ];
-    #};
     "org/gnome/desktop/screensaver".lock-enabled = false;
     "org/gnome/desktop/interface".clock-show-weekday = true;
   };
