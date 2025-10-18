@@ -19,6 +19,11 @@
 
   outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, ... }@inputs: {
     nixosConfigurations = {
+      ######################
+      #                    #
+      #   the otter node   #
+      #                    #
+      ######################
       otternode = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
@@ -46,7 +51,13 @@
           }
         ];
       };
-      # hacknet
+      #######################################
+      # 
+      #  --+->
+      #   hacknet  --+->
+      #     ------------+->
+      # 
+      # 
       hacknet = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
@@ -70,12 +81,22 @@
           }
         ];
       };
-      # yoshi
+      #########
+      #       #
+      #       #
+      # ===== #
+      # yoshi #
+      # ===== #
+      #       #
+      #       #
+      #       #
+      #########
       yoshi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/yoshi/configuration.nix
+          ./common-station.nix
           ./ollama-cuda.nix
           ./openwebui.nix
           ./searx.nix
@@ -91,7 +112,6 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.kreator = import ./home.nix;
-              #users.kreator = import ./home-gnome.nix;
               backupFileExtension = "backup";
             };
           }
