@@ -130,6 +130,7 @@ in
         font = "Monospace:size=28";
         dpi-aware = "yes";
         initial-window-size-chars = "80x11";
+        initial-window-size-pixels = "1200x500";
         initial-window-mode = "windowed";
       };
     
