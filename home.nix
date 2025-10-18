@@ -16,31 +16,61 @@ let
   # fshow - git commit browser
   # (enter for show, ctrl-d for diff, ` toggles sort)
   # 
-  fshow = pkgs.writeShellApplication {
-    name = "fshow";
+  # fshow = pkgs.writeShellApplication {
+  #   name = "fshow";
+  #   text = ''
+  #     #!/bin/sh
+  #     fshow() {
+  #       local out shas sha q k
+  #       while out=$(
+  #           git log --graph --color=always \
+  #               --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  #           fzf --ansi --multi --no-sort --reverse --query="$q" \
+  #               --print-query --expect=ctrl-d --toggle-sort=\`); do
+  #         q=$(head -1 <<< "$out")
+  #         k=$(head -2 <<< "$out" | tail -1)
+  #         shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+  #         [ -z "$shas" ] && continue
+  #         if [ "$k" = ctrl-d ]; then
+  #           git diff --color=always $shas | less -R
+  #         else
+  #           for sha in $shas; do
+  #             #git show --color=always $sha | less -R
+  #           done
+  #         fi
+  #       done
+  #     }
+  #     fshow "$@"
+  #   '';
+  # };
+  ########
+  # AND...
+  journalApp = pkgs.writeShellApplication {
+    name = "journal";
+    # runtimeDependencies = [
+    #   pkgs.helix
+    #   pkgs.mkdir
+    #   pkgs.dateutils
+    # ];
     text = ''
       #!/bin/sh
-      fshow() {
-        local out shas sha q k
-        while out=$(
-            git log --graph --color=always \
-                --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-            fzf --ansi --multi --no-sort --reverse --query="$q" \
-                --print-query --expect=ctrl-d --toggle-sort=\`); do
-          q=$(head -1 <<< "$out")
-          k=$(head -2 <<< "$out" | tail -1)
-          shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
-          [ -z "$shas" ] && continue
-          if [ "$k" = ctrl-d ]; then
-            git diff --color=always $shas | less -R
-          else
-            for sha in $shas; do
-              git show --color=always $sha | less -R
-            done
-          fi
-        done
-      }
-      fshow "$@"
+      set -euo pipefail
+
+      JOURNAL_DIR="$HOME/journal"
+      mkdir -p "$JOURNAL_DIR"
+
+      DATE="$(date +%F)"           # YYYY-MM-DD
+      TIME="$(date +%T)"           # HH:MM:SS
+      FILE="$JOURNAL_DIR/$DATE.md"
+
+      # If file doesn't exist, create a header with date
+      if [ ! -f "$FILE" ]; then
+        printf "# Journal — %s\n\n" "$DATE" > "$FILE"
+      fi
+
+      # Append a timestamped entry separator and open in helix
+      printf "\n## %s\n\n" "$TIME" >> "$FILE"
+      exec "${pkgs.helix}/bin/hx" "$FILE"
     '';
   };
 in
@@ -48,6 +78,11 @@ in
 {
   imports = [
     ./home-gnome.nix
+  ];
+  home.packages = [
+    journalApp
+    #fshow
+    duckduckgo-search
   ];
   home = {
     username = "kreator";
