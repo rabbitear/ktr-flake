@@ -1,6 +1,19 @@
 {config, pkgs, ... }:
+let
+  ort = pkgs.rustPlatform.buildRustPackage rec {
+    pname = "ort";
+    version = "0.1.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "grahamking";
+      repo = "ort";
+      rev = "master";
+      sha256 = "sha256-uf4/RvmMmJflSzC83BhNXFv7xXf2IO6J/5U2Ovr0+Xg=";
+      #sha256 = "1yfsqrm1fwnw9g3dkbs7jxyl5fkn8nzk3g2yvgggpvc9xcqnipxw"; 
+    };
+    cargoLock.lockFile = "${src}/Cargo.lock";
+  };
 
-{
+in {
   # Path to SOPS file
   sops.defaultSopsFile = ./crypt/cipher.yaml;
   sops.defaultSopsFormat = "yaml";
@@ -15,6 +28,9 @@
       mode = "0600";
       owner = "kreator";
       path = "/home/kreator/.ssh/theshack";
+    };
+    "openrouter_api_key" = {
+       owner = "kreator";
     };
   };
 
@@ -148,6 +164,8 @@
       virt-viewer
       imv
       flameshot
+      # build -- ort -- from github
+      ort
     ];
   };
 
@@ -161,6 +179,20 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -218,6 +250,10 @@
   environment.variables = {
     EDITOR = "vim";
     VISUAL = "vim";
+    #OPENROUTER_API_KEY = builtins.toString config.sops.secrets."openrouter_api_key".path;
     #GSK_RENDERER = "ngl";
   };
+  environment.etc."profile.d/openrouter.sh".text = ''
+    export OPENROUTER_API_KEY="$(cat ${config.sops.secrets.openrouter_api_key.path})"
+  '';
 }
