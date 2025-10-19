@@ -117,7 +117,34 @@
           }
         ];
       };
-      # toga, next?
+      #####################################
+      #                                   # 
+      #        <-=+=- Sasha -=+=->        #
+      #                                   # 
+      #####################################
+      sasha = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/sasha/configuration.nix
+          ./common-station.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                nix-ai-tools = nix-ai-tools.packages.${prev.system};
+              })
+            ];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.kreator = import ./home.nix;
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
     };
   };
 }
