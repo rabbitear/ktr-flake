@@ -30,7 +30,10 @@ in {
       path = "/home/kreator/.ssh/theshack";
     };
     "openrouter_api_key" = {
-       owner = "kreator";
+      owner = "kreator";
+    };
+    "huggingface1_api_key" = {
+      owner = "kreator";
     };
   };
 
@@ -253,7 +256,10 @@ in {
     #OPENROUTER_API_KEY = builtins.toString config.sops.secrets."openrouter_api_key".path;
     #GSK_RENDERER = "ngl";
   };
-  environment.etc."profile.d/openrouter.sh".text = ''
+  environment.etc."profile.d/aikey.sh".text = ''
     export OPENROUTER_API_KEY="$(cat ${config.sops.secrets.openrouter_api_key.path})"
+
+    export HF_TOKEN="$(cat ${config.sops.secrets.huggingface1_api_keypath})"
+
   '';
 }
