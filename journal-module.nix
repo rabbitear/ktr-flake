@@ -86,7 +86,7 @@ hidden = true
     fi
 
     # Open today's journal entry in Helix editor with journal-specific config
-    ${pkgs.helix}/bin/hx -c "${journal-config}" "$JOURNAL_FILE"
+    ${pkgs.helix}/bin/hx -c "${journal-config}" "$JOURNAL_FILE:9999"
 
     # If journal directory is a git repo, add the file only if it has changed
     if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
