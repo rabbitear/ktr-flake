@@ -11,45 +11,56 @@ let
 # Helix configuration for journaling
 
 theme = "bogster_light"
+#theme = "bogster"
+#theme = "ayu_light"
+
 
 [editor]
 # Disable auto-pairing for a more natural writing experience
 auto-pairs = false
-
-# Show line numbers for reference
-line-number = "relative"
-
-# Use soft wrapping for long lines
-#wrap = "soft"
+line-number = "absolute"
+cursorline = true
+mouse = true
+default-yank-register = "+"
+text-width = 72
+# save all the time
+atomic-save = true
+popup-border = "all"
 
 # Set a comfortable line width for prose
 rulers = [80]
 
-# Show whitespace characters subtly
-whitespace.render = "all"
-whitespace.characters.space = "."
-whitespace.characters.nbsp = "×"
-whitespace.characters.tab = "→"
-whitespace.characters.tabpad = "·"
-
-# Use a clean cursor shape
-#cursor-shape = "bar"
-
 # Enable smooth scrolling
 scrolloff = 5
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
 
 [editor.file-picker]
 # Show hidden files in file picker
 hidden = true
 
-#[editor.lsp]
-# Enable automatic diagnostics
-#auto-display-hover = true
+[editor.soft-wrap]
+enable = true
+# wrap at end of viewport 
+wrap-at-text-width = false
 
-# Format on save for clean markdown
-#[editor.indent]
-# Use spaces for indentation
-#width = 2
+[editor.lsp]
+enable = true
+display-messages = true
+auto-signature-help = false
+display-inlay-hints = false
+display-color-swatches = true
+display-signature-help-docs = false
+goto-reference-include-declaration = true
+
+[keys.normal.space]
+  w = ":w"
+  q = ":q"
+  r = ":reflow"
+  esc = [ "collapse_selection", "keep_primary_selection" ]
 
 # Markdown-specific settings
 # Associate .md files with marksman language server
