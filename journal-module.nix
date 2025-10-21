@@ -6,6 +6,60 @@ let
   cfg = config.programs.journal;
   journal-dir = "${config.home.homeDirectory}/.journal";
 
+  # Embed the Helix configuration directly in the module
+  journal-config = pkgs.writeText "hx-journal.toml" ''
+# Helix configuration for journaling
+
+[theme]
+# Use a calm, focused theme for journaling
+name = "dark-plus"
+
+[editor]
+# Disable auto-pairing for a more natural writing experience
+auto-pairs = false
+
+# Show line numbers for reference
+line-number = "relative"
+
+# Use soft wrapping for long lines
+wrap = "soft"
+
+# Set a comfortable line width for prose
+rulers = [80]
+
+# Show whitespace characters subtly
+whitespace.render = "all"
+whitespace.characters.space = "."
+whitespace.characters.nbsp = "×"
+whitespace.characters.tab = "→"
+whitespace.characters.tabpad = "·"
+
+# Use a clean cursor shape
+cursor-shape = "bar"
+
+# Enable smooth scrolling
+scrolloff = 5
+
+[editor.file-picker]
+# Show hidden files in file picker
+hidden = true
+
+[editor.lsp]
+# Enable automatic diagnostics
+auto-display-hover = true
+
+# Format on save for clean markdown
+[editor.indent]
+# Use spaces for indentation
+width = 2
+
+# Markdown-specific settings
+# Associate .md files with marksman language server
+[[language]]
+type = "markdown"
+language-server = "marksman"
+  '';
+
   journal-script = pkgs.writeShellScript "journal" ''
     #!/usr/bin/env bash
 
@@ -33,8 +87,8 @@ let
         ORIGINAL_CONTENT=$(cat "$JOURNAL_FILE")
     fi
 
-    # Open today's journal entry in Helix editor, starting at the end of the file
-    ${pkgs.helix}/bin/hx "$JOURNAL_FILE"
+    # Open today's journal entry in Helix editor with journal-specific config
+    ${pkgs.helix}/bin/hx -c "${journal-config}" "+$" "$JOURNAL_FILE"
 
     # If journal directory is a git repo, add the file only if it has changed
     if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
@@ -59,11 +113,6 @@ in {
       source = journal-script;
       executable = true;
     };
-
-    # Suppose to create a directory here, I think!
-    #home.file.".journal".source = null;
-    #home.file.".journal".recursive = true;
-    home.file."journal".text = "";
 
     home.packages = [ pkgs.helix pkgs.marksman ];
 
