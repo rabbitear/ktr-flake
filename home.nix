@@ -93,6 +93,7 @@ in
     homeDirectory = "/home/kreator";
     stateVersion = "25.05";
   };
+  programs.journal.enable = true;
   programs.git = {
     enable = true;
     userName = "Jon Bradley";

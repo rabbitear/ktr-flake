@@ -62,7 +62,7 @@ in {
 
     home.file.".journal".source = null;
     home.file.".journal".recursive = true;
-    home.file.".journal".ensureDir = true;
+    home.file.".journal".isDirectory = true;
 
     home.packages = [ pkgs.helix pkgs.marksman ];
 
