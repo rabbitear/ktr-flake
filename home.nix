@@ -77,6 +77,7 @@ in
 
 {
   imports = [
+    ./journal-module.nix
     ./gnome.nix
   ];
   home.packages = [
