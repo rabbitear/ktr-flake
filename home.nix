@@ -45,34 +45,34 @@ let
   # };
   ########
   # AND...
-  journalApp = pkgs.writeShellApplication {
-    name = "journal";
-    # runtimeDependencies = [
-    #   pkgs.helix
-    #   pkgs.mkdir
-    #   pkgs.dateutils
-    # ];
-    text = ''
-      #!/bin/sh
-      set -euo pipefail
+  #journalApp = pkgs.writeShellApplication {
+  #  name = "journal";
+  #  # runtimeDependencies = [
+  #  #   pkgs.helix
+  #  #   pkgs.mkdir
+  #  #   pkgs.dateutils
+  #  # ];
+  #  text = ''
+  #    #!/bin/sh
+  #    set -euo pipefail
 
-      JOURNAL_DIR="$HOME/journal"
-      mkdir -p "$JOURNAL_DIR"
+  #    JOURNAL_DIR="$HOME/journal"
+  #    mkdir -p "$JOURNAL_DIR"
 
-      DATE="$(date +%F)"           # YYYY-MM-DD
-      TIME="$(date +%T)"           # HH:MM:SS
-      FILE="$JOURNAL_DIR/$DATE.md"
+  #    DATE="$(date +%F)"           # YYYY-MM-DD
+  #    TIME="$(date +%T)"           # HH:MM:SS
+  #    FILE="$JOURNAL_DIR/$DATE.md"
 
-      # If file doesn't exist, create a header with date
-      if [ ! -f "$FILE" ]; then
-        printf "# Journal — %s\n\n" "$DATE" > "$FILE"
-      fi
+  #    # If file doesn't exist, create a header with date
+  #    if [ ! -f "$FILE" ]; then
+  #      printf "# Journal — %s\n\n" "$DATE" > "$FILE"
+  #    fi
 
-      # Append a timestamped entry separator and open in helix
-      printf "\n## %s\n\n" "$TIME" >> "$FILE"
-      exec "${pkgs.helix}/bin/hx" "$FILE"
-    '';
-  };
+  #    # Append a timestamped entry separator and open in helix
+  #    printf "\n## %s\n\n" "$TIME" >> "$FILE"
+  #    exec "${pkgs.helix}/bin/hx" "$FILE"
+  #  '';
+  #};
 in
 
 {
@@ -81,7 +81,7 @@ in
     ./gnome.nix
   ];
   home.packages = [
-    journalApp
+    #journalApp
     #fshow
     duckduckgo-search
     pkgs.nerd-fonts.fira-mono
