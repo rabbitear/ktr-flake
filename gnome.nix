@@ -38,8 +38,8 @@
     "org/gnome/desktop/background" = {
       picture-options = "zoom";
       primary-color = "#02023c3c8888";
-      picture-uri = "file:///home/kreator/.dotfiles/wallpaper.png";
-      picture-uri-dark = "file:///home/kreator/.dotfiles/wallpaper.png";
+      picture-uri = "file:///home/kreator/.config/wallpaper.png";
+      picture-uri-dark = "file:///home/kreator/.config/wallpaper-dark.png";
     };
     "org/gnome/desktop/wm/keybindings" = {
   	  switch-to-workspace-1 = [ "<Control>1" ];

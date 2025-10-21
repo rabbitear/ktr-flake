@@ -92,6 +92,9 @@ in
     username = "kreator";
     homeDirectory = "/home/kreator";
     stateVersion = "25.05";
+    sessionVariables = {
+      EDITOR = "hx";
+    };
   };
   programs.journal.enable = true;
   programs.git = {
