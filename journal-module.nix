@@ -10,9 +10,7 @@ let
   journal-config = pkgs.writeText "hx-journal.toml" ''
 # Helix configuration for journaling
 
-[theme]
-# Use a calm, focused theme for journaling
-name = "dark-plus"
+theme = "bogster_light"
 
 [editor]
 # Disable auto-pairing for a more natural writing experience
@@ -22,7 +20,7 @@ auto-pairs = false
 line-number = "relative"
 
 # Use soft wrapping for long lines
-wrap = "soft"
+#wrap = "soft"
 
 # Set a comfortable line width for prose
 rulers = [80]
@@ -35,7 +33,7 @@ whitespace.characters.tab = "→"
 whitespace.characters.tabpad = "·"
 
 # Use a clean cursor shape
-cursor-shape = "bar"
+#cursor-shape = "bar"
 
 # Enable smooth scrolling
 scrolloff = 5
@@ -44,20 +42,20 @@ scrolloff = 5
 # Show hidden files in file picker
 hidden = true
 
-[editor.lsp]
+#[editor.lsp]
 # Enable automatic diagnostics
-auto-display-hover = true
+#auto-display-hover = true
 
 # Format on save for clean markdown
-[editor.indent]
+#[editor.indent]
 # Use spaces for indentation
-width = 2
+#width = 2
 
 # Markdown-specific settings
 # Associate .md files with marksman language server
-[[language]]
-type = "markdown"
-language-server = "marksman"
+#[[language]]
+#type = "markdown"
+#language-server = "marksman"
   '';
 
   journal-script = pkgs.writeShellScript "journal" ''
@@ -88,7 +86,7 @@ language-server = "marksman"
     fi
 
     # Open today's journal entry in Helix editor with journal-specific config
-    ${pkgs.helix}/bin/hx -c "${journal-config}" "+$" "$JOURNAL_FILE"
+    ${pkgs.helix}/bin/hx -c "${journal-config}" "$JOURNAL_FILE"
 
     # If journal directory is a git repo, add the file only if it has changed
     if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
