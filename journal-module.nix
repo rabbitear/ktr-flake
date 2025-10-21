@@ -34,7 +34,7 @@ let
     fi
 
     # Open today's journal entry in Helix editor, starting at the end of the file
-    ${pkgs.helix}/bin/hx "+$" "$JOURNAL_FILE"
+    ${pkgs.helix}/bin/hx "$JOURNAL_FILE"
 
     # If journal directory is a git repo, add the file only if it has changed
     if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
@@ -60,9 +60,10 @@ in {
       executable = true;
     };
 
-    home.file.".journal".source = null;
-    home.file.".journal".recursive = true;
-    home.file.".journal".isDirectory = true;
+    # Suppose to create a directory here, I think!
+    #home.file.".journal".source = null;
+    #home.file.".journal".recursive = true;
+    home.file."journal".text = "";
 
     home.packages = [ pkgs.helix pkgs.marksman ];
 

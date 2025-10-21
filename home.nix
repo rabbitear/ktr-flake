@@ -205,7 +205,6 @@ in
     shellAliases = {
       p = "bat --style=header-filename,header-filesize --paging=never";
       e = "hx";
-      j = "journal";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
