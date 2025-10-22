@@ -75,6 +75,30 @@ let
           # ===============================================
           # STOP ---
           # ===============================================
+
+          # -----------------------------------------------------------------
+          # Text‑like files – everything bat can colourise nicely
+          # -----------------------------------------------------------------
+          text/*|\
+          application/json|application/xml|application/javascript|\
+          application/x-yaml|application/x-toml|application/xhtml+xml|\
+          application/rtf|application/atom+xml|application/rss+xml|\
+          application/vnd.ms-excel|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|\
+          application/vnd.ms-powerpoint|application/vnd.openxmlformats-officedocument.presentationml.presentation|\
+          application/vnd.ms-word|application/vnd.openxmlformats-officedocument.wordprocessingml.document|\
+          application/x-markdown|text/markdown|text/x-markdown|\
+          application/x-php|application/x-perl|application/x-python|application/x-ruby|\
+          application/x-shellscript|application/x-csh|application/x-bash|\
+          application/x-asm|application/x-java|application/x-c|application/x-cpp|\
+          application/x-go|application/x-rust)
+              echo "📃 $path → $mime – displaying with bat"
+              # `bat` options you may like:
+              #   --style=header,grid   – show a header and a grid
+              #   --paging=always       – like `less`
+              #   --color=always        – force colour even when piped
+              bat --style=header,grid --paging=always --color=always -- "$path"
+              ;;
+         
           *)
             echo "??? $path -> $mime -- something esle"
             ;;
