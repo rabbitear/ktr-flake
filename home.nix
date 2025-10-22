@@ -176,6 +176,17 @@ in
               echo "don't see directory..."
             fi
           }; _b
+        
+        '';
+      m = ''
+        _m() {
+          cat <<EOS
+            ==> kreator's MENU <==
+            - p)rint <file>
+            - i)njest <file>
+            - j)ournal <search>
+          EOS
+        }
         '';
     };
     profileExtra = ''
