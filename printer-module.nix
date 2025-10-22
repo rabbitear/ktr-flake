@@ -9,17 +9,40 @@ let
   printer-script = pkgs.writeShellScript "printer1" ''
     #!/usr/bin/env bash
     if [[ "$#" -gt 0 ]]; then
-      echo -e "\e[0;32mprint \e[33m$*\e[0m"
-      bat --style=header-filename,header-filesize --paging=never "$*"
+      for path in "$@"; do
+        if [[ ! -e "$path" ]]; then
+          printf '%s: file not found\n' "$path"
+          continue
+        fi
+        if [[ ! -r "$path" ]]; then
+          printf '%s: not readable\n' "$path"
+          continue
+        fi
+        mime=$(file --brief --mime-type -- "$1")
+        case "$mime" in
+          image/*)
+            echo "🖼️  $path → image ($mime) – opening with imv"
+            imv -- "$path" &
+            ;;
+
+          text/*)
+            bat --style=header-filename,header-filesize --paging=never -- "$path"
+            ;;
+
+          *)
+            echo "??? $path -> $mime -- something esle"
+            ;;
+        esac
+      done
     else
       JOURNAL_DIR="${journal-dir}"
       YEAR=$(date +%Y)
       DATE=$(date +%m-%d)
       JOURNAL_FILE="$JOURNAL_DIR/$YEAR/$DATE.md"
       if [[ -e "$JOURNAL_FILE" ]]; then
-        bat --style=header-filename,header-filesize,numbers,changes --paging=never "$JOURNAL_FILE"
+        bat --style=header-filename,header-filesize,numbers,changes --paging=never -- "$JOURNAL_FILE"
       else
-        echo "No journal, a change to write :)"
+        echo "No journal, an opportunity to write :)"
       fi
     fi
   '';
@@ -39,7 +62,7 @@ in {
       executable = true;
     };
 
-    home.packages = [ pkgs.bat ];
+    home.packages = [ pkgs.bat pkgs.file pkgs.imv ];
     home.shellAliases.p = "${printer-script}";
   };
 }
