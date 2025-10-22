@@ -159,8 +159,8 @@ in
             local pushed=""
             echo "host target is: == $target =="
             if [[ "$(basename $(pwd))" != "ktr-flake" ]]; then
-              path="$(fd -t d -1 ktr-flake)"
-              if path && [[ -d "$path" ]]; then
+              flakepath="$(fd -t d -1 ktr-flake)"
+              if [[ -d "$flakepath" ]]; then
                 pushed=1
                 echo "pushing directories..."
                 pushd "$path"
@@ -170,11 +170,11 @@ in
               sudo nixos-rebuild switch --flake .#$target
               if [ $? -eq 0 ]; then
                 MSG="successful build: $(date)"
-                . ~/.bashrc
                 git add .
                 git commit -m "$MSG"
                 echo "$MSG"
                 echo "you could --> git push <-- at any time."
+                . ~/.bashrc 
               else
                 echo "Not built right.. :("
               fi
