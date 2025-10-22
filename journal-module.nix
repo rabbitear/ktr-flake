@@ -28,7 +28,7 @@ atomic-save = true
 popup-border = "all"
 
 # Set a comfortable line width for prose
-rulers = [80]
+rulers = [72]
 
 # Enable smooth scrolling
 scrolloff = 5
@@ -97,13 +97,14 @@ goto-reference-include-declaration = true
     fi
 
     # Open today's journal entry in Helix editor with journal-specific config
-    ${pkgs.helix}/bin/hx -c "${journal-config}" "$JOURNAL_FILE:9999"
+    ${pkgs.helix}/bin/hx --working-dir $JOURNAL_DIR --config "${journal-config}" "$JOURNAL_FILE:9999"
 
     # If journal directory is a git repo, add the file only if it has changed
     if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
         CURRENT_CONTENT=$(cat "$JOURNAL_FILE")
         if [[ "$ORIGINAL_CONTENT" != "$CURRENT_CONTENT" ]]; then
             git -C "$JOURNAL_DIR" add "$YEAR/$DATE.md"
+            git -C "$JOURNAL_DIR" diff --cached
         fi
     fi
   '';
