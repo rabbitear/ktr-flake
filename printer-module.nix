@@ -6,16 +6,16 @@ let
   cfg = config.programs.printer;
   journal-dir = "${config.home.homeDirectory}/.journal";
 
-  printer-script = pkgs.writeShellSciprt "printer1" ''
+  printer-script = pkgs.writeShellScript "printer1" ''
     #!/usr/bin/env bash
-    if [[ "$#" -gt 0 ]]
+    if [[ "$#" -gt 0 ]]; then
       bat --style=header-filename,header-filesize --paging=never "$*"
     else
       JOURNAL_DIR="${journal-dir}"
       YEAR=$(date +%Y)
       DATE=$(date +%m-%d)
       JOURNAL_FILE="$JOURNAL_DIR/$YEAR/$DATE.md"
-      if [[ -e "$JOURNAL_FILE" ]]
+      if [[ -e "$JOURNAL_FILE" ]]; then
         bat --style=header-filename,header-filesize,numbers,changes \
           --paging=never "$JOURNL_FILE"
       else
@@ -23,6 +23,7 @@ let
       fi
     fi
   '';
+
 in {
   options.programs.printer = {
     enable = mkOption {

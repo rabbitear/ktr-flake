@@ -80,8 +80,7 @@ goto-reference-include-declaration = true
     #      and the line number FILE:LINE and move on.  Then we
     #      have either a file we can edit from search or we have
     #      a todays journal file to edit.
-    if [[ "$#" -gt 0 ]]
-    then
+    if [[ "$#" -gt 0 ]]; then
       pushd "$JOURNAL_DIR" >/dev/null
       rg --color=never --line-number --no-heading "$*" | \
         fzf --delimiter : \
