@@ -156,16 +156,18 @@ in
       gs = "git status --short";
       b = ''
           _b() {
+            local target="$(hostname)"
             if path="$(fd -t d -1 ktr-flake)" && [ -d "$path" ]; then
+              echo "the host target is: $target"
               pushd "$path"
-              fi
-              sudo nixos-rebuild switch --flake .#sasha
+              sudo nixos-rebuild switch --flake .#$target
               if [ $? -eq 0 ]; then
                 MSG="successful build: $(date)"
                 . ~/.bashrc
                 git add .
                 git commit -m "$MSG"
                 echo "$MSG"
+                echo "you could --> git push <-- at any time."
               else
                 echo "Not built right.. :("
               fi
