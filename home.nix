@@ -156,18 +156,23 @@ in
       gs = "git status --short";
       b = ''
           _b() {
-            pushd ~/docs/ktr-flake >/dev/null && \
-            sudo nixos-rebuild switch --flake .#sasha
-            if [ $? -eq 0 ]; then
-              MSG="successful build: $(date)"
-              . ~/.bashrc
-              git add .
-              git commit -m "$MSG"
-              echo "$MSG"
+            if path="$(fd -t d -1 ktr-flake)" && [ -d "$path" ]; then
+              pushd "$path"
+              fi
+              sudo nixos-rebuild switch --flake .#sasha
+              if [ $? -eq 0 ]; then
+                MSG="successful build: $(date)"
+                . ~/.bashrc
+                git add .
+                git commit -m "$MSG"
+                echo "$MSG"
+              else
+                echo "Not built right.. :("
+              fi
+              popd
             else
-              echo "Not built right.. :("
+              echo "don't see directory..."
             fi
-            popd
           }; _b
         '';
     };
