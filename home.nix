@@ -180,12 +180,11 @@ in
         '';
       m = ''
         _m() {
-          cat <<EOS
-            ==> kreator's MENU <==
-            - p)rint <file>
-            - i)njest <file>
-            - j)ournal <search>
-          EOS
+          echo " -==> ktr's MENU <==-"
+          echo " - j)ournal <search>"
+          echo " - i)njest <file>"
+          echo " - p)rint <file>"
+          echo " - b)uild host config"
         }; _m
       '';
     };
