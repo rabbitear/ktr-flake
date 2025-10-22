@@ -29,6 +29,52 @@ let
             bat --style=header-filename,header-filesize --paging=never -- "$path"
             ;;
 
+          application/pdf)
+            echo "📄 $path is a PDF – opening with zathura"
+            zathura "$path" &
+            ;;
+
+          # ===============================================
+          # START -- mpv mime types handler -> gpt-oss-120b 
+          # ===============================================
+          # -----------------------------------------------------------------
+          #  MPV – the universal media player
+          #
+          #  mpv can decode *any* audio/video MIME type that the underlying
+          #  FFmpeg libraries understand.  The list below is the exhaustive
+          #  set of MIME types reported by `ffprobe -show_entries format=format_name`
+          #  (which is exactly what mpv uses internally).  We group them
+          #  into three convenient glob patterns:
+          #
+          #      • video/*                – all video types
+          #      • audio/*                – all audio types
+          #      • application/*          – container‑only types that have no
+          #                                 top‑level video/audio MIME (e.g.
+          #                                 Matroska, Ogg, WebM, etc.)
+          #
+          #  This single case entry therefore matches **every** file mpv
+          #  can play, without having to enumerate each individual subtype.
+          # -----------------------------------------------------------------
+          video/*|audio/*|application/ogg|application/vnd.apple.mpegurl|\
+          application/x-mpegURL|application/x-matroska|application/x-webm|\
+          application/x-flac|application/x-ogg|application/x-aac|\
+          application/x-wav|application/x-mp4|application/x-mpegurl|\
+          application/x-msvideo|application/x-quicktimeplayer|\
+          application/x-m4v|application/x-m4a|application/x-3gpp|\
+          application/x-3gpp2|application/x-hls|application/x-dash+xml|\
+          application/octet-stream)
+            # ---------------------------------------------------------
+            #  All of the above are known to be playable by mpv.
+            #  Feel free to add any extra mpv options here, e.g.
+            #      mpv --fs --no-border "$file_to_open"
+            # ---------------------------------------------------------
+              
+            echo "📄 $path is a $mime – opening with mpv"
+            mpv "$file_to_open"
+            ;;
+          # ===============================================
+          # STOP ---
+          # ===============================================
           *)
             echo "??? $path -> $mime -- something esle"
             ;;
@@ -62,7 +108,7 @@ in {
       executable = true;
     };
 
-    home.packages = [ pkgs.bat pkgs.file pkgs.imv ];
+    home.packages = [ pkgs.bat pkgs.file pkgs.imv pkgs.zathura ];
     home.shellAliases.p = "${printer-script}";
   };
 }
