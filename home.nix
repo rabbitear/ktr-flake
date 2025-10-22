@@ -154,6 +154,22 @@ in
       gc = "git commit";
       ga = "git add";
       gs = "git status --short";
+      b = ''
+          _b() {
+            pushd ~/docs/ktr-flake >/dev/null && \
+            sudo nixos-rebuild switch --flake .#sasha
+            if [ $? -eq 0 ]; then
+              MSG="successful build: $(date)"
+              . ~/.bashrc
+              git add .
+              git commit -m "$MSG"
+              echo "$MSG"
+            else
+              echo "Not built right.. :("
+            fi
+            popd
+          }; _b
+        '';
     };
     profileExtra = ''
       echo echo welcome to kreators bash shell on nix
