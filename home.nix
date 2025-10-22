@@ -18,7 +18,7 @@ in
   imports = [
     ./journal-module.nix
     ./printer-module.nix
-    ./ingest-to-journal-module.nix
+    ./ingest-module.nix
     ./gnome.nix
   ];
 

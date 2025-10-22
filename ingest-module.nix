@@ -54,12 +54,12 @@ let
     sanitize_name() {
         local name="$1"
         # 1) replace disallowed chars with _
-        name=${name//[^[:alnum:]._-]/_}
+        name=$${name//[^[:alnum:]._-]/_}
         # 2) collapse repeated underscores
         name=$(echo "$name" | tr -s '_' )
         # 3) trim leading / trailing underscores (optional)
-        name=${name##_}
-        name=${name%_}
+        name=$${name##_}
+        name=$${name%_}
         printf '%s' "$name"
     }
     
@@ -87,16 +87,16 @@ let
         # 2. Determine MIME type
         # -----------------------------------------------------------------
         mime=$(file -b --mime-type "$src")
-        type=${mime%%/*}          # e.g. text, image, application
-        subtype=${mime#*/}        # e.g. plain, png, json
+        type=$${mime%%/*}          # e.g. text, image, application
+        subtype=$${mime#*/}        # e.g. plain, png, json
     
         # -----------------------------------------------------------------
         # 3. Build destination directory (type/subtype hierarchy)
         # -----------------------------------------------------------------
         if [[ $subtype == "$type" || -z $subtype ]]; then
-            target_dir="${KB_ROOT}/${type}"
+            target_dir="$KB_ROOT/$type"
         else
-            target_dir="${KB_ROOT}/${type}/${subtype}"
+            target_dir="$KB_ROOT/$type/$subtype"
         fi
         mkdir -p "$target_dir"
     
@@ -106,14 +106,14 @@ let
         epoch=$(date +%s)                     # Unix epoch seconds
         orig_base=$(basename "$src")          # original file name
         safe_base=$(sanitize_name "$orig_base")   # <-- NEW STEP
-        dest="${target_dir}/${epoch}_${safe_base}"
+        dest="$target_dir/$epoch_$safe_base"
     
         # If, for any reason, the name already exists (extremely unlikely),
         # append a counter before the original name.
         if [[ -e $dest ]]; then
             i=1
-            while [[ -e "${target_dir}/${epoch}_${i}_${safe_base}" ]]; do ((i++)); done
-            dest="${target_dir}/${epoch}_${i}_${safe_base}"
+            while [[ -e "$target_dir/$epoch_$i_$safe_base" ]]; do ((i++)); done
+            dest="$target_dir/$epoch_$i_$safe_base"
         fi
     
         # -----------------------------------------------------------------
@@ -126,7 +126,7 @@ let
         # 6. Stage the new file in the repo (optional but convenient)
         # -----------------------------------------------------------------
         if [[ -d $KB_ROOT/.git ]]; then
-          (cd "$KB_ROOT" && git add "$dest" && git commit -m "Ingested: ${dest}")
+          (cd "$KB_ROOT" && git add "$dest" && git commit -m "Ingested: $dest")
         fi
     done
   '';
