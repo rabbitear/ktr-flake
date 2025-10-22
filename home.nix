@@ -12,77 +12,15 @@ let
       w3m -o editor=hx -o confirm_qq=no "https://duckduckgo.com/lite?q=$query"
     '';
   };
-  #################################
-  # fshow - git commit browser
-  # (enter for show, ctrl-d for diff, ` toggles sort)
-  # 
-  # fshow = pkgs.writeShellApplication {
-  #   name = "fshow";
-  #   text = ''
-  #     #!/bin/sh
-  #     fshow() {
-  #       local out shas sha q k
-  #       while out=$(
-  #           git log --graph --color=always \
-  #               --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  #           fzf --ansi --multi --no-sort --reverse --query="$q" \
-  #               --print-query --expect=ctrl-d --toggle-sort=\`); do
-  #         q=$(head -1 <<< "$out")
-  #         k=$(head -2 <<< "$out" | tail -1)
-  #         shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
-  #         [ -z "$shas" ] && continue
-  #         if [ "$k" = ctrl-d ]; then
-  #           git diff --color=always $shas | less -R
-  #         else
-  #           for sha in $shas; do
-  #             #git show --color=always $sha | less -R
-  #           done
-  #         fi
-  #       done
-  #     }
-  #     fshow "$@"
-  #   '';
-  # };
-  ########
-  # AND...
-  #journalApp = pkgs.writeShellApplication {
-  #  name = "journal";
-  #  # runtimeDependencies = [
-  #  #   pkgs.helix
-  #  #   pkgs.mkdir
-  #  #   pkgs.dateutils
-  #  # ];
-  #  text = ''
-  #    #!/bin/sh
-  #    set -euo pipefail
-
-  #    JOURNAL_DIR="$HOME/journal"
-  #    mkdir -p "$JOURNAL_DIR"
-
-  #    DATE="$(date +%F)"           # YYYY-MM-DD
-  #    TIME="$(date +%T)"           # HH:MM:SS
-  #    FILE="$JOURNAL_DIR/$DATE.md"
-
-  #    # If file doesn't exist, create a header with date
-  #    if [ ! -f "$FILE" ]; then
-  #      printf "# Journal — %s\n\n" "$DATE" > "$FILE"
-  #    fi
-
-  #    # Append a timestamped entry separator and open in helix
-  #    printf "\n## %s\n\n" "$TIME" >> "$FILE"
-  #    exec "${pkgs.helix}/bin/hx" "$FILE"
-  #  '';
-  #};
 in
 
 {
   imports = [
     ./journal-module.nix
+    ./printer-module.nix
     ./gnome.nix
   ];
   home.packages = [
-    #journalApp
-    #fshow
     duckduckgo-search
     pkgs.nerd-fonts.fira-mono
     pkgs.nerd-fonts.fira-code
@@ -96,7 +34,11 @@ in
       EDITOR = "hx";
     };
   };
+
+  # My shell scripts.
   programs.journal.enable = true;
+  #programs.printer.enable = true;
+   
   programs.git = {
     enable = true;
     userName = "Jon Bradley";
@@ -206,7 +148,6 @@ in
     enable = true;
     enableCompletion = true;
     shellAliases = {
-      p = "bat --style=header-filename,header-filesize --paging=never";
       e = "hx";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";

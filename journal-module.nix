@@ -137,9 +137,7 @@ in {
       executable = true;
     };
 
-    home.packages = [ pkgs.helix pkgs.marksman ];
-
-    # Create an alias 'j' for quick access
+    home.packages = [ pkgs.helix pkgs.marksman pkgs.fzf pkgs.bat pkgs.ripgrep ];
     home.shellAliases.j = "${journal-script}";
   };
 }
