@@ -9,6 +9,7 @@ let
   printer-script = pkgs.writeShellScript "printer1" ''
     #!/usr/bin/env bash
     if [[ "$#" -gt 0 ]]; then
+      echo -e "\e[0;32mprint \e[33m$*\e[0m"
       bat --style=header-filename,header-filesize --paging=never "$*"
     else
       JOURNAL_DIR="${journal-dir}"
@@ -16,8 +17,7 @@ let
       DATE=$(date +%m-%d)
       JOURNAL_FILE="$JOURNAL_DIR/$YEAR/$DATE.md"
       if [[ -e "$JOURNAL_FILE" ]]; then
-        bat --style=header-filename,header-filesize,numbers,changes \
-          --paging=never "$JOURNL_FILE"
+        bat --style=header-filename,header-filesize,numbers,changes --paging=never "$JOURNAL_FILE"
       else
         echo "No journal, a change to write :)"
       fi
