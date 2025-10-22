@@ -78,7 +78,6 @@ in
         pad = "4x4";
         dpi-aware = "yes";
         initial-window-size-chars = "80x11";
-        #initial-window-size-pixels = "1200x500";
         initial-window-mode = "windowed";
       };
       colors = {
@@ -157,31 +156,31 @@ in
       b = ''
           _b() {
             local target="$(hostname)"
-            local pushed=0
+            local pushed=""
             echo "host target is: == $target =="
-            if [[ "$(basename $(pwd))" == "ktr-flake" ]]; then
+            if [[ "$(basename $(pwd))" != "ktr-flake" ]]; then
+              path="$(fd -t d -1 ktr-flake)"
+              if path && [[ -d "$path" ]]; then
+                pushed=1
+                echo "pushing directories..."
+                pushd "$path"
+              fi
+            else
               echo "inside ktr-flake already..."
-            else
-              path="$(fd -t d -1 ktr-flake)" && [ -d "$path" ]; then
-              pushed=1
-              pushd "$path"
+              sudo nixos-rebuild switch --flake .#$target
+              if [ $? -eq 0 ]; then
+                MSG="successful build: $(date)"
+                . ~/.bashrc
+                git add .
+                git commit -m "$MSG"
+                echo "$MSG"
+                echo "you could --> git push <-- at any time."
+              else
+                echo "Not built right.. :("
+              fi
             fi
-            sudo nixos-rebuild switch --flake .#$target
-            if [ $? -eq 0 ]; then
-              MSG="successful build: $(date)"
-              . ~/.bashrc
-              git add .
-              git commit -m "$MSG"
-              echo "$MSG"
-              echo "you could --> git push <-- at any time."
-            else
-              echo "Not built right.. :("
-            fi
-            if (( pushed == 1 )); then
-              popd
-            fi
+            [[ -n "$pushed" ]] && popd
           }; _b
-        
         '';
       m = ''
         _m() {
