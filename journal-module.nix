@@ -14,14 +14,13 @@ theme = "bogster_light"
 #theme = "bogster"
 #theme = "ayu_light"
 
-
 [editor]
 # Disable auto-pairing for a more natural writing experience
 auto-pairs = false
 line-number = "absolute"
 cursorline = true
 mouse = true
-default-yank-register = "+"
+#default-yank-register = "+"
 text-width = 72
 # save all the time
 atomic-save = true
