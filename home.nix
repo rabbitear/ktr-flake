@@ -37,7 +37,7 @@ in
 
   # My shell scripts.
   programs.journal.enable = true;
-  #programs.printer.enable = true;
+  programs.printer.enable = true;
    
   programs.git = {
     enable = true;
