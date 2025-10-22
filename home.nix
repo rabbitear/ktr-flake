@@ -186,8 +186,8 @@ in
             - i)njest <file>
             - j)ournal <search>
           EOS
-        }
-        '';
+        }; _m
+      '';
     };
     profileExtra = ''
       echo echo welcome to kreators bash shell on nix
