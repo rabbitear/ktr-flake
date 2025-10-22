@@ -157,23 +157,28 @@ in
       b = ''
           _b() {
             local target="$(hostname)"
-            if path="$(fd -t d -1 ktr-flake)" && [ -d "$path" ]; then
-              echo "the host target is: $target"
-              pushd "$path"
-              sudo nixos-rebuild switch --flake .#$target
-              if [ $? -eq 0 ]; then
-                MSG="successful build: $(date)"
-                . ~/.bashrc
-                git add .
-                git commit -m "$MSG"
-                echo "$MSG"
-                echo "you could --> git push <-- at any time."
-              else
-                echo "Not built right.. :("
-              fi
-              popd
+            local pushed=0
+            echo "host target is: == $target =="
+            if [[ "$(basename $(pwd))" == "ktr-flake" ]]; then
+              echo "inside ktr-flake already..."
             else
-              echo "don't see directory..."
+              path="$(fd -t d -1 ktr-flake)" && [ -d "$path" ]; then
+              pushed=1
+              pushd "$path"
+            fi
+            sudo nixos-rebuild switch --flake .#$target
+            if [ $? -eq 0 ]; then
+              MSG="successful build: $(date)"
+              . ~/.bashrc
+              git add .
+              git commit -m "$MSG"
+              echo "$MSG"
+              echo "you could --> git push <-- at any time."
+            else
+              echo "Not built right.. :("
+            fi
+            if (( pushed == 1 )); then
+              popd
             fi
           }; _b
         
@@ -184,7 +189,7 @@ in
           echo " - j)ournal <search>"
           echo " - i)njest <file>"
           echo " - p)rint <file>"
-          echo " - b)uild host config"
+          echo " - b)uild $(hostname)'s config"
         }; _m
       '';
     };
