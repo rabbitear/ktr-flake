@@ -18,8 +18,15 @@ in
   imports = [
     ./journal-module.nix
     ./printer-module.nix
+    ./ingest-to-journal-module.nix
     ./gnome.nix
   ];
+
+  # My shell scripts.
+  programs.journal.enable = true;
+  programs.printer.enable = true;
+  programs.ingest-to-journal.enable = true;
+
   home.packages = [
     duckduckgo-search
     pkgs.nerd-fonts.fira-mono
@@ -35,10 +42,6 @@ in
     };
   };
 
-  # My shell scripts.
-  programs.journal.enable = true;
-  programs.printer.enable = true;
-   
   programs.git = {
     enable = true;
     userName = "Jon Bradley";
