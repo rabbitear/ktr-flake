@@ -49,32 +49,6 @@ let
     }
     
     # -----------------------------------------------------------------
-    # Sanitize a file name
-    #   - replace any run of characters other than [A‑Za‑z0‑9._-] with _
-    #   - also collapse multiple consecutive underscores into a single _
-    #   - strip leading / trailing underscores (optional, tidy)
-    # -----------------------------------------------------------------
-    # sanitize_name() {
-    #     local name="$1"
-    #     # 1) replace disallowed chars with _
-    #     name=$${name//[^[:alnum:]._-]/_}
-    #     # 2) collapse repeated underscores
-    #     name=$(echo "$name" | tr -s '_' )
-    #     # 3) trim leading / trailing underscores (optional)
-    #     name=$${name##_}
-    #     name=$${name%_}
-    #     printf '%s' "$name"
-    # }
-
-    # sanitize_name() {
-    #     printf '%s' "$1" | \
-    #     sed 's/[^[:alnum:]._-]/_/g' | \  # Replace illegal chars with underscore
-    #     tr -s '_' | \                    # Collapse consecutive underscores
-    #     sed -e 's/^_*//' -e 's/_*$//'    # Trim leading/trailing underscores
-    # }
-
-    
-    # -----------------------------------------------------------------
     # Main – process each argument
     # -----------------------------------------------------------------
     if (( $# == 0 )); then
@@ -109,25 +83,15 @@ let
         # 4. Build a safe, unique destination file name
         # -----------------------------------------------------------------
         orig_base=$(basename "$src")          # original file name
-        #safe_base=$(sanitize_name "$orig_base")   # <-- NEW STEP
-        new_base=$(date +%s)_$(basename $src)
+        nospace_base=$(echo "$orig_base" | sed 's/ /_/g')
+        new_base=$(date +%s)_$nospace_base
         dest="$target_dir/$new_base"
 
-        #dest="$target_dir/$(date +%s)_$(basename $src)"
-        # # If, for any reason, the name already exists (extremely unlikely),
-        # # append a counter before the original name.
-        # if [[ -e $dest ]]; then
-        #     i=1
-        #     while [[ -e "$target_dir/$epoch_$i_$safe_base" ]]; do ((i++)); done
-        #     dest="$target_dir/$epoch_$i_$safe_base"
-        # fi
-    
         # -----------------------------------------------------------------
         # 5. Copy the file (preserve metadata)
         # -----------------------------------------------------------------
         cp -a "$src" "$dest"
         echo "[$orig_base](../$mime_type/$new_base)" >> $JOURNAL_FILE
-        #echo "Added: $dest"
     
         # -----------------------------------------------------------------
         # 6. Stage the new file in the repo (optional but convenient)
