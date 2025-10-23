@@ -63,12 +63,12 @@ let
     #     printf '%s' "$name"
     # }
 
-    sanitize_name() {
-        printf '%s' "$1" | \
-        sed 's/[^[:alnum:]._-]/_/g' | \  # Replace illegal chars with underscore
-        tr -s '_' | \                    # Collapse consecutive underscores
-        sed -e 's/^_*//' -e 's/_*$//'    # Trim leading/trailing underscores
-    }
+    # sanitize_name() {
+    #     printf '%s' "$1" | \
+    #     sed 's/[^[:alnum:]._-]/_/g' | \  # Replace illegal chars with underscore
+    #     tr -s '_' | \                    # Collapse consecutive underscores
+    #     sed -e 's/^_*//' -e 's/_*$//'    # Trim leading/trailing underscores
+    # }
 
     
     # -----------------------------------------------------------------
@@ -106,16 +106,16 @@ let
         # 4. Build a safe, unique destination file name
         # -----------------------------------------------------------------
         orig_base=$(basename "$src")          # original file name
-        safe_base=$(sanitize_name "$orig_base")   # <-- NEW STEP
-        dest="$target_dir/$(date +%s)_$safe_base"
+        #safe_base=$(sanitize_name "$orig_base")   # <-- NEW STEP
+        dest="$target_dir/$(date +%s)_$(basename $src)"
     
-        # If, for any reason, the name already exists (extremely unlikely),
-        # append a counter before the original name.
-        if [[ -e $dest ]]; then
-            i=1
-            while [[ -e "$target_dir/$epoch_$i_$safe_base" ]]; do ((i++)); done
-            dest="$target_dir/$epoch_$i_$safe_base"
-        fi
+        # # If, for any reason, the name already exists (extremely unlikely),
+        # # append a counter before the original name.
+        # if [[ -e $dest ]]; then
+        #     i=1
+        #     while [[ -e "$target_dir/$epoch_$i_$safe_base" ]]; do ((i++)); done
+        #     dest="$target_dir/$epoch_$i_$safe_base"
+        # fi
     
         # -----------------------------------------------------------------
         # 5. Copy the file (preserve metadata)
