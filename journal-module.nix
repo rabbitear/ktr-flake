@@ -138,5 +138,12 @@ in {
 
     home.packages = [ pkgs.helix pkgs.marksman pkgs.fzf pkgs.bat pkgs.ripgrep ];
     home.shellAliases.j = "${journal-script}";
+    home.shellAliases."j." = ''
+      _jupdate() {
+        git -C "${journal-dir}" pull
+        git -C "${journal-dir}" commit -m "journal $(date)"
+        git -C "${journal-dir}" push
+      } _jupdate()
+    '';
   };
 }
