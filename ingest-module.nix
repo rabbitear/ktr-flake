@@ -51,17 +51,25 @@ let
     #   - also collapse multiple consecutive underscores into a single _
     #   - strip leading / trailing underscores (optional, tidy)
     # -----------------------------------------------------------------
+    # sanitize_name() {
+    #     local name="$1"
+    #     # 1) replace disallowed chars with _
+    #     name=$${name//[^[:alnum:]._-]/_}
+    #     # 2) collapse repeated underscores
+    #     name=$(echo "$name" | tr -s '_' )
+    #     # 3) trim leading / trailing underscores (optional)
+    #     name=$${name##_}
+    #     name=$${name%_}
+    #     printf '%s' "$name"
+    # }
+
     sanitize_name() {
-        local name="$1"
-        # 1) replace disallowed chars with _
-        name=$${name//[^[:alnum:]._-]/_}
-        # 2) collapse repeated underscores
-        name=$(echo "$name" | tr -s '_' )
-        # 3) trim leading / trailing underscores (optional)
-        name=$${name##_}
-        name=$${name%_}
-        printf '%s' "$name"
+        printf '%s' "$1" | \
+        sed 's/[^[:alnum:]._-]/_/g' | \  # Replace illegal chars with underscore
+        tr -s '_' | \                    # Collapse consecutive underscores
+        sed -e 's/^_*//' -e 's/_*$//'    # Trim leading/trailing underscores
     }
+
     
     # -----------------------------------------------------------------
     # Main – process each argument
