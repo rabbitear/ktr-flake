@@ -140,9 +140,15 @@ in {
     home.shellAliases.j = "${journal-script}";
     home.shellAliases."j." = ''
       _jupdate() {
-        git -C "${journal-dir}" pull
-        git -C "${journal-dir}" commit -m "journal $(date)"
-        git -C "${journal-dir}" push
+        echo "this is suppose to be logic to check:"
+        echo "  - should we pull?"
+        echo "  - files to add?"
+        echo "  - commit to make?
+        echo "  - add or commit then"
+        echo "      - push if internet"
+        # git -C "${journal-dir}" pull
+        # git -C "${journal-dir}" commit -m "journal $(date)"
+        # git -C "${journal-dir}" push
       }; _jupdate()
     '';
   };
