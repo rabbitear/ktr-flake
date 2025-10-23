@@ -70,6 +70,11 @@ goto-reference-include-declaration = true
     YEAR=$(date +%Y)
     DATE=$(date +%m-%d)
 
+    if [[ ! -d "$JOURNAL_DIR" ]]; then
+      echo "No journal in home, create with j."
+      exit 1
+    fi
+
     # Create journal directory structure if it doesn't exist
     mkdir -p "$JOURNAL_DIR/$YEAR"
 
