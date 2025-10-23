@@ -28,7 +28,10 @@ let
     # -----------------------------------------------------------------
     # Root of the knowledge‑base repository
     KB_ROOT="${journal-dir}"
-    
+    YEAR=$(date +%Y)
+    DATE=$(date +%m-%d)
+    mkdir -p "$KB_ROOT/$YEAR"
+    JOURNAL_FILE="$KB_ROOT/$YEAR/$DATE.md"
     # -----------------------------------------------------------------
     # Helper functions
     # -----------------------------------------------------------------
@@ -107,8 +110,10 @@ let
         # -----------------------------------------------------------------
         orig_base=$(basename "$src")          # original file name
         #safe_base=$(sanitize_name "$orig_base")   # <-- NEW STEP
-        dest="$target_dir/$(date +%s)_$(basename $src)"
-    
+        new_base=$(date +%s)_$(basename $src)
+        dest="$target_dir/$new_base"
+
+        #dest="$target_dir/$(date +%s)_$(basename $src)"
         # # If, for any reason, the name already exists (extremely unlikely),
         # # append a counter before the original name.
         # if [[ -e $dest ]]; then
@@ -121,6 +126,7 @@ let
         # 5. Copy the file (preserve metadata)
         # -----------------------------------------------------------------
         cp -a "$src" "$dest"
+        echo "[$orig_base](../$mime_type/$new_base)" >> $JOURNAL_FILE
         echo "Added: $dest"
     
         # -----------------------------------------------------------------
