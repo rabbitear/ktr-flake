@@ -127,13 +127,14 @@ let
         # -----------------------------------------------------------------
         cp -a "$src" "$dest"
         echo "[$orig_base](../$mime_type/$new_base)" >> $JOURNAL_FILE
-        echo "Added: $dest"
+        #echo "Added: $dest"
     
         # -----------------------------------------------------------------
         # 6. Stage the new file in the repo (optional but convenient)
         # -----------------------------------------------------------------
         if [[ -d $KB_ROOT/.git ]]; then
-          (cd "$KB_ROOT" && git add "$dest" && git commit -m "Ingested: $dest")
+          git -C "$KB_ROOT" add "$dest"
+          git -C "$KB_ROOT" commit -m "Ingested: $dest"
         fi
     done
   '';
