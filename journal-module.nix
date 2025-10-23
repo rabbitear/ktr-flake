@@ -6,61 +6,61 @@ let
   cfg = config.programs.journal;
   journal-dir = "${config.home.homeDirectory}/.journal";
 
-  # Embed the Helix configuration directly in the module
+  # === Embedded Helix configuration === 
   journal-config = pkgs.writeText "hx-journal.toml" ''
-# Helix configuration for journaling
-
-theme = "bogster_light"
-#theme = "bogster"
-#theme = "ayu_light"
-
-[editor]
-# Disable auto-pairing for a more natural writing experience
-auto-pairs = false
-line-number = "absolute"
-cursorline = true
-mouse = true
-#default-yank-register = "+"
-text-width = 72
-# save all the time
-atomic-save = true
-popup-border = "all"
-
-# Set a comfortable line width for prose
-rulers = [72]
-
-# Enable smooth scrolling
-scrolloff = 5
-
-[editor.cursor-shape]
-insert = "bar"
-normal = "block"
-select = "underline"
-
-[editor.file-picker]
-# Show hidden files in file picker
-hidden = true
-
-[editor.soft-wrap]
-enable = true
-# wrap at end of viewport 
-wrap-at-text-width = false
-
-[editor.lsp]
-enable = true
-display-messages = true
-auto-signature-help = false
-display-inlay-hints = false
-display-color-swatches = true
-display-signature-help-docs = false
-goto-reference-include-declaration = true
-
-[keys.normal.space]
-  w = ":w"
-  q = ":q"
-  r = ":reflow"
-  esc = [ "collapse_selection", "keep_primary_selection" ]
-
+    # Helix configuration for journaling
+    
+    theme = "bogster_light"
+    #theme = "bogster"
+    #theme = "ayu_light"
+    
+    [editor]
+    # Disable auto-pairing for a more natural writing experience
+    auto-pairs = false
+    line-number = "absolute"
+    cursorline = true
+    mouse = true
+    #default-yank-register = "+"
+    text-width = 72
+    # save all the time
+    atomic-save = true
+    popup-border = "all"
+    
+    # Set a comfortable line width for prose
+    rulers = [72]
+    
+    # Enable smooth scrolling
+    scrolloff = 5
+    
+    [editor.cursor-shape]
+    insert = "bar"
+    normal = "block"
+    select = "underline"
+    
+    [editor.file-picker]
+    # Show hidden files in file picker
+    hidden = true
+    
+    [editor.soft-wrap]
+    enable = true
+    # wrap at end of viewport 
+    wrap-at-text-width = false
+    
+    [editor.lsp]
+    enable = true
+    display-messages = true
+    auto-signature-help = false
+    display-inlay-hints = false
+    display-color-swatches = true
+    display-signature-help-docs = false
+    goto-reference-include-declaration = true
+    
+    [keys.normal.space]
+      w = ":w"
+      q = ":q"
+      r = ":reflow"
+      esc = [ "collapse_selection", "keep_primary_selection" ]
+    
   '';
 
   journal-script = pkgs.writeShellScript "journal" ''
@@ -78,14 +78,9 @@ goto-reference-include-declaration = true
     # Create journal directory structure if it doesn't exist
     mkdir -p "$JOURNAL_DIR/$YEAR"
 
-    # Text Search journal
-    # If we have an arg use those for search string
-    # ktr- for now the --bind runs our editor, but it doesn't
-    #      have to.  It could package up a ENV VAR of the file
-    #      and the line number FILE:LINE and move on.  Then we
-    #      have either a file we can edit from search or we have
-    #      a todays journal file to edit.
+    # Args?
     if [[ "$#" -gt 0 ]]; then
+      # === Text Search journal ===
       pushd "$JOURNAL_DIR" >/dev/null
       rg --color=never --line-number --no-heading "$*" | \
         fzf --delimiter : \
@@ -93,8 +88,7 @@ goto-reference-include-declaration = true
         --bind "enter:become:${pkgs.helix}/bin/hx --working-dir $JOURNAL_DIR --config ${journal-config} {1}:{2}"
       popd
     else
-      # No args
-      # Create full path for today's journal file
+      # === Make journal entery ===
       JOURNAL_FILE="$JOURNAL_DIR/$YEAR/$DATE.md"
 
       # Format: "Wednesday, October 20, 2025"
@@ -105,8 +99,6 @@ goto-reference-include-declaration = true
           echo "# $HEADER_DATE" > "$JOURNAL_FILE"
           echo "" >> "$JOURNAL_FILE"
       fi
-      # ktr -- here we could already have either one of the
-      #        files, from search or for todays journal. TBD
       # Store the file's state before editing
       if [[ -f "$JOURNAL_FILE" ]]; then
           ORIGINAL_CONTENT=$(cat "$JOURNAL_FILE")
@@ -115,6 +107,9 @@ goto-reference-include-declaration = true
       # Open today's journal entry in Helix editor with journal-specific config
       ${pkgs.helix}/bin/hx --working-dir $JOURNAL_DIR --config "${journal-config}" "$JOURNAL_FILE:9999"
 
+      # ktr - in the future, this should git add any file that has been changed,
+      #       not just a journal file.  If we search, we could be editing a file
+      #       that is not a journal file. 
       # If journal directory is a git repo, add the file only if it has changed
       if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
           CURRENT_CONTENT=$(cat "$JOURNAL_FILE")
@@ -133,6 +128,11 @@ in {
       default = false;
       description = "Enable journal application for taking notes";
     };
+    remoterepository = mkOption {
+      type = types.str;
+      default = "";
+      description = "Remote git repository for journal";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -145,9 +145,27 @@ in {
     home.shellAliases.j = "${journal-script}";
     home.shellAliases."j." = ''
       _jupdate() {
-        echo "FIXME: this function, not yet right.."
-        echo "Files in ${journal-dir}"
-        if [[ -n $(git status --porcelain) ]]; then
+        GITREMOTE="${cfg.remoterepository}"
+        JOURNAL_DIR="${journal-dir}"
+        echo "== Journal Update =="
+        echo "Remote git repository: $GITREMOTE"
+
+        if [[ ! -d "$JOURNAL_DIR" ]]; then
+          # no journal dir exists, close it.
+          [[ -z "$GITREMOTE" ]] && && echo "git remote not set" && exit 1
+          git clone "$GITREMOTE" "$JOURNAL_DIR"
+          if (( $? == 0 )); then
+            echo "created $JOURNAL_DIR"
+            exit 1
+          fi
+        fi
+
+        # We have a direcotry here.
+
+        # Q: do we need to pull
+        # Q: add? commit? push?
+
+        if [[ -n $(git -C "$JOURNAL_DIR" status --porcelain) ]]; then
           echo "Changes detected - committing..."
           
           # Add all changes (including new files)
@@ -155,13 +173,16 @@ in {
           
           # Commit with automatic message (modify this if you need specific messages)
           git -C "${journal-dir}" commit -m "Auto-commit: $(date +"%Y-%m-%d %H:%M:%S")" || { echo "Error: Failed to commit"; return 1; }
-          
+
+          # Pull before push...
+          git -C "${journal-dir}" pull || { echo "Error: Failed to pull changes"; return 1; }
+
           # Push the new commit
           git -C "${journal-dir}" push || { echo "Error: Failed to push changes"; return 1; }
+
           echo "Successfully committed and pushed changes"
         else
           echo "No changes to commit"
-          git -C "${journal-dir}" pull || { echo "Error: Failed to pull changes"; return 1; }
         fi
       }; _jupdate
     '';
