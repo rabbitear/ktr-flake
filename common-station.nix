@@ -14,9 +14,9 @@ let
   };
 
 in {
-  # imports = [
-    # ./sops-module.nix
-  # ];
+  imports = [
+    ./sops-module.nix
+  ];
   # # Path to SOPS file
   # sops.defaultSopsFile = ./crypt/cipher.yaml;
   # sops.defaultSopsFormat = "yaml";

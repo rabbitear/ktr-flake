@@ -29,7 +29,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/otternode/configuration.nix
-          ./sops-module.nix
           ./common-station.nix
           # ktr - searx.nix is not ready yet, searx.env needs attention.
           #./searx.nix
