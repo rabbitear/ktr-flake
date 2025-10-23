@@ -138,17 +138,25 @@ in {
 
     home.packages = [ pkgs.helix pkgs.marksman pkgs.fzf pkgs.bat pkgs.ripgrep ];
     home.shellAliases.j = "${journal-script}";
-    home.shellAliases."jp" = ''
+    home.shellAliases."j." = ''
       _jupdate() {
-        echo "this is suppose to be logic to check:"
-        echo "  - should we pull?"
-        echo "  - files to add?"
-        echo "  - commit to make?
-        echo "  - add or commit then"
-        echo "      - push if internet"
-        # git -C "${journal-dir}" pull
-        # git -C "${journal-dir}" commit -m "journal $(date)"
-        # git -C "${journal-dir}" push
+        echo "checking on ${journal-dir} files"
+        git -C "${journal-dir}" pull || { echo "Error: Failed to pull changes"; return 1; }
+        if [[ -n $(git status --porcelain) ]]; then
+            echo "Changes detected - committing..."
+            
+            # Add all changes (including new files)
+            git -C "${journal-dir}" add -A || { echo "Error: Failed to stage changes"; return 1; }
+            
+            # Commit with automatic message (modify this if you need specific messages)
+            git -C "${journal-dir}" commit -m "Auto-commit: $(date +"%Y-%m-%d %H:%M:%S")" || { echo "Error: Failed to commit"; return 1; }
+            
+            # Push the new commit
+            git -C "${journal-dir}" push || { echo "Error: Failed to push changes"; return 1; }
+            echo "Successfully committed and pushed changes"
+        else
+            echo "No changes to commit"
+        fi
       }; _jupdate
     '';
   };
