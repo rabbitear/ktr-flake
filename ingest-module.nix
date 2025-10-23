@@ -91,6 +91,7 @@ let
         # 5. Copy the file (preserve metadata)
         # -----------------------------------------------------------------
         cp -a "$src" "$dest"
+        echo "" >> $JOURNAL_FILE
         echo "[$orig_base](../$mime_type/$new_base)" >> $JOURNAL_FILE
     
         # -----------------------------------------------------------------
@@ -98,6 +99,7 @@ let
         # -----------------------------------------------------------------
         if [[ -d $KB_ROOT/.git ]]; then
           git -C "$KB_ROOT" add "$dest"
+          echo " --> but do we really want to commit here?"
           git -C "$KB_ROOT" commit -m "Ingested: $dest"
         fi
     done
