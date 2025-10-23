@@ -43,6 +43,25 @@ in
     };
   };
 
+  home.file.".config/ort.json".text = ''
+    {
+      "settings": {
+        "save_to_file": true,
+        "dns": ["104.18.2.115", "104.18.3.115"]
+      },
+      "prompt_opts": {
+        "model": "tngtech/deepseek-r1t2-chimera:free",
+        "system": "Make your answer concise but complete. No yapping. Direct professional tone. Emoji is ok.",
+        "priority": "price",
+        "quiet": false,
+        "show_reasoning": false,
+        "reasoning": {
+          "enabled": true,
+          "effort": "medium"
+        }
+      }
+    }
+  '';
   programs.git = {
     enable = true;
     userName = "Jon Bradley";
@@ -197,8 +216,9 @@ in
       '';
     };
     profileExtra = ''
-      echo echo welcome to kreators bash shell on nix
+      echo WeLcoMe To: => $(hostname) <=
       export EDITOR=hx
+      . /etc/profile.d/aikey.sh
     '';
   };
 }

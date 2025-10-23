@@ -14,28 +14,32 @@ let
   };
 
 in {
-  # Path to SOPS file
-  sops.defaultSopsFile = ./crypt/cipher.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
+  # imports = [
+    # ./sops-module.nix
+  # ];
+  # # Path to SOPS file
+  # sops.defaultSopsFile = ./crypt/cipher.yaml;
+  # sops.defaultSopsFormat = "yaml";
+  # sops.age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
 
-  # Where the decrypted key should live
-  sops.secrets = {
-    "kreator" = {
-      neededForUsers = true;
-    };
-    "github_ssh_key" = {
-      mode = "0600";
-      owner = "kreator";
-      path = "/home/kreator/.ssh/theshack";
-    };
-    "openrouter_api_key" = {
-      owner = "kreator";
-    };
-    "huggingface1_api_key" = {
-      owner = "kreator";
-    };
-  };
+  # # Where the decrypted key should live
+  # sops.secrets = {
+  #   "kreator" = {
+  #     neededForUsers = true;
+  #   };
+  #   "github_ssh_key" = {
+  #     mode = "0600";
+  #     owner = "kreator";
+  #     path = "/home/kreator/.ssh/theshack";
+  #   };
+  #   "openrouter_api_key" = {
+  #     owner = "kreator";
+  #   };
+  #   "huggingface1_api_key" = {
+  #     owner = "kreator";
+  #   };
+  # };
+
 
   programs.ssh = {
     extraConfig = ''
@@ -233,6 +237,7 @@ in {
     mbrola
     mbrola-voices
     espeak-ng
+    mcp-nixos
   ];
 
   # List services that you want to enable:
