@@ -140,22 +140,22 @@ in {
     home.shellAliases.j = "${journal-script}";
     home.shellAliases."j." = ''
       _jupdate() {
-        echo "checking on ${journal-dir} files"
-        git -C "${journal-dir}" pull || { echo "Error: Failed to pull changes"; return 1; }
+        echo "Files in ${journal-dir}"
         if [[ -n $(git status --porcelain) ]]; then
-            echo "Changes detected - committing..."
-            
-            # Add all changes (including new files)
-            git -C "${journal-dir}" add -A || { echo "Error: Failed to stage changes"; return 1; }
-            
-            # Commit with automatic message (modify this if you need specific messages)
-            git -C "${journal-dir}" commit -m "Auto-commit: $(date +"%Y-%m-%d %H:%M:%S")" || { echo "Error: Failed to commit"; return 1; }
-            
-            # Push the new commit
-            git -C "${journal-dir}" push || { echo "Error: Failed to push changes"; return 1; }
-            echo "Successfully committed and pushed changes"
+          echo "Changes detected - committing..."
+          
+          # Add all changes (including new files)
+          git -C "${journal-dir}" add -A || { echo "Error: Failed to stage changes"; return 1; }
+          
+          # Commit with automatic message (modify this if you need specific messages)
+          git -C "${journal-dir}" commit -m "Auto-commit: $(date +"%Y-%m-%d %H:%M:%S")" || { echo "Error: Failed to commit"; return 1; }
+          
+          # Push the new commit
+          git -C "${journal-dir}" push || { echo "Error: Failed to push changes"; return 1; }
+          echo "Successfully committed and pushed changes"
         else
-            echo "No changes to commit"
+          echo "No changes to commit"
+          git -C "${journal-dir}" pull || { echo "Error: Failed to pull changes"; return 1; }
         fi
       }; _jupdate
     '';
