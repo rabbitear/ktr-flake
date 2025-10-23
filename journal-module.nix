@@ -152,7 +152,7 @@ in {
 
         if [[ ! -d "$JOURNAL_DIR" ]]; then
           # no journal dir exists, close it.
-          [[ -z "$GITREMOTE" ]] && echo "git remote not set" && return 1
+          [[ -z "$GITREMOTE" ]] && echo "remoterepository not set" && return 1
           git clone "$GITREMOTE" "$JOURNAL_DIR"
           if (( $? == 0 )); then
             echo "created $JOURNAL_DIR"

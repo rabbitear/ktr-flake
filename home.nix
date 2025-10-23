@@ -24,6 +24,7 @@ in
 
   # My shell scripts.
   programs.journal.enable = true;
+  programs.journal.remoterepository = "";
   programs.printer.enable = true;
   programs.ingest-to-journal.enable = true;
 
