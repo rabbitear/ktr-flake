@@ -138,7 +138,7 @@ in {
 
     home.packages = [ pkgs.helix pkgs.marksman pkgs.fzf pkgs.bat pkgs.ripgrep ];
     home.shellAliases.j = "${journal-script}";
-    home.shellAliases."j." = ''
+    home.shellAliases."jp" = ''
       _jupdate() {
         echo "this is suppose to be logic to check:"
         echo "  - should we pull?"
