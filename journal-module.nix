@@ -140,6 +140,7 @@ in {
     home.shellAliases.j = "${journal-script}";
     home.shellAliases."j." = ''
       _jupdate() {
+        echo "FIXME: this function, not yet right.."
         echo "Files in ${journal-dir}"
         if [[ -n $(git status --porcelain) ]]; then
           echo "Changes detected - committing..."
