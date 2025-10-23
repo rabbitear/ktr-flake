@@ -86,27 +86,20 @@ let
         # -----------------------------------------------------------------
         # 2. Determine MIME type
         # -----------------------------------------------------------------
-        mime=$(file -b --mime-type "$src")
-        type=$${mime%%/*}          # e.g. text, image, application
-        subtype=$${mime#*/}        # e.g. plain, png, json
+        mime_type=$(file --brief --mime-type -- "$src" | cut -d'/' -f1)
     
         # -----------------------------------------------------------------
         # 3. Build destination directory (type/subtype hierarchy)
         # -----------------------------------------------------------------
-        if [[ $subtype == "$type" || -z $subtype ]]; then
-            target_dir="$KB_ROOT/$type"
-        else
-            target_dir="$KB_ROOT/$type/$subtype"
-        fi
+        target_dir="$KB_ROOT/$mime_type"
         mkdir -p "$target_dir"
     
         # -----------------------------------------------------------------
         # 4. Build a safe, unique destination file name
         # -----------------------------------------------------------------
-        epoch=$(date +%s)                     # Unix epoch seconds
         orig_base=$(basename "$src")          # original file name
         safe_base=$(sanitize_name "$orig_base")   # <-- NEW STEP
-        dest="$target_dir/$epoch_$safe_base"
+        dest="$target_dir/$(date +%s)_$safe_base"
     
         # If, for any reason, the name already exists (extremely unlikely),
         # append a counter before the original name.
