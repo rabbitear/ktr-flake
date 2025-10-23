@@ -143,7 +143,7 @@ in {
         git -C "${journal-dir}" pull
         git -C "${journal-dir}" commit -m "journal $(date)"
         git -C "${journal-dir}" push
-      } _jupdate()
+      }; _jupdate()
     '';
   };
 }
