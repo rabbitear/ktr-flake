@@ -144,7 +144,7 @@ in {
       source = ingest-to-journal;
       executable = true;
     };
-    home.packages = [ pkgs.file ];
+    home.packages = [ pkgs.file pkgs.gnused pkgs.coreutils ];
     home.shellAliases.i = "${ingest-to-journal}";
   };
 }
