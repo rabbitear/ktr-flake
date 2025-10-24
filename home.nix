@@ -172,7 +172,6 @@ in
     enable = true;
     enableCompletion = true;
     bashrcExtra = ''
-      echo WeLcoMe To: => $(hostname) <=
       export EDITOR=hx
       . /etc/profile.d/aikey.sh
     '';
