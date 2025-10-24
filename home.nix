@@ -69,6 +69,7 @@ in
 
     extraConfig = {
       core.editor = "hx";
+      core.pager = "bat --style=plain --pager=never";
       pull.rebase = true;
       init.defaultBranch = "main";
     };
