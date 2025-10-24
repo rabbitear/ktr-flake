@@ -1,10 +1,12 @@
 # All my Gnome3 settings.  Even if I don't use Gnome3 desktop, these are
 # good to have for other gnome applications sometimes.
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+with lib.hm.gvariant;
 let
   wallpaper = ./wallpaper.png;
   wallpaper-dark = ./wallpaper-dark.png;
-in {
+in
+{
   xdg.configFile."wallpapers/wallpaper.png".source = wallpaper;
   xdg.configFile."wallpapers/wallpaper-dark.png".source = wallpaper-dark;
   # TODO:
@@ -79,5 +81,22 @@ in {
     };
     "org/gnome/desktop/screensaver".lock-enabled = false;
     "org/gnome/desktop/interface".clock-show-weekday = true;
-  };
+
+    "com/github/amezin/ddterm" = {
+      custom-font = "M PLUS 1 Code 20";
+      ddterm-toggle-hotkey = [ "<Alt>space" ];
+      hide-animation = "ease-in-expo";
+      hide-animation-duration = 0.28;
+      hide-when-focus-lost = true;
+      shortcut-background-opacity-dec = [ "<Primary><Alt>o" ];
+      shortcut-background-opacity-inc = [ "<Primary><Alt>i" ];
+      shortcut-next-tab = [ "<Alt>Right" ];
+      shortcut-prev-tab = [ "<Alt>Left" ];
+      shortcut-window-size-dec = [ "<Alt>Down" ];
+      shortcut-window-size-inc = [ "<Alt>Up" ];
+      use-system-font = false;
+      window-monitor = "focus";
+      window-position = "bottom";
+    };
+  };   
 }
