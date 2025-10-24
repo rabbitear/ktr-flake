@@ -3,6 +3,7 @@
 { config, lib, pkgs, ... }:
 with lib.hm.gvariant;
 let
+  cfgDir = "${config.home.homeDirectory}/.config";
   wallpaper = ./wallpaper.png;
   wallpaper-dark = ./wallpaper-dark.png;
 in
@@ -44,8 +45,8 @@ in
     "org/gnome/desktop/wm/preferences".num-workspaces = "4";
     "org/gnome/desktop/background" = {
       primary-color = "#02023c3c8888";
-      picture-uri = "file://${config.home.homeDirectory}/.config/wallpapers/wallpaper.png";
-      picture-dark-uri = "file://${config.home.homeDirectory}/.config/wallpapers/wallpaper-dark.png";
+      picture-uri = "file://${cfgDir}/wallpapers/wallpaper.png";
+      picture-dark-uri = "file://${cfgDir}/wallpapers/wallpaper-dark.png";
       picture-options = "zoom";  # or "scaled" or "stretched", ..
     };
     "org/gnome/desktop/wm/keybindings" = {
