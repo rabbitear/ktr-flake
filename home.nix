@@ -166,6 +166,7 @@ in
     };
   };
 
+  programs.fzf.enableBashIntegration = true;
   programs.bash = {
     enable = true;
     enableCompletion = true;
