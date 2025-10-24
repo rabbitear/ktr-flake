@@ -169,6 +169,11 @@ in
   programs.bash = {
     enable = true;
     enableCompletion = true;
+    bashrcExtra = ''
+      export EDITOR=hx
+      . /etc/profile.d/aikey.sh
+      eval "$(ssh-agent)"
+    '';
     shellAliases = {
       e = "hx";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
@@ -179,15 +184,11 @@ in
       b = ''
           _b() {
             local target="$(hostname)"
-            local pushed=""
             echo "host target is: == $target =="
             if [[ "$(basename $(pwd))" != "ktr-flake" ]]; then
-              flakepath="$(fd -t d -1 ktr-flake)"
-              if [[ -d "$flakepath" ]]; then
-                pushed=1
-                echo "pushing directories..."
-                pushd "$path"
-              fi
+              echo 'in flake directory?'
+              fd -t d -1 ktr-flake
+              return 0
             else
               echo "inside ktr-flake already..."
               sudo nixos-rebuild switch --flake .#$target
@@ -196,29 +197,25 @@ in
                 git add .
                 git commit -m "$MSG"
                 echo "$MSG"
-                echo "you could --> git push <-- at any time."
-                . ~/.bashrc 
+                echo "remember to reload ~/.bashrc"
               else
                 echo "Not built right.. :("
               fi
             fi
-            [[ -n "$pushed" ]] && popd
           }; _b
         '';
       m = ''
         _m() {
-          echo " -==> ktr's MENU <==-"
-          echo " - j)ournal <search>"
-          echo " - i)njest <file>"
-          echo " - p)rint <file>"
-          echo " - b)uild $(hostname)'s config"
+          echo " -==>> ktr's MENU -==>>"
+          echo "    j - journal <search>  j. to commit"
+          echo "   i - injest <file>     b build $(hostname)"
+          echo "  p - print <file>"
         }; _m
       '';
     };
     profileExtra = ''
       echo WeLcoMe To: => $(hostname) <=
       export EDITOR=hx
-      . /etc/profile.d/aikey.sh
     '';
   };
 }
