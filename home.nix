@@ -173,7 +173,6 @@ in
     bashrcExtra = ''
       export EDITOR=hx
       . /etc/profile.d/aikey.sh
-      eval "$(ssh-agent)"
     '';
     shellAliases = {
       e = "hx";
@@ -217,6 +216,7 @@ in
     profileExtra = ''
       echo WeLcoMe To: => $(hostname) <=
       export EDITOR=hx
+      eval "$(ssh-agent)"
     '';
   };
 }
