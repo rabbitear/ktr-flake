@@ -116,6 +116,7 @@ let
           if [[ "$ORIGINAL_CONTENT" != "$CURRENT_CONTENT" ]]; then
               git -C "$JOURNAL_DIR" add "$YEAR/$DATE.md"
               git -C "$JOURNAL_DIR" diff --cached
+              echo "j. - commit & push to origin"
           fi
       fi
     fi

@@ -1,8 +1,12 @@
 # All my Gnome3 settings.  Even if I don't use Gnome3 desktop, these are
 # good to have for other gnome applications sometimes.
-{ lib, config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }:
+let
+  wallpaper = ./wallpaper.png;
+  wallpaper-dark = ./wallpaper-dark.png;
+in {
+  xdg.configFile."wallpapers/wallpaper.png".source = wallpaper;
+  xdg.configFile."wallpapers/wallpaper-dark.png".source = wallpaper-dark;
   # TODO:
   # - Super-Q to close window
   # - Super-Return open an xterm 
@@ -15,6 +19,7 @@
     iagno   # go game
     hitori  # sudoku game
     gnome-characters
+    flameshot
   ];
   dconf.settings = {
     "org/gnome/shell" = {
@@ -36,10 +41,10 @@
 	  "org/gnome/mutter".dynamic-workspaces = false;
     "org/gnome/desktop/wm/preferences".num-workspaces = "4";
     "org/gnome/desktop/background" = {
-      picture-options = "zoom";
       primary-color = "#02023c3c8888";
-      picture-uri = "file:///home/kreator/.config/wallpaper.png";
-      picture-uri-dark = "file:///home/kreator/.config/wallpaper-dark.png";
+      picture-uri = "file://${config.home.homeDirectory}/.config/wallpapers/wallpaper.png";
+      picture-dark-uri = "file://${config.home.homeDirectory}/.config/wallpapers/wallpaper-dark.png";
+      picture-options = "zoom";  # or "scaled" or "stretched", ..
     };
     "org/gnome/desktop/wm/keybindings" = {
   	  switch-to-workspace-1 = [ "<Control>1" ];
