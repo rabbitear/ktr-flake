@@ -183,7 +183,8 @@ in {
 
           echo "Successfully committed and pushed changes"
         else
-          echo "No changes to commit"
+          echo " - No changes to commit -"
+          git -C "${journal-dir}"" pull || { echo "Error: Failed to PULL"; return 1; }
         fi
       }; _jupdate
     '';
