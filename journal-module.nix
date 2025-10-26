@@ -114,7 +114,7 @@ let
       if [[ $arg =~ ^-[0-9]+$ ]]; then
         days_ago=$(tr -d '-' <<< "$arg")
       else
-        search_terms="$search_term $arg"
+        search_terms="$search_terms $arg"
       fi
     done
 
