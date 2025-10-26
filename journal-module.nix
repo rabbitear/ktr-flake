@@ -70,7 +70,7 @@ let
       # === Text Search journal ===
       pushd "$JOURNAL_DIR" >/dev/null
       # will "$*" or "$1" which do we want here?
-      rg --color=never --line-number --no-heading --fixed-string "$1" | \
+      rg --color=never --line-number --no-heading "$1" | \
         fzf --delimiter : \
         --nth 1,2,3 \
         --bind "enter:become:${pkgs.helix}/bin/hx --working-dir $JOURNAL_DIR --config ${journal-config} {1}:{2}"
@@ -113,7 +113,7 @@ let
 
     for arg in "$@"; do
       # check, is - ?
-      if [[ $arg =~ -^[0-9]+$ ]]; then
+      if [[ $arg =~ ^[0-9]+$ ]]; then
         days_ago="$${arg#-}"  # remove the dash
       else
         search_terms+=("$arg")
