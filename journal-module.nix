@@ -121,9 +121,9 @@ let
       fi
     done
 
-    search_text=$${search_terms[*]}  # its okay if empty here
+    #search_text=$${search_terms[*]}  # its okay if empty here
 
-    if [[ $days_ago -eq 0 && -z "$search_text" ]]; then
+    if [[ $days_ago -eq 0 && -z "$search_terms" ]]; then
       edit_journal_file 0  # edit todays journal file.
     fi
 
