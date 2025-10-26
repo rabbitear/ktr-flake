@@ -118,8 +118,10 @@ let
       fi
     done
 
+    search_text="$${search_terms[*]}"
+
     # Do we have a search term?
-    if [[ -n "$search_terms" ]]; then
+    if [[ -n "$search_text" ]]; then
       search_journal_dir "$search_text"
     else
       edit_journal_file $days_ago
