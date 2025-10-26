@@ -156,6 +156,7 @@
       alacritty-graphics
       alacritty-theme
       foot
+      tmux
       virt-viewer
       imv
       flameshot
