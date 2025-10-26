@@ -233,6 +233,7 @@ in {
     flatpak
     flatpak-xdg-utils
     xdg-desktop-portal-gnome
+    aria2
     caligula
     tts
     mbrola
