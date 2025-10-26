@@ -112,8 +112,7 @@ let
     search_terms=()
 
     for arg in "$@"; do
-      # check, is - ?
-      if [[ $arg =~ ^[0-9]+$ ]]; then
+      if [[ $arg =~ ^-[0-9]+$ ]]; then
         days_ago="$${arg#-}"  # remove the dash
       else
         search_terms+=("$arg")
