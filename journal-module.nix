@@ -66,59 +66,76 @@ let
   journal-script = pkgs.writeShellScript "journal" ''
     #!/usr/bin/env bash
 
-    JOURNAL_DIR="${journal-dir}"
-    YEAR=$(date +%Y)
-    DATE=$(date +%m-%d)
-
-    if [[ ! -d "$JOURNAL_DIR" ]]; then
-      echo "No journal in home, create with j."
-      exit 1
-    fi
-
-    # Create journal directory structure if it doesn't exist
-    mkdir -p "$JOURNAL_DIR/$YEAR"
-
-    # Args?
-    if [[ "$#" -gt 0 ]]; then
+    search_journal_dir() {
       # === Text Search journal ===
       pushd "$JOURNAL_DIR" >/dev/null
-      rg --color=never --line-number --no-heading "$*" | \
+      # will "$*" or "$1" which do we want here?
+      rg --color=never --line-number --no-heading "$1" | \
         fzf --delimiter : \
         --nth 1,2,3 \
         --bind "enter:become:${pkgs.helix}/bin/hx --working-dir $JOURNAL_DIR --config ${journal-config} {1}:{2}"
       popd
-    else
-      # === Make journal entery ===
+    }
+
+    edit_journal_file() {
+      #if [[ -z "$1" ]] && { echo "error"; return 1; }
+      YEAR=$(date -d "$1 days ago" +%Y)
+      DATE=$(date -d "$1 days ago" +%m-%d)
+
+      mkdir -p "$JOURNAL_DIR/$YEAR"
       JOURNAL_FILE="$JOURNAL_DIR/$YEAR/$DATE.md"
 
-      # Format: "Wednesday, October 20, 2025"
-      HEADER_DATE=$(date +"%A, %B %d, %Y")
+      if [[ $1 -eq 0 ]]; then  # Today, add a header
+        # Format: "Wednesday, October 20, 2025"
+        HEADER_DATE=$(date +"%A, %B %d, %Y")
 
-      # Ensure the journal file exists and has a header
-      if [[ ! -f "$JOURNAL_FILE" ]]; then
+        # Ensure the journal file exists and has a header
+        if [[ ! -f "$JOURNAL_FILE" ]]; then
           echo "# $HEADER_DATE" > "$JOURNAL_FILE"
           echo "" >> "$JOURNAL_FILE"
-      fi
-      # Store the file's state before editing
-      if [[ -f "$JOURNAL_FILE" ]]; then
-          ORIGINAL_CONTENT=$(cat "$JOURNAL_FILE")
+        fi
       fi
 
-      # Open today's journal entry in Helix editor with journal-specific config
+      # Create journal directory structure if it doesn't exist
       ${pkgs.helix}/bin/hx --working-dir $JOURNAL_DIR --config "${journal-config}" "$JOURNAL_FILE:9999"
+    }
 
-      # ktr - in the future, this should git add any file that has been changed,
-      #       not just a journal file.  If we search, we could be editing a file
-      #       that is not a journal file. 
-      # If journal directory is a git repo, add the file only if it has changed
-      if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
-          CURRENT_CONTENT=$(cat "$JOURNAL_FILE")
-          if [[ "$ORIGINAL_CONTENT" != "$CURRENT_CONTENT" ]]; then
-              git -C "$JOURNAL_DIR" add "$YEAR/$DATE.md"
-              git -C "$JOURNAL_DIR" diff --cached
-              echo "j. - commit & push to origin"
-          fi
+
+    JOURNAL_DIR="${journal-dir}"
+    if [[ ! -d "$JOURNAL_DIR" ]]; then
+      echo "No journal directory"
+      exit 1
+    fi
+
+    # Program starts here
+    days_ago=0
+    search_terms=()
+
+    for arg in "$@"; do
+      if [[ $arg =~ ^[0-9]+$ ]]; then
+        days_ago="$${arg#-}"  # remove the dash
+      else
+        search_terms+=("arg")
       fi
+    done
+
+    search_text="$${search_terms[*]}"  # its okay if empty here
+
+    if [[ $days_ago -eq 0 && -z "$search_text" ]]; then
+      edit_journal_file 0  # edit todays journal file.
+    fi
+
+    if (( days_ago > 0 )); then
+      edit_journal_file $days_ago
+    else   
+      search_journal_dir "$search_text"
+    fi
+
+    # Stage our edit     
+    if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
+      git -C "$JOURNAL_DIR" add "$YEAR/$DATE.md"
+      git -C "$JOURNAL_DIR" diff --cached
+      echo "j. - commit & push to origin"
     fi
   '';
 
