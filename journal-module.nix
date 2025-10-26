@@ -100,6 +100,9 @@ let
       ${pkgs.helix}/bin/hx --working-dir $JOURNAL_DIR --config "${journal-config}" "$JOURNAL_FILE:9999"
     }
 
+    # Program starts here
+    days_ago=0
+    search_terms=()
 
     JOURNAL_DIR="${journal-dir}"
     if [[ ! -d "$JOURNAL_DIR" ]]; then
@@ -107,32 +110,21 @@ let
       exit 1
     fi
 
-    # Program starts here
-    days_ago=0
-    search_terms=()
-
-    echo "args: $@"
     for arg in "$@"; do
       if [[ $arg =~ ^-[0-9]+$ ]]; then
         days_ago=$${arg#-}  # remove the dash
       else
         search_terms+=("$arg")
-        echo $search_terms
       fi
     done
 
-    #search_text=$${search_terms[*]}  # its okay if empty here
-
-    if [[ $days_ago -eq 0 && -z "$search_terms" ]]; then
-      edit_journal_file 0  # edit todays journal file.
-    fi
-
-    if (( days_ago > 0 )); then
-      edit_journal_file "$days_ago"
-    else   
+    # Do we have a search term?
+    if [[ -n "$search_terms" ]]; then
       search_journal_dir "$search_text"
+    else
+      edit_journal_file $days_ago
     fi
-
+    
     # Stage our edit     
     if [[ -d "$JOURNAL_DIR/.git" ]] && [[ -f "$JOURNAL_FILE" ]]; then
       git -C "$JOURNAL_DIR" add "$YEAR/$DATE.md"
