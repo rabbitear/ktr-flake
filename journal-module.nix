@@ -102,7 +102,7 @@ let
 
     # Program starts here
     days_ago=0
-    search_terms=()
+    search_terms=""
 
     JOURNAL_DIR="${journal-dir}"
     if [[ ! -d "$JOURNAL_DIR" ]]; then
@@ -114,7 +114,7 @@ let
       if [[ $arg =~ ^-[0-9]+$ ]]; then
         days_ago=$(tr -d '-' <<< "$arg")
       else
-        search_terms+=("$arg")
+        search_terms="$search_term $arg"
       fi
     done
 
