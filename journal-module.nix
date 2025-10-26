@@ -119,14 +119,14 @@ let
       fi
     done
 
-    search_text=$${search_terms[*]}  # its okay if empty here
+    search_text="$${search_terms[*]}"  # its okay if empty here
 
     if [[ $days_ago -eq 0 && -z "$search_text" ]]; then
       edit_journal_file 0  # edit todays journal file.
     fi
 
     if (( days_ago > 0 )); then
-      edit_journal_file $days_ago
+      edit_journal_file "$days_ago"
     else   
       search_journal_dir "$search_text"
     fi
