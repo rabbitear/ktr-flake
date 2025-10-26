@@ -129,6 +129,7 @@
           ./hosts/sasha/configuration.nix
           ./common-station.nix
           ./ollama-rocm.nix
+          ./chromecast.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {

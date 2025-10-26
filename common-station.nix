@@ -215,6 +215,7 @@ in {
     findutils
     sops
     age
+
     # networking tools
     mtr # A network diagnostic tool
     iperf3
@@ -225,10 +226,12 @@ in {
     nmap # A utility for network discovery and security auditing
     ipcalc  # it is a calculator for the IPv4/v6 addresses
     nmap
+
     # system call monitoring
     strace # system call monitoring
     ltrace # library call monitoring
     lsof # list open files
+
     # other misc tools
     flatpak
     flatpak-xdg-utils
@@ -240,6 +243,18 @@ in {
     mbrola-voices
     espeak-ng
     mcp-nixos
+
+    ## Even less needed! stuff for chromecast and tv.
+    vlc
+    mpv                # alternative player with GUI
+    chromium           # browser casting (tab/desktop)
+    #androidplatformtools  # adb for Android TV if needed
+    scrcpy             # GUI screen/control when using ADB
+    avahi              # mDNS discovery support (enable service below)
+
+    ## Even more fun stuff
+    ffmpeg-full        # ffmpeg always fun to have around
+    tuxguitar          # interesting...
   ];
 
   # List services that you want to enable:
