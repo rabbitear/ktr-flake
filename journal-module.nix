@@ -113,13 +113,13 @@ let
 
     for arg in "$@"; do
       if [[ $arg =~ ^-[0-9]+$ ]]; then
-        days_ago="$${arg#-}"  # remove the dash
+        days_ago=$${arg#-}  # remove the dash
       else
         search_terms+=("$arg")
       fi
     done
 
-    search_text="$${search_terms[*]}"  # its okay if empty here
+    search_text=$${search_terms[*]}  # its okay if empty here
 
     if [[ $days_ago -eq 0 && -z "$search_text" ]]; then
       edit_journal_file 0  # edit todays journal file.
