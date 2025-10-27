@@ -4,6 +4,7 @@
     sops = {
       #enable = true;
       defaultSopsFile = ./crypt/cipher.yaml;
+      #gnupg.home = "/home/kreator/.gnupg";
       defaultSopsFormat = "yaml";
       age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
 
