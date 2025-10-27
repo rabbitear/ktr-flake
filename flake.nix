@@ -130,6 +130,7 @@
           ./common-station.nix
           ./ollama-rocm.nix
           ./chromecast.nix
+          ./n8n-sasha.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
