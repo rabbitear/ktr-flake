@@ -242,6 +242,9 @@
     ## Even more fun stuff
     ffmpeg-full        # ffmpeg always fun to have around
     tuxguitar          # interesting...
+
+    ## Our ort
+    (import ./ort.nix { inherit pkgs; })
   ];
 
   # List services that you want to enable:
