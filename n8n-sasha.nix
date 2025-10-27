@@ -12,7 +12,7 @@
       N8N_PORT = "5678";
       N8N_SECURE_COOKIE = "false";
       # any other env vars as strings:
-      WEBHOOK_URL = "http://sasha:5678/";
+      WEBHOOK_URL = "http://sasha.pufferfish-pound.ts.net:5678/";
       # DB_TYPE = "postgresdb";
       # DB_POSTGRESDB_HOST = "db.example";
       # DB_POSTGRESDB_DATABASE = "n8n";
