@@ -1,23 +1,8 @@
 {config, pkgs, ... }:
-# let
-#   ort = pkgs.rustPlatform.buildRustPackage rec {
-#     pname = "ort";
-#     version = "0.1.0";
-#     src = pkgs.fetchFromGitHub {
-#       owner = "grahamking";
-#       repo = "ort";
-#       rev = "master";
-#       sha256 = "sha256-uf4/RvmMmJflSzC83BhNXFv7xXf2IO6J/5U2Ovr0+Xg=";
-#       #sha256 = "1yfsqrm1fwnw9g3dkbs7jxyl5fkn8nzk3g2yvgggpvc9xcqnipxw"; 
-#     };
-#     cargoLock.lockFile = "${src}/Cargo.lock";
-#   };
 
-# in
 {
   imports = [
     ./sops-module.nix
-    #./ort.nix
   ];
   # # Path to SOPS file
   # sops.defaultSopsFile = ./crypt/cipher.yaml;
