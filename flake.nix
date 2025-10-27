@@ -17,7 +17,35 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, ... }@inputs:
+  let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+  in {
+    # export the ort package built from ./ort.nix
+    packages.${system}.ort = pkgs.callPackage ./ort.nix {};
+
+    # a development shell to work on ort
+    devShells.${system}.default = pkgs.mkShell {
+      buildInputs = [
+        pkgs.rustc
+        pkgs.cargo
+        pkgs.clang
+        pkgs.pkg-config
+        pkgs.openssl
+        pkgs.zlib
+        pkgs.git
+      ];
+      shellHook = ''
+        echo "Entered ort dev shell"
+        export CARGO_HOME="$HOME/.cache/ort-cargo"
+        export CARGO_TARGET_DIR=target
+        export RUST_BACKTRACE=1
+        echo "Hints: cargo build; cargo run --bin <name>; cargo test"
+      '';
+    };
+
+    # keep your existing NixOS configurations intact
     nixosConfigurations = {
       ######################
       #                    #
