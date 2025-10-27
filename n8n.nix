@@ -7,10 +7,10 @@
     # Then we can env N8N_TEMPLATES_ENABLED="false" ?
     openFirewall = true;
     settings = {
-      N8N_PROTOCOL = "http";
+      N8N_PROTOCOL = "https";
       N8N_HOST = "0.0.0.0";
       N8N_PORT = "5678";
-      N8N_SECURE_COOKIE = "false";
+      # N8N_SECURE_COOKIE = "false";
       # any other env vars as strings:
       # WEBHOOK_URL = "http://your-host:5678/";
       # DB_TYPE = "postgresdb";
