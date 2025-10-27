@@ -10,8 +10,13 @@ let
   journal-config = pkgs.writeText "hx-journal.toml" ''
     # Helix configuration for journaling
     
+<<<<<<< HEAD
     theme = "focus_nova"
     #theme = "bogster_light"
+=======
+    #theme = "bogster_light"
+    theme = "heisenberg"
+>>>>>>> a5a55bf (successful build: Mon Oct 27 04:41:37 AM AKDT 2025)
     #theme = "bogster"
     #theme = "ayu_light"
     

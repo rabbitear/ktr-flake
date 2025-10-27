@@ -176,6 +176,31 @@
           }
         ];
       };
+      wendy = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/wendy/configuration.nix
+          ./common-station.nix
+          # ktr - searx.nix is not ready yet, searx.env needs attention.
+          #./searx.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                nix-ai-tools = nix-ai-tools.packages.${prev.system};
+              })
+            ];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.kreator = import ./home.nix;
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
     };
   };
 }
