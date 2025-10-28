@@ -167,6 +167,10 @@ in
     };
   };
 
+  programs.yazi.enableBashIntegration = true;
+  programs.starship.enableBashIntegration = true;
+  programs.readline.enable = true; 
+  programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.bash = {
     enable = true;
@@ -174,6 +178,7 @@ in
     bashrcExtra = ''
       export EDITOR=hx
       . /etc/profile.d/aikey.sh
+      set -o vi
     '';
     shellAliases = {
       e = "hx";
