@@ -54,7 +54,8 @@
           pkgs.python3Packages.numpy
           pkgs.python3Packages.pandas
           pkgs.python3Packages.jupyter
-          pkgs.pip
+          pkgs.python3Packages.pip
+          pkgs.python3Packages.uv
         ];
         shellHook = ''
           mkdir -p $HOME/.local/share/crushpython/pip
