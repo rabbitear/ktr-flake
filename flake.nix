@@ -46,6 +46,30 @@
     };
 
     # keep your existing NixOS configurations intact
+    # Python development shell
+    devShells.${system}.crushpython = pkgs.mkShell {
+      buildInputs = [
+        pkgs.python3
+        pkgs.python3Packages.numpy
+        pkgs.python3Packages.pandas
+        pkgs.python3Packages.jupyter
+        pkgs.pip
+      ];
+      shellHook = ''
+        mkdir -p $HOME/.local/share/crushpython/pip
+        export PIP_CACHE_DIR=$HOME/.local/share/crushpython/pip
+        export PIP_CONFIG_FILE=$HOME/.config/crushpython/pip.conf
+        mkdir -p $HOME/.config/crushpython
+        echo "[global]" > $HOME/.config/crushpython/pip.conf
+        echo "cache-dir = $PIP_CACHE_DIR" >> $HOME/.config/crushpython/pip.conf
+        export PYTHONPATH="$PYTHONPATH:$PWD"
+        echo "Crush Python development environment ready"
+        echo "Use 'python' for Python interpreter"
+        echo "Use 'pip install' to install packages (dspy will be installed automatically)"
+        pip install dspy-ai --no-input || true
+      '';
+    };
+
     nixosConfigurations = {
       ######################
       #                    #
