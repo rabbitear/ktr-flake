@@ -153,6 +153,8 @@
       wl-clipboard
       kitty
       alacritty
+      alacritty-graphics
+      alacritty-theme
       foot
       virt-viewer
       imv
