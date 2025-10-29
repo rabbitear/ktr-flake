@@ -245,6 +245,7 @@
     ## Even more fun stuff
     ffmpeg-full        # ffmpeg always fun to have around
     tuxguitar          # interesting...
+    zmap
 
     ## Our ort
     (import ./ort.nix { inherit pkgs; })

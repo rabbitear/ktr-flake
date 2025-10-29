@@ -23,6 +23,9 @@
         "huggingface1_api_key" = {
           owner = "kreator";
         };
+        # "muttwords" = {
+        #   owner = "kreator";
+        # };
       };
     };
   };
