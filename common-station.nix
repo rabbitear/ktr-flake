@@ -159,10 +159,8 @@
       tmux
       virt-viewer
       imv
-      flameshot
       mpv
-      # build -- ort -- from github
-      #ort
+      tldr
     ];
   };
 
