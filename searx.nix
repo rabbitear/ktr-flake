@@ -1,16 +1,16 @@
 # This build fails if the env is not setup in the home directory.
 # FIXME:
 #   * Do not depend on the env files in that home directory!
-{config, pkgs, lib, ...}:
+{pkgs, lib, ...}:
 {
   services.searx = {
     enable = true;
     package = pkgs.searxng;
-    environmentFile = "/home/kreator/.searxng.env";
+    #environmentFile = "/home/kreator/.searxng.env";
     #redisCreateLocally = true;
     settings = {
       server = {
-        #base_url = "http://yoshi:3001";
+        base_url = "http://yoshi:3001";
         bind_address = "0.0.0.0";
         port = 3001;
       };
@@ -29,8 +29,10 @@
         center_alignment = true;
         default_theme = "simple";
         theme_args.simple_style = "dark";
+        results_on_new_tab = true;
         search_on_category_select = true;
         hotkeys = "vim";
+        url_formatting = "pretty";
       };
       search = {
         safe_search = 2;
