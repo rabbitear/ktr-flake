@@ -20,6 +20,7 @@ in
     ./printer-module.nix
     ./ingest-module.nix
     ./gnome.nix
+    ./mutt.nix
   ];
 
   # My shell scripts.
