@@ -11,6 +11,7 @@
     settings = {
       server = {
         base_url = "http://yoshi:3001";
+        secret_key = "superdubberultrasecretkey";
         bind_address = "0.0.0.0";
         port = 3001;
       };
