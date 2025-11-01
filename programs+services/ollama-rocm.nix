@@ -1,6 +1,6 @@
 # this is the ollama service.
 
-{config, pkgs, lib, ...}:
+{...}:
 
 {
   services.ollama = {

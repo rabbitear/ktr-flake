@@ -151,8 +151,8 @@
         modules = [
           ./hosts/yoshi/configuration.nix
           ./programs+services
-          ./ollama-cuda.nix
-          ./openwebui.nix
+          ./programs+services/ollama-cuda.nix
+          ./programs+services/openwebui.nix
           ./searx.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
@@ -182,9 +182,9 @@
         modules = [
           ./hosts/sasha/configuration.nix
           ./programs+services
-          ./ollama-rocm.nix
+          ./programs+services/ollama-rocm.nix
           ./programs+services/chromecast.nix
-          ./n8n-sasha.nix
+          ./programs+services/n8n-sasha.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
