@@ -12,6 +12,7 @@
       server = {
         base_url = "http://yoshi:3001";
         secret_key = "superdubberultrasecretkey";
+        limiter = false;
         bind_address = "0.0.0.0";
         port = 3001;
       };
@@ -40,6 +41,7 @@
         autocomplete_min = 2;
         autocomplete = "duckduckgo";
         ban_time_on_fail = 5;
+        formats = [ "html" "json" "rss" ];
         max_ban_time_on_fail = 120;
       };
       # Search engines
