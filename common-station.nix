@@ -240,7 +240,7 @@
     zmap
 
     ## Our ort
-    (import ./ort.nix { inherit pkgs; })
+    (import ./my-addition/ort.nix { inherit pkgs; })
   ];
 
   # List services that you want to enable:
