@@ -183,7 +183,7 @@
           ./hosts/sasha/configuration.nix
           ./programs+services
           ./ollama-rocm.nix
-          ./chromecast.nix
+          ./programs+services/chromecast.nix
           ./n8n-sasha.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
