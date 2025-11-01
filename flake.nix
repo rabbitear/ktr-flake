@@ -85,8 +85,6 @@
         modules = [
           ./hosts/otternode/configuration.nix
           ./programs+services
-          # ktr - searx.nix is not ready yet, searx.env needs attention.
-          #./searx.nix
           ./tips.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
@@ -153,7 +151,7 @@
           ./programs+services
           ./programs+services/ollama-cuda.nix
           ./programs+services/openwebui.nix
-          ./searx.nix
+          ./programs+services/searx.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
@@ -185,6 +183,7 @@
           ./programs+services/ollama-rocm.nix
           ./programs+services/chromecast.nix
           ./programs+services/n8n-sasha.nix
+          ./programs+services/searx.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
@@ -208,8 +207,6 @@
         modules = [
           ./hosts/wendy/configuration.nix
           ./programs+services
-          # ktr - searx.nix is not ready yet, searx.env needs attention.
-          #./searx.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {

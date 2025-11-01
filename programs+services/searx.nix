@@ -1,7 +1,7 @@
 # This build fails if the env is not setup in the home directory.
 # FIXME:
 #   * Do not depend on the env files in that home directory!
-{pkgs, lib, ...}:
+{pkgs, lib, config, ...}:
 {
   services.searx = {
     enable = true;
@@ -10,7 +10,7 @@
     #redisCreateLocally = true;
     settings = {
       server = {
-        base_url = "http://yoshi:3001";
+        base_url = "http://${config.networking.hostName}:3001";
         secret_key = "superdubberultrasecretkey";
         limiter = false;
         bind_address = "0.0.0.0";
@@ -18,7 +18,7 @@
       };
       general = {
         debug = false;
-        instance_name = "YoshiSearX";
+        instance_name = "${config.networking.hostName}SearX";
         donation_url = false;
         contact_url = false;
         privacypolicy_url = false;
