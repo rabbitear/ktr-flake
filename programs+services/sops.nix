@@ -3,40 +3,40 @@
   config = {
     sops = {
       #enable = true;
-      defaultSopsFile = ./crypt/cipher.yaml;
+      defaultSopsFile = ../crypt/cipher.yaml;
       #gnupg.home = "/home/kreator/.gnupg";
       defaultSopsFormat = "yaml";
       age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
 
       secrets = {
         "kreator" = {
-          sopsFile = ./crypt/cipher.yaml;
+          sopsFile = ../crypt/cipher.yaml;
           owner = "kreator";
           group = "wheel";
           mode = "0400";
           neededForUsers = true;
         };
         "github_ssh_key" = {
-          sopsFile = ./crypt/cipher.yaml;
+          sopsFile = ../crypt/cipher.yaml;
           mode = "0600";
           owner = "kreator";
           group = "nogroup";
           path = "/home/kreator/.ssh/theshack";
         };
         "openrouter_api_key" = {
-          sopsFile = ./crypt/cipher.yaml;
+          sopsFile = ../crypt/cipher.yaml;
           owner = "kreator";
           group = "nogroup";
           mode = "0600";
         };
         "huggingface1_api_key" = {
-          sopsFile = ./crypt/cipher.yaml;
+          sopsFile = ../crypt/cipher.yaml;
           owner = "kreator";
           group = "nogroup";
           mode = "0600";
         };
         "muttwords" = {
-          sopsFile = ./crypt/words.yaml;
+          sopsFile = ../crypt/words.yaml;
           owner = "kreator";
           group = "nogroup";
           mode = "0600";

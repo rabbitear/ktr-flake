@@ -84,7 +84,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/otternode/configuration.nix
-          ./common-station.nix
+          ./programs+services
           # ktr - searx.nix is not ready yet, searx.env needs attention.
           #./searx.nix
           ./tips.nix
@@ -117,7 +117,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/hacknet/configuration.nix
-          ./common-station.nix
+          ./programs+services
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
@@ -150,7 +150,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/yoshi/configuration.nix
-          ./common-station.nix
+          ./programs+services
           ./ollama-cuda.nix
           ./openwebui.nix
           ./searx.nix
@@ -181,7 +181,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/sasha/configuration.nix
-          ./common-station.nix
+          ./programs+services
           ./ollama-rocm.nix
           ./chromecast.nix
           ./n8n-sasha.nix
@@ -207,7 +207,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/wendy/configuration.nix
-          ./common-station.nix
+          ./programs+services
           # ktr - searx.nix is not ready yet, searx.env needs attention.
           #./searx.nix
           sops-nix.nixosModules.sops
