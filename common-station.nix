@@ -68,6 +68,20 @@
     };
   };
 
+
+  # Networking
+  # Enable SSH access in from Tailscale network 22
+  # Enable http/s traffic to go through 80 and 443 for access n8n thorugh tailscale
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = ["tailscale0"];
+    allowedUDPPorts = [config.services.tailscale.port];
+    #   22 - ssh
+    # 3001 - searx
+    # 3002 - open-webui
+    allowedTCPPorts = [22 3001 3002];
+  };
+ 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
