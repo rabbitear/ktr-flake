@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   duckduckgo-search = pkgs.writeShellApplication {
     name = "duckduckgo-search";
@@ -16,9 +16,9 @@ in
 
 {
   imports = [
-    ./journal-module.nix
-    ./printer-module.nix
-    ./ingest-module.nix
+    ../my-addition/journal-module.nix
+    ../my-addition/printer-module.nix
+    ../my-addition/ingest-module.nix
     ./gnome.nix
     ./mutt.nix
   ];

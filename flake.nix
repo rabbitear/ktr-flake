@@ -23,7 +23,7 @@
     pkgs = import nixpkgs { inherit system; };
   in {
     # export the ort package built from ./ort.nix
-    packages.${system}.ort = pkgs.callPackage ./ort.nix {};
+    packages.${system}.ort = pkgs.callPackage ./my-addition/ort.nix {};
 
     # a development shell to work on ort
     devShells.${system} = {
@@ -99,7 +99,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.kreator = import ./home.nix;
+              users.kreator = import ./users+home;
               backupFileExtension = "backup";
             };
           }
@@ -129,7 +129,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.kreator = import ./home.nix;
+              users.kreator = import ./users+home;
               backupFileExtension = "backup";
             };
           }
@@ -165,7 +165,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.kreator = import ./home.nix;
+              users.kreator = import ./users+home;
               backupFileExtension = "backup";
             };
           }
@@ -196,7 +196,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.kreator = import ./home.nix;
+              users.kreator = import ./users+home;
               backupFileExtension = "backup";
             };
           }
@@ -221,7 +221,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.kreator = import ./home.nix;
+              users.kreator = import ./users+home;
               backupFileExtension = "backup";
             };
           }
