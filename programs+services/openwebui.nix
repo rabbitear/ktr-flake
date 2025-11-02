@@ -17,8 +17,8 @@
     port = 3003;
     #apiKey = "your-secret-api-key"; # should use sops
     serverCommand = [
-      "uvx"
       "mcp-nixos"
+      "--"
     ];
   };
   networking.firewall.allowedTCPPorts = [ 3002 3003 ];
