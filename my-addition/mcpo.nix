@@ -20,8 +20,6 @@ let
 
     build-system = with pkgs.python3Packages; [
       hatchling
-      # Note: uv-dynamic-versioning might not be in nixpkgs
-      # We'll handle versioning manually if needed
     ];
 
     dependencies = with pkgs.python3Packages; [
@@ -39,10 +37,15 @@ let
       cryptography  # Required by pyjwt[crypto]
     ];
 
-    # Skip dynamic versioning for now - set a static version
-    preBuild = ''
-      # Set a static version since uv-dynamic-versioning may not be available
-      export SETUPTOOLS_SCM_PRETEND_VERSION="${version}"
+    # Patch pyproject.toml to remove uv-dynamic-versioning and use static version
+    postPatch = ''
+      substituteInPlace pyproject.toml \
+        --replace 'dynamic = ["version"]' 'version = "${version}"' \
+        --replace 'requires = ["hatchling", "uv-dynamic-versioning"]' 'requires = ["hatchling"]'
+      
+      # Remove the uv-dynamic-versioning configuration sections
+      sed -i '/\[tool\.hatch\.version\]/,/^$/d' pyproject.toml
+      sed -i '/\[tool\.uv-dynamic-versioning\]/,/^$/d' pyproject.toml
     '';
 
     # Skip tests
