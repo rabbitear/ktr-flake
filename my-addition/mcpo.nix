@@ -16,7 +16,7 @@ let
       repo = "python-sdk";
       rev = "202af49857e452cdb8b55aa23310df8154e5b292"; # Update to latest if needed
       #sha256 = lib.fakeSha256; # Replace with actual hash
-      sha256 = "sha256-BoiHd+TJ4EfSPfU4SUfIV6FRf39FG4WWj+veS6CDgd0=";
+      sha256 = "sha256-woP9D7Ev2lxOFpuNSXpjN9OkQ/A6AMzQpjQD2CFb3e8=";
     };
 
     build-system = with pkgs.python3Packages; [
@@ -57,7 +57,7 @@ let
       owner = "open-webui";
       repo = "mcpo";
       rev = "91e8f94da7ea07f0f19db7f8f0d9cfc9839d859a";
-      sha256 = ""; # Put your hash here
+      sha256 = "sha256-BoiHd+TJ4EfSPfU4SUfIV6FRf39FG4WWj+veS6CDgd0=";
     };
 
     build-system = with pkgs.python3Packages; [
