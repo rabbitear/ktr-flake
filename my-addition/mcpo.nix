@@ -1,5 +1,4 @@
-# NixOS configuration for mcpo - MCP-to-OpenAPI proxy server
-# https://github.com/open-webui/mcpo
+# Simpler alternative using uvx
 { pkgs, lib, config, ... }:
 
 let
@@ -18,54 +17,43 @@ in
     apiKey = lib.mkOption {
       type = lib.types.str;
       default = "";
-      description = "API key for authentication (leave empty to disable auth)";
+      description = "API key for authentication";
     };
 
     apiKeyFile = lib.mkOption {
       type = lib.types.nullOr lib.types.path;
       default = null;
-      description = "Path to file containing API key (more secure than apiKey option)";
-      example = "/run/secrets/mcpo-api-key";
+      description = "Path to file containing API key";
     };
 
     rootPath = lib.mkOption {
       type = lib.types.str;
       default = "";
-      description = "Root path for serving under a subpath (e.g., /api/mcpo)";
-      example = "/api/mcpo";
+      description = "Root path for serving under a subpath";
     };
 
     configFile = lib.mkOption {
       type = lib.types.nullOr lib.types.path;
       default = null;
       description = "Path to config.json file for multiple MCP servers";
-      example = "/etc/mcpo/config.json";
     };
 
     hotReload = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable hot-reload mode to watch config file for changes";
+      description = "Enable hot-reload mode";
     };
 
     serverCommand = lib.mkOption {
       type = lib.types.nullOr (lib.types.listOf lib.types.str);
       default = null;
-      description = "MCP server command to proxy (used when configFile is not set)";
-      example = [ "uvx" "mcp-server-time" "--local-timezone=America/New_York" ];
+      description = "MCP server command to proxy";
     };
 
     serverType = lib.mkOption {
       type = lib.types.enum [ "stdio" "sse" "streamable-http" ];
       default = "stdio";
-      description = "Type of MCP server to connect to";
-    };
-
-    serverHeaders = lib.mkOption {
-      type = lib.types.nullOr lib.types.attrs;
-      default = null;
-      description = "Headers to send to SSE or HTTP MCP servers";
-      example = { Authorization = "Bearer token"; X-Custom-Header = "value"; };
+      description = "Type of MCP server";
     };
 
     user = lib.mkOption {
@@ -78,43 +66,6 @@ in
       type = lib.types.str;
       default = "mcpo";
       description = "Group under which mcpo runs";
-    };
-
-    package = lib.mkOption {
-      type = lib.types.package;
-      default = pkgs.python3Packages.buildPythonApplication {
-        pname = "mcpo";
-        version = "0.1.0";
-        format = "pyproject";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "open-webui";
-          repo = "mcpo";
-          rev = "main";
-          sha256 = lib.fakeSha256; # You'll need to update this
-        };
-
-        nativeBuildInputs = with pkgs.python3Packages; [
-          setuptools
-          wheel
-        ];
-
-        propagatedBuildInputs = with pkgs.python3Packages; [
-          fastapi
-          uvicorn
-          httpx
-          pydantic
-          python-multipart
-        ];
-
-        meta = with lib; {
-          description = "A simple, secure MCP-to-OpenAPI proxy server";
-          homepage = "https://github.com/open-webui/mcpo";
-          license = licenses.mit;
-          maintainers = [ ];
-        };
-      };
-      description = "The mcpo package to use";
     };
   };
 
@@ -134,6 +85,8 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
+      path = with pkgs; [ uv nodejs ]; # Add any tools your MCP servers need
+
       serviceConfig = {
         Type = "simple";
         User = cfg.user;
@@ -141,14 +94,12 @@ in
         Restart = "on-failure";
         RestartSec = "5s";
         
-        # Security hardening
         NoNewPrivileges = true;
         PrivateTmp = true;
         ProtectSystem = "strict";
         ProtectHome = true;
         ReadWritePaths = [ "/var/lib/mcpo" ];
         
-        # Environment
         WorkingDirectory = "/var/lib/mcpo";
       };
 
@@ -166,23 +117,18 @@ in
 
         hotReloadArg = lib.optionalString cfg.hotReload "--hot-reload";
 
-        headersArg = lib.optionalString (cfg.serverHeaders != null)
-          "--header '${builtins.toJSON cfg.serverHeaders}'";
-
         serverTypeArg = lib.optionalString (cfg.serverType != "stdio")
           "--server-type ${cfg.serverType}";
 
-        # Config file mode
         configMode = lib.optionalString (cfg.configFile != null)
           "--config ${cfg.configFile} ${hotReloadArg}";
 
-        # Command mode
         commandMode = lib.optionalString (cfg.configFile == null && cfg.serverCommand != null)
-          "${serverTypeArg} ${headersArg} -- ${lib.concatStringsSep " " (map lib.escapeShellArg cfg.serverCommand)}";
+          "${serverTypeArg} -- ${lib.concatStringsSep " " (map lib.escapeShellArg cfg.serverCommand)}";
 
         mode = if cfg.configFile != null then configMode else commandMode;
       in ''
-        ${cfg.package}/bin/mcpo \
+        ${pkgs.uv}/bin/uvx mcpo \
           --port ${toString cfg.port} \
           ${apiKeyArg} \
           ${rootPathArg} \

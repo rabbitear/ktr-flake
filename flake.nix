@@ -23,7 +23,10 @@
     pkgs = import nixpkgs { inherit system; };
   in {
     # export the ort package built from ./ort.nix
-    packages.${system}.ort = pkgs.callPackage ./my-addition/ort.nix {};
+    packages.${system} = {
+      ort = pkgs.callPackage ./my-addition/ort.nix {};
+      mcpo = pkgs.callPackage ./my-addition/mcpo.nix {};
+    };
 
     # a development shell to work on ort
     devShells.${system} = {

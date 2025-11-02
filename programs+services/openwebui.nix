@@ -20,5 +20,5 @@
       "mcp-nixos"
     ];
   };
-  config.networking.firewall.allowedTCPPorts = [ 3002 3003 ];
+  networking.firewall.allowedTCPPorts = [ 3002 3003 ];
 }
