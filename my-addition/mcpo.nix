@@ -184,6 +184,13 @@ in
       default = mcpoPackage;
       description = "The mcpo package to use";
     };
+
+    extraPackages = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = [];
+      description = "Extra packages to add to the service PATH";
+      example = lib.literalExpression "[ pkgs.python3 pkgs.git ]";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -202,8 +209,24 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      # Add nodejs and other tools to PATH if needed by MCP servers
-      path = with pkgs; [ nodejs ];
+      # Add all the tools that MCP servers might need
+      path = with pkgs; [
+        # JavaScript/Node.js tools
+        nodejs          # Provides node and npm
+        nodePackages.npm # Provides npx
+        
+        # Python tools
+        uv              # Provides uvx for Python MCP servers
+        python3         # Python interpreter
+        
+        # Nix tools
+        nix             # For nix run commands
+        git             # Often needed by nix commands
+        
+        # Other potentially useful tools
+        coreutils       # Basic Unix utilities
+        bash            # Shell
+      ] ++ cfg.extraPackages;
 
       serviceConfig = {
         Type = "simple";
@@ -221,6 +244,12 @@ in
         
         # Environment
         WorkingDirectory = "/var/lib/mcpo";
+        
+        # Allow the service to access nix store and run nix commands
+        Environment = [
+          "NIX_REMOTE=daemon"
+          "PATH=/run/wrappers/bin:/run/current-system/sw/bin"
+        ];
       };
 
       script = let
