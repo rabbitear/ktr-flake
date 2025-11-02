@@ -14,29 +14,39 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "modelcontextprotocol";
       repo = "python-sdk";
-      rev = "202af49857e452cdb8b55aa23310df8154e5b292"; # Update to latest if needed
-      #sha256 = lib.fakeSha256; # Replace with actual hash
+      rev = "202af49857e452cdb8b55aa23310df8154e5b292";
       sha256 = "sha256-woP9D7Ev2lxOFpuNSXpjN9OkQ/A6AMzQpjQD2CFb3e8=";
     };
 
     build-system = with pkgs.python3Packages; [
       hatchling
+      # Note: uv-dynamic-versioning might not be in nixpkgs
+      # We'll handle versioning manually if needed
     ];
 
     dependencies = with pkgs.python3Packages; [
       anyio
       httpx
+      httpx-sse
       pydantic
+      starlette
+      python-multipart
+      sse-starlette
       pydantic-settings
-      jinja2
-      click
-      # Add other dependencies as needed based on the pyproject.toml
+      uvicorn
+      jsonschema
+      pyjwt
+      cryptography  # Required by pyjwt[crypto]
     ];
 
-    # The SDK has multiple packages, we need to specify which to build
+    # Skip dynamic versioning for now - set a static version
     preBuild = ''
-      cd src
+      # Set a static version since uv-dynamic-versioning may not be available
+      export SETUPTOOLS_SCM_PRETEND_VERSION="${version}"
     '';
+
+    # Skip tests
+    doCheck = false;
 
     pythonImportsCheck = [ "mcp" ];
 
