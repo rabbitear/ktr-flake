@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "time": {
+      "command": "uvx",
+      "args": ["mcp-server-time", "--local-timezone=America/New_York"],
+      "disabledTools": ["convert_time"]
+    },
+    "mcp_sse": {
+      "type": "sse",
+      "url": "http://127.0.0.1:8001/sse",
+      "headers": {
+        "Authorization": "Bearer token",
+        "X-Custom-Header": "value"
+      }
+    }
+  }
+}

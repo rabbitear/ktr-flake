@@ -15,11 +15,8 @@
   services.mcpo = {
     enable = true;
     port = 3003;
-    #apiKey = "your-secret-api-key"; # should use sops
-    serverCommand = [
-      "mcp-nixos"
-      "--"
-    ];
+    configFile = ../my-addition/mcpo-config.json;
+    hotReload = true;
   };
   networking.firewall.allowedTCPPorts = [ 3002 3003 ];
 }
