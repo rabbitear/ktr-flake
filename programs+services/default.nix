@@ -110,6 +110,8 @@
       helix
       nixd
       marksman
+      go
+      gopls
       fzf
       bat
       glow
