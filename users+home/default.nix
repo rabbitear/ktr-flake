@@ -236,6 +236,8 @@ in
       gc = "git commit";
       ga = "git add";
       gs = "git status --short";
+      cow = "nix run nixpkgs#cowsay --";
+      y = "nix run nixpkgs#yazi --";
       b = ''
           _b() {
             local target="$(hostname)"
