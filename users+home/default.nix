@@ -221,6 +221,7 @@ in
       set -o vi
     '';
     shellAliases = {
+      @ = "hx";
       e = "hx";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
