@@ -112,6 +112,8 @@
       marksman
       go
       gopls
+      golangci-lint-langserver
+      delve
       fzf
       bat
       glow
