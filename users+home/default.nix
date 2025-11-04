@@ -34,6 +34,14 @@ in
     pkgs.nerd-fonts.fira-mono
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.fantasque-sans-mono
+    pkgs.mdbook
+    pkgs.mdbook-emojicodes
+    pkgs.mdbook-epub
+    pkgs.mdbook-admonish
+    pkgs.mdbook-d2
+    pkgs.mdbook-graphviz
+    pkgs.mdbook-linkcheck
+    pkgs.mdbook-toc
   ];
   home = {
     username = "kreator";
@@ -221,7 +229,7 @@ in
       set -o vi
     '';
     shellAliases = {
-      @ = "hx";
+      "@" = "hx";
       e = "hx";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
