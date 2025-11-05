@@ -10,6 +10,18 @@ let
     #!/usr/bin/env bash
     if [[ "$#" -gt 0 ]]; then
       for path in "$@"; do
+        if [[ path =~ ^-[0-9]+$ ]]
+          days_ago=$(tr -d '-' <<< "$path")
+          YEAR=$(date -d "$days_ago days ago" +%Y)
+          DATE=$(date -d "$days_ago days ago" +%m-%d)
+          JOURNAL_FILE="${journal-dir}/$YEAR/$DATE.md"
+          if [[ -e "$JOURNAL_FILE" ]]; then
+            bat --style=header-filename,header-filesize,numbers,changes --paging=never -- "$JOURNAL_FILE"
+          else
+            echo "No journal, an opportunity to write :)"
+          fi
+          break
+        fi
         if [[ ! -e "$path" ]]; then
           printf '%s: file not found\n' "$path"
           continue
