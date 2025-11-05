@@ -21,8 +21,7 @@ in
     ../my-addition/ingest-module.nix
     ./gnome.nix
     ./mutt.nix
-    # trying to fix booting
-    #./sync-jrnl.nix
+    ./sync-jrnl.nix
   ];
 
   # My shell scripts.
@@ -223,7 +222,7 @@ in
       export EDITOR=hx
       . /etc/profile.d/aikey.sh
       set -o vi
-      #eval $(keychain --eval --quiet ~/.ssh/theshack)
+      [[ -n $SSH_CONNECTION ]] && eval $(keychain --eval --quiet ~/.ssh/theshack)
     '';
     shellAliases = {
       e = "hx";
