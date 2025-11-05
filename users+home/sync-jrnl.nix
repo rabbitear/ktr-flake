@@ -7,7 +7,19 @@
       Unit.Description = "Sync journal repository";
       Service = {
         Type = "oneshot";
-        ExecStart = "${pkgs.git}/bin/git -C ${config.home.homeDirectory}/.journal pull --ff-only";
+        ExecStart = pkgs.writeShellScript "sync-journal" ''
+          pushd ${config.home.homeDirectory}/.journal
+        
+          # Auto-commit local changes if they exist
+          if ! git diff-index --quiet HEAD --; then
+            git add -A
+            git commit -m "Auto-commit journal changes by systemd"
+          fi
+        
+          # Safe pull (will still fail if upstream requires merge resolution)
+          git pull --ff-only
+          popd
+        '';
         TimeoutStopSec = 30;
       };
     };
