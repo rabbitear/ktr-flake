@@ -1,4 +1,4 @@
-journal_git_repo: ENC[AES256_GCM,data:bvVMgqXPLSflBVWDaCFXijiHEniGKV7PyPT+J+fRVDLCOWWg+Q==,iv:pc8AdA6GtlecVR6SLP/wZsyzKvggG99Hl3q72uOk4wM=,tag:gPIPmTTcsxWWoCvBycjP1Q==,type:str]
+jrnl_git_repo: ENC[AES256_GCM,data:3AJHJkZXuT9hbZlvfA8oBrfth/sIfoFNobkE8M5XoabVOa+FdA==,iv:IwRo3czBwHH8YyqNAaxm0Kinff22aSmU+5HhOTE5c4E=,tag:nia1v3pBY51VD0bJfG8udg==,type:str]
 #ENC[AES256_GCM,data:1BJeXHfNbZTE88eRVCN2Vp52klxMQWlT0Xrfcguu5sZLsSxBXvmF51d2ZgvLfW+DTqwtUFus,iv:gTFBG2E/DYpvA34dsfGiatT4IMKgHzePsren05kBFEc=,tag:ObX/JldXk+GIh0OFB1zqXg==,type:comment]
 #ENC[AES256_GCM,data:W+QHHDqaJBC5rt2iisUhesc4eBWJsIN1jNkG,iv:iX35ErtlApvlwFcnjsqf8sIxCRKrT4R0F47W69w5AO4=,tag:c3i7o8vusZA7xwhK4vVIrg==,type:comment]
 #ENC[AES256_GCM,data:owCsXY5TzO6CB49DUtrxOy75,iv:qQkvU0r0X0oJeYoW5M0O4dX04wMDxw1E0szHjP57Row=,tag:qmnd3NFIQ2IrExnt9DvMog==,type:comment]
@@ -56,7 +56,7 @@ sops:
             UzZ0WWh6Tm5UMlVyeE9pU1FHZWlIa3MKZccVXirgS/Y+RhLfTj4CjWtW+fEsUcfx
             XaqvEq3IwKUxz1FasNsA9lJjGKxY6e4h5Y0D+7cwJ6YP9vDlYmFz5Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-10-23T19:34:33Z"
-    mac: ENC[AES256_GCM,data:AbgW747Ir4Ork6w7Oqo0aPzGHBLGJl5byyAi6o/HqMYT7YCw4fcDlwjKXg2G1XOupkXO+hbViSAfAYIk2RpgHCws4ViZ+9loHMi6di5soIY/XMdcpcCPt0Ek+eMZnWCgbAWI0cgOfiNgGED46jMOwZLcxN7rnF4oaTWrPcx/+Uk=,iv:90/M0K2OYrad97zOt6hz24pq3I99sCK8oJi+O4AK4WM=,tag:g/cqZSOb3DwRo4ZCr0B6TA==,type:str]
+    lastmodified: "2025-11-05T01:47:23Z"
+    mac: ENC[AES256_GCM,data:QKxS768Ydc2TVI1avi3X8ELiPX6XMPw8WnZhvxr2MKlqfpjGgx9/+VhpsH0XrrmHyxqtxy+cio8RsuKlfYsuHaql9mscq4HEsdQcOa1zpkOiNwEKEyqophfidlgP9kqXUJLfo4efJhpI0+gewABv0ZKc+8SjMqTokJ+4a3NkMLw=,iv:h9CNygRbx3HU0Ucwc7AWdc8mqglJfnkL3dS1uXeYeeY=,tag:SAnjnnskjvYxVOhTtOO+1Q==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.11.0

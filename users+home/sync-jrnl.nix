@@ -1,11 +1,13 @@
-
-
+# jrnl-git-repo
+# ^ that is the variable we're looking for that holds the path of the git repo, it exists in sops.
+{config, pkgs, ...}:
+{
 systemd.user = {
   services.journal-sync = {
     Unit.Description = "Sync journal repository";
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.git}/bin/git -C /path/to/your/journal/repo pull --ff-only";
+      ExecStart = "${pkgs.git}/bin/git -C ~/.journal pull --ff-only";
       TimeoutStopSec = 30;
     };
   };

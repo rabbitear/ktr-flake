@@ -21,9 +21,11 @@ in
     ../my-addition/ingest-module.nix
     ./gnome.nix
     ./mutt.nix
+    ./sync-jrnl.nix
   ];
 
   # My shell scripts.
+  systemd.user.enable = true;
   programs.journal.enable = true;
   programs.journal.remoterepository = "";
   programs.printer.enable = true;
