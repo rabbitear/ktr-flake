@@ -21,7 +21,8 @@ in
     ../my-addition/ingest-module.nix
     ./gnome.nix
     ./mutt.nix
-    ./sync-jrnl.nix
+    # trying to fix booting
+    #./sync-jrnl.nix
   ];
 
   # My shell scripts.
