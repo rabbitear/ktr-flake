@@ -223,7 +223,7 @@ in
       export EDITOR=hx
       . /etc/profile.d/aikey.sh
       set -o vi
-      eval $(keychain --eval --quiet ~/.ssh/theshack)
+      #eval $(keychain --eval --quiet ~/.ssh/theshack)
     '';
     shellAliases = {
       e = "hx";
