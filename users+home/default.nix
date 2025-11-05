@@ -45,6 +45,7 @@ in
     pkgs.mdbook-linkcheck
     pkgs.mdbook-toc
     pkgs.keychain       # for our ssh server
+    pkgs.android-tools
   ];
   home = {
     username = "kreator";
