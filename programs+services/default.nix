@@ -157,6 +157,7 @@
       imv
       mpv
       tldr
+      bc
     ];
   };
 
