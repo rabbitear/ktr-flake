@@ -7,7 +7,7 @@
       Unit.Description = "Sync journal repository";
       Service = {
         Type = "oneshot";
-        ExecStart = "${pkgs.git}/bin/git -C${config.home.homeDirectory}/.journal pull --ff-only";
+        ExecStart = "${pkgs.git}/bin/git -C ${config.home.homeDirectory}/.journal pull --ff-only";
         TimeoutStopSec = 30;
       };
     };
