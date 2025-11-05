@@ -49,7 +49,14 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [
+      pkgs.brlaser
+      pkgs.brgenml1lpr
+      pkgs.brgenml1cupswrapper
+    ];
+  };
   # Hotkey? we'll see, experimental.
   services.kanata.enable = true;
   # Tailscale :)
