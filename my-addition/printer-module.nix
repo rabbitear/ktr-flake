@@ -10,7 +10,7 @@ let
     #!/usr/bin/env bash
     if [[ "$#" -gt 0 ]]; then
       for path in "$@"; do
-        if [[ path =~ ^-[0-9]+$ ]]
+        if [[ path =~ ^-[0-9]+$ ]]; then
           days_ago=$(tr -d '-' <<< "$path")
           YEAR=$(date -d "$days_ago days ago" +%Y)
           DATE=$(date -d "$days_ago days ago" +%m-%d)
