@@ -68,6 +68,7 @@
     };
   };
 
+  programs.adb.enable = true;
 
   # Networking
   # Enable SSH access in from Tailscale network 22
@@ -100,7 +101,7 @@
     isNormalUser = true;
     description = "Jon";
     hashedPasswordFile = config.sops.secrets.kreator.path;
-    extraGroups = [ "networkmanager" "wheel" "flatpak" "video" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" "flatpak" "video" "kvm" "adbusers" ];
     openssh.authorizedKeys.keys = [
       # Add SSH public keys here.
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEzV4VriIYwSvx8e3Pq2hKjJDPsyj1hJAgrsiXJG/BVR kreator@theshack"
