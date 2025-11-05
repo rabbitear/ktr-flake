@@ -68,7 +68,7 @@
     };
   };
 
-  programs.adb.enable = true;
+  #programs.adb.enable = true;
 
   # Networking
   # Enable SSH access in from Tailscale network 22
