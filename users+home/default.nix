@@ -42,6 +42,7 @@ in
     pkgs.mdbook-graphviz
     pkgs.mdbook-linkcheck
     pkgs.mdbook-toc
+    pkgs.keychain       # for our ssh server
   ];
   home = {
     username = "kreator";
@@ -227,6 +228,7 @@ in
       export EDITOR=hx
       . /etc/profile.d/aikey.sh
       set -o vi
+      eval $(keychain --eval --quiet ~/.ssh/theshack)
     '';
     shellAliases = {
       "@" = "hx";
