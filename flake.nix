@@ -210,6 +210,7 @@
         modules = [
           ./hosts/wendy/configuration.nix
           ./programs+services
+          ./programs+services/searx.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
