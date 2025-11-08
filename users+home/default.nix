@@ -150,48 +150,49 @@ in
     settings = {
       # ⭐ Example themes (pick one):
       # Dracula theme
-      colors = {
-        primary = {
-          background = "#282a36";
-          foreground = "#f8f8f2";
-        };
-        normal = {
-          black   = "#000000";
-          red     = "#ff5555";
-          green   = "#50fa7b";
-          yellow  = "#f1fa8c";
-          blue    = "#bd93f9";
-          magenta = "#ff79c6";
-          cyan    = "#8be9fd";
-          white   = "#bbbbbb";
-        };
-      };
-
-      # Gruvbox Dark (alternative)
       # colors = {
       #   primary = {
-      #     background = "#282828";
-      #     foreground = "#ebdbb2";
+      #     background = "#282a36";
+      #     foreground = "#f8f8f2";
       #   };
       #   normal = {
-      #     black   = "#282828";
-      #     red     = "#cc241d";
-      #     green   = "#98971a";
-      #     yellow  = "#d79921";
-      #     blue    = "#458588";
-      #     magenta = "#b16286";
-      #     cyan    = "#689d6a";
-      #     white   = "#a89984";
+      #     black   = "#000000";
+      #     red     = "#ff5555";
+      #     green   = "#50fa7b";
+      #     yellow  = "#f1fa8c";
+      #     blue    = "#bd93f9";
+      #     magenta = "#ff79c6";
+      #     cyan    = "#8be9fd";
+      #     white   = "#bbbbbb";
       #   };
       # };
+
+      # Gruvbox Dark (alternative)
+      colors = {
+        primary = {
+          background = "#282828";
+          foreground = "#ebdbb2";
+        };
+        normal = {
+          black   = "#282828";
+          red     = "#cc241d";
+          green   = "#98971a";
+          yellow  = "#d79921";
+          blue    = "#458588";
+          magenta = "#b16286";
+          cyan    = "#689d6a";
+          white   = "#a89984";
+        };
+      };
 
       env.TERM = "xterm-256color";
       # Other settings (customize as needed)
       font = {
-        size = 12;
+        size = 15;
         normal.family = "FiraCode Nerd Font";
       };
       window = {
+        startup_mode = "Maximized";
         opacity = 0.9;
         decorations = "none";
         dimensions = {
