@@ -191,10 +191,17 @@ in
         size = 12;
         normal.family = "FiraCode Nerd Font";
       };
-      window.opacity = 0.9;
-      scrolling.multiplier = 5;
+      window = {
+        opacity = 0.9;
+        decorations = "none";
+        dimensions = {
+          columns = 80;
+          lines = 14;
+        };
+        resize_increments = true;
+      };
       selection.save_to_clipboard = true;
-    };
+     };
   };
  
 
