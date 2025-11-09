@@ -158,6 +158,8 @@
       mpv
       tldr
       bc
+      kiwix
+      kiwix-tools
     ];
   };
 
