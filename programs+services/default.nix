@@ -160,6 +160,7 @@
       bc
       kiwix
       kiwix-tools
+      zim-tools
     ];
   };
 
