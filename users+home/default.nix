@@ -37,6 +37,7 @@ in
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.fantasque-sans-mono
     pkgs.keychain       # for our ssh server
+    pkgs.devenv
   ];
   home = {
     username = "kreator";
