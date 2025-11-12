@@ -80,6 +80,8 @@ in
     };
   };
 
+  fonts.fontconfig.enable = true;
+
   # Add stuff for your user as youe see fit:
   programs.helix = {
     enable = true;
