@@ -41,6 +41,14 @@
           group = "nogroup";
           mode = "0600";
         };
+        "gpg_private_keys" = {
+          sopsFile = ../crypt/gpgs.yaml;
+          path = "/run/secrets/gpg_private_keys";
+          owner = "kreator";
+          group = "nogroup";
+          mode = "0400";
+          #restartUnits = [ "gpg-import.service" ];
+        };
       };
     };
   };
