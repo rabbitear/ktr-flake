@@ -208,8 +208,10 @@ in
 
   home.activation.importGPGKeys = lib.hm.dag.entryAfter ["writeBoundary"] ''
     # Import GPG private keys from sops into user's GPG keyring
-    if [ -f ${config.sops.secrets.gpg_private_keys.path} ]; then
-      $DRY_RUN_CMD ${pkgs.gnupg}/bin/gpg --import --batch ${config.sops.secrets.gpg_private_keys.path}
+    # the sops secrets are now hardcoded here, if I change them in the sops file
+    # I need to update this too.
+    if [ -f /run/secrets/gpg_private_keys ]; then
+      $DRY_RUN_CMD ${pkgs.gnupg}/bin/gpg --import --batch /run/secrets/gpg_private_keys
       echo "GPG keys imported to user keyring"
     fi
   '';
