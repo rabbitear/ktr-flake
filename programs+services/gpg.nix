@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.ssh.startAgent = false;
   services.pcscd.enable = true;
@@ -18,14 +18,4 @@
     gpg-connect-agent /bye
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   '';
-
-  # ---- Import the key at activation ---------------------------------
-  system.activationScripts.importGpgKeys = {
-    text = ''
-      if [ -f ${config.sops.secrets.gpg_private_keys.path} ]; then
-        gpg --batch --import ${config.sops.secrets.gpg_private_keys.path}
-      fi
-    '';
-    #deps = [ config.sops.secrets.gpg_private_keys ];
-  };
 }

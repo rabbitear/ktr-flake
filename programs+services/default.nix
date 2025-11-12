@@ -212,6 +212,8 @@
     yq
     git
     findutils
+    gnupg
+    gnupg1
     sops
     age
 
@@ -287,4 +289,14 @@
     export HF_TOKEN="$(cat ${config.sops.secrets.huggingface1_api_key.path})"
 
   '';
+
+  # ---- Import the key at activation ---------------------------------
+  system.activationScripts.importGpgKeys = {
+    text = ''
+      if [ -f ${config.sops.secrets.gpg_private_keys.path} ]; then
+        ${pkgs.gnupg}/bin/gpg --batch --import ${config.sops.secrets.gpg_private_keys.path}
+      fi
+    '';
+    #deps = [ config.sops.secrets.gpg_private_keys ];
+  };
 }
