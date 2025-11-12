@@ -285,18 +285,16 @@
   };
   environment.etc."profile.d/aikey.sh".text = ''
     export OPENROUTER_API_KEY="$(cat ${config.sops.secrets.openrouter_api_key.path})"
-
     export HF_TOKEN="$(cat ${config.sops.secrets.huggingface1_api_key.path})"
-
   '';
 
   # ---- Import the key at activation ---------------------------------
-  system.activationScripts.importGpgKeys = {
-    text = ''
-      if [ -f ${config.sops.secrets.gpg_private_keys.path} ]; then
-        ${pkgs.gnupg}/bin/gpg --batch --import ${config.sops.secrets.gpg_private_keys.path}
-      fi
-    '';
-    #deps = [ config.sops.secrets.gpg_private_keys ];
-  };
+  #system.activationScripts.importGpgKeys = {
+  #  text = ''
+  #    if [ -f ${config.sops.secrets.gpg_private_keys.path} ]; then
+  #      ${pkgs.gnupg}/bin/gpg --batch --import ${config.sops.secrets.gpg_private_keys.path}
+  #    fi
+  #  '';
+  #  #deps = [ config.sops.secrets.gpg_private_keys ];
+  #};
 }

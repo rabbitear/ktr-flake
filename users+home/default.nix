@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   duckduckgo-search = pkgs.writeShellApplication {
     name = "duckduckgo-search";
@@ -205,8 +205,16 @@ in
       selection.save_to_clipboard = true;
      };
   };
- 
 
+  home.activation.importGPGKeys = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    # Import GPG private keys from sops into user's GPG keyring
+    if [ -f ${config.sops.secrets.gpg_private_keys.path} ]; then
+      $DRY_RUN_CMD ${pkgs.gnupg}/bin/gpg --import --batch ${config.sops.secrets.gpg_private_keys.path}
+      echo "GPG keys imported to user keyring"
+    fi
+  '';
+   
+  ### ======= more SHELL type things ======= ###
   # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
