@@ -17,5 +17,7 @@
     proggyfonts
     lmodern
     lmmath
+    texlivePackages.hep-font
+    texlivePackages.zlmtt
   ];
 }
