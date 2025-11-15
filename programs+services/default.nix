@@ -273,6 +273,7 @@
   environment.etc."profile.d/aikey.sh".text = ''
     export OPENROUTER_API_KEY="$(cat ${config.sops.secrets.openrouter_api_key.path})"
     export HF_TOKEN="$(cat ${config.sops.secrets.huggingface1_api_key.path})"
+    export CONTEXT7_API_KEY="$(cat ${config.sops.secrets.context7_api_key.path})"
   '';
 
   # ---- Import the key at activation ---------------------------------

@@ -4,13 +4,17 @@
       "command": "nix",
       "args": ["run", "github:utensils/mcp-nixos","--"]
     },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
     "memory": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"]
     },
     "time": {
       "command": "uvx",
-      "args": ["mcp-server-time", "--local-timezone=America/New_York"],
+      "args": ["mcp-server-time", "--local-timezone=America/Anchorage"],
       "disabledTools": ["convert_time"]
     },
     "mcp_sse": {
