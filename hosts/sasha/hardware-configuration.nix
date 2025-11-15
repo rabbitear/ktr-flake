@@ -37,6 +37,24 @@
   # networking.interfaces.enp196s0f4u1u1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp192s0.useDHCP = lib.mkDefault true;
 
+  ### I'm putting ROCm stuff here.
+  # Lets try out the new The Rock on Sasha :)
+  hardware.opengl.enable = true;
+  hardware.amdgpu.opencl.enable = true;
+
+  environment.systemPackages = with pkgs.rocmPackages; [  
+  #packages = with pkgs.rocmPackages_6_4; [
+    clr
+    rocblas
+    rocsolver
+    rocm-smi
+    rocminfo
+    #rocr-runtime
+    hsakmt
+    amdsmi
+    llvm.llvm
+  ];
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
