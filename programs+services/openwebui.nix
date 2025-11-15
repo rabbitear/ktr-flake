@@ -4,6 +4,20 @@
   imports = [
     ../my-addition/mcpo.nix
   ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      python3 = prev.python3.override {
+        packageOverrides = pySelf: pySuper: {
+          rapidocr-onnxruntime = pySuper.rapidocr-onnxruntime.overridePythonAttrs (old: {
+            doCheck = false;
+            doInstallCheck = false;
+          });
+        };
+      };
+      python3Packages = final.python3.pkgs;
+    })
+  ];
   
   services.open-webui = {
     enable = true;

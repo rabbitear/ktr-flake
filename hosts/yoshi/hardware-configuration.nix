@@ -12,6 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "fuse" "coretemp" ];
   boot.extraModulePackages = [ ];
+  nixpkgs.config.cudaSupport = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/6ddfaa25-fc14-486b-92d4-5f0e7bd3c5cf";
