@@ -41,6 +41,7 @@
   # Lets try out the new The Rock on Sasha :)
   hardware.opengl.enable = true;
   hardware.amdgpu.opencl.enable = true;
+  hardware.graphics.enable = true;
 
   environment.systemPackages = with pkgs.rocmPackages; [  
   #packages = with pkgs.rocmPackages_6_4; [
