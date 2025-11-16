@@ -187,6 +187,7 @@
           ./programs+services/chromecast.nix
           ./programs+services/n8n-sasha.nix
           ./programs+services/searx.nix
+          ./programs+services/blender.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
