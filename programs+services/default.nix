@@ -283,7 +283,6 @@
   environment.variables = {
     EDITOR = "vim";
     VISUAL = "vim";
-    #OPENROUTER_API_KEY = builtins.toString config.sops.secrets."openrouter_api_key".path;
     #GSK_RENDERER = "ngl";
   };
   environment.etc."profile.d/aikey.sh".text = ''
