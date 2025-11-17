@@ -4,6 +4,7 @@
     ./sops.nix
     ./gpg.nix
     ./fonts.nix
+    ./keyd.nix
   ];
 
   programs.ssh = {
