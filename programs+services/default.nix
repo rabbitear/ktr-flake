@@ -35,7 +35,13 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
+  # labwc
+  programs.labwc = {
+    enable = true;
+    package = pkgs.labwc;
+  };
+  # Allow GDM to run on Wyaldn instead of Xserver
+  services.displayManager.gdm.wayland = true;
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -174,8 +180,9 @@
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "kreator";
+  # Display automatic login while figuring out labwc
+  #services.displayManager.autoLogin.enable = true;
+  #services.displayManager.autoLogin.user = "kreator";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -232,9 +239,18 @@
     espeak-ng
     mcp-nixos
 
+    # labwc packages
+    labwc-gtktheme
+    labwc-tweaks-gtk 
+    labwc-menu-generator
+    wayland-utils
+    wayland-pipewire-idle-inhibit
+    egl-wayland
+
     ## Even less needed! stuff for chromecast and tv.
     vlc
     mpv                # alternative player with GUI
+    mpvpaper           # total eye-candy, animated backgrounds
     chromium           # browser casting (tab/desktop)
     #androidplatformtools  # adb for Android TV if needed
     scrcpy             # GUI screen/control when using ADB
@@ -275,14 +291,4 @@
     export HF_TOKEN="$(cat ${config.sops.secrets.huggingface1_api_key.path})"
     export CONTEXT7_API_KEY="$(cat ${config.sops.secrets.context7_api_key.path})"
   '';
-
-  # ---- Import the key at activation ---------------------------------
-  #system.activationScripts.importGpgKeys = {
-  #  text = ''
-  #    if [ -f ${config.sops.secrets.gpg_private_keys.path} ]; then
-  #      ${pkgs.gnupg}/bin/gpg --batch --import ${config.sops.secrets.gpg_private_keys.path}
-  #    fi
-  #  '';
-  #  #deps = [ config.sops.secrets.gpg_private_keys ];
-  #};
 }
