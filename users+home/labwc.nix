@@ -52,6 +52,24 @@
           "@size" = "11";
         };
       };
+      # applications = {
+      #   application = [
+      #     {
+      #       "@name" = "quaketerm";
+      #       decor = false;
+      #       position = {
+      #         "@force" = true;
+      #         x = "center";
+      #         y = 0;
+      #       }
+      #       desktop = "all";
+      #       layer = "above";
+      #       skip_pager = "yes";
+      #       skip_taskbar = "yes";
+      #       maximized = "Horizontal";
+      #     }
+      #   ];
+      # };
       keyboard = {
         default = true;
         keybind = [
@@ -99,7 +117,7 @@
         terminal = "${pkgs.foot}/bin/foot";
         layer = "overlay";
       };
-      colors.background = "0f0f0f0f";
+      colors.background = "af0f0f3f";
     };
   };
 }
