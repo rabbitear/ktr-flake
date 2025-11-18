@@ -22,6 +22,7 @@ in
     ./gnome.nix
     ./mutt.nix
     ./sync-jrnl.nix
+    ./labwc.nix
   ];
 
   # My shell scripts.

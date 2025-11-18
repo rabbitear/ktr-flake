@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   wayland.windowManager.labwc = {
     enable = true;
