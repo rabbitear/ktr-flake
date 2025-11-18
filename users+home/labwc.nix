@@ -12,4 +12,15 @@
       "XKB_DEFAULT_LAYOUT=us"
     ];
   };
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        terminal = "${pkgs.foot}/bin/foot";
+        layer = "overlay";
+      };
+      colors.background = "0f0f0f0f";
+    };
+  };
 }

@@ -66,8 +66,7 @@
       pkgs.brgenml1cupswrapper
     ];
   };
-  # Hotkey? we'll see, experimental.
-  services.kanata.enable = true;
+
   # Tailscale :)
   services.tailscale.enable = true;
   services.tailscale.interfaceName = "userspace-networking";
@@ -247,6 +246,7 @@
     wayland-utils
     wayland-pipewire-idle-inhibit
     egl-wayland
+    hyprmagnifier
 
     ## Even less needed! stuff for chromecast and tv.
     vlc
