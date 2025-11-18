@@ -28,7 +28,7 @@
             "@key" = "W-Return";
             action = {
               "@name" = "Execute";
-              "@command" = "alacrity";
+              "@command" = "alacritty";
             };
           }
           # <keybind key="W-Esc"><action command="loot" name="Execute"></action></keybind>
