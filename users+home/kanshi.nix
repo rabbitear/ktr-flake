@@ -1,3 +1,39 @@
+{ ... }:
+{
+  services.kanshi = {
+    enable = true;
+    settings = [
+      {
+        output.criteria = "eDP-1";
+      }
+     
+      {
+        profile.name = "tv";
+        profile.outputs = [
+          {
+            criteria = "Technical Concepts Ltd 43S425 (HDMI-A-1)";
+            mode = "1920x1080@60";
+            position = "0,0";
+          }
+          {
+            criteria = "GIGA-BYTE TECHNOLOGY CO., LTD. M27Q 21200B004026 (DP-3)";
+            mode = "1280x720@119.878998";
+          }
+        ];
+      }
+      {
+        profile.name = "no-tv";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            transform = "90";
+          }
+        ];
+      }
+    ];
+  };
+}
+
 # { pkgs, ... }:
 # {
 #   # Make the kanshi binary available system‑wide
@@ -65,54 +101,55 @@
 #   };
 # }
 
-# hosts/yoshi/kanshi.nix
-{ config, pkgs, ... }:
+# # hosts/yoshi/kanshi.nix
+# { config, pkgs, ... }:
 
-{
-  # Enable the daemon
-  services.kanshi.enable = true;
+# {
+#   # Enable the daemon
+#   services.kanshi.enable = true;
 
-  # The profile that will be used on boot.
-  # You can change it later with `kanshi switch tv` etc.
-  services.kanshi.defaultProfile = "tv";
+#   # The profile that will be used on boot.
+#   # You can change it later with `kanshi switch tv` etc.
+#   # HALUCINATION!!!!
+#   #services.kanshi.defaultProfile = "tv";
 
-  # -----------------------------------------------------------------
-  #  Profile definitions – one for each “setup” you want to switch to
-  # -----------------------------------------------------------------
-  services.kanshi.profiles = {
-    # -------------------------------------------------
-    #  TV (connected via HDMI‑A‑1)
-    # -------------------------------------------------
-    tv = {
-      # When this profile is active we want the TV to be the
-      # *only* output (the other monitor will be turned off).
-      outputs = [
-        {
-          # name must match the output name reported by `wlr-randr`
-          name = "HDMI-A-1";
-          mode = "3840x2160@30";   # 4K 30 Hz – the “preferred” mode
-          position = "0,0";
-          scale = 1;
-        }
-      ];
-    };
+#   # -----------------------------------------------------------------
+#   #  Profile definitions – one for each “setup” you want to switch to
+#   # -----------------------------------------------------------------
+#   services.kanshi.profiles = {
+#     # -------------------------------------------------
+#     #  TV (connected via HDMI‑A‑1)
+#     # -------------------------------------------------
+#     tv = {
+#       # When this profile is active we want the TV to be the
+#       # *only* output (the other monitor will be turned off).
+#       outputs = [
+#         {
+#           # name must match the output name reported by `wlr-randr`
+#           name = "HDMI-A-1";
+#           mode = "3840x2160@30";   # 4K 30 Hz – the “preferred” mode
+#           position = "0,0";
+#           scale = 1;
+#         }
+#       ];
+#     };
 
-    # -------------------------------------------------
-    #  Desktop monitor (DP‑3) – 2560×1440 @144 Hz
-    # -------------------------------------------------
-    monitor = {
-      outputs = [
-        {
-          name = "DP-3";
-          # Try the highest refresh first; if the driver refuses it,
-          # the next entry in the list will be used.
-          mode = "2560x1440@144";
-          # fallback – you can also keep a 120 Hz line if you like:
-          # mode = "2560x1440@120";
-          position = "0,0";
-          scale = 1;
-        }
-      ];
-    };
-  };
-}
+#     # -------------------------------------------------
+#     #  Desktop monitor (DP‑3) – 2560×1440 @144 Hz
+#     # -------------------------------------------------
+#     monitor = {
+#       outputs = [
+#         {
+#           name = "DP-3";
+#           # Try the highest refresh first; if the driver refuses it,
+#           # the next entry in the list will be used.
+#           mode = "2560x1440@144";
+#           # fallback – you can also keep a 120 Hz line if you like:
+#           # mode = "2560x1440@120";
+#           position = "0,0";
+#           scale = 1;
+#         }
+#       ];
+#     };
+#   };
+# }
