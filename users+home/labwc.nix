@@ -37,7 +37,8 @@
     autostart = [
       #"wayvnc &"
       #"waybar &"
-      "swaybg -c '#113344' >/dev/null 2>&1 &"
+      "swaybg -c '#113300' >/dev/null 2>&1 &"
+      "systemctl --user restart wlr-randr-setup.service &"
     ];
     environment = [
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
