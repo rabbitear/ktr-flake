@@ -47,7 +47,7 @@
   # Enable the GNOME Desktop Environment.
   #services.displayManager.gdm.enable = true;
   #services.displayManager.sddm.enable = false;
-  services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.ly.enable = true;
   services.desktopManager.gnome.enable = true;
   # These may not be needed...
   services.gnome.gnome-keyring.enable = true;
