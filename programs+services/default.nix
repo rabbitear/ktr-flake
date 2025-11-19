@@ -264,6 +264,7 @@
     libdrm
     nvtopPackages.amd
     nvtopPackages.nvidia
+    pavucontrol
 
     ## Even more fun stuff
     ffmpeg-full        # ffmpeg always fun to have around
