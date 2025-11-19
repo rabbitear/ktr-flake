@@ -1,8 +1,8 @@
 { pkgs, config, lib, ... }:
 {
   # Add to existing systemd.user.services
-#  systemd.user.services.wlr-randr-setup = lib.mkIf (config.networking.hostName == "yoshi") {
-  systemd.user.services.wlr-randr-setup = {
+  systemd.user.services.wlr-randr-setup = lib.mkIf (config.networking.hostName == "yoshi") {
+    enable = true;
     description = "Set TV display mode";
     wantedBy = ["graphical-session.target"];
     serviceConfig = {
