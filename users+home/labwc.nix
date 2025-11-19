@@ -102,7 +102,15 @@
             "@key" = "W-y";
             action = {
               "@name" = "Execute";
-              "@command" = "bash -c grim -g $(slurp) $HOME/Pictures/Screenshot-$(date +'%Y-%m-%d-%H%M%S').png";
+              "@command" = "bash -c \"grim -g $(slurp) $HOME/Pictures/Screenshot-$(date +'%Y-%m-%d-%H%M%S').png\"";
+            };
+          }
+          # reset tv
+          {
+            "@key" = "W-r";
+            action = {
+              "@name" = "Execute";
+              "@command" = "systemctl --user restart wlr-randr-setup.service";
             };
           }
         ];
