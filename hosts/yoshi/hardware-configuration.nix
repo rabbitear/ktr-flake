@@ -12,6 +12,13 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "fuse" "coretemp" "nvidia" ];
   boot.extraModulePackages = [ ];
+
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"   # keep this
+    "nvidia-drm.fbdev=0"   # ← remove or comment out
+  ];
+
+  
   nixpkgs.config.cudaSupport = true;
 
   fileSystems."/" =
