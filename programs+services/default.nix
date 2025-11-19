@@ -258,6 +258,10 @@
     #androidplatformtools  # adb for Android TV if needed
     scrcpy             # GUI screen/control when using ADB
     avahi              # mDNS discovery support (enable service below)
+    drm_info
+    libdrm
+    nvtopPackages.amd
+    nvtopPackages.nvidia
 
     ## Even more fun stuff
     ffmpeg-full        # ffmpeg always fun to have around
