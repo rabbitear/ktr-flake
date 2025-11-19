@@ -155,7 +155,6 @@
           #./programs+services/ollama-cuda.nix
           ./programs+services/openwebui.nix
           ./programs+services/searx.nix
-          ./programs+services/kanshi.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {

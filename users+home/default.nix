@@ -23,6 +23,7 @@ in
     ./mutt.nix
     ./sync-jrnl.nix
     ./labwc.nix
+    ./kanshi.nix
   ];
 
   # My shell scripts.
