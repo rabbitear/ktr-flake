@@ -81,5 +81,6 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     videoAcceleration = true;
+    fbdev = false;
   };
 }
