@@ -47,7 +47,8 @@
   # Enable the GNOME Desktop Environment.
   #services.displayManager.gdm.enable = true;
   #services.displayManager.sddm.enable = false;
-  services.displayManager.ly.enable = true;
+  #services.displayManager.ly.enable = true;
+  services.displayManager.sddm.enable = true;
   services.desktopManager.gnome.enable = true;
   # These may not be needed...
   services.gnome.gnome-keyring.enable = true;
@@ -184,8 +185,8 @@
 
   # Enable automatic login for the user.
   # Display automatic login while figuring out labwc
-  #services.displayManager.autoLogin.enable = true;
-  #services.displayManager.autoLogin.user = "kreator";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "kreator";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
