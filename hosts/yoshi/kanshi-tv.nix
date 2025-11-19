@@ -4,7 +4,9 @@
   systemd.user.services.wlr-randr-setup = lib.mkIf (config.networking.hostName == "yoshi") {
     enable = true;
     description = "Set TV display mode";
-    wantedBy = ["graphical-session.target"];
+    #wantedBy = ["graphical-session.target"];
+    wantedBy = [ "default.target" ];
+    partOf = [ "default.target" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.wlr-randr}/bin/wlr-randr --output HDMI-A-1 --mode 1920x1080@60";
