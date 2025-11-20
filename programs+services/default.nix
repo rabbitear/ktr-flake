@@ -265,6 +265,7 @@
     nvtopPackages.amd
     nvtopPackages.nvidia
     pavucontrol
+    rhythmbox
 
     ## Even more fun stuff
     ffmpeg-full        # ffmpeg always fun to have around
