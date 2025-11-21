@@ -7,7 +7,15 @@
     slurp
     libnotify
     wl-clipboard
+    wlrctl
   ];
+
+# this could be a window switching script.
+# that could be used in the menus
+# 
+# --- !/bin/bash
+# input=$(wlrctl toplevel list | awk -F': ' '{print$2}' | tofi)
+# wlrctl activate app_id:"${input}"
 
   services.mako = {
     enable = true;
@@ -117,6 +125,108 @@
         ];
       };
     };
+    menu = [
+      {
+        label = "pipemenu";
+        menuId = "menu";
+        execute = "/home/user/nix/scripts/pipe.sh";
+      }
+      {
+        menuId = "client-menu";
+        label = "Client Menu";
+        icon = "";
+        items = [
+          {
+            label = "Maximize";
+            icon = "";
+            action = {
+              name = "ToggleMaximize";
+            };
+          }
+          {
+            label = "Minimize";
+            icon = "";
+            action = {
+              name = "Iconify";
+            };
+          }
+          {
+            label = "Fullscreen";
+            action = {
+              name = "ToggleFullscreen";
+            };
+          }
+          {
+            label = "Roll up/down";
+            action = {
+              name = "ToggleShade";
+            };
+          }
+          {
+            label = "Decorations";
+            action = {
+              name = "ToggleDecorations";
+            };
+          }
+          {
+            label = "Always On Top";
+            action = {
+              name = "ToggleAlwayOnTop";
+            };
+          }
+          {
+            label = "Close";
+            action = {
+              name = "Close";
+            };
+          }
+          {
+            label = "Alacritty";
+            action = {
+              name = "Execute";
+              command = "alacritty";
+            };
+          }
+          {
+            label = "Move Left";
+            action = {
+              name = "SendToDesktop";
+              to = "left";
+            };
+          }
+          {
+            label = "Next Window";
+            action = {
+              name = "NextWindow";
+            };
+          }
+          {
+            label = "Prev Window";
+            action = {
+              name = "PreviousWindow";
+            };
+          }
+          {
+            separator = { };
+          }
+          {
+            label = "Workspace";
+            menuId = "workspace";
+            icon = "";
+            items = [
+              {
+                label = "Move Left";
+                action = {
+                  name = "SendToDesktop";
+                  to = "left";
+                };
+              }
+            ];
+          }
+          # EOM?
+        ];
+      }
+    ];
   };
 
   programs.fuzzel = {
