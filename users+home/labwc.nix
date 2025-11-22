@@ -107,14 +107,19 @@
       };
       mouse = {
         default = true;
-        mousebind = [
+        context = [
           {
-            "@button" = "Middle";
-            "@action" = "Press";
-            action = [
+            "@name" = "Root";
+            mousebind = [
               {
-                "@name" = "ShowMenu";
-                "@menu" = "client-menu";
+                "@button" = "Middle";
+                "@action" = "Press";
+                action = [
+                  {
+                    "@name" = "ShowMenu";
+                    "@menu" = "client-menu";
+                  }
+                ];
               }
             ];
           }
