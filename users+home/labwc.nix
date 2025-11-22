@@ -123,6 +123,21 @@
               }
             ];
           }
+          {
+            "@name" = "TitleBar";
+            mousebind = [
+              {
+                "@button" = "Right";
+                "@action" = "Press";
+                action = [
+                  {
+                    "@name" = "ShowMenu";
+                    "@menu" = "client-menu";
+                  }
+                ];
+              }
+            ];
+          }
         ];
       };
       focus = {
@@ -135,6 +150,7 @@
         menuId = "menu";
         execute = "/home/user/nix/scripts/pipe.sh";
       }
+      ### Root Menu
       {
         menuId = "root-menu";
         label = "Root Menu";
@@ -160,35 +176,24 @@
           }
         ];
       }
+      ### Client Menu
       {
         menuId = "client-menu";
         label = "Client Menu";
         icon = "";
         items = [
           {
-            label = "Maximize";
+            label = "Maximize (toggle)";
             icon = "";
             action = {
               name = "ToggleMaximize";
             };
           }
           {
-            label = "Minimize";
+            label = "Minimize (hide)";
             icon = "";
             action = {
               name = "Iconify";
-            };
-          }
-          {
-            label = "Fullscreen";
-            action = {
-              name = "ToggleFullscreen";
-            };
-          }
-          {
-            label = "Roll up/down";
-            action = {
-              name = "ToggleShade";
             };
           }
           {
@@ -203,6 +208,7 @@
               name = "ToggleAlwayOnTop";
             };
           }
+          ### 
           {
             label = "Close";
             action = {
@@ -213,35 +219,13 @@
             separator = {};
           }
           {
-            label = "Magnify";
-            action = {
-              name = "ToggleMagnify";
-            };
+            separator = {};
           }
           {
-            label = "Alacritty";
+            label = "Tools...";
             action = {
-              name = "Execute";
-              command = "alacritty";
-            };
-          }
-          {
-            label = "Move Left";
-            action = {
-              name = "SendToDesktop";
-              to = "left";
-            };
-          }
-          {
-            label = "Next Window";
-            action = {
-              name = "NextWindow";
-            };
-          }
-          {
-            label = "Prev Window";
-            action = {
-              name = "PreviousWindow";
+              name = "ShowMenu";
+              menu = "tools-menu";
             };
           }
           {
@@ -261,7 +245,28 @@
               }
             ];
           }
-          # EOM?
+        ];
+      }
+      ## Tools Menu
+      {
+        menuId = "tools-menu";
+        label = "Tools Menu";
+        icon = "";
+        items = [
+          {
+            label = "Alacrity";
+            icon = "alacritty";
+            action = {
+              name = "Execute";
+              command = "alacritty";
+            };
+          }
+          {
+            label = "Magnify";
+            action = {
+              name = "ToggleMagnify";
+            };
+          }
         ];
       }
     ];
