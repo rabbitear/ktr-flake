@@ -160,8 +160,8 @@
           {
             menuId = "openbox_pipe_menu";
             icon = "xterm";
-            label = "Running...";
-            execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --desktop --icons --pipemenu --terminal-prefix=${pkgs.foot}/bin/foot";
+            label = "Apps...";
+            execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --desktop --icons --pipemenu --terminal-prefix=${pkgs.foot}/bin/foot --window-size-chars=80x25 --font=monospace:size=11";
           }
           {
             label = "Alacrity";
@@ -253,7 +253,7 @@
                 menuId = "openbox_pipe_menu";
                 icon = "menu";
                 label = "Apps...";
-                execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --pipemenu";
+                execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --desktop --icons --pipemenu --terminal-prefix=${pkgs.foot}/bin/foot --window-size-chars=80x25 --font=monospace:size=11";
               }
             ];
           }
