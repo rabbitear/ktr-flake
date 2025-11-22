@@ -113,8 +113,8 @@
             "@action" = "Press";
             action = [
               {
-                name = "ShowMenu";
-                menu = "client-menu";
+                "@name" = "ShowMenu";
+                "@menu" = "client-menu";
               }
             ];
           }
