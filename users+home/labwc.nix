@@ -228,12 +228,13 @@
             items = [
               {
                 label = "Magnify";
+                icon = "search";
                 action = {
-                  name = "ToggleMangify";
+                  name = "ToggleMagnify";
                 };
               } 
               {
-                label = "Alacrity";
+                label = "Alacritty";
                 icon = "alacritty";
                 action = {
                   name = "Execute";
@@ -247,6 +248,12 @@
                    name = "Execute";
                    command = "foot";
                 };                 
+              }
+              {
+                menuId = "openbox_pipe_menu";
+                icon = "menu";
+                label = "Apps...";
+                execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --pipemenu";
               }
             ];
           }
