@@ -132,6 +132,31 @@
         execute = "/home/user/nix/scripts/pipe.sh";
       }
       {
+        menuId = "root-menu";
+        label = "Root Menu";
+        icon = "";
+        items = [
+          {
+            menuId = "client-combined-menu";
+            label = "Running...";
+          }
+          {
+            label = "Alacrity";
+            icon = "alacritty";
+            action = {
+              name = "Execute";
+              command = "alacritty";
+            };
+          }
+          {
+            label = "Reconfigure";
+            action = {
+              name = "Reconfigure";
+            };
+          }
+        ];
+      }
+      {
         menuId = "client-menu";
         label = "Client Menu";
         icon = "";
