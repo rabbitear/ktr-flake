@@ -109,7 +109,7 @@
         default = true;
         context = [
           {
-            "@name" = "Root";
+            "@name" = "Client";
             mousebind = [
               {
                 "@button" = "Middle";
