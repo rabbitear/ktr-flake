@@ -206,6 +206,15 @@
             };
           }
           {
+            separator = {};
+          }
+          {
+            label = "Magnify";
+            action = {
+              name = "ToggleMagnify";
+            };
+          }
+          {
             label = "Alacritty";
             action = {
               name = "Execute";
