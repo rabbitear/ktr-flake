@@ -161,7 +161,7 @@
             menuId = "openbox_pipe_menu";
             icon = "xterm";
             label = "Running...";
-            execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --pipemenu";
+            execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --desktop --icons --pipemenu --terminal-prefix=foot";
           }
           {
             label = "Alacrity";
