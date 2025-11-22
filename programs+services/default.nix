@@ -210,6 +210,7 @@
       pkgs.tmuxPlugins.sysstat
       pkgs.tmuxPlugins.weather
     ];
+    terminal = "tmux-direct";
     baseIndex = 1;
     newSession = false;   
   };
