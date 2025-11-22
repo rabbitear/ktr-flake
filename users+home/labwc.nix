@@ -61,24 +61,6 @@
           "@size" = "11";
         };
       };
-      # applications = {
-      #   application = [
-      #     {
-      #       "@name" = "quaketerm";
-      #       decor = false;
-      #       position = {
-      #         "@force" = true;
-      #         x = "center";
-      #         y = 0;
-      #       }
-      #       desktop = "all";
-      #       layer = "above";
-      #       skip_pager = "yes";
-      #       skip_taskbar = "yes";
-      #       maximized = "Horizontal";
-      #     }
-      #   ];
-      # };
       keyboard = {
         default = true;
         keybind = [
@@ -122,6 +104,18 @@
             };
           }
         ];
+      };
+      mouse = {
+        context = {
+          name = "Root";
+          mousebind = {
+            button = "Middle";
+            action = {
+              name = "ShowMenu";
+              menu = "client-menu";
+            };
+          };
+        };
       };
     };
     menu = [
