@@ -106,16 +106,17 @@
         ];
       };
       mouse = {
-        context = {
-          name = "Root";
-          mousebind = {
-            button = "Middle";
+        default = true;
+        mousebind = [
+          {
+            "@button" = "Middle";
+            "@action" = "Press";
             action = {
               name = "ShowMenu";
               menu = "client-menu";
             };
-          };
-        };
+          }
+        ];
       };
     };
     menu = [
