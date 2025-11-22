@@ -111,10 +111,12 @@
           {
             "@button" = "Middle";
             "@action" = "Press";
-            action = {
-              name = "ShowMenu";
-              menu = "client-menu";
-            };
+            action = [
+              {
+                name = "ShowMenu";
+                menu = "client-menu";
+              }
+            ];
           }
         ];
       };
