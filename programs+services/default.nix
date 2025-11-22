@@ -165,6 +165,7 @@
       iftop
       nix-ai-tools.crush
       nix-ai-tools.copilot-cli
+      nix-ai-tools.gemini-cli
       wl-clipboard
       kitty
       alacritty
