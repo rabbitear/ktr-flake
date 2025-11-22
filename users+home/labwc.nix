@@ -219,14 +219,33 @@
             separator = {};
           }
           {
-            separator = {};
-          }
-          {
             label = "Tools...";
-            action = {
-              name = "ShowMenu";
-              menu = "tools-menu";
-            };
+            menuId = "tools";
+            icon = "";
+            items = [
+              {
+                label = "Magnify";
+                action = {
+                  name = "ToggleMangify";
+                };
+              } 
+              {
+                label = "Alacrity";
+                icon = "alacritty";
+                action = {
+                  name = "Execute";
+                  command = "alacritty";
+                };
+              }
+              {
+                label = "Foot";
+                icon = "foot";
+                action = {
+                   name = "Execute";
+                   command = "foot";
+                };                 
+              }
+            ];
           }
           {
             separator = { };
@@ -244,28 +263,6 @@
                 };
               }
             ];
-          }
-        ];
-      }
-      ## Tools Menu
-      {
-        menuId = "tools-menu";
-        label = "Tools Menu";
-        icon = "";
-        items = [
-          {
-            label = "Alacrity";
-            icon = "alacritty";
-            action = {
-              name = "Execute";
-              command = "alacritty";
-            };
-          }
-          {
-            label = "Magnify";
-            action = {
-              name = "ToggleMagnify";
-            };
           }
         ];
       }
