@@ -8,6 +8,7 @@
     libnotify
     wl-clipboard
     wlrctl
+    labwc-menu-generator
   ];
 
 # this could be a window switching script.
@@ -157,7 +158,7 @@
         icon = "";
         items = [
           {
-            menuId = "client-combined-menu";
+            menuId = "openbox_pipe_menu";
             icon = "xterm";
             label = "Running...";
             execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --pipemenu";
