@@ -125,6 +125,9 @@
           }
         ];
       };
+      focus = {
+        followMouse = true;
+      };
     };
     menu = [
       {
