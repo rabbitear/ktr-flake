@@ -158,7 +158,9 @@
         items = [
           {
             menuId = "client-combined-menu";
+            icon = "xterm";
             label = "Running...";
+            execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --pipemenu";
           }
           {
             label = "Alacrity";
