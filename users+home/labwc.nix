@@ -102,8 +102,7 @@
           {
             "@key" = "W-z";
             action = {
-              "@name" = "Execute";
-              "@command" = "hyprmagnifier";
+              "@name" = "ToggleMagnify";
             };
           }
           # Screenshots
