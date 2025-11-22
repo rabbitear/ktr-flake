@@ -196,6 +196,23 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.tmux = {
+    enable = true;
+    shortcut = "a";
+    plugins = [
+      pkgs.tmuxPlugins.cpu
+      #pkgs.tmuxPlugins.tokyo-night-tmux
+      pkgs.tmuxPlugins.tmux-fzf
+      pkgs.tmuxPlugins.fzf-tmux-url
+      #pkgs.tmuxPlugins.gruxbox
+      pkgs.tmuxPlugins.mode-indicator
+      pkgs.tmuxPlugins.rose-pine
+      pkgs.tmuxPlugins.sysstat
+      pkgs.tmuxPlugins.weather
+    ];
+    baseIndex = 1;
+    newSession = false;   
+  };
 
   # gonna use this for Python dev envs .local/bin path
   environment.localBinInPath = true;
