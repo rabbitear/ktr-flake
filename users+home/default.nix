@@ -88,7 +88,7 @@ in
   programs.helix = {
     enable = true;
     settings = {
-      theme = "ayu_evolve";
+      theme = "tokyonight";
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
