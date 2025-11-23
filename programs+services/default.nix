@@ -200,6 +200,7 @@
   programs.tmux = {
     enable = true;
     shortcut = "a";
+    keyMode = "vi";
     plugins = [
       pkgs.tmuxPlugins.cpu
       #pkgs.tmuxPlugins.tokyo-night-tmux
