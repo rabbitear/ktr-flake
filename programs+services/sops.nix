@@ -35,6 +35,12 @@
           group = "nogroup";
           mode = "0600";
         };
+        "gemini_api_key" = {
+          sopsFile = ../crypt/cipher.yaml;
+          owner = "kreator";
+          group = "nogroup";
+          mode = "0600";
+        };
         "context7_api_key" = {
           sopsFile = ../crypt/cipher.yaml;
           owner = "kreator";
