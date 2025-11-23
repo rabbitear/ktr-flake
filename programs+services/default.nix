@@ -203,16 +203,16 @@
     keyMode = "vi";
     plugins = [
       pkgs.tmuxPlugins.cpu
-      #pkgs.tmuxPlugins.tokyo-night-tmux
+      pkgs.tmuxPlugins.tokyo-night-tmux
       pkgs.tmuxPlugins.tmux-fzf
       pkgs.tmuxPlugins.fzf-tmux-url
-      #pkgs.tmuxPlugins.gruxbox
       pkgs.tmuxPlugins.mode-indicator
       pkgs.tmuxPlugins.rose-pine
       pkgs.tmuxPlugins.sysstat
       pkgs.tmuxPlugins.weather
+      pkgs.tmuxPlugins.better-mouse-mode
     ];
-    terminal = "tmux-direct";
+    terminal = "tmux-256color";
     baseIndex = 1;
     newSession = false;   
   };
@@ -244,6 +244,7 @@
     ldns # replacement of `dig`, it provide the command `drill`
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
+    aria2
     ipcalc  # it is a calculator for the IPv4/v6 addresses
 
     # system call monitoring
@@ -255,7 +256,6 @@
     flatpak
     flatpak-xdg-utils
     xdg-desktop-portal-gnome
-    aria2
     caligula
     tts
     mbrola
