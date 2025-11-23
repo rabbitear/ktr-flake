@@ -9,7 +9,12 @@
     libnotify
     wl-clipboard
     wlrctl
+    wayland-utils
+    wayland-pipewire-idle-inhibit
+    egl-wayland
     labwc-menu-generator
+    labwc-gtktheme
+    labwc-tweaks-gtk
   ];
 
 # this could be a window switching script.

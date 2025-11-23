@@ -185,9 +185,9 @@
           ./programs+services
           ./programs+services/ollama-rocm.nix
           ./programs+services/chromecast.nix
-          ./programs+services/n8n-sasha.nix
+          #./programs+services/n8n-sasha.nix
           ./programs+services/searx.nix
-          ./programs+services/openwebui.nix
+          #./programs+services/openwebui.nix
           ./programs+services/graphics-programs.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager

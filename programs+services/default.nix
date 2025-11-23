@@ -242,11 +242,9 @@
     iperf3
     dnsutils  # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
-    aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
     ipcalc  # it is a calculator for the IPv4/v6 addresses
-    nmap
 
     # system call monitoring
     strace # system call monitoring
@@ -265,15 +263,6 @@
     espeak-ng
     mcp-nixos
 
-    # labwc packages
-    labwc-gtktheme
-    labwc-tweaks-gtk 
-    labwc-menu-generator
-    wayland-utils
-    wayland-pipewire-idle-inhibit
-    egl-wayland
-    hyprmagnifier
-
     ## Even less needed! stuff for chromecast and tv.
     vlc
     mpv                # alternative player with GUI
@@ -290,7 +279,6 @@
 
     ## Even more fun stuff
     ffmpeg-full        # ffmpeg always fun to have around
-    tuxguitar          # interesting...
     zmap
 
     ## Our ort
