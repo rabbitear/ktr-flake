@@ -10,6 +10,8 @@
     wl-clipboard
     wlrctl
     wtype
+    wev
+    ydotool
     wayland-utils
     wayland-pipewire-idle-inhibit
     egl-wayland
