@@ -172,7 +172,7 @@
             mousebind = [
               {
                 "@button" = "Middle";
-                "@action" = "Press";
+                "@action" = "Drag";
                 action = [
                   {
                     "@name" = "ShowMenu";
