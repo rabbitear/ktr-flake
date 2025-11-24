@@ -201,6 +201,7 @@
       };
       focus = {
         followMouse = true;
+        followMouseRequiresMovement = false;
       };
     };
     menu = [
