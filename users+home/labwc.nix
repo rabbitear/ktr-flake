@@ -9,6 +9,7 @@
     libnotify
     wl-clipboard
     wlrctl
+    wtype
     wayland-utils
     wayland-pipewire-idle-inhibit
     egl-wayland
