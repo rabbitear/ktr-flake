@@ -172,7 +172,7 @@
             mousebind = [
               {
                 "@button" = "Middle";
-                "@action" = "Drag";
+                "@action" = "Press";
                 action = [
                   {
                     "@name" = "ShowMenu";
@@ -202,6 +202,9 @@
       focus = {
         followMouse = true;
         followMouseRequiresMovement = false;
+      };
+      menu = {
+        showIcons = true;
       };
     };
     menu = [
