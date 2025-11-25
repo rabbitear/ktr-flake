@@ -61,6 +61,11 @@ in
     };
   };
 
+  services.gammastep = {
+    enable = true;
+    latitude = 61.217381;
+    longitude = -149.863129;
+  };
 
   programs.foot = {
     enable = true;
@@ -121,6 +126,7 @@ in
     environment = [
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
       "XKB_DEFAULT_LAYOUT=us"
+      "QT_QPA_PLATFORMTHEME=qt6ct"
     ];
     rc = {
       theme = {

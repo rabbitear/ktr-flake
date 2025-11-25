@@ -268,6 +268,9 @@
     mpv                # alternative player with GUI
     mpvpaper           # total eye-candy, animated backgrounds
     chromium           # browser casting (tab/desktop)
+    qt6Packages.qt6ct   # qt6 control, and I think wayland?
+    qutebrowser
+    
     #androidplatformtools  # adb for Android TV if needed
     scrcpy             # GUI screen/control when using ADB
     avahi              # mDNS discovery support (enable service below)
