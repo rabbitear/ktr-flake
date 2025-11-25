@@ -151,7 +151,9 @@
             "@key" = "W-y";
             action = {
               "@name" = "Execute";
-              "@command" = "bash -c 'grim -g \"$(slurp)\" - | wl-copy'";
+              "@command" = ''
+                grim -g "$(slurp)" - | wl-copy
+              '';
             };
           }
           # reset tv
