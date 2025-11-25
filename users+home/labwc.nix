@@ -1,6 +1,17 @@
 { pkgs, config, ... }:
+let
+  take_screenshot = pkgs.writeShellApplication {
+    name = "take_screenshot";
+    text = ''
+      #!/bin/sh
+      GEOMETRY="$(slurp)"
+      grim -g "$GEOMETRY" - | wl-copy
+    '';  
+  };
+in
 {
   home.packages = with pkgs; [
+    take_screenshot
     swaybg
     fuzzel
     foot
@@ -151,9 +162,7 @@
             "@key" = "W-y";
             action = {
               "@name" = "Execute";
-              "@command" = ''
-                grim -g "$(slurp)" - | wl-copy
-              '';
+              "@command" = "${take_screenshot}/bin/take_screenshot";
             };
           }
           # reset tv
