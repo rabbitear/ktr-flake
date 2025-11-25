@@ -21,6 +21,9 @@
   networking.hostName = "yoshi"; # Define your hostname.
   networking.networkmanager.enable = true;
 
+  ## For yoshi
+  services.open-webui.package = pkgs.open-webui;
+
   time.timeZone = "America/Anchorage";
   system.stateVersion = "25.05"; # Did you read the comment?
 }

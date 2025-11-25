@@ -153,7 +153,7 @@
           ./hosts/yoshi/configuration.nix
           ./programs+services
           #./programs+services/ollama-cuda.nix
-          ./programs+services/openwebui.nix
+          #./programs+services/openwebui.nix
           ./programs+services/searx.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
@@ -162,7 +162,12 @@
               (final: prev: {
                 nix-ai-tools = nix-ai-tools.packages.${prev.system};
               })
+
+              # (final: prev: {
+              #   open-webui = final.callPackage ./programs+services/gpt-openwebui.nix { };
+              # })
             ];
+
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
