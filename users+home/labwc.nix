@@ -151,7 +151,7 @@
             "@key" = "W-y";
             action = {
               "@name" = "Execute";
-              "@command" = "bash -c \"grim -g $(slurp) $HOME/Pictures/Screenshot-$(date +'%Y-%m-%d-%H%M%S').png\"";
+              "@command" = "bash -c 'grim -g \"$(slurp)\" - | wl-copy'";
             };
           }
           # reset tv
