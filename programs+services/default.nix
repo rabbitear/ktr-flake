@@ -99,7 +99,8 @@
     #   22 - ssh
     # 3001 - searx
     # 3002 - open-webui
-    allowedTCPPorts = [22 3001 3002];
+    # 27036 - steam
+    allowedTCPPorts = [22 3001 3002 27036];
   };
  
   # Enable sound with pipewire.
