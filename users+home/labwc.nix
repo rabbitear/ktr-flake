@@ -29,6 +29,7 @@ in
     labwc-menu-generator
     labwc-gtktheme
     labwc-tweaks-gtk
+    #(writeScriptBin "cliphist-fuzzel-img" (builtins.readFile ../my-addition/cliphist-fuzzel-img.sh))
   ];
 
 # this could be a window switching script.
@@ -167,6 +168,14 @@ in
             action = {
               "@name" = "Execute";
               "@command" = "fuzzel";
+            };
+          }
+          # Old Clipboard Manager
+          {
+            "@key" = "W-c";
+            action = {
+              "@name" = "Execute";
+              "@command" = "${pkgs.cliphist}/bin/cliphist-fuzzel-img";
             };
           }
           # Magnifier
