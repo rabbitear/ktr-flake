@@ -67,6 +67,18 @@ in
     longitude = -149.863129;
   };
 
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+    extraOptions = [
+      "-max-dedupe-search"
+      "10"
+      "-max-items"
+      "500"
+    ]; 
+    systemdTargets = [ config.wayland.systemd.target ];
+  };
+
   programs.foot = {
     enable = true;
     settings = {
@@ -127,6 +139,7 @@ in
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
       "XKB_DEFAULT_LAYOUT=us"
       "QT_QPA_PLATFORMTHEME=qt6ct"
+      "GDK_DEBUG=no-portals"
     ];
     rc = {
       theme = {
