@@ -264,7 +264,7 @@
     mbrola
     mbrola-voices
     espeak-ng
-    mcp-nixos
+    #mcp-nixos
 
     ## Even less needed! stuff for chromecast and tv.
     vlc
