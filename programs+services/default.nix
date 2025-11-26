@@ -201,6 +201,7 @@
     enable = true;
     shortcut = "a";
     keyMode = "vi";
+    escapeTime = 75;
     plugins = [
       pkgs.tmuxPlugins.cpu
       pkgs.tmuxPlugins.tokyo-night-tmux
@@ -215,6 +216,7 @@
     terminal = "tmux-256color";
     baseIndex = 1;
     newSession = false;   
+    extraConfig = "set -g mouse on";
   };
 
   # gonna use this for Python dev envs .local/bin path
