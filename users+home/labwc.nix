@@ -156,7 +156,7 @@ in
       #"waybar &"
       "swaybg -c '#113300' >/dev/null 2>&1 &"
       "systemctl --user restart wlr-randr-setup.service &"
-      "[[ $(hostname) == sasha ]] && wlr-randr --output HDMI-A-1 --right-of --output DP-4"
+      "[[ $(hostname) == sasha ]] && wlr-randr --output HDMI-A-1 --right-of DP-4"
     ];
     environment = [
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
