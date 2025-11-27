@@ -3,6 +3,8 @@ let
   take_screenshot = pkgs.writeShellApplication {
     name = "take_screenshot";
     text = ''
+      # TODO: would look cool, to have a notify-send, with the photo,
+      #       if it is clicked on (notify action) than view the photo. 
       GEOMETRY="$(slurp)"
       grim -g "$GEOMETRY" - | wl-copy
     '';  
@@ -314,6 +316,9 @@ in
           }
           {
             "@identifier" = "foot";
+            "@serverDecorations" = "no";
+            "@skipTaskbar" = "yes";
+            "@skipWindowSwitcher" = "yes";
             action = {
               "@name" = "Maximize";
             };
