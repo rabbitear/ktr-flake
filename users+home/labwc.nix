@@ -26,7 +26,7 @@ let
   notify_send_time = pkgs.writeShellApplication {
     name = "notify_send_time";
     text = ''
-      notify-send \
+      ${pkgs.libnotify}/bin/notify-send \
       --expire-time=5800 \
         "Time is:" \
         "$(date)"
