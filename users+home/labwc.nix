@@ -176,14 +176,23 @@ in
             "@key" = "W-Return";
             action = {
               "@name" = "Execute";
-              "@command" = "alacritty";
+              "@command" = "${runraisehide}/bin/runraisehide alacritty";
             };
           }
+          # Toggle foot --- TODO: give it a specific title eg: quickterm
           {
             "@key" = "W-Space";
             action = {
               "@name" = "Execute";
               "@command" = "${runraisehide}/bin/runraisehide foot";
+            };
+          }
+          # Toggle firefox
+          {
+            "@key" = "W-f";
+            action = {
+              "@name" = "Execute";
+              "@command" = "${runraisehide}/bin/runraisehide firefox";
             };
           }
           # <keybind key="W-Esc"><action command="loot" name="Execute"></action></keybind>
