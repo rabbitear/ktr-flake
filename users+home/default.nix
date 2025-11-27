@@ -71,12 +71,15 @@ in
   '';
   programs.git = {
     enable = true;
-    userName = "Jon Bradley";
-    userEmail = "weatchu@gmail.com";
-
-    extraConfig = {
-      core.editor = "hx";
-      core.pager = "bat --style=plain --pager=never";
+    settings = {
+      user = {
+        name = "Jon Bradley";
+        email = "weatchu@gmail.com";
+      };
+      core = {
+        editor = "hx";
+        pager = "bat --style=plain --pager=never";
+      };
       pull.rebase = true;
       init.defaultBranch = "main";
     };

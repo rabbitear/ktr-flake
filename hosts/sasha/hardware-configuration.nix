@@ -39,7 +39,6 @@
 
   ### I'm putting ROCm stuff here.
   # Lets try out the new The Rock on Sasha :)
-  hardware.opengl.enable = true;
   hardware.amdgpu.opencl.enable = true;
   hardware.graphics.enable = true;
 
