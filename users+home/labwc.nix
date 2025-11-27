@@ -38,6 +38,7 @@ in
   home.packages = with pkgs; [
     take_screenshot
     runraisehide
+    notify_send_time
     swaybg
     fuzzel
     foot
@@ -206,7 +207,7 @@ in
           }
           # Toggle firefox
           {
-            "@key" = "W-f";
+            "@key" = "W-Space";
             action = {
               "@name" = "Execute";
               "@command" = "${runraisehide}/bin/runraisehide firefox";
@@ -244,7 +245,7 @@ in
             };
           }
           {
-            "@key" = "W-Space";
+            "@key" = "W-x";
             action = {
               "@name" = "Execute";
               "@commnad" = "${notify_send_time}/bin/notify_send_time";
