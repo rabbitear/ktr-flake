@@ -303,6 +303,12 @@ in
             "@identifier" = "blender";
             "@wantAbsorbedModifierReleaseEvents" = "yes";
           }
+          {
+            "@identifier" = "foot";
+            action = {
+              "@name" = "Maximize";
+            };
+          }
         ];
       };
       focus = {
