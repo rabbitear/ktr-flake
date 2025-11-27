@@ -23,6 +23,15 @@ let
       disown
     '';
   };
+  notify_send_time = pkgs.writeShellApplication {
+    name = "notify_send_time";
+    text = ''
+      notify-send \
+      --expire-time=5800 \
+        "Time is:" \
+        "$(date)"
+    '';
+  };
 
 in
 {
@@ -238,7 +247,7 @@ in
             "@key" = "W-Space";
             action = {
               "@name" = "Execute";
-              "@commnad" = "${pkgs.libnotify}/bin/notify-send --expire-time=5800 HELLO";
+              "@commnad" = "${notify_send_time}/bin/notify_send_time";
             };
           }
           # reset tv
