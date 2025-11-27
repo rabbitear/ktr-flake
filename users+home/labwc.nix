@@ -37,6 +37,7 @@ in
     libnotify
     wl-clipboard
     wlrctl
+    wlr-randr
     wtype
     wev
     ydotool
