@@ -234,6 +234,13 @@ in
               "@command" = "${take_screenshot}/bin/take_screenshot";
             };
           }
+          {
+            "@key" = "W-Space";
+            action = {
+              "@name" = "Execute";
+              "@commnad" = "notify-send --expire-time=5800 TIME \"$(date)\" ";
+            };
+          }
           # reset tv
           # {
           #   "@key" = "W-r";
