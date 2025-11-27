@@ -102,11 +102,13 @@ in
     settings = {
       main = {
         term = "xterm-256color";
-        font = "Monospace:size=11";
+        font = "Monospace:size=18";
         pad = "4x4";
-        dpi-aware = "yes";
-        initial-window-size-chars = "80x25";
-        initial-window-mode = "windowed";
+        gamma-correct-blending = "yes";
+        #dpi-aware = "yes";
+        #initial-window-size-chars = "80x25";
+        #initial-window-mode = "windowed";
+        initial-window-mode = "maximized";
       };
       colors = {
         foreground = "c0caf5";
@@ -141,6 +143,7 @@ in
       mouse = {
         hide-when-typing = "yes";
       };
+      csd.hide-when-maximized = "yes";
     };
   };
 
