@@ -238,7 +238,7 @@ in
             "@key" = "W-Space";
             action = {
               "@name" = "Execute";
-              "@commnad" = "notify-send --expire-time=5800 HELLO";
+              "@commnad" = "${pkgs.libnotify}/bin/notify-send --expire-time=5800 HELLO";
             };
           }
           # reset tv
