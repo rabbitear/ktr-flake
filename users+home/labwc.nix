@@ -166,6 +166,7 @@ in
       theme = {
         name = "nord";
         cornerRadius = 8;
+        maximizedDecoration = "none";
         font = {
           "@name" = "FiraCode";
           "@size" = "11";
