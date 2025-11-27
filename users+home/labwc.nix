@@ -45,6 +45,7 @@ in
     grim
     slurp
     libnotify
+    libsixel
     wl-clipboard
     wlrctl
     wlr-randr
