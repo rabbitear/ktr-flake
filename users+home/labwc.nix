@@ -186,7 +186,7 @@ in
           }
           # Toggle foot --- TODO: give it a specific title eg: quickterm
           {
-            "@key" = "W-Space";
+            "@key" = "A-Space";
             action = {
               "@name" = "Execute";
               "@command" = "${runraisehide}/bin/runraisehide foot";
@@ -264,6 +264,23 @@ in
             "@key" = "W-l";
             action = {
               "@name" = "Lower";
+            };
+          }
+
+          # Window Menu
+          {
+            "@key" = "W-ESC";
+            action = {
+              "@name" = "ShowMenu";
+              "@menu" = "client-menu";
+            };
+          }
+
+          # Close
+          {
+            "@key" = "W-q";
+            action = {
+              "@name" = "Close";
             };
           }
           # Maximize
