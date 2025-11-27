@@ -168,6 +168,8 @@ in
       };
       keyboard = {
         default = true;
+        repeatRate = 25;    # rate keypresses are repeated per second.
+        repeatDelay = 600;  # delay before keypress are repeated in ms.
         keybind = [
           # <keybind key="W-Return"><action command="foot" name="Execute"></action></keybind>
           {
@@ -216,11 +218,45 @@ in
             };
           }
           # reset tv
+          # {
+          #   "@key" = "W-r";
+          #   action = {
+          #     "@name" = "Execute";
+          #     "@command" = "systemctl --user restart wlr-randr-setup.service";
+          #   };
+          # }
           {
             "@key" = "W-r";
             action = {
-              "@name" = "Execute";
-              "@command" = "systemctl --user restart wlr-randr-setup.service";
+              "@name" = "Raise";
+            };
+          }
+          # Toggle shade
+          {
+            "@key" = "W-s";
+            action = {
+              "@name" = "ToggleShade";
+            };
+          }
+          # Hide
+          {
+            "@key" = "W-h";
+            action = {
+              "@name" = "Iconify";
+            };
+          }
+          # Lower
+          {
+            "@key" = "W-l";
+            action = {
+              "@name" = "Lower";
+            };
+          }
+          # Maximize
+          {
+            "@key" = "W-m";
+            action = {
+              "@name" = "ToggleMaximize";
             };
           }
         ];
