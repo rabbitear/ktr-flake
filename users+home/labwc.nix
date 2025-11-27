@@ -316,9 +316,8 @@ in
           }
           {
             "@identifier" = "foot";
-            "@serverDecorations" = "no";
-            "@skipTaskbar" = "yes";
-            "@skipWindowSwitcher" = "yes";
+            #"@skipTaskbar" = "yes";
+            #"@skipWindowSwitcher" = "yes";
             action = {
               "@name" = "Maximize";
             };
