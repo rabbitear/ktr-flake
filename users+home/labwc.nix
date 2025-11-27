@@ -226,7 +226,7 @@ in
             "@key" = "W-c";
             action = {
               "@name" = "Execute";
-              "@command" = "${pkgs.cliphist}/bin/cliphist-fuzzel-img";
+              "@command" = "${pkgs.cliphist}/bin/cliphist-fuzzel-img --scaling-filter=none";
             };
           }
           # Magnifier
