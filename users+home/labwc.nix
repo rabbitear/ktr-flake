@@ -238,7 +238,7 @@ in
             "@key" = "W-Space";
             action = {
               "@name" = "Execute";
-              "@commnad" = "bash -c \"notify-send --expire-time=5800 TIME $(date)\"";
+              "@commnad" = "bash -c 'notify-send --expire-time=5800 HELLO'";
             };
           }
           # reset tv
