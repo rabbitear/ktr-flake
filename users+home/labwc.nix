@@ -162,6 +162,13 @@ in
               "@command" = "alacritty";
             };
           }
+          {
+            "@key" = "W-Space";
+            action = {
+              "@name" = "If";
+              "@command" = "alacritty";
+            };
+          }
           # <keybind key="W-Esc"><action command="loot" name="Execute"></action></keybind>
           {
             "@key" = "W-d";
@@ -235,6 +242,15 @@ in
                 ];
               }
             ];
+          }
+        ];
+      };
+
+      windowRules = {
+        windowRule = [
+          {
+            "@identifier" = "blender";
+            "@wantAbsorbedModifierReleaseEvents" = "yes";
           }
         ];
       };
