@@ -226,7 +226,7 @@ in
             "@key" = "W-c";
             action = {
               "@name" = "Execute";
-              "@command" = "${pkgs.cliphist}/bin/cliphist-fuzzel-img --scaling-filter=none";
+              "@command" = "${pkgs.cliphist}/bin/cliphist-fuzzel-img";
             };
           }
           # Magnifier
@@ -512,7 +512,7 @@ in
       main = {
         terminal = "${pkgs.foot}/bin/foot";
         layer = "overlay";
-        image-size-ratio = 2.0;
+        image-size-ratio = 0.8;
       };
       colors.background = "af0f0f3f";
     };
