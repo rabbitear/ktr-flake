@@ -269,7 +269,7 @@ in
 
           # Window Menu
           {
-            "@key" = "W-ESC";
+            "@key" = "W-S-m";
             action = {
               "@name" = "ShowMenu";
               "@menu" = "client-menu";
