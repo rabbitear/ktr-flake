@@ -7,7 +7,6 @@ let
   journal-dir = "${config.home.homeDirectory}/.journal";
   
   ingest-to-journal = pkgs.writeShellScript "ingest-to-journal" ''
-    #!/usr/bin/env bash
     # ---------------------------------------------------------------
     # ingest.sh – copy a file into a git‑backed knowledge base
     #

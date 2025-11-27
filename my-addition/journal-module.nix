@@ -67,8 +67,6 @@ let
   '';
 
   journal-script = pkgs.writeShellScript "journal" ''
-    #!/usr/bin/env bash
-
     search_journal_dir() {
       # === Text Search journal ===
       pushd "$JOURNAL_DIR" >/dev/null

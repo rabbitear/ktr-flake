@@ -3,15 +3,30 @@ let
   take_screenshot = pkgs.writeShellApplication {
     name = "take_screenshot";
     text = ''
-      #!/bin/sh
       GEOMETRY="$(slurp)"
       grim -g "$GEOMETRY" - | wl-copy
     '';  
   };
+  runraisehide = pkgs.writeShellApplication {
+    name = "runraisehide";
+    text = ''
+      # runraisehide - run or raise and hide
+      [[ -z "$1" ]] && echo "Usage: $0 executable" && exit 1
+      # if active -> minimize
+      wlrctl window find "$1" state:active && wlrctl window minimize "$1" && exit 0
+      # if minimized or inactive -> give focus
+      wlrctl window find "$1" state:minimized && wlrctl window focus "$1" && exit 0
+      wlrctl window find "$1" state:inactive && wlrctl window focus "$1" && exit 0
+      "$1" 2>&1 &
+      disown
+    '';
+  };
+
 in
 {
   home.packages = with pkgs; [
     take_screenshot
+    runraisehide
     swaybg
     fuzzel
     foot
@@ -29,7 +44,7 @@ in
     labwc-menu-generator
     labwc-gtktheme
     labwc-tweaks-gtk
-    #(writeScriptBin "cliphist-fuzzel-img" (builtins.readFile ../my-addition/cliphist-fuzzel-img.sh))
+    #(writeScriptBin "cliphist-fuzzel-img" (builtins.readFile ../my-adiion/cliphist-fuzzel-img.sh))
   ];
 
 # this could be a window switching script.
@@ -165,8 +180,8 @@ in
           {
             "@key" = "W-Space";
             action = {
-              "@name" = "If";
-              "@command" = "alacritty";
+              "@name" = "Execute";
+              "@command" = "${runraisehide}/bin/runraisehide foot";
             };
           }
           # <keybind key="W-Esc"><action command="loot" name="Execute"></action></keybind>
