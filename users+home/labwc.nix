@@ -493,6 +493,7 @@ in
       main = {
         terminal = "${pkgs.foot}/bin/foot";
         layer = "overlay";
+        image-size-ratio = 2.0;
       };
       colors.background = "af0f0f3f";
     };
