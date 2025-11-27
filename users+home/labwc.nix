@@ -248,7 +248,7 @@ in
             "@key" = "W-x";
             action = {
               "@name" = "Execute";
-              "@commnad" = "${notify_send_time}/bin/notify_send_time";
+              "@commnad" = "notify_send_time";
             };
           }
           # reset tv
