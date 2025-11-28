@@ -89,7 +89,8 @@
     };
   };
 
-  programs.adb.enable = true;
+  # Thinning down --- we need to clean up and trim the fat.
+  #programs.adb.enable = true;
 
   # Networking
   # Enable SSH access in from Tailscale network 22
@@ -162,9 +163,10 @@
       gnumake
       btop
       pass
-      nix-ai-tools.crush
+      #nix-ai-tools.crush
       nix-ai-tools.copilot-cli
       nix-ai-tools.gemini-cli
+      nix-ai-tools.opencode
       wl-clipboard
       kitty
       alacritty
@@ -175,8 +177,8 @@
       virt-viewer
       mpv
       bc
-      rhythmbox
-      shortwave
+      #rhythmbox
+      #shortwave
     ];
   };
 
@@ -252,10 +254,10 @@
     flatpak
     flatpak-xdg-utils
     xdg-desktop-portal-gnome
-    caligula
-    tts
-    mbrola
-    mbrola-voices
+    #caligula
+    #tts
+    #mbrola
+    #mbrola-voices
     espeak-ng
     #mcp-nixos
 
@@ -269,13 +271,13 @@
 
     drm_info
     libdrm
-    nvtopPackages.amd
-    nvtopPackages.nvidia
+    #nvtopPackages.amd
+    #nvtopPackages.nvidia
     radeontop
     pavucontrol
 
     ## Even more fun stuff
-    ffmpeg-full        # ffmpeg always fun to have around
+    #ffmpeg-full        # ffmpeg always fun to have around
     zmap
 
     ## Our ort

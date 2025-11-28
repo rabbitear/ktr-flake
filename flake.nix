@@ -155,7 +155,7 @@
         modules = [
           ./hosts/yoshi/configuration.nix
           ./programs+services
-          ./programs+services/ollama-cuda.nix
+          #./programs+services/ollama-cuda.nix
           #./programs+services/openwebui.nix
           ./programs+services/searx.nix
           sops-nix.nixosModules.sops
