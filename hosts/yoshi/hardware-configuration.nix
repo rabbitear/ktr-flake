@@ -77,13 +77,13 @@
 
   # I'm trying to seperate configs, I'm putting nvidia stuff in here.
   hardware.nvidia-container-toolkit.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-
+  services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
+  hardware.amdgpu.opencl.enable = true;
   hardware.nvidia = {
-    modesetting.enable = true;
+    #modesetting.enable = true;
     powerManagement.enable = false;
     open = true;
-    nvidiaSettings = true;
+    #nvidiaSettings = true;
     #package = config.boot.kernelPackages.nvidiaPackages.stable;
     #videoAcceleration = true;
   };
