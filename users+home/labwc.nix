@@ -117,7 +117,7 @@ in
         font = "Monospace:size=18";
         pad = "4x4";
         gamma-correct-blending = "yes";
-        #dpi-aware = "yes";
+        dpi-aware = "yes";
         #initial-window-size-chars = "80x25";
         #initial-window-mode = "windowed";
         initial-window-mode = "maximized";

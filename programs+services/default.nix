@@ -35,7 +35,8 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
+  # we can't do this here, because we are across hosts!
+  #services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
   services.xserver.enable = true;
   # labwc
   programs.labwc = {
