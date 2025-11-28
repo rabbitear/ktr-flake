@@ -514,6 +514,7 @@ in
         terminal = "${pkgs.foot}/bin/foot";
         layer = "overlay";
         image-size-ratio = 0.8;
+        dpi-aware = "yes";
       };
       colors.background = "af0f0f3f";
     };

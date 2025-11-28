@@ -24,7 +24,7 @@ in
     ./sync-jrnl.nix
     ./labwc.nix
     ./kanshi.nix
-    ./llamacpp.nix
+    #./llamacpp.nix
   ];
 
   # My shell scripts.
