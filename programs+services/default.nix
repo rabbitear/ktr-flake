@@ -43,12 +43,14 @@
     package = pkgs.labwc;
   };
   # Allow GDM to run on Wyaldn instead of Xserver
-  services.displayManager.gdm.wayland = true;
+  #services.displayManager.gdm.wayland = true;
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
+  #services.displayManager.cosmic-greeter = true;
   #services.displayManager.sddm.enable = false;
   #services.displayManager.ly.enable = true;
   #services.displayManager.sddm.enable = true;
+  services.displayManager.enable = true;
   services.desktopManager.gnome.enable = true;
   # These may not be needed...
   services.gnome.gnome-keyring.enable = true;
