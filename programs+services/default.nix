@@ -184,8 +184,8 @@
   #services.displayManager.autoLogin.user = "kreator";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  #systemd.services."getty@tty1".enable = false;
+  #systemd.services."autovt@tty1".enable = false;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -258,17 +258,18 @@
     #mcp-nixos
 
     ## Even less needed! stuff for chromecast and tv.
-    chromium           # browser casting (tab/desktop)
     qt6Packages.qt6ct   # qt6 control, and I think wayland?
     qutebrowser
     
     #androidplatformtools  # adb for Android TV if needed
     scrcpy             # GUI screen/control when using ADB
     avahi              # mDNS discovery support (enable service below)
+
     drm_info
     libdrm
     nvtopPackages.amd
     nvtopPackages.nvidia
+    radeontop
     pavucontrol
 
     ## Even more fun stuff
