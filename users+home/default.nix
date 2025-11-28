@@ -1,4 +1,4 @@
-{ lib, pkgs, hostName, ... }:
+{ lib, pkgs, ... }:
 let
   duckduckgo-search = pkgs.writeShellApplication {
     name = "duckduckgo-search";
@@ -54,7 +54,7 @@ in
     # Set the NVIDIA to be the what DRM runs on.
     # Trying to avoid using the iGPU of the AMD 5600G here.
     #sessionVariables = lib.mkIf (hostName == "yoshi") {
-    sessionVariables = {
+    sessionVariables = lib.mkIf (builtins.getEnv "HOSTNAME" == "yoshi") {
       WLR_DRM_DEVICES = "/dev/dri/by-path/pci-0000:01:00.0-card";
       EDITOR = "hx";
     };
@@ -213,7 +213,7 @@ in
       set -o vi
     '';
     shellAliases = {
-      e = "hx";
+      h = "hx";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
