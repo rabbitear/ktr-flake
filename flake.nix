@@ -148,7 +148,10 @@
       #########
       yoshi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          hostName = "yoshi";
+        };
         modules = [
           ./hosts/yoshi/configuration.nix
           ./programs+services
@@ -156,16 +159,12 @@
           #./programs+services/openwebui.nix
           ./programs+services/searx.nix
           sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = [
               (final: prev: {
                 nix-ai-tools = nix-ai-tools.packages.${prev.system};
               })
-
-              # (final: prev: {
-              #   open-webui = final.callPackage ./programs+services/gpt-openwebui.nix { };
-              # })
             ];
 
             home-manager = {

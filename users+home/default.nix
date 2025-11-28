@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, hostName, ... }:
 let
   duckduckgo-search = pkgs.writeShellApplication {
     name = "duckduckgo-search";
@@ -46,7 +46,16 @@ in
     username = "kreator";
     homeDirectory = "/home/kreator";
     stateVersion = "25.05";
+    # sessionVariables = {
+      # EDITOR = "hx";
+    # };
+    
+    # This is for YOSHI!
+    # Set the NVIDIA to be the what DRM runs on.
+    # Trying to avoid using the iGPU of the AMD 5600G here.
+    #sessionVariables = lib.mkIf (hostName == "yoshi") {
     sessionVariables = {
+      WLR_DRM_DEVICES = "/dev/dri/by-path/pci-0000:01:00.0-card";
       EDITOR = "hx";
     };
   };
