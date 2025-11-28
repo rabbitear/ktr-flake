@@ -139,8 +139,6 @@
       bat
       glow
       nix-search-tv
-      rustup
-      superTuxKart
       ripgrep
       rsync
       gh
@@ -162,8 +160,6 @@
       gnumake
       btop
       pass
-      iotop
-      iftop
       nix-ai-tools.crush
       nix-ai-tools.copilot-cli
       nix-ai-tools.gemini-cli
@@ -175,13 +171,8 @@
       foot
       tmux
       virt-viewer
-      imv
       mpv
-      tldr
       bc
-      kiwix
-      kiwix-tools
-      zim-tools
       rhythmbox
       shortwave
     ];
@@ -189,8 +180,8 @@
 
   # Enable automatic login for the user.
   # Display automatic login while figuring out labwc
-  #services.displayManager.autoLogin.enable = true;
-  #services.displayManager.autoLogin.user = "kreator";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "kreator";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -267,9 +258,6 @@
     #mcp-nixos
 
     ## Even less needed! stuff for chromecast and tv.
-    vlc
-    mpv                # alternative player with GUI
-    mpvpaper           # total eye-candy, animated backgrounds
     chromium           # browser casting (tab/desktop)
     qt6Packages.qt6ct   # qt6 control, and I think wayland?
     qutebrowser
