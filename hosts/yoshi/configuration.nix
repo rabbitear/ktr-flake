@@ -6,7 +6,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./kanshi-tv.nix
+      #./kanshi-tv.nix
     ];
 
   # Bootloader.
@@ -22,7 +22,7 @@
   networking.networkmanager.enable = true;
 
   ## For yoshi
-  services.open-webui.package = pkgs.open-webui;
+  #services.open-webui.package = pkgs.open-webui;
 
   time.timeZone = "America/Anchorage";
   system.stateVersion = "25.05"; # Did you read the comment?
