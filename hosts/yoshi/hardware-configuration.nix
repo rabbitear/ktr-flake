@@ -12,10 +12,10 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "fuse" "coretemp" "nvidia" ];
   # Keep DRM modesetting and force a safe video mode
-  boot.kernelParams = lib.mkAfter [
-    "nvidia-drm.modeset=1"
-    "video=HDMI-A-1:1920x1080@60"
-  ];
+  # boot.kernelParams = lib.mkAfter [
+  #   "nvidia-drm.modeset=1"
+  #   "video=HDMI-A-1:1920x1080@60"
+  # ];
   boot.extraModulePackages = [ ];
 
   # boot.kernelParams = [
@@ -81,7 +81,7 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
+    powerManagement.enable = true;
     open = true;
     nvidiaSettings = true;
     #package = config.boot.kernelPackages.nvidiaPackages.stable;
