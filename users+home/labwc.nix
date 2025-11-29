@@ -427,18 +427,6 @@ in
               name = "Iconify";
             };
           }
-          {
-            label = "Decorations";
-            action = {
-              name = "ToggleDecorations";
-            };
-          }
-          {
-            label = "Always On Top";
-            action = {
-              name = "ToggleAlwayOnTop";
-            };
-          }
           ### 
           {
             label = "Close";
@@ -450,17 +438,30 @@ in
             separator = {};
           }
           {
+            label = "Window...";
+            menuId = "window-ops";
+            icons = "";
+            items = [
+              # More window flags and actions can be added here.
+              {
+                label = "Decorations";
+                action = {
+                  name = "ToggleDecorations";
+                };
+              }
+              {
+                label = "Always On Top";
+                action = {
+                  name = "ToggleAlwayOnTop";
+                };
+              }
+            ];
+          }
+          {
             label = "Tools...";
             menuId = "tools";
             icon = "";
             items = [
-              {
-                label = "Magnify";
-                icon = "search";
-                action = {
-                  name = "ToggleMagnify";
-                };
-              } 
               {
                 label = "Alacritty";
                 icon = "alacritty";
@@ -477,13 +478,13 @@ in
                    command = "foot";
                 };                 
               }
-              {
-                menuId = "openbox_pipe_menu";
-                icon = "menu";
-                label = "Apps...";
-                execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --desktop --icons --pipemenu --terminal-prefix=${pkgs.foot}/bin/foot";
-              }
             ];
+          }
+          {
+             label = "Apps...";
+             menuId = "openbox_pipe_menu";
+             icon = "menu";
+             execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --desktop --icons --pipemenu --terminal-prefix=${pkgs.foot}/bin/foot";
           }
           {
             separator = { };
@@ -504,6 +505,13 @@ in
           }
           {
             separator = { };
+          }
+          {
+            label = "Magnify";
+            icon = "search";
+            action = {
+              name = "ToggleMagnify";
+            };
           }
           {
             label = "Take Screenshot";
