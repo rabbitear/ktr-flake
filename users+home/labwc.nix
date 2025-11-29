@@ -502,6 +502,17 @@ in
               }
             ];
           }
+          {
+            separator = { };
+          }
+          {
+            label = "Take Screenshot";
+            icon = "screenshot";
+            action = {
+              "name" = "Execute";
+              "command" = "${take_screenshot}/bin/take_screenshot";             
+            };
+          }
         ];
       }
     ];
