@@ -3,9 +3,6 @@
 {pkgs, lib, ...}:
 
 {
-  environment.systemPackages = with pkgs; [
-    alpaca
-  ];
   services.ollama = {
     enable = true;
     host = "0.0.0.0";

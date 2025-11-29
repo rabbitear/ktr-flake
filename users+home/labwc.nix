@@ -51,7 +51,6 @@ in
     wlr-randr
     wtype
     wev
-    ydotool
     wayland-utils
     wayland-pipewire-idle-inhibit
     egl-wayland
@@ -108,6 +107,8 @@ in
     ]; 
     systemdTargets = [ config.wayland.systemd.target ];
   };
+
+  services.lxqt-policykit-agent.enable = true;
 
   programs.foot = {
     enable = true;
