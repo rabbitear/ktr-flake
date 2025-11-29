@@ -490,6 +490,14 @@ in
             icon = "";
             items = [
               {
+                label = "Dismiss ALL notifications";
+                icon = "mako";
+                action = {
+                  name = "Execute";
+                  command = "makoctl dismiss --all";
+                };
+              }
+              {
                 label = "Alacritty";
                 icon = "alacritty";
                 action = {
