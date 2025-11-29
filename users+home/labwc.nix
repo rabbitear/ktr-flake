@@ -214,6 +214,18 @@ in
               "@command" = "${runraisehide}/bin/runraisehide firefox";
             };
           }
+          {
+            "@key" = "W-k";
+            action = {
+              "@name" = "PreviousWindow";
+            };
+          }
+          {
+            "@key" = "W-j";
+            action = {
+              "@name" = "NextWindow";
+            };
+          }
           # <keybind key="W-Esc"><action command="loot" name="Execute"></action></keybind>
           {
             "@key" = "W-d";
@@ -534,6 +546,18 @@ in
                 action = {
                   name = "SendToDesktop";
                   to = "left";
+                };
+              }
+              {
+                label = "NextWindow";
+                action = {
+                  name = "NextWindow";
+                };
+              }
+              {
+                label = "PreviousWindow";
+                action = {
+                  name = "PreviousWindow";
                 };
               }
             ];
