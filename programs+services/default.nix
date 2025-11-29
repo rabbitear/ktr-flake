@@ -148,7 +148,6 @@
       gh
       duf
       ncdu
-      mutt
       w3m
       lynx
       fd
