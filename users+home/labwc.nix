@@ -444,17 +444,44 @@ in
             items = [
               # More window flags and actions can be added here.
               {
+                label = "Fullscreen (toggle)";
+                action = {
+                  name = "ToggleFullscreen";
+                };
+              }
+              {
                 label = "Decorations";
                 action = {
                   name = "ToggleDecorations";
                 };
               }
               {
-                label = "Always On Top";
+                label = "Always On Top (toggle)";
                 action = {
                   name = "ToggleAlwayOnTop";
                 };
               }
+              {
+                label = "Sticky (toggle)";
+                action = {
+                  name = "ToggleOmnipresent";
+                };
+              }
+              {
+                label = "Lower";
+                action = {
+                  name = "Lower";
+                };
+              }
+
+              {
+                label = "Raise";
+                action = {
+                  name = "Raise";
+                };
+              }
+
+
             ];
           }
           {
