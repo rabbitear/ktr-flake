@@ -353,7 +353,8 @@ in
                 "@action" = "Press";
                 action = [
                   {
-                    "@name" = "ToggleMagnify";
+                    "@name" = "ShowMenu";
+                    "@menu" = "window-ops";
                   }
                 ];
               }
