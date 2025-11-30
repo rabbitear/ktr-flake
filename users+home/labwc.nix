@@ -384,7 +384,16 @@ in
         followMouseRequiresMovement = false;
       };
       menu = {
+        ignoreButtonReleasePeriod = 250;
         showIcons = true;
+      };
+      magnifier = {
+        # with width and height use -1 for fullscreen
+        width = 400;
+        height = 400;
+        initScale = 2;
+        increment = 2.0;
+        useFilter = true;
       };
     };
     menu = [
