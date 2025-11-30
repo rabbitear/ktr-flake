@@ -262,6 +262,8 @@
     flatpak
     flatpak-xdg-utils
     xdg-desktop-portal-gnome
+    xdg-desktop-portal-wlr
+    xdg-utils
     #caligula
     #tts
     #mbrola
