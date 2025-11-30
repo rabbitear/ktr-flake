@@ -243,6 +243,9 @@
     lxqt.lxqt-runner
     lxqt.lxqt-wayland-session
 
+    # GUI Applications
+    pyradio
+
     # networking tools
     mtr # A network diagnostic tool
     iperf3
