@@ -169,6 +169,7 @@ in
       "swaybg -c '#113300' >/dev/null 2>&1 &"
       "systemctl --user restart wlr-randr-setup.service &"
       "[[ $(hostname) == sasha ]] && wlr-randr --output HDMI-A-1 --right-of DP-4"
+      "lxqt-panel >/dev/null 2>&1 &"
     ];
     environment = [
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
