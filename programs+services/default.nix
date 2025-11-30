@@ -56,6 +56,11 @@
   # These may not be needed...
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gnome-settings-daemon.enable = true;
+  services.xserver.desktopManager.lxqt = {
+    enable = true;
+    iconThemePackage = pkgs.kdePackages.breeze-icons;
+    extraPackages = with pkgs; [ xscreensaver ];
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -245,6 +250,19 @@
     lxqt.lxqt-config
     lxqt.lxqt-qtplugin
     lxqt.lxqt-themes
+    lxqt.lxqt-admin
+    lxqt.lxqt-archiver
+    lxqt.lxqt-menu-data
+    lxqt.lxqt-sudo
+    lxqt.lxqt-about
+    lxqt.liblxqt
+    lxqt.libdbusmenu-lxqt
+    lxqt.qlipper
+    lxqt.obconf-qt
+    lxqt.qterminal
+    lxqt.libsysstat
+    lxqt.pcmanfm-qt
+    lxqt.pavucontrol-qt
 
     # GUI Applications
     pyradio
