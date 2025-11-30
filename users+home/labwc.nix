@@ -428,6 +428,16 @@ in
         icon = "";
         items = [
           {
+            label = "Magnify";
+            icon = "search";
+            action = {
+              name = "ToggleMagnify";
+            };
+          }
+          {
+            separator = { };
+          }
+          {
             label = "Maximize (toggle)";
             icon = "";
             action = {
@@ -566,13 +576,6 @@ in
           }
           {
             separator = { };
-          }
-          {
-            label = "Magnify";
-            icon = "search";
-            action = {
-              name = "ToggleMagnify";
-            };
           }
           {
             label = "Take Screenshot";
