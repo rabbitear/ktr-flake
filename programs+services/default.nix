@@ -263,9 +263,12 @@
     lxqt.libsysstat
     lxqt.pcmanfm-qt
     lxqt.pavucontrol-qt
+    kdePackages.layer-shell-qt
+    xdg-user-dirs
 
     # GUI Applications
     pyradio
+    qalculate-qt
 
     # networking tools
     mtr # A network diagnostic tool
