@@ -389,7 +389,7 @@ in
       };
       magnifier = {
         # with width and height use -1 for fullscreen
-        width = 400;
+        width = 600;
         height = 400;
         initScale = 2;
         increment = 2.0;
