@@ -235,6 +235,14 @@
     sops
     age
 
+    # I can use some of these tools in labwc
+    lxqt.lxqt-about
+    lxqt.lximage-qt
+    lxqt.lxqt-panel
+    lxqt.lxqt-powermanagement
+    lxqt.lxqt-runner
+    lxqt.lxqt-wayland-session
+
     # networking tools
     mtr # A network diagnostic tool
     iperf3
