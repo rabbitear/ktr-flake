@@ -242,6 +242,9 @@
     lxqt.lxqt-powermanagement
     lxqt.lxqt-runner
     lxqt.lxqt-wayland-session
+    lxqt.lxqt-config
+    lxqt.lxqt-qtplugin
+    lxqt.lxqt-themes
 
     # GUI Applications
     pyradio
