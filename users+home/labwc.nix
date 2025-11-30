@@ -353,8 +353,21 @@ in
                 "@action" = "Press";
                 action = [
                   {
-                    "@name" = "ShowMenu";
-                    "@menu" = "client-menu";
+                    "@name" = "ToggleMagnify";
+                  }
+                ];
+              }
+            ];
+          }
+          {
+            "@name" = "Desktop";
+            mousebind = [
+              {
+                "@button" = "Middle";
+                "@action" = "Press";
+                action = [
+                  {
+                    "@name" = "ToggleMagnify";
                   }
                 ];
               }
