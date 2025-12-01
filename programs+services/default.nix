@@ -319,6 +319,11 @@
     radeontop
     pavucontrol
 
+    # utils
+    sway-audio-idle-inhibit
+    bemenu
+    wf-recorder
+
     ## Even more fun stuff
     #ffmpeg-full        # ffmpeg always fun to have around
     zmap
