@@ -285,6 +285,12 @@
     ltrace # library call monitoring
     lsof # list open files
 
+    # tui?
+    clipse
+
+    # wayland power management
+    wlopm
+
     # other misc tools
     flatpak
     flatpak-xdg-utils

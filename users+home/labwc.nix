@@ -160,7 +160,6 @@ in
     };
   };
 
-
   wayland.windowManager.labwc = {
     enable = true;
     autostart = [
@@ -176,6 +175,9 @@ in
       "XKB_DEFAULT_LAYOUT=us"
       "QT_QPA_PLATFORMTHEME=qt6ct"
       "GDK_DEBUG=no-portals"
+      "XCURSOR_THEME=Adwaita"
+      "XCURSOR_SIZE=24"
+      "XKB_DEFAULT_LAYOUT=us"
     ];
     rc = {
       theme = {
