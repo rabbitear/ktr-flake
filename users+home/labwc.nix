@@ -438,6 +438,18 @@ in
               "@name" = "Maximize";
             };
           }
+          {
+            "@identifier" = "journalctlfollow";
+            "@matchOnce" = "yes";
+            "@skipTaskbar" = "yes";
+            "@serverDecoration" = "no";
+            "@ignoreFocusRequest" = "yes";
+            "@skipWindowSwitcher" = "yes";
+            "@fixedPosition" = "yes";
+            action = {
+              "@name" = "ToggleAlwaysOnBottom";
+            };
+          }
         ];
       };
       focus = {
