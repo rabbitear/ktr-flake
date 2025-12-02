@@ -370,6 +370,38 @@ in
               }
             ];
           }
+          {
+            "@name" = "All";
+            mousebind = [
+              {
+                "@button" = "Side";
+                "@action" = "Press";
+                action = [
+                  {
+                    "@name" = "ToggleMagnify";
+                  }
+                ];
+              }
+            ];
+          }
+
+
+          {
+            "@name" = "All";
+            mousebind = [
+              {
+                "@button" = "Extra";
+                "@action" = "Press";
+                action = [
+                  {
+                    "@name" = "Execute";
+                    "@command" = "${take_screenshot}/bin/take_screenshot";             
+                  }
+                ];
+              }
+            ];
+          }
+            
         ];
       };
 
