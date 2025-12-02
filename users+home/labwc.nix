@@ -475,6 +475,15 @@ in
                   command = "makoctl dismiss --all";
                 };
               }
+
+              {
+                label = "Take Screenshot";
+                icon = "screenshot";
+                action = {
+                  "name" = "Execute";
+                  "command" = "${take_screenshot}/bin/take_screenshot";             
+                };
+              }
               {
                 separator = { };
               }
