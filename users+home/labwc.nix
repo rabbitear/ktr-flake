@@ -40,8 +40,6 @@ in
     runraisehide
     notify_send_time
     swaybg
-    fuzzel
-    foot
     grim
     slurp
     libnotify
@@ -49,7 +47,6 @@ in
     wl-clipboard
     wlrctl
     wlr-randr
-    wtype
     wev
     wayland-utils
     wayland-pipewire-idle-inhibit
@@ -57,7 +54,6 @@ in
     labwc-menu-generator
     labwc-gtktheme
     labwc-tweaks-gtk
-    #(writeScriptBin "cliphist-fuzzel-img" (builtins.readFile ../my-adiion/cliphist-fuzzel-img.sh))
   ];
 
 # this could be a window switching script.
@@ -163,8 +159,6 @@ in
   wayland.windowManager.labwc = {
     enable = true;
     autostart = [
-      #"wayvnc &"
-      #"waybar &"
       "swaybg -c '#113300' >/dev/null 2>&1 &"
       "systemctl --user restart wlr-randr-setup.service &"
       "[[ $(hostname) == sasha ]] && wlr-randr --output HDMI-A-1 --right-of DP-4"
@@ -192,7 +186,7 @@ in
       keyboard = {
         default = true;
         repeatRate = 25;    # rate keypresses are repeated per second.
-        repeatDelay = 600;  # delay before keypress are repeated in ms.
+        repeatDelay = 300;  # delay before keypress are repeated in ms.
         keybind = [
           # <keybind key="W-Return"><action command="foot" name="Execute"></action></keybind>
           {
@@ -673,9 +667,9 @@ in
         terminal = "${pkgs.foot}/bin/foot";
         layer = "overlay";
         image-size-ratio = 0.8;
-        dpi-aware = "yes";
+        dpi-aware = "no";
       };
-      colors.background = "af0f0f3f";
+      colors.background = "afaf00ff";
     };
   };
 }
