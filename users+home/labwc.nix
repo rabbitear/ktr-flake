@@ -53,7 +53,7 @@ in
     wayland-utils
     wayland-pipewire-idle-inhibit
     egl-wayland
-    wofi
+    wofi             # testing see if works with screenshots better 
     imagemagick
     labwc-menu-generator
     labwc-gtktheme
