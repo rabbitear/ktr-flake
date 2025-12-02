@@ -247,8 +247,7 @@
     age
 
     # system services
-    bluez-experimental
-    bluez-tools
+    bluez5-experimental
     blueman
 
     # I can use some of these tools in labwc

@@ -6,16 +6,8 @@
   services.searx = {
     enable = true;
     package = pkgs.searxng;
-    #environmentFile = "/home/kreator/.searxng.env";
     redisCreateLocally = true;
     settings = {
-      server = {
-        base_url = "http://${config.networking.hostName}:3001";
-        secret_key = "superdubberultrasecretkey";
-        limiter = false;
-        bind_address = "0.0.0.0";
-        port = 3001;
-      };
       general = {
         debug = false;
         instance_name = "${config.networking.hostName}SearX";
@@ -23,6 +15,17 @@
         contact_url = false;
         privacypolicy_url = false;
         enable_metrics = false;
+      };
+      server = {
+        base_url = "http://${config.networking.hostName}";
+        port = 3001;
+        secret_key = "superdubberultrasecretkey";
+        # secret_key = config.sops.secrets.searx.path;
+        limiter = false;
+        public_instance = false;
+        image_proxy = true;
+        method = "GET";
+        bind_address = "::1";
       };
       ui = {
         static_use_hash = true;
@@ -36,14 +39,15 @@
         hotkeys = "vim";
         url_formatting = "pretty";
       };
-      search = {
-        safe_search = 2;
-        autocomplete_min = 2;
-        autocomplete = "duckduckgo";
-        ban_time_on_fail = 5;
-        formats = [ "html" "json" "rss" ];
-        max_ban_time_on_fail = 120;
-      };
+      # ktr - taking out failtoban, because its extra
+      # search = {
+      #   safe_search = 2;
+      #   autocomplete_min = 2;
+      #   autocomplete = "duckduckgo";
+      #   ban_time_on_fail = 5;
+      #   formats = [ "html" "json" "rss" ];
+      #   max_ban_time_on_fail = 120;
+      # };
       # Search engines
       engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
         "duckduckgo".disabled = false;
