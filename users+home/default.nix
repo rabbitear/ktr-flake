@@ -179,6 +179,10 @@ in
   programs.kitty = {
     enable = true;
     themeFile = "SpaceGray_Eighties";
+    font = {
+      name = "fantasque-sans-mono";
+      size = 16;
+    };
   };
 
   home.activation.importGPGKeys = lib.hm.dag.entryAfter ["writeBoundary"] ''
