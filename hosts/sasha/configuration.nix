@@ -20,6 +20,8 @@
   networking.hostName = "sasha"; # Define your hostname.
   networking.networkmanager.enable = true;
 
+  hardware.enableAllFirmware = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
