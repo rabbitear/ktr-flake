@@ -181,7 +181,7 @@ in
     themeFile = "SpaceGray_Eighties";
     font = {
       name = "fantasque-sans-mono";
-      size = 16;
+      size = 15;
     };
   };
 
