@@ -425,10 +425,23 @@ in
         icon = "";
         items = [
           {
+            label = "Magnify";
+            icon = "search";
+            action = {
+              name = "ToggleMagnify";
+            };
+          }
+          {
+            separator = { };
+          }
+          {
             menuId = "openbox_pipe_menu";
             icon = "xterm";
             label = "Apps...";
             execute = "${pkgs.labwc-menu-generator}/bin/labwc-menu-generator --desktop --icons --pipemenu --terminal-prefix=${pkgs.foot}/bin/foot";
+          }
+          {
+            separator = { };
           }
           {
             label = "Alacrity";
@@ -437,6 +450,17 @@ in
               name = "Execute";
               command = "alacritty";
             };
+          }
+          {
+            label = "Kitty";
+            icon = "kitty";
+            action = {
+              name = "Execute";
+              command = "kitty";
+            };
+          }
+          {
+            separator = { };
           }
           {
             label = "Reconfigure";
