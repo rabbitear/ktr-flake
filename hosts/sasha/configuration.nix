@@ -20,6 +20,21 @@
   networking.hostName = "sasha"; # Define your hostname.
   networking.networkmanager.enable = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = true;
+        Enable = "Source,Sink,Media,Socket";
+      };
+      Policy = {
+        AutoEnable = true;
+      };
+    };
+  };
+
   time.timeZone = "America/Anchorage";
   system.stateVersion = "25.05"; # Did you read the comment?
 }

@@ -79,6 +79,9 @@
     ];
   };
 
+  # Bluetooth pairing devices
+  services.blueman.enable = true;
+
   # Tailscale :)
   services.tailscale.enable = true;
   services.tailscale.interfaceName = "userspace-networking";
