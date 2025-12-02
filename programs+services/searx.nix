@@ -7,7 +7,7 @@
     enable = true;
     package = pkgs.searxng;
     #environmentFile = "/home/kreator/.searxng.env";
-    #redisCreateLocally = true;
+    redisCreateLocally = true;
     settings = {
       server = {
         base_url = "http://${config.networking.hostName}:3001";
