@@ -1,9 +1,9 @@
 { pkgs, ...}:
 
 {
-  imports = [
-    ../my-addition/mcpo.nix
-  ];
+  # imports = [
+  #   ../my-addition/mcpo.nix
+  # ];
 
   nixpkgs.overlays = [
     (final: prev: {
@@ -26,15 +26,17 @@
     openFirewall = true;
   };
 
-  services.mcpo = {
-    enable = true;
-    port = 3003;
-    configFile = ../my-addition/mcpo-config.json;
-    hotReload = true;
-  };
-  networking.firewall.allowedTCPPorts = [ 3002 3003 ];
+  # services.mcpo = {
+  #   enable = true;
+  #   port = 3003;
+  #   configFile = ../my-addition/mcpo-config.json;
+  #   hotReload = true;
+  # };
+  # 3003 for mcpo
+  # networking.firewall.allowedTCPPorts = [ 3002 3003 ];
+  networking.firewall.allowedTCPPorts = [ 3002 ];
 
-  # This is for the mcpo server, many mcp servers use npx.
+  #This is for the mcpo server, many mcp servers use npx.
   # environment.systemPackages = [
   #   pkgs.nodejs
   # ];
