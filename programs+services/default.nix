@@ -249,6 +249,7 @@
     # system services
     bluez-experimental
     bluez-tools
+    blueman
 
     # I can use some of these tools in labwc
     lxqt.lxqt-about

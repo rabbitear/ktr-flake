@@ -27,7 +27,7 @@
       General = {
         Experimental = true;
         FastConnectable = true;
-        Enable = "Source,Sink,Media,Socket";
+        #Enable = "Source,Sink,Media,Socket";
       };
       Policy = {
         AutoEnable = true;
