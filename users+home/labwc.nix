@@ -216,6 +216,14 @@ in
               "@command" = "${runraisehide}/bin/runraisehide firefox";
             };
           }
+          # Toggle qutebrowser
+          {
+            "@key" = "W-A-Space";
+            action = {
+              "@name" = "Execute";
+              "@command" = "${runraisehide}/bin/runraisehide qutebrowser";
+            };
+          }
           {
             "@key" = "W-k";
             action = {
