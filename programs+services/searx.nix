@@ -40,14 +40,14 @@
         url_formatting = "pretty";
       };
       # ktr - taking out failtoban, because its extra
-      # search = {
-      #   safe_search = 2;
-      #   autocomplete_min = 2;
-      #   autocomplete = "duckduckgo";
-      #   ban_time_on_fail = 5;
-      #   formats = [ "html" "json" "rss" ];
-      #   max_ban_time_on_fail = 120;
-      # };
+      search = {
+        safe_search = 2;
+        autocomplete_min = 2;
+        autocomplete = "duckduckgo";
+        #ban_time_on_fail = 5;
+        #formats = [ "html" "json" "rss" ];
+        #max_ban_time_on_fail = 120;
+      };
       # Search engines
       engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
         "duckduckgo".disabled = false;
