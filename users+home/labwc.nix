@@ -374,7 +374,7 @@ in
             "@name" = "All";
             mousebind = [
               {
-                "@button" = "Side";
+                "@button" = "Extra";
                 "@action" = "Press";
                 action = [
                   {
@@ -390,7 +390,7 @@ in
             "@name" = "All";
             mousebind = [
               {
-                "@button" = "Extra";
+                "@button" = "Side";
                 "@action" = "Press";
                 action = [
                   {
