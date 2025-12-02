@@ -710,8 +710,8 @@ in
             label = "Take Screenshot";
             icon = "screenshot";
             action = {
-              "name" = "Execute";
-              "command" = "${take_screenshot}/bin/take_screenshot";             
+              name = "Execute";
+              command = "${take_screenshot}/bin/take_screenshot";             
             };
           }
         ];
