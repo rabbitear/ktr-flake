@@ -61,6 +61,12 @@
           mode = "0400";
           #restartUnits = [ "gpg-import.service" ];
         };
+        "searx" = {
+          sopsFile = ../crypt/local-config.yaml;
+          owner = "searx";
+          group = "nogroup";
+          mode = "0600";
+        };
       };
     };
   };

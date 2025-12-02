@@ -9,6 +9,7 @@ jrnl_git_repo: ENC[AES256_GCM,data:3AJHJkZXuT9hbZlvfA8oBrfth/sIfoFNobkE8M5XoabVO
 #ENC[AES256_GCM,data:lXqPnDtH+IVGV3Z8wS1QRz0b,iv:BIK95R0srJJWbrj7YSXjKoaf99bNBr2prDAZF7egXWc=,tag:gjx38460ssPNkB6+lTEmjQ==,type:comment]
 #ENC[AES256_GCM,data:jti02pTivto9MK8=,iv:0CkT0QRxBzpvr7ksw0J29PaMhKvTUCRR+lx2vLFup2E=,tag:PvZtyV86cJ+nrxOtmlaxzQ==,type:comment]
 #ENC[AES256_GCM,data:EUeG8YDqaIa4tgCc,iv:Uh5gwtu3KyCSLKoTnZeTBBy8cEP4SPUhsSGOgKEdK2o=,tag:Vcuf7W+EcPqMQLgrA7oRTw==,type:comment]
+searx: ENC[AES256_GCM,data:9i+JfE1jWDFUI3RyGMN1vDOENPb/c9bTMzAkog9hPH2Awax1ODIfllQ+LfFI4Djh+A6Ujw==,iv:884Lm6Z+/S7xZZBmiGDO7fspwcae0Xg+5BN/zwObduU=,tag:9ZOpm7AtAp3ogjSVC6Gc+Q==,type:str]
 sops:
     age:
         - recipient: age1ygmszd82lgrcmmt8kc0hv78t38k0djfx9ff6gn0le2m4he4yu99sczqtxl
@@ -56,7 +57,7 @@ sops:
             UzZ0WWh6Tm5UMlVyeE9pU1FHZWlIa3MKZccVXirgS/Y+RhLfTj4CjWtW+fEsUcfx
             XaqvEq3IwKUxz1FasNsA9lJjGKxY6e4h5Y0D+7cwJ6YP9vDlYmFz5Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-11-05T01:47:23Z"
-    mac: ENC[AES256_GCM,data:QKxS768Ydc2TVI1avi3X8ELiPX6XMPw8WnZhvxr2MKlqfpjGgx9/+VhpsH0XrrmHyxqtxy+cio8RsuKlfYsuHaql9mscq4HEsdQcOa1zpkOiNwEKEyqophfidlgP9kqXUJLfo4efJhpI0+gewABv0ZKc+8SjMqTokJ+4a3NkMLw=,iv:h9CNygRbx3HU0Ucwc7AWdc8mqglJfnkL3dS1uXeYeeY=,tag:SAnjnnskjvYxVOhTtOO+1Q==,type:str]
+    lastmodified: "2025-12-02T14:59:18Z"
+    mac: ENC[AES256_GCM,data:JPGW9gQTrW3fU/FnhnLHpijUyQpJihRz5InzSZK86rErAW5HNGfx23r9nQIo/TmnwraHM4MU+ku3vXwVOFi+/8XDTw3Ttd+wQSuKMtBON6fT046clPvuFJe4JYpmQBYbDMgBANYUE79naHBK86maTEx8Mcp3Z5Wh9YJhC/6x3Ck=,iv:ooxJuC7RSXg/vrN2KXTPC7dhb/9aFvcZLtwByONoLzE=,tag:e5aD5ag3WiS5kuIk5tEzKQ==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.11.0
