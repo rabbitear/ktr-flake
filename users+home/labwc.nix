@@ -167,7 +167,7 @@ in
       "systemctl --user restart wlr-randr-setup.service &"
       "[[ $(hostname) == sasha ]] && wlr-randr --output HDMI-A-1 --right-of DP-4"
       "lxqt-panel >/dev/null 2>&1 &"
-      "foot --app-id=journalfollow --maximized --title=journalfollow 'journalctl -f' &"
+      "foot --app-id=journalfollow --maximized --title=journalfollow journalctl -f 2>/dev/null &"
     ];
     environment = [
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
@@ -440,7 +440,7 @@ in
             };
           }
           {
-            "@identifier" = "journalctlfollow";
+            "@identifier" = "journalfollow";
             "@matchOnce" = "yes";
             "@skipTaskbar" = "yes";
             "@serverDecoration" = "no";
