@@ -7,7 +7,7 @@ let
       #       if it is clicked on (notify action) than view the photo. 
       GEOMETRY="$(slurp)"
       grim -g "$GEOMETRY" - | wl-copy
-      notify-send "screenshot" "took screenshot"
+      notify-send --expire-time=3800 "screenshot" "took screenshot"
     '';  
   };
   runraisehide = pkgs.writeShellApplication {
