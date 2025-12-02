@@ -157,6 +157,7 @@
       lynx
       fd
       dmenu
+      dmenu-bluetooth
       bemenu
       fuzzel
       duckdb
@@ -239,6 +240,10 @@
     gnupg1
     sops
     age
+
+    # system services
+    bluez-experimental
+    bluez-tools
 
     # I can use some of these tools in labwc
     lxqt.lxqt-about
