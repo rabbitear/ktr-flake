@@ -53,6 +53,7 @@ in
     wayland-utils
     wayland-pipewire-idle-inhibit
     egl-wayland
+    wofi
     imagemagick
     labwc-menu-generator
     labwc-gtktheme
