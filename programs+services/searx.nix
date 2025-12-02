@@ -1,7 +1,7 @@
 # This build fails if the env is not setup in the home directory.
 # FIXME:
 #   * Do not depend on the env files in that home directory!
-{pkgs, lib, config, ...}:
+{pkgs, config, ...}:
 {
   services.searx = {
     enable = true;
@@ -17,7 +17,7 @@
         enable_metrics = false;
       };
       server = {
-        base_url = "http://${config.networking.hostName}";
+        #base_url = "http://.networking.hostName}:3001";
         port = 3001;
         secret_key = "superdubberultrasecretkey";
         # secret_key = config.sops.secrets.searx.path;
@@ -49,70 +49,70 @@
         #max_ban_time_on_fail = 120;
       };
       # Search engines
-      engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
-        "duckduckgo".disabled = false;
-        "brave".disabled = false;
-        "bing".disabled = true;
-        "mojeek".disabled = false;
-        "mwmbl".disabled = false;
-        "mwmbl".weight = 0.4;
-        "qwant".disabled = true;
-        "crowdview".disabled = false;
-        "crowdview".weight = 0.5;
-        "curlie".disabled = true;
-        "ddg definitions".disabled = false;
-        "ddg definitions".weight = 2;
-        "wikibooks".disabled = false;
-        "wikidata".disabled = false;
-        "wikiquote".disabled = true;
-        "wikisource".disabled = true;
-        "wikispecies".disabled = false;
-        "wikispecies".weight = 0.5;
-        "wikiversity".disabled = false;
-        "wikiversity".weight = 0.5;
-        "wikivoyage".disabled = false;
-        "wikivoyage".weight = 0.5;
-        "currency".disabled = true;
-        "dictzone".disabled = true;
-        "lingva".disabled = true;
-        "bing images".disabled = false;
-        "brave.images".disabled = true;
-        "duckduckgo images".disabled = true;
-        "google images".disabled = false;
-        "qwant images".disabled = true;
-        "1x".disabled = true;
-        "artic".disabled = false;
-        "deviantart".disabled = false;
-        "flickr".disabled = true;
-        "imgur".disabled = false;
-        "library of congress".disabled = false;
-        "material icons".disabled = true;
-        "material icons".weight = 0.2;
-        "openverse".disabled = false;
-        "pinterest".disabled = true;
-        "svgrepo".disabled = false;
-        "unsplash".disabled = false;
-        "wallhaven".disabled = false;
-        "wikicommons.images".disabled = false;
-        "yacy images".disabled = true;
-        "bing videos".disabled = false;
-        "brave.videos".disabled = true;
-        "duckduckgo videos".disabled = true;
-        "google videos".disabled = false;
-        "qwant videos".disabled = false;
-        "dailymotion".disabled = true;
-        "google play movies".disabled = true;
-        "invidious".disabled = true;
-        "odysee".disabled = true;
-        "peertube".disabled = false;
-        "piped".disabled = true;
-        "rumble".disabled = false;
-        "sepiasearch".disabled = false;
-        "vimeo".disabled = true;
-        "youtube".disabled = false;
-        "brave.news".disabled = true;
-        "google news".disabled = true;
-      };
+      # engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
+      #   "duckduckgo".disabled = false;
+      #   "brave".disabled = false;
+      #   "bing".disabled = true;
+      #   "mojeek".disabled = false;
+      #   "mwmbl".disabled = false;
+      #   "mwmbl".weight = 0.4;
+      #   "qwant".disabled = true;
+      #   "crowdview".disabled = false;
+      #   "crowdview".weight = 0.5;
+      #   "curlie".disabled = true;
+      #   "ddg definitions".disabled = false;
+      #   "ddg definitions".weight = 2;
+      #   "wikibooks".disabled = false;
+      #   "wikidata".disabled = false;
+      #   "wikiquote".disabled = true;
+      #   "wikisource".disabled = true;
+      #   "wikispecies".disabled = false;
+      #   "wikispecies".weight = 0.5;
+      #   "wikiversity".disabled = false;
+      #   "wikiversity".weight = 0.5;
+      #   "wikivoyage".disabled = false;
+      #   "wikivoyage".weight = 0.5;
+      #   "currency".disabled = true;
+      #   "dictzone".disabled = true;
+      #   "lingva".disabled = true;
+      #   "bing images".disabled = false;
+      #   "brave.images".disabled = true;
+      #   "duckduckgo images".disabled = true;
+      #   "google images".disabled = false;
+      #   "qwant images".disabled = true;
+      #   "1x".disabled = true;
+      #   "artic".disabled = false;
+      #   "deviantart".disabled = false;
+      #   "flickr".disabled = true;
+      #   "imgur".disabled = false;
+      #   "library of congress".disabled = false;
+      #   "material icons".disabled = true;
+      #   "material icons".weight = 0.2;
+      #   "openverse".disabled = false;
+      #   "pinterest".disabled = true;
+      #   "svgrepo".disabled = false;
+      #   "unsplash".disabled = false;
+      #   "wallhaven".disabled = false;
+      #   "wikicommons.images".disabled = false;
+      #   "yacy images".disabled = true;
+      #   "bing videos".disabled = false;
+      #   "brave.videos".disabled = true;
+      #   "duckduckgo videos".disabled = true;
+      #   "google videos".disabled = false;
+      #   "qwant videos".disabled = false;
+      #   "dailymotion".disabled = true;
+      #   "google play movies".disabled = true;
+      #   "invidious".disabled = true;
+      #   "odysee".disabled = true;
+      #   "peertube".disabled = false;
+      #   "piped".disabled = true;
+      #   "rumble".disabled = false;
+      #   "sepiasearch".disabled = false;
+      #   "vimeo".disabled = true;
+      #   "youtube".disabled = false;
+      #   "brave.news".disabled = true;
+      #   "google news".disabled = true;
+      # };
     # Enabled plugins
       enabled_plugins = [
         "Basic Calculator"
