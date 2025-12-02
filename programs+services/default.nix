@@ -178,6 +178,8 @@
       nix-ai-tools.opencode
       wl-clipboard
       kitty
+      kitty-img
+      kitty-themes
       alacritty
       alacritty-graphics
       alacritty-theme

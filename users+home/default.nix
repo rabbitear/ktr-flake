@@ -176,6 +176,11 @@ in
      };
   };
 
+  programs.kitty = {
+    enable = true;
+    themeFile = "SpaceGray_Eighties";
+  };
+
   home.activation.importGPGKeys = lib.hm.dag.entryAfter ["writeBoundary"] ''
     # Import GPG private keys from sops into user's GPG keyring
     # the sops secrets are now hardcoded here, if I change them in the sops file
