@@ -244,6 +244,13 @@ in
               "@command" = "${pkgs.cliphist}/bin/cliphist-fuzzel-img";
             };
           }
+          {
+            "@key" = "W-S-c";
+            action = {
+              "@name" = "Execute";
+              "@command" = "${pkgs.cliphist}/bin/cliphist-wofi-img";
+            };
+          }
           # Magnifier
           {
             "@key" = "W-z";
