@@ -43,6 +43,7 @@ in
     swaybg
     grim
     slurp
+    qiv
     libnotify
     libsixel
     wl-clipboard
@@ -52,6 +53,7 @@ in
     wayland-utils
     wayland-pipewire-idle-inhibit
     egl-wayland
+    imagemagick
     labwc-menu-generator
     labwc-gtktheme
     labwc-tweaks-gtk
