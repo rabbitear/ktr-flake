@@ -8,7 +8,7 @@
     redisCreateLocally = true;
     settings = {
       server = {
-        bind_address = "::1";
+        bind_address = "0.0.0.0";
         port = 3001;
         secret_key = "somekeythatissupposetoberandombutitisnotrandomhere";
         #serect_key = config.sops.secrets.searx.path;
