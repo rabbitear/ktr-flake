@@ -167,6 +167,7 @@ in
       "systemctl --user restart wlr-randr-setup.service &"
       "[[ $(hostname) == sasha ]] && wlr-randr --output HDMI-A-1 --right-of DP-4"
       "lxqt-panel >/dev/null 2>&1 &"
+      "foot --app-id=journalfollow --maximized --title=journalfollow 'journalctl -f' &"
     ];
     environment = [
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
@@ -217,13 +218,13 @@ in
             };
           }
           # Toggle qutebrowser
-          {
-            "@key" = "W-A-Space";
-            action = {
-              "@name" = "Execute";
-              "@command" = "${runraisehide}/bin/runraisehide qutebrowser";
-            };
-          }
+          # {
+          #   "@key" = "W-A-Space";
+          #   action = {
+          #     "@name" = "Execute";
+          #     "@command" = "${runraisehide}/bin/runraisehide qutebrowser";
+          #   };
+          # }
           {
             "@key" = "W-k";
             action = {
@@ -470,11 +471,6 @@ in
       };
     };
     menu = [
-      {
-        label = "pipemenu";
-        menuId = "menu";
-        execute = "/home/user/nix/scripts/pipe.sh";
-      }
       ### Root Menu
       {
         menuId = "root-menu";
@@ -537,8 +533,8 @@ in
                 label = "Take Screenshot";
                 icon = "screenshot";
                 action = {
-                  "name" = "Execute";
-                  "command" = "${take_screenshot}/bin/take_screenshot";             
+                  name = "Execute";
+                  command = "${take_screenshot}/bin/take_screenshot";             
                 };
               }
               {
@@ -615,7 +611,7 @@ in
               {
                 label = "Always On Top (toggle)";
                 action = {
-                  name = "ToggleAlwayOnTop";
+                  name = "ToggleAlwaysOnTop";
                 };
               }
               {
