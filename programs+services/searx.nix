@@ -14,6 +14,7 @@
         #serect_key = config.sops.secrets.searx.path;
       };
       general = {
+        debug = true;
         donation_url = false;
         contact_url = false;
         privacypolicy_url = false;
