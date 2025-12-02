@@ -182,6 +182,7 @@ in
     font = {
       name = "fantasque-sans-mono";
       size = 15;
+      package = pkgs.nerd-fonts.fantasque-sans-mono;
     };
   };
 
