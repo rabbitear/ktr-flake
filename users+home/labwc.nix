@@ -463,10 +463,28 @@ in
             separator = { };
           }
           {
-            label = "Reconfigure";
-            action = {
-              name = "Reconfigure";
-            };
+            menuId = "root-utils";
+            label = "Utils...";
+            icon = "terminal";
+            items = [ 
+              {
+                label = "Dismiss ALL notifications";
+                icon = "mako";
+                action = {
+                  name = "Execute";
+                  command = "makoctl dismiss --all";
+                };
+              }
+              {
+                separator = { };
+              }
+              {
+                label = "Reconfigure";
+                action = {
+                  name = "Reconfigure";
+                };
+              }
+            ];
           }
         ];
       }
