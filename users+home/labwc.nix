@@ -167,7 +167,14 @@ in
       "systemctl --user restart wlr-randr-setup.service &"
       "[[ $(hostname) == sasha ]] && wlr-randr --output HDMI-A-1 --right-of DP-4"
       "lxqt-panel >/dev/null 2>&1 &"
-      "foot --app-id=journalfollow --maximized --title=journalfollow journalctl -f 2>/dev/null &"
+      "foot --app-id=journalfollow \
+        --maximized \
+        --title=journalfollow \
+        --override='main.font=monospace=11' \
+        --override='colors.background=000000' \
+        --override='colors.alpha=0.1' \
+        journalctl -f \
+        2>/dev/null &"
     ];
     environment = [
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
