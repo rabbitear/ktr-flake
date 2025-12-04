@@ -279,6 +279,7 @@
     # GUI Applications
     pyradio
     qalculate-qt
+    chromium
 
     # networking tools
     mtr # A network diagnostic tool
