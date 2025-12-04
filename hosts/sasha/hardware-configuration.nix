@@ -10,8 +10,8 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  #boot.kernelModules = [ "kvm-amd" "bluetooth" "amdgpu" ];
-  boot.kernelModules = [ "bluetooth" ];
+  boot.kernelModules = [ "kvm-amd" "bluetooth" "amdgpu" ];
+  #boot.kernelModules = [ "bluetooth" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
@@ -40,10 +40,10 @@
 
   ### I'm putting ROCm stuff here.
   # Lets try out the new The Rock on Sasha :)
-  #hardware.amdgpu.opencl.enable = true;
+  hardware.amdgpu.opencl.enable = true;
   hardware.graphics.enable = true;
 
-  environment.systemPackages = with pkgs.rocmPackages; [  
+  #environment.systemPackages = with pkgs.rocmPackages; [  
   #packages = with pkgs.rocmPackages_6_4; [
     #clr
     #rocblas
@@ -54,7 +54,7 @@
     #hsakmt
     #amdsmi
     #llvm.llvm
-  ];
+  #];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
