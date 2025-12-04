@@ -13,5 +13,6 @@
   environment.systemPackages = [
     pkgs.ollama-vulkan
     pkgs.llama-cpp-vulkan
+    pkgs.whisper-cpp-vulkan
   ];
 }
