@@ -328,6 +328,7 @@
     #nvtopPackages.nvidia
     radeontop
     pavucontrol
+    ungoogled-chromium
 
     # utils
     sway-audio-idle-inhibit
