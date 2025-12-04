@@ -36,7 +36,7 @@
       };
     };
   };
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  #services.xserver.videoDrivers = [ "amdgpu" ];
 
   time.timeZone = "America/Anchorage";
   system.stateVersion = "25.05"; # Did you read the comment?
