@@ -310,6 +310,13 @@ in
               "@name" = "Iconify";
             };
           }
+          {
+            "@key" = "W-S-h";
+            action = {
+              "@name" = "Execute";
+              "@command" = "makoctl dismiss --all";
+            };
+          }
           # Lower
           {
             "@key" = "W-l";
