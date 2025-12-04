@@ -187,7 +187,8 @@
         modules = [
           ./hosts/sasha/configuration.nix
           ./programs+services
-          ./programs+services/ollama-rocm.nix
+          #./programs+services/ollama-rocm.nix
+          ./programs+services/ollama-vulkan.nix
           ./programs+services/chromecast.nix
           #./programs+services/n8n-sasha.nix
           ./programs+services/searx.nix
