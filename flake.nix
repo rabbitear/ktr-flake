@@ -158,6 +158,7 @@
           ./programs+services/ollama-cuda.nix
           #./programs+services/openwebui.nix
           ./programs+services/searx.nix
+          ./programs+services/flatpak.nix
           sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
           {
