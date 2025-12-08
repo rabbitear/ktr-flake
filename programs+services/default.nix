@@ -318,6 +318,7 @@
     ## Even less needed! stuff for chromecast and tv.
     qt6Packages.qt6ct   # qt6 control, and I think wayland?
     qutebrowser
+    galculator
     
     #androidplatformtools  # adb for Android TV if needed
     scrcpy             # GUI screen/control when using ADB
