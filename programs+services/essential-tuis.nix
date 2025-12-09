@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../my-addition/journal-module.nix
-    ../my-addition/printer-module.nix
-    ../my-addition/ingest-module.nix
-    ../my-addition/ai-scripts.nix
-  ];
 
   # Essential TUI applications configuration
   users.users.kreator.packages = with pkgs; [
@@ -53,6 +47,8 @@
     virt-viewer
     mpv
     bc
+
+
   ];
 
   # Install firefox.

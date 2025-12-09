@@ -423,10 +423,13 @@ The `b` alias handles system rebuilds:
 ## Development History
 
 ### 2025-12-08
+- **Modular Refactoring:** Restructured programs+services into modular components
+- **Core Modules Created:** core-cli-utils.nix (CLI essentials), essential-tuis.nix (TUI apps), core-tools.nix (dev tools)
 - **OpenCode Integration:** Added OpenCode AI assistant with streamlined shell scripts
 - **Code Cleanup:** Removed redundant shebang lines from ai-scripts.nix
 - **Alias Refinement:** Cleaned up bash aliases, removed duplicates, used mkForce for conflicts
 - **Session Continuity:** Configured OpenCode to continue last session by default
+- **Laptop Prep:** Modular structure enables selective module inclusion for future laptop host
 
 ### 2025-11-07
 - **Agent Analysis:** Complete flake analysis and documentation
