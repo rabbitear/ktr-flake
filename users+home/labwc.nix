@@ -458,6 +458,12 @@ in
               "@name" = "ToggleAlwaysOnBottom";
             };
           }
+          {
+            "@title" = "Picture-in-Picture";
+            action = {
+              "@name" = "ToggleAlwaysOnBottom";
+            };
+          }
         ];
       };
       focus = {
