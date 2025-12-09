@@ -15,8 +15,8 @@
   boot.loader.timeout = 1;
   boot.loader.systemd-boot.configurationLimit = 5;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use stable kernel for NVIDIA compatibility.
+  boot.kernelPackages = pkgs.linuxPackages;
 
   networking.hostName = "yoshi"; # Define your hostname.
   networking.networkmanager.enable = true;
