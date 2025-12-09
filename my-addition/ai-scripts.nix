@@ -18,7 +18,7 @@ let
   journal-entry = pkgs.writeShellApplication {
     name = "journal-entry";
     text = ''
-      exec journal entry "$@"
+      exec journal "$@"
     '';
   };
 
