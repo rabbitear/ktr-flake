@@ -422,6 +422,12 @@ The `b` alias handles system rebuilds:
 
 ## Development History
 
+### 2025-12-08
+- **OpenCode Integration:** Added OpenCode AI assistant with streamlined shell scripts
+- **Code Cleanup:** Removed redundant shebang lines from ai-scripts.nix
+- **Alias Refinement:** Cleaned up bash aliases, removed duplicates, used mkForce for conflicts
+- **Session Continuity:** Configured OpenCode to continue last session by default
+
 ### 2025-11-07
 - **Agent Analysis:** Complete flake analysis and documentation
 - **Created:** This AGENT.md file for ongoing development tracking
@@ -510,4 +516,4 @@ The `b` alias handles system rebuilds:
 ---
 
 *This document is maintained by kreator with assistance from AI agents.  
-Last updated: 2025-11-07*
+Last updated: 2025-12-08*
