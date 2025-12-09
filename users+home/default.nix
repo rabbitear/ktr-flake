@@ -236,18 +236,13 @@ in
     shellAliases = {
       h = "hx";
       o = "xargs -0 ort";
-      # AI aliases now use proper Nix packages
       chat = "ai-chat";
       oc = "ai-opencode";
       cpu = "process-monitor";
       psa = "process-monitor-all";
       pd = "dotdiff";
-      p = "git-sync";
-      # Journal aliases
-      j = "journal-entry";
-      jp = "journal-push";
-      jsearch = "journal-search";
-      # Other aliases
+
+      j = lib.mkForce "journal entry";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
