@@ -11,7 +11,7 @@ let
   ai-opencode = pkgs.writeShellApplication {
     name = "ai-opencode";
     text = ''
-      exec opencode run "$@"
+      exec opencode run --continue "$@"
     '';
   };
 
