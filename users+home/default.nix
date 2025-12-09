@@ -242,7 +242,7 @@ in
       psa = "process-monitor-all";
       pd = "dotdiff";
 
-      j = lib.mkForce "journal entry";
+      j = lib.mkForce "journal";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
