@@ -224,6 +224,9 @@ in
     '';
     shellAliases = {
       h = "hx";
+      o = "xargs -0 ort";
+      oc = "opencode --model opencode/sonic run";
+      cpu = "ps k-%cpu -eo pid,ppid,cmd,%mem,%cpu -w 67 | head -16";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
