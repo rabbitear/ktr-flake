@@ -460,8 +460,17 @@ in
           }
           {
             "@title" = "Picture-in-Picture";
+            "@matchOnce" = "yes";
             action = {
               "@name" = "ToggleAlwaysOnBottom";
+            };
+          }
+          {
+            "@identifier" = "org.qutebrowser.qutebrowser";
+            action = {
+              "@name" = "ResizeTo";
+              "@width" = "1024";
+              "@height" = "800";
             };
           }
         ];
