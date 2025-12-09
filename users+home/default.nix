@@ -12,6 +12,8 @@ let
       w3m -o editor=hx -o confirm_qq=no "https://duckduckgo.com/lite?q=$query"
     '';
   };
+
+  ai-scripts = import ../my-addition/ai-scripts.nix { inherit pkgs; };
 in
 
 {
@@ -36,6 +38,15 @@ in
 
   home.packages = [
     duckduckgo-search
+    ai-scripts.ai-chat
+    ai-scripts.ai-opencode
+    ai-scripts.journal-entry
+    ai-scripts.journal-push
+    ai-scripts.journal-search
+    ai-scripts.process-monitor
+    ai-scripts.process-monitor-all
+    ai-scripts.dotdiff
+    ai-scripts.git-sync
     pkgs.nerd-fonts.fira-mono
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.fantasque-sans-mono
@@ -225,8 +236,18 @@ in
     shellAliases = {
       h = "hx";
       o = "xargs -0 ort";
-      oc = "opencode --model opencode/sonic run";
-      cpu = "ps k-%cpu -eo pid,ppid,cmd,%mem,%cpu -w 67 | head -16";
+      # AI aliases now use proper Nix packages
+      chat = "ai-chat";
+      oc = "ai-opencode";
+      cpu = "process-monitor";
+      psa = "process-monitor-all";
+      pd = "dotdiff";
+      p = "git-sync";
+      # Journal aliases
+      j = "journal-entry";
+      jp = "journal-push";
+      jsearch = "journal-search";
+      # Other aliases
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
