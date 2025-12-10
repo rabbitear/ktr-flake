@@ -1,0 +1,44 @@
+
+When I ran the debian script:
+.....snip.....
+Saving to: ‘debian-test.qcow2’
+
+debian-test.qcow2      100%[=========================>] 414.06M  7.75MB/s    in 54s
+
+2025-12-09 21:11:45 (7.68 MB/s) - ‘debian-test.qcow2’ saved [434176000/434176000]
+
+Resizing image to 20GB...
+Image resized.
+Creating cloud-init ISO...
+sudo: apt-get: command not found
+sudo: pacman: command not found
+sudo: cloud-localds: command not found
+.....snip.....
+
+
+When I ran the create fedora script:
+.....snip.....
+Location: http://cfhcable.mm.fcix.net/fedora/linux/releases/43/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-43-1.6.x86_64.qcow2 [following]
+--2025-12-09 21:34:08--  http://cfhcable.mm.fcix.net/fedora/linux/releases/43/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-43-1.6.x86_64.qcow2
+Resolving cfhcable.mm.fcix.net (cfhcable.mm.fcix.net)... 146.71.75.10, 2606:3b80:0:1::2
+Connecting to cfhcable.mm.fcix.net (cfhcable.mm.fcix.net)|146.71.75.10|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 583335936 (556M) [application/octet-stream]
+Saving to: ‘fedora-test.qcow2’
+
+fedora-test.qcow2      100%[=========================>] 556.31M  10.1MB/s    in 77s
+
+2025-12-09 21:35:26 (7.21 MB/s) - ‘fedora-test.qcow2’ saved [583335936/583335936]
+
+Resizing image to 20GB...
+Image resized.
+Creating cloud-init ISO...
+sudo: cloud-localds: command not found
+....snip....
+
+I tried to figure out what cloud-localds was:
+....snip....
+kreator in 🌐 sasha in ktr-flake on  master [!⇡] ❯ nix run nixpkgs#cloud-localds
+error: flake 'flake:nixpkgs' does not provide attribute 'apps.x86_64-linux.cloud-localds', 'packages.x86_64-linux.cloud-localds', 'legacyPackages.x86_64-linux.cloud-localds' or 'cloud-localds'
+....snip....
+

@@ -64,8 +64,8 @@ EOF
 
 # Create cloud-init ISO
 echo "Creating cloud-init ISO..."
-sudo apt-get install -y cloud-image-utils || sudo pacman -S cloud-utils || true
-sudo cloud-localds /tmp/debian-cloud-init.iso /tmp/user-data /tmp/network-config
+# Use Nix cloud-utils package for cloud-localds
+nix shell nixpkgs#cloud-utils --command cloud-localds /tmp/debian-cloud-init.iso /tmp/user-data /tmp/network-config
 
 # Create a temporary VM for first boot setup
 echo "Setting up base image with cloud-init..."

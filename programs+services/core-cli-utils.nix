@@ -133,6 +133,9 @@
     ltrace # library call monitoring
     lsof # list open files
 
+    # VM stuff
+    cloud-utils
+
     # wayland power management
     wlopm
 

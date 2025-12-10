@@ -5,7 +5,7 @@ set -euo pipefail
 
 TEMPLATE_DIR="/var/lib/libvirt/templates"
 FEDORA_IMAGE="fedora-test.qcow2"
-FEDORA_CLOUD_URL="https://download.fedoraproject.org/pub/fedora/linux/releases/43/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-43-1.6.x86_64.qcow2"
+FEDORA_CLOUD_URL="http://download.fedoraproject.org/pub/fedora/linux/releases/43/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-43-1.6.x86_64.qcow2"
 
 echo "Creating Fedora 43 base image..."
 
@@ -60,7 +60,8 @@ EOF
 
 # Create cloud-init ISO
 echo "Creating cloud-init ISO..."
-sudo cloud-localds /tmp/fedora-cloud-init.iso /tmp/user-data /tmp/network-config
+# Use Nix cloud-utils package for cloud-localds
+nix shell nixpkgs#cloud-utils --command cloud-localds /tmp/fedora-cloud-init.iso /tmp/user-data /tmp/network-config
 
 # Create a temporary VM for first boot setup
 echo "Setting up base image with cloud-init..."
