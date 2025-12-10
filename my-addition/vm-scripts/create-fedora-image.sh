@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
-# Create Fedora 40 base image with cloud-init
+# Create Fedora 43 base image with cloud-init
 
 set -euo pipefail
 
 TEMPLATE_DIR="/var/lib/libvirt/templates"
 FEDORA_IMAGE="fedora-test.qcow2"
-FEDORA_CLOUD_URL="https://download.fedoraproject.org/pub/fedora/linux/releases/40/Cloud/x86_64/images/Fedora-Cloud-Base-Generic.x86_64-40-1.14.qcow2"
+FEDORA_CLOUD_URL="https://download.fedoraproject.org/pub/fedora/linux/releases/43/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-43-1.6.x86_64.qcow2"
 
-echo "Creating Fedora 40 base image..."
+echo "Creating Fedora 43 base image..."
 
 # Create template directory if it doesn't exist
 sudo mkdir -p "$TEMPLATE_DIR"
 
 # Download Fedora cloud image
-echo "Downloading Fedora 40 cloud image..."
+echo "Downloading Fedora 43 cloud image..."
 cd "$TEMPLATE_DIR"
 sudo wget -O "$FEDORA_IMAGE" "$FEDORA_CLOUD_URL"
 
@@ -70,7 +70,7 @@ sudo virt-install \
   --vcpus 2 \
   --disk path="$TEMPLATE_DIR/$FEDORA_IMAGE",format=qcow2 \
   --disk path=/tmp/fedora-cloud-init.iso,device=cdrom \
-  --os-variant fedora40 \
+  --os-variant fedora43 \
   --graphics spice \
   --network bridge=virbr0 \
   --noautoconsole \
@@ -87,5 +87,5 @@ sudo virsh undefine fedora-base-setup
 # Clean up
 rm -f /tmp/user-data /tmp/network-config /tmp/fedora-cloud-init.iso
 
-echo "Fedora 40 base image created successfully at $TEMPLATE_DIR/$FEDORA_IMAGE"
+echo "Fedora 43 base image created successfully at $TEMPLATE_DIR/$FEDORA_IMAGE"
 echo "You can now create VMs using this as a backing image."

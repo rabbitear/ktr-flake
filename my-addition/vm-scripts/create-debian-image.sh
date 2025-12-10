@@ -5,15 +5,15 @@ set -euo pipefail
 
 TEMPLATE_DIR="/var/lib/libvirt/templates"
 DEBIAN_IMAGE="debian-test.qcow2"
-DEBIAN_CLOUD_URL="https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
+DEBIAN_CLOUD_URL="https://cloud.debian.org/images/cloud/trixie/latest/debian-13-generic-amd64.qcow2"
 
-echo "Creating Debian 12 base image..."
+echo "Creating Debian 13 base image..."
 
 # Create template directory if it doesn't exist
 sudo mkdir -p "$TEMPLATE_DIR"
 
 # Download Debian cloud image
-echo "Downloading Debian 12 cloud image..."
+echo "Downloading Debian 13 cloud image..."
 cd "$TEMPLATE_DIR"
 sudo wget -O "$DEBIAN_IMAGE" "$DEBIAN_CLOUD_URL"
 
@@ -75,7 +75,7 @@ sudo virt-install \
   --vcpus 2 \
   --disk path="$TEMPLATE_DIR/$DEBIAN_IMAGE",format=qcow2 \
   --disk path=/tmp/debian-cloud-init.iso,device=cdrom \
-  --os-variant debian12 \
+  --os-variant debian13 \
   --graphics spice \
   --network bridge=virbr0 \
   --noautoconsole \
@@ -92,5 +92,5 @@ sudo virsh undefine debian-base-setup
 # Clean up
 rm -f /tmp/user-data /tmp/network-config /tmp/debian-cloud-init.iso
 
-echo "Debian 12 base image created successfully at $TEMPLATE_DIR/$DEBIAN_IMAGE"
+echo "Debian 13 base image created successfully at $TEMPLATE_DIR/$DEBIAN_IMAGE"
 echo "You can now create VMs using this as a backing image."

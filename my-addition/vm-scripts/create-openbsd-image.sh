@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
-# Create OpenBSD 7.5 base image (manual install process)
+# Create OpenBSD 7.8 base image (manual install process)
 
 set -euo pipefail
 
 TEMPLATE_DIR="/var/lib/libvirt/templates"
 OPENBSD_IMAGE="openbsd-test.qcow2"
-OPENBSD_INSTALL_URL="https://cdn.openbsd.org/pub/OpenBSD/7.5/amd64/install75.iso"
+OPENBSD_INSTALL_URL="https://cdn.openbsd.org/pub/OpenBSD/7.8/amd64/install78.iso"
 
-echo "Creating OpenBSD 7.5 base image..."
+echo "Creating OpenBSD 7.8 base image..."
 echo "NOTE: This requires manual installation. Follow the prompts."
 
 # Create template directory if it doesn't exist
 sudo mkdir -p "$TEMPLATE_DIR"
 
 # Download OpenBSD install ISO
-echo "Downloading OpenBSD 7.5 install ISO..."
+echo "Downloading OpenBSD 7.8 install ISO..."
 cd "$TEMPLATE_DIR"
 sudo wget -O "openbsd75.iso" "$OPENBSD_INSTALL_URL"
 
