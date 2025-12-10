@@ -201,6 +201,7 @@
           ./programs+services/graphics-programs.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
+          NixVirt.nixosModules.default
           {
             nixpkgs.overlays = [
               (final: prev: {
