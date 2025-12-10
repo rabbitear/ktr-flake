@@ -29,7 +29,6 @@
     # export the ort package built from ./ort.nix
     packages.${system} = {
       ort = pkgs.callPackage ./my-addition/ort.nix {};
-      mcpo = pkgs.callPackage ./my-addition/mcpo.nix {};
     };
 
     # a development shell to work on ort
@@ -199,6 +198,7 @@
           ./programs+services/searx.nix
           ./programs+services/openwebui.nix
           ./programs+services/graphics-programs.nix
+          ./programs+services/virtualization.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           NixVirt.nixosModules.default
