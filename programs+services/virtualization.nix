@@ -51,7 +51,9 @@ in {
         currentMemory = { unit = "GiB"; count = 2; };
         vcpu = { placement = "static"; count = 2; };
         os = {
-          type = { arch = "x86_64"; machine = "pc-q35-8.2"; _text = "hvm"; };
+          arch = "x86_64";
+          machine = "pc-q35-8.2";
+          type = "hvm";
           boot = { dev = "hd"; };
         };
         features = {
