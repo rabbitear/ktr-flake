@@ -40,6 +40,18 @@ in {
     "d /var/lib/libvirt/templates 0755 root root -"
   ];
   
+  # Network definitions
+  virtualisation.libvirt.connections."qemu:///system".networks = [
+    {
+      definition = nixvirtlib.network.writeXML (nixvirtlib.network.templates.bridge {
+        name = "default";
+        uuid = "c4acfd00-4597-41c7-a48e-e2302234fa89";
+        subnet_byte = 74;
+      });
+      active = true;
+    }
+  ];
+
   # VM definitions using NixVirt declarative attribute sets
   virtualisation.libvirt.connections."qemu:///system".domains = [
     {
