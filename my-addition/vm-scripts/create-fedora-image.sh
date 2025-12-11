@@ -21,8 +21,11 @@ sudo wget -O "$FEDORA_IMAGE" "$FEDORA_CLOUD_URL"
 echo "Resizing image to 20GB..."
 sudo qemu-img resize "$FEDORA_IMAGE" 20G
 
+# Create temp directory
+TEMP_DIR=$(mktemp -d)
+
 # Create cloud-init user-data file
-cat > /tmp/user-data << 'EOF'
+cat > "$TEMP_DIR/user-data" << 'EOF'
 #cloud-config
 hostname: fedora-test
 manage_etc_hosts: true
@@ -51,7 +54,7 @@ runcmd:
 EOF
 
 # Create network-config file
-cat > /tmp/network-config << 'EOF'
+cat > "$TEMP_DIR/network-config" << 'EOF'
 version: 2
 ethernets:
   eth0:
@@ -60,7 +63,7 @@ EOF
 
 # Create cloud-init ISO
 echo "Creating cloud-init ISO..."
-cloud-localds /tmp/fedora-cloud-init.iso /tmp/user-data /tmp/network-config
+cloud-localds "$TEMP_DIR/fedora-cloud-init.iso" "$TEMP_DIR/user-data" "$TEMP_DIR/network-config"
 
 # Create a temporary VM for first boot setup
 echo "Setting up base image with cloud-init..."
@@ -69,8 +72,8 @@ sudo virt-install \
   --memory 2048 \
   --vcpus 2 \
   --disk path="$TEMPLATE_DIR/$FEDORA_IMAGE",format=qcow2 \
-  --disk path=/tmp/fedora-cloud-init.iso,device=cdrom \
-  --os-variant fedora43 \
+  --disk path="$TEMP_DIR/fedora-cloud-init.iso",device=cdrom \
+  --os-variant fedora42 \
   --graphics spice \
   --network bridge=virbr0 \
   --noautoconsole \
@@ -85,7 +88,7 @@ sudo virsh shutdown fedora-base-setup
 sudo virsh undefine fedora-base-setup
 
 # Clean up
-rm -f /tmp/user-data /tmp/network-config /tmp/fedora-cloud-init.iso
+rm -rf "$TEMP_DIR"
 
 echo "Fedora 43 base image created successfully at $TEMPLATE_DIR/$FEDORA_IMAGE"
 echo "You can now create VMs using this as a backing image."
