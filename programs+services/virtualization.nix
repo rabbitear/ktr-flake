@@ -222,7 +222,7 @@ in {
       definition = nixvirtlib.domain.writeXML {
         type = "kvm";
         name = "fedora-test";
-        uuid = "b2c3d4e5-f6g7-8901-bcde-f12345678901";
+        uuid = "b2c3d4e5-f6a7-8901-bcde-f12345678901";
         memory = { unit = "GiB"; count = 2; };
         currentMemory = { unit = "GiB"; count = 2; };
         vcpu = { placement = "static"; count = 2; };
