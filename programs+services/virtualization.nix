@@ -67,12 +67,12 @@ in {
           timer = [
             { name = "rtc"; tickpolicy = "catchup"; track = "guest"; }
             { name = "pit"; tickpolicy = "delay"; }
-            { name = "hpet"; present = "no"; }
+            { name = "hpet"; present = false; }
           ];
         };
         pm = {
-          suspend-to-mem = { enabled = "no"; };
-          suspend-to-disk = { enabled = "no"; };
+          suspend-to-mem = { enabled = false; };
+          suspend-to-disk = { enabled = false; };
         };
         devices = {
           emulator = "/run/current-system/sw/bin/qemu-system-x86_64";
@@ -82,7 +82,7 @@ in {
             driver = { name = "qemu"; type = "qcow2"; };
             source = { file = "/var/lib/libvirt/images/debian-test.qcow2"; };
             target = { dev = "vda"; bus = "virtio"; };
-            address = { type = "pci"; domain = "0x0000"; bus = "0x04"; slot = "0x00"; function = "0x0"; };
+            address = { type = "pci"; domain = 0; bus = 4; slot = 0; function = 0; };
           };
           controller = [
             {
@@ -90,55 +90,55 @@ in {
               index = 0;
               model = "qemu-xhci";
               ports = 15;
-              address = { type = "pci"; domain = "0x0000"; bus = "0x02"; slot = "0x00"; function = "0x0"; };
+              address = { type = "pci"; domain = 0; bus = 2; slot = 0; function = 0; };
             }
             { type = "pci"; index = 0; model = "pcie-root"; }
             {
               type = "pci";
               index = 1;
               model = "pcie-root-port";
-              target = { chassis = 1; port = "0x8"; };
-              address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x0"; multifunction = "on"; };
+              target = { chassis = 1; port = 8; };
+              address = { type = "pci"; domain = 0; bus = 0; slot = 1; function = 0; multifunction = true; };
             }
             {
               type = "pci";
               index = 2;
               model = "pcie-root-port";
-              target = { chassis = 2; port = "0x9"; };
-              address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x1"; };
+              target = { chassis = 2; port = 9; };
+              address = { type = "pci"; domain = 0; bus = 0; slot = 1; function = 1; };
             }
             {
               type = "pci";
               index = 3;
               model = "pcie-root-port";
-              target = { chassis = 3; port = "0xa"; };
-              address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x2"; };
+              target = { chassis = 3; port = 10; };
+              address = { type = "pci"; domain = 0; bus = 0; slot = 1; function = 2; };
             }
             {
               type = "pci";
               index = 4;
               model = "pcie-root-port";
-              target = { chassis = 4; port = "0xb"; };
-              address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x3"; };
+              target = { chassis = 4; port = 11; };
+              address = { type = "pci"; domain = 0; bus = 0; slot = 1; function = 3; };
             }
             {
               type = "pci";
               index = 5;
               model = "pcie-root-port";
-              target = { chassis = 5; port = "0xc"; };
-              address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x4"; };
+              target = { chassis = 5; port = 12; };
+              address = { type = "pci"; domain = 0; bus = 0; slot = 1; function = 4; };
             }
             {
               type = "pci";
               index = 6;
               model = "pcie-root-port";
-              target = { chassis = 6; port = "0xd"; };
-              address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x5"; };
+              target = { chassis = 6; port = 13; };
+              address = { type = "pci"; domain = 0; bus = 0; slot = 1; function = 5; };
             }
             {
               type = "virtio-serial";
               index = 0;
-              address = { type = "pci"; domain = "0x0000"; bus = "0x03"; slot = "0x00"; function = "0x0"; };
+              address = { type = "pci"; domain = 0; bus = 3; slot = 0; function = 0; };
             }
           ];
           interface = {
@@ -146,7 +146,7 @@ in {
             mac = { address = "52:54:00:ab:cd:ef"; };
             source = { network = "default"; };
             model = { type = "virtio"; };
-            address = { type = "pci"; domain = "0x0000"; bus = "0x01"; slot = "0x00"; function = "0x0"; };
+            address = { type = "pci"; domain = 0; bus = 1; slot = 0; function = 0; };
           };
           serial = {
             type = "pty";
@@ -176,22 +176,22 @@ in {
           ];
           graphics = {
             type = "spice";
-            autoport = "yes";
+            autoport = true;
             listen = { type = "address"; };
-            image = { compression = "off"; };
+            image = { compression = false; };
           };
           sound = {
             model = "ich9";
-            address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x1b"; function = "0x0"; };
+            address = { type = "pci"; domain = 0; bus = 0; slot = 27; function = 0; };
           };
           video = {
             model = {
               type = "virtio";
               heads = 1;
-              primary = "yes";
-              acceleration = { accel3d = "no"; };
+              primary = true;
+              acceleration = { accel3d = false; };
             };
-            address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x02"; function = "0x0"; };
+            address = { type = "pci"; domain = 0; bus = 0; slot = 2; function = 0; };
           };
           redirdev = {
             bus = "usb";
@@ -200,7 +200,7 @@ in {
           };
           memballoon = {
             model = "virtio";
-            address = { type = "pci"; domain = "0x0000"; bus = "0x05"; slot = "0x00"; function = "0x0"; };
+            address = { type = "pci"; domain = 0; bus = 5; slot = 0; function = 0; };
           };
         };
       };
