@@ -47,9 +47,9 @@ in {
         type = "kvm";
         name = "debian-test";
         uuid = "a1b2c3d4-e5f6-7890-abcd-ef1234567890";
-        memory = { count = 2; unit = "GiB"; };
-        currentMemory = { count = 2; unit = "GiB"; };
-        vcpu = { placement = "static"; _text = 2; };
+        memory = { unit = "GiB"; count = 2; };
+        currentMemory = { unit = "GiB"; count = 2; };
+        vcpu = { placement = "static"; count = 2; };
         os = {
           type = { arch = "x86_64"; machine = "pc-q35-8.2"; _text = "hvm"; };
           boot = { dev = "hd"; };
@@ -95,7 +95,6 @@ in {
               type = "pci";
               index = 1;
               model = "pcie-root-port";
-              model_name = "pcie-root-port";
               target = { chassis = 1; port = "0x8"; };
               address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x0"; multifunction = "on"; };
             }
@@ -103,7 +102,6 @@ in {
               type = "pci";
               index = 2;
               model = "pcie-root-port";
-              model_name = "pcie-root-port";
               target = { chassis = 2; port = "0x9"; };
               address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x1"; };
             }
@@ -111,7 +109,6 @@ in {
               type = "pci";
               index = 3;
               model = "pcie-root-port";
-              model_name = "pcie-root-port";
               target = { chassis = 3; port = "0xa"; };
               address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x2"; };
             }
@@ -119,7 +116,6 @@ in {
               type = "pci";
               index = 4;
               model = "pcie-root-port";
-              model_name = "pcie-root-port";
               target = { chassis = 4; port = "0xb"; };
               address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x3"; };
             }
@@ -127,7 +123,6 @@ in {
               type = "pci";
               index = 5;
               model = "pcie-root-port";
-              model_name = "pcie-root-port";
               target = { chassis = 5; port = "0xc"; };
               address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x4"; };
             }
@@ -135,7 +130,6 @@ in {
               type = "pci";
               index = 6;
               model = "pcie-root-port";
-              model_name = "pcie-root-port";
               target = { chassis = 6; port = "0xd"; };
               address = { type = "pci"; domain = "0x0000"; bus = "0x00"; slot = "0x01"; function = "0x5"; };
             }
