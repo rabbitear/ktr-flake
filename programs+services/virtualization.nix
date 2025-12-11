@@ -1,4 +1,10 @@
 # Virtualization with NixVirt
+# ktr - I let glm-4.6 do this file
+#       now I'm looking it over, there are some oddnesses
+#       but this seems to be the par for this ai course :)
+#     - TODO: Need to go thru this, some later time!!
+#       its not too too bad, but I might want to use the
+#       NixVirt formats instead of plain xml.
 { config, lib, pkgs, inputs, ... }:
 
 with lib;
