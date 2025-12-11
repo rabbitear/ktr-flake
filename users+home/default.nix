@@ -281,6 +281,7 @@ in
           echo "  p - print <file>"
         }; _m
       '';
+      virsh = "virsh --connect=qemu:///system";
     };
     profileExtra = ''
       export EDITOR=hx
