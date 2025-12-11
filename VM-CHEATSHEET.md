@@ -4,26 +4,29 @@
 
 ### 🚀 Start & Stop VMs
 ```bash
-# Start a VM
-virsh start debian-test
+# Start a VM (system connection required)
+virsh --connect qemu:///system start debian-test
 
 # Stop a VM gracefully
-virsh shutdown debian-test
+virsh --connect qemu:///system shutdown debian-test
 
 # Force stop (emergency)
-virsh destroy debian-test
+virsh --connect qemu:///system destroy debian-test
 
 # List all VMs
-virsh list --all
+virsh --connect qemu:///system list --all
 ```
 
 ### 🖥️ Connect to VMs
 ```bash
-# Graphical connection (SPICE)
-virt-viewer debian-test
+# Graphical connection (SPICE) - local
+virt-viewer --connect qemu:///system debian-test
+
+# Graphical connection (SPICE) - remote over SSH
+virt-viewer --connect qemu+ssh://kreator@sasha/system debian-test
 
 # Serial console
-virsh console debian-test
+virsh --connect qemu:///system console debian-test
 
 # SSH (if VM has network)
 ssh kreator@<vm-ip>
@@ -32,65 +35,65 @@ ssh kreator@<vm-ip>
 ### 💾 VM Management
 ```bash
 # Reboot a VM
-virsh reboot debian-test
+virsh --connect qemu:///system reboot debian-test
 
 # Pause/unpause
-virsh suspend debian-test
-virsh resume debian-test
+virsh --connect qemu:///system suspend debian-test
+virsh --connect qemu:///system resume debian-test
 
 # Save VM state to file
-virsh save debian-test ~/debian-test.state
+virsh --connect qemu:///system save debian-test ~/debian-test.state
 
 # Restore from saved state
-virsh restore ~/debian-test.state
+virsh --connect qemu:///system restore ~/debian-test.state
 ```
 
 ### 📊 VM Information
 ```bash
 # VM details
-virsh dominfo debian-test
+virsh --connect qemu:///system dominfo debian-test
 
 # VM resources usage
-virsh domstats debian-test
+virsh --connect qemu:///system domstats debian-test
 
 # Network interfaces
-virsh domiflist debian-test
+virsh --connect qemu:///system domiflist debian-test
 
 # Disk devices
-virsh domblklist debian-test
+virsh --connect qemu:///system domblklist debian-test
 ```
 
 ### 🖧 Network Management
 ```bash
 # List networks
-virsh net-list --all
+virsh --connect qemu:///system net-list --all
 
 # Start default network
-virsh net-start default
+virsh --connect qemu:///system net-start default
 
 # Network info
-virsh net-info default
+virsh --connect qemu:///system net-info default
 
 # DHCP leases (see VM IPs)
-virsh net-dhcp-leases default
+virsh --connect qemu:///system net-dhcp-leases default
 ```
 
 ### 💾 Storage Management
 ```bash
 # List storage pools
-virsh pool-list --all
+virsh --connect qemu:///system pool-list --all
 
 # Pool info
-virsh pool-info default
+virsh --connect qemu:///system pool-info default
 
 # List volumes in pool
-virsh vol-list default
+virsh --connect qemu:///system vol-list default
 
 # Volume info
-virsh vol-info debian-test.qcow2 default
+virsh --connect qemu:///system vol-info debian-test.qcow2 default
 
 # Clone a volume
-virsh vol-clone debian-test.qcow2 debian-test-clone.qcow2 default
+virsh --connect qemu:///system vol-clone debian-test.qcow2 debian-test-clone.qcow2 default
 ```
 
 ## 🛠️ VM Creation & Templates
@@ -135,13 +138,13 @@ sudo nixos-rebuild test
 ### Edit VM Configuration
 ```bash
 # Edit XML definition (advanced)
-virsh edit debian-test
+virsh --connect qemu:///system edit debian-test
 
 # Dump current XML
-virsh dumpxml debian-test > debian-test-current.xml
+virsh --connect qemu:///system dumpxml debian-test > debian-test-current.xml
 
 # Define VM from XML file
-virsh define debian-test-new.xml
+virsh --connect qemu:///system define debian-test-new.xml
 ```
 
 ## 🐛 Troubleshooting
@@ -149,16 +152,16 @@ virsh define debian-test-new.xml
 ### Common Issues
 ```bash
 # If VM won't start, check logs
-virsh start debian-test --verbose
+virsh --connect qemu:///system start debian-test --verbose
 journalctl -u libvirtd -f
 
 # If network not working
-virsh net-start default
-virsh net-autostart default
+virsh --connect qemu:///system net-start default
+virsh --connect qemu:///system net-autostart default
 
 # If disk issues
-virsh vol-refresh default
-virsh pool-refresh default
+virsh --connect qemu:///system vol-refresh default
+virsh --connect qemu:///system pool-refresh default
 
 # Reset libvirt completely
 sudo systemctl restart libvirtd
@@ -167,34 +170,35 @@ sudo systemctl restart libvirtd
 ### VM Console Access
 ```bash
 # Get serial console (if configured)
-virsh console debian-test
+virsh --connect qemu:///system console debian-test
 
 # Emergency access - connect to display
 virt-viewer --connect qemu:///system debian-test
 
 # Check VM logs
-virsh domxml-from-native debian-test
+virsh --connect qemu:///system domxml-from-native debian-test
 ```
 
 ## 📝 Quick Reference
 
 | Command | Purpose |
 |---------|---------|
-| `virsh list --all` | Show all VMs |
-| `virsh start <name>` | Start VM |
-| `virsh shutdown <name>` | Stop VM gracefully |
-| `virt-viewer <name>` | Graphical access |
-| `virsh console <name>` | Text console |
-| `virsh edit <name>` | Edit configuration |
-| `virsh net-dhcp-leases default` | Find VM IPs |
+| `virsh --connect qemu:///system list --all` | Show all VMs |
+| `virsh --connect qemu:///system start <name>` | Start VM |
+| `virsh --connect qemu:///system shutdown <name>` | Stop VM gracefully |
+| `virt-viewer --connect qemu+ssh://kreator@sasha/system <name>` | Remote graphical access |
+| `virsh --connect qemu:///system console <name>` | Text console |
+| `virsh --connect qemu:///system edit <name>` | Edit configuration |
+| `virsh --connect qemu:///system net-dhcp-leases default` | Find VM IPs |
 | `sudo nixos-rebuild switch` | Apply config changes |
 
 ## 🎯 Typical Workflow
 
-1. **Daily Use**: `virsh start debian-test` → `virt-viewer debian-test`
-2. **Create New VM**: Clone template → `virsh define` → `virsh start`
-3. **Configuration Changes**: Edit `virtualization.nix` → `sudo nixos-rebuild switch`
-4. **Troubleshooting**: Check `virsh list`, `journalctl -u libvirtd`
+1. **Daily Use**: `virsh --connect qemu:///system start debian-test` → `virt-viewer --connect qemu:///system debian-test`
+2. **Remote Access**: `virt-viewer --connect qemu+ssh://kreator@sasha/system debian-test`
+3. **Create New VM**: Clone template → `virsh --connect qemu:///system define` → `virsh --connect qemu:///system start`
+4. **Configuration Changes**: Edit `virtualization.nix` → `sudo nixos-rebuild switch`
+5. **Troubleshooting**: Check `virsh --connect qemu:///system list`, `journalctl -u libvirtd`
 
 ## 📁 Important Paths
 
@@ -203,3 +207,26 @@ virsh domxml-from-native debian-test
 - **Base Images**: `/var/lib/libvirt/templates/`
 - **Nix Config**: `~/docs/ktr-flake/programs+services/virtualization.nix`
 - **Scripts**: `~/docs/ktr-flake/my-addition/vm-scripts/`
+
+## 🔗 Remote Access
+
+### SSH Tunneling for VM Access
+```bash
+# From any machine with SSH access to sasha
+virt-viewer --connect qemu+ssh://kreator@sasha/system debian-test
+virt-viewer --connect qemu+ssh://kreator@sasha/system fedora-test
+
+# Alternative: Set up SSH config in ~/.ssh/config
+Host sasha-vm
+    HostName sasha
+    User kreator
+    # Add your SSH key config here
+
+# Then use:
+virt-viewer --connect qemu+ssh://sasha-vm/system debian-test
+```
+
+### Current VMs Available
+- **debian-test**: Debian 13 with QEMU guest agent, SPICE tools
+- **fedora-test**: Fedora 43 with QEMU guest agent, SPICE tools
+- Both configured with 2 vCPUs, 2GB RAM, 20GB disk, SPICE graphics

@@ -422,6 +422,14 @@ The `b` alias handles system rebuilds:
 
 ## Development History
 
+### 2025-12-10
+- **NixVirt Migration:** Converted libvirt XML configurations to declarative NixVirt attribute sets
+- **VM Infrastructure:** Added Debian 13 and Fedora 43 test VMs with SPICE graphics and QEMU guest agents
+- **Network Configuration:** Set up default libvirt network (192.168.74.0/24) for VM connectivity
+- **Script Improvements:** Fixed VM creation scripts to use mktemp and correct OS variants
+- **Remote Access:** Enabled virt-viewer access over SSH for remote VM management
+- **Documentation Updates:** Updated VM-CHEATSHEET.md with system connection commands and remote access
+
 ### 2025-12-08
 - **Modular Refactoring:** Restructured programs+services into modular components
 - **Core Modules Created:** core-cli-utils.nix (CLI essentials), essential-tuis.nix (TUI apps), core-tools.nix (dev tools)
@@ -464,6 +472,8 @@ The `b` alias handles system rebuilds:
 2. Configure journal remote repository
 3. Add build verification to workflow
 4. Document MCP server configs
+5. Test VM remote access from other hosts
+6. Consider adding more OS templates (Ubuntu, Arch, etc.)
 
 ### Medium Term
 1. Explore more MCP integrations
