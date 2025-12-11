@@ -59,7 +59,7 @@ in {
         features = {
           acpi = {};
           apic = {};
-          vmport = { state = "off"; };
+          vmport = { state = false; };
         };
         cpu = { mode = "host-model"; check = "partial"; };
         clock = {
