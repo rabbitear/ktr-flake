@@ -189,6 +189,7 @@ in {
           graphics = {
             type = "spice";
             autoport = true;
+            gl = { enable = true; };
             listen = { type = "address"; };
             image = { compression = false; };
           };
