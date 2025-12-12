@@ -354,6 +354,7 @@ in {
           graphics = {
             type = "spice";
             autoport = true;
+            gl = { enable = true; };
             listen = { type = "address"; };
             image = { compression = false; };
           };
@@ -366,7 +367,7 @@ in {
               type = "virtio";
               heads = 1;
               primary = true;
-              acceleration = { accel3d = true; };
+              acceleration = { accel3d = false; };
             };
             address = { type = "pci"; domain = 0; bus = 0; slot = 2; function = 0; };
           };
