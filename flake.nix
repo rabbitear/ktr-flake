@@ -98,6 +98,15 @@
             nixpkgs.overlays = [
               (final: prev: {
                 nix-ai-tools = nix-ai-tools.packages.${prev.system};
+
+                # Override ollama-vulkan with version 0.13.3
+                ollama-vulkan = prev.ollama-vulkan.overrideAttrs (old: {
+                  version = "0.13.3";
+                  src = old.src.override {
+                    url = "https://github.com/ollama/ollama/releases/download/v0.13.3/ollama-linux-amd64.tgz";
+                    sha256 = "1sy60c8fq0pq81yl6z1r5r19mvcl6i55c7akqm0kc06drksd18vh";
+                  };
+                });
               })
             ];
             home-manager = {
