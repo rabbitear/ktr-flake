@@ -201,7 +201,7 @@ in {
               type = "virtio";
               heads = 1;
               primary = true;
-              acceleration = { accel3d = false; };
+              acceleration = { accel3d = true; };
             };
             address = { type = "pci"; domain = 0; bus = 0; slot = 2; function = 0; };
           };
@@ -365,7 +365,7 @@ in {
               type = "virtio";
               heads = 1;
               primary = true;
-              acceleration = { accel3d = false; };
+              acceleration = { accel3d = true; };
             };
             address = { type = "pci"; domain = 0; bus = 0; slot = 2; function = 0; };
           };
