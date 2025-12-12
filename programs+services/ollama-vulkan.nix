@@ -6,8 +6,8 @@
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
-    acceleration = "vulkan";
     openFirewall = true;
+    package = pkgs.ollama-vulkan;
   };
 
   environment.systemPackages = [

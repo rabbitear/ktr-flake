@@ -1,6 +1,6 @@
 # this is the ollama service.
 
-{...}:
+{pkgs, ...}:
 
 {
   services.ollama = {
@@ -10,7 +10,7 @@
       "llama3.2:3b"
       "deepseek-r1:1.5b"
     ];
-    acceleration = "cuda";
     openFirewall = true;
+    package = pkgs.ollama-cuda;
   };
 }
