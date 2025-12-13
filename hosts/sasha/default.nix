@@ -37,12 +37,11 @@
                 src = prev.fetchFromGitHub {
                   owner = "jlowin";
                   repo = "fastmcp";
-                  #tag = "v${version}";
                   tag = "v2.11.0";
                   hash = "sha256-k96ki9ny1w5i47j9ry1762hhqf20fajnwkjg7vvh2l4h8sqnq6";
                 };
               });
-            });
+            };
           };
         })
       ];
