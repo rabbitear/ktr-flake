@@ -154,5 +154,6 @@
     wf-recorder
 
     zmap
+    rsstail-py
   ];
 }

@@ -31,6 +31,10 @@ echo "Creating Fedora 40 image..."
 "$SCRIPT_DIR/create-fedora-image.sh"
 
 echo ""
+echo "Creating OmniOS image..."
+"$SCRIPT_DIR/create-omnios-image.sh"
+
+echo ""
 echo "For OpenBSD, manual installation required:"
 echo "$SCRIPT_DIR/create-openbsd-image.sh"
 
@@ -39,5 +43,7 @@ echo "Base images creation completed!"
 echo "You can now start using the VMs with:"
 echo "  virsh start debian-test"
 echo "  virsh start fedora-test"
+echo "  virsh start omnios-test"
 echo "  virt-viewer debian-test"
 echo "  virt-viewer fedora-test"
+echo "  virt-viewer omnios-test"
