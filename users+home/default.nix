@@ -71,25 +71,38 @@ in
     };
   };
 
-  home.file.".config/ort.json".text = ''
-    {
-      "settings": {
-        "save_to_file": true,
-        "dns": ["104.18.2.115", "104.18.3.115"]
-      },
-      "prompt_opts": {
-        "model": "tngtech/deepseek-r1t2-chimera:free",
-        "system": "Make your answer concise but complete. No yapping. Direct professional tone. Emoji is ok.",
-        "priority": "price",
-        "quiet": false,
-        "show_reasoning": false,
-        "reasoning": {
-          "enabled": true,
-          "effort": "medium"
-        }
-      }
-    }
-  '';
+   home.file.".config/ort.json".text = ''
+     {
+       "settings": {
+         "save_to_file": true,
+         "dns": ["104.18.2.115", "104.18.3.115"]
+       },
+       "prompt_opts": {
+         "model": "tngtech/deepseek-r1t2-chimera:free",
+         "system": "Make your answer concise but complete. No yapping. Direct professional tone. Emoji is ok.",
+         "priority": "price",
+         "quiet": false,
+         "show_reasoning": false,
+         "reasoning": {
+           "enabled": true,
+           "effort": "medium"
+         }
+       }
+     }
+   '';
+
+   home.file.".config/opencode/opencode.json".text = ''
+     {
+       "$schema": "https://opencode.ai/config.json",
+       "mcp": {
+         "nixos": {
+           "type": "local",
+           "command": ["mcp-nixos"],
+           "enabled": true
+         }
+       }
+     }
+   '';
   programs.git = {
     enable = true;
     settings = {
