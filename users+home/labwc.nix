@@ -462,7 +462,7 @@ in
             "@title" = "Picture-in-Picture";
             "@matchOnce" = "yes";
             action = {
-              "@name" = "ToggleAlwaysOnBottom";
+              "@name" = "ToggleAlwaysOnTop";
             };
           }
           {
