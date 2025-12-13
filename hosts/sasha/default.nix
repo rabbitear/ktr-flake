@@ -6,6 +6,7 @@
   ../../shared/chromecast.nix
   ../../shared/searx.nix
   ../../shared/openwebui.nix
+  ../../shared/miniflux.nix
   ../../shared/graphics-programs.nix
   ../../shared/virtualization.nix
   inputs.sops-nix.nixosModules.sops

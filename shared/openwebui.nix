@@ -28,12 +28,12 @@
 
   # services.mcpo = {
   #   enable = true;
-  #   port = 3003;
+  #   port = 3004;
   #   configFile = ../my-addition/mcpo-config.json;
   #   hotReload = true;
   # };
-  # 3003 for mcpo
-  # networking.firewall.allowedTCPPorts = [ 3002 3003 ];
+  # 3004 for mcpo
+  # networking.firewall.allowedTCPPorts = [ 3002 3004 ];
   networking.firewall.allowedTCPPorts = [ 3002 ];
 
   #This is for the mcpo server, many mcp servers use npx.
