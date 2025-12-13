@@ -116,12 +116,12 @@ virt-install \
 ### Create Base Images
 ```bash
 # Create all base images
-./my-addition/vm-scripts/create-all-images.sh
+./my-addition/scripts/vm-scripts/create-all-images.sh
 
 # Create specific OS image
-./my-addition/vm-scripts/create-debian-image.sh
-./my-addition/vm-scripts/create-fedora-image.sh
-./my-addition/vm-scripts/create-openbsd-image.sh
+./my-addition/scripts/vm-scripts/create-debian-image.sh
+./my-addition/scripts/vm-scripts/create-fedora-image.sh
+./my-addition/scripts/vm-scripts/create-openbsd-image.sh
 ```
 
 ## 🔧 Configuration Management
@@ -205,8 +205,8 @@ virsh --connect qemu:///system domxml-from-native debian-test
 - **VM Configs**: `/etc/libvirt/qemu/`
 - **VM Disks**: `/var/lib/libvirt/images/`
 - **Base Images**: `/var/lib/libvirt/templates/`
-- **Nix Config**: `~/docs/ktr-flake/programs+services/virtualization.nix`
-- **Scripts**: `~/docs/ktr-flake/my-addition/vm-scripts/`
+- **Nix Config**: `~/docs/ktr-flake/shared/services/virtualization.nix`
+- **Scripts**: `~/docs/ktr-flake/my-addition/scripts/vm-scripts/`
 
 ## 🔗 Remote Access
 

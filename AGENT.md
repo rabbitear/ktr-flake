@@ -47,35 +47,52 @@ This document tracks the evolution, architecture, and maintenance of ktr-flake -
 
 ```
 ktr-flake/
-├── flake.nix                    # Main flake entry point
+├── flake.nix                    # Flake infrastructure & outputs
 ├── hosts/                       # Per-host configurations
 │   ├── yoshi/
+│   │   ├── configuration.nix    # Hardware config
+│   │   ├── default.nix          # Module list & overlays
+│   │   └── modules/             # Host-specific modules
 │   ├── sasha/
+│   │   ├── configuration.nix
+│   │   ├── default.nix
+│   │   └── modules/
 │   ├── hacknet/
 │   ├── otternode/
 │   └── wendy/
-├── programs+services/           # Shared service modules
+├── shared/                      # Shared service modules
 │   ├── default.nix             # Base system configuration
-│   ├── ollama-cuda.nix         # CUDA-accelerated Ollama
-│   ├── ollama-rocm.nix         # ROCm-accelerated Ollama
-│   ├── openwebui.nix           # Open WebUI service
-│   ├── searx.nix               # Private search engine
-│   ├── n8n-sasha.nix           # N8N automation (sasha only)
-│   ├── chromecast.nix          # Chromecast support
-│   └── sops.nix                # Secrets management
-├── users+home/                  # Home-manager configuration
+│   ├── packages/               # Categorized system packages
+│   │   ├── desktop.nix         # Desktop & GUI apps
+│   │   ├── media.nix           # Media & casting tools
+│   │   └── utils.nix           # Utilities & misc
+│   ├── services/               # Service configurations
+│   │   ├── virtualization.nix  # Libvirt & VMs
+│   │   ├── searx.nix           # Search engine
+│   │   └── openwebui.nix       # AI web UI
+│   └── system/                 # System-wide configs
+│       ├── fonts.nix           # Font packages
+│       └── gpg.nix             # GPG/SSH setup
+├── users+home/                 # Home-manager configuration
 │   ├── default.nix             # Main user config
 │   ├── gnome.nix               # GNOME desktop settings
 │   ├── mutt.nix                # Email client config
 │   └── sync-jrnl.nix           # Journal sync systemd service
-├── my-addition/                 # Custom modules & packages
-│   ├── journal-module.nix      # Core journaling system
-│   ├── printer-module.nix      # File viewer/printer
-│   ├── ingest-module.nix       # File ingestion to journal
-│   ├── ort.nix                 # OpenRouter CLI tool
-│   └── mcpo.nix                # MCP-to-OpenAPI proxy
-├── crypt/                       # Encrypted secrets (sops)
-└── tips.nix                     # Experimental features & notes
+├── my-addition/                # Custom packages & modules
+│   ├── packages/               # Custom derivations
+│   │   ├── ort.nix             # OpenRouter CLI tool
+│   │   └── mcpo.nix            # MCP-to-OpenAPI proxy
+│   ├── modules/                # Custom home-manager modules
+│   │   ├── journal-module.nix  # Journaling system
+│   │   ├── printer-module.nix  # File viewer/printer
+│   │   └── ingest-module.nix   # File ingestion
+│   └── scripts/                # Utility scripts
+│       ├── ai-scripts.nix      # AI-related scripts
+│       ├── vm-scripts/         # VM management scripts
+│       └── cliphist-fuzzel-img.sh
+├── crypt/                      # Encrypted secrets (sops)
+├── result/                     # Build artifacts
+└── tips.nix                    # Experimental features
 ```
 
 ### Key Dependencies
@@ -431,8 +448,10 @@ The `b` alias handles system rebuilds:
 - **Documentation Updates:** Updated VM-CHEATSHEET.md with system connection commands and remote access
 
 ### 2025-12-08
-- **Modular Refactoring:** Restructured programs+services into modular components
-- **Core Modules Created:** core-cli-utils.nix (CLI essentials), essential-tuis.nix (TUI apps), core-tools.nix (dev tools)
+- **Structural Refactoring:** Complete flake restructuring for better separation of responsibilities
+- **Host Isolation:** Moved host-specific modules to individual host directories
+- **Package Organization:** Split large package lists into categorized modules (desktop, media, utils)
+- **Directory Restructure:** Renamed programs+services/ to shared/, organized my-addition/ by type
 - **OpenCode Integration:** Added OpenCode AI assistant with streamlined shell scripts
 - **Code Cleanup:** Removed redundant shebang lines from ai-scripts.nix
 - **Alias Refinement:** Cleaned up bash aliases, removed duplicates, used mkForce for conflicts
@@ -505,7 +524,7 @@ The `b` alias handles system rebuilds:
 
 ### Key Files to Review
 - `flake.nix` - Overall structure
-- `programs+services/default.nix` - Base system
+- `shared/default.nix` - Base system
 - `users+home/default.nix` - User environment
 - `my-addition/journal-module.nix` - Journal core
 
