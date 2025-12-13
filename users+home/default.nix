@@ -13,14 +13,14 @@ let
     '';
   };
 
-  ai-scripts = import ../my-addition/ai-scripts.nix { inherit pkgs; };
+   ai-scripts = import ../my-addition/scripts/ai-scripts.nix { inherit pkgs; };
 in
 
 {
   imports = [
-    ../my-addition/journal-module.nix
-    ../my-addition/printer-module.nix
-    ../my-addition/ingest-module.nix
+    ../my-addition/modules/journal-module.nix
+    ../my-addition/modules/printer-module.nix
+    ../my-addition/modules/ingest-module.nix
     ./gnome.nix
     ./mutt.nix
     ./sync-jrnl.nix

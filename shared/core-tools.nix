@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../my-addition/mcpo.nix
+    ../my-addition/packages/mcpo.nix
   ];
 
   # Core development tools and custom packages
@@ -15,6 +15,6 @@
 
   environment.systemPackages = with pkgs; [
     ## Our ort
-    (import ../my-addition/ort.nix { inherit pkgs; })
+    (import ../my-addition/packages/ort.nix { inherit pkgs; })
   ];
 }

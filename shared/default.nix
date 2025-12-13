@@ -5,6 +5,9 @@
     ./core-cli-utils.nix
     ./essential-tuis.nix
     ./core-tools.nix
+    ./packages/desktop.nix
+    ./packages/media.nix
+    ./packages/utils.nix
   ];
 
   # Enable the X11 windowing system.
@@ -93,67 +96,5 @@
   # Add flatpak group to user
   users.users.kreator.extraGroups = [ "flatpak" ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # I can use some of these tools in labwc
-    lxqt.lxqt-about
-    lxqt.lximage-qt
-    lxqt.lxqt-panel
-    lxqt.lxqt-powermanagement
-    lxqt.lxqt-runner
-    lxqt.lxqt-wayland-session
-    lxqt.lxqt-config
-    lxqt.lxqt-qtplugin
-    lxqt.lxqt-themes
-    lxqt.lxqt-admin
-    lxqt.lxqt-archiver
-    lxqt.lxqt-menu-data
-    lxqt.lxqt-sudo
-    lxqt.lxqt-about
-    lxqt.liblxqt
-    lxqt.libdbusmenu-lxqt
-    lxqt.qlipper
-    lxqt.obconf-qt
-    lxqt.qterminal
-    lxqt.libsysstat
-    lxqt.pcmanfm-qt
-    lxqt.pavucontrol-qt
-    kdePackages.layer-shell-qt
-    xdg-user-dirs
 
-    # GUI Applications
-    pyradio
-    qalculate-qt
-    chromium
-
-    # tui?
-    clipse
-
-    # other misc tools
-    flatpak
-    flatpak-xdg-utils
-    xdg-desktop-portal-gnome
-    xdg-desktop-portal-wlr
-
-    ## Even less needed! stuff for chromecast and tv.
-    qt6Packages.qt6ct   # qt6 control, and I think wayland?
-    qutebrowser
-    galculator
-    
-    #androidplatformtools  # adb for Android TV if needed
-    scrcpy             # GUI screen/control when using ADB
-    avahi              # mDNS discovery support (enable service below)
-
-    ungoogled-chromium
-
-    # utils
-    bemenu
-    wf-recorder
-
-    ## Even more fun stuff
-    #ffmpeg-full        # ffmpeg always fun to have around
-    mcp-nixos
-    zmap
-  ];
 }

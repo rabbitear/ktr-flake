@@ -28,7 +28,7 @@
   in {
     # export the ort package built from ./ort.nix
     packages.${system} = {
-      ort = pkgs.callPackage ./my-addition/ort.nix {};
+      ort = pkgs.callPackage ./my-addition/packages/ort.nix {};
     };
 
     # a development shell to work on ort
@@ -80,36 +80,16 @@
     };
 
     nixosConfigurations = {
-      ######################
-      #                    #
-      #   the otter node   #
-      #                    #
-      ######################
-      otternode = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/otternode/configuration.nix
-          ./programs+services
-          ./tips.nix
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                nix-ai-tools = nix-ai-tools.packages.${prev.system};
-
-              })
-            ];
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.kreator = import ./users+home;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-      };
+       ######################
+       #                    #
+       #   the otter node   #
+       #                    #
+       ######################
+       otternode = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         specialArgs = { inherit inputs; };
+         modules = import ./hosts/otternode/default.nix { inherit inputs; };
+       };
       #######################################
       # 
       #  --+->
@@ -117,29 +97,11 @@
       #     ------------+->
       # 
       # 
-      hacknet = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/hacknet/configuration.nix
-          ./programs+services
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                nix-ai-tools = nix-ai-tools.packages.${prev.system};
-              })
-            ];
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.kreator = import ./users+home;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-      };
+       hacknet = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         specialArgs = { inherit inputs; };
+         modules = import ./hosts/hacknet/default.nix { inherit inputs; };
+       };
       #########
       #       #
       #       #
@@ -156,119 +118,22 @@
           inherit inputs;
           hostName = "yoshi";
         };
-        modules = [
-          ./hosts/yoshi/configuration.nix
-          ./programs+services
-          ./programs+services/ollama-cuda.nix
-          #./programs+services/openwebui.nix
-          ./programs+services/searx.nix
-          ./programs+services/flatpak.nix
-          sops-nix.nixosModules.sops
-          inputs.home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                nix-ai-tools = nix-ai-tools.packages.${prev.system};
-              })
-            ];
-
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.kreator = import ./users+home;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
+         modules = import ./hosts/yoshi/default.nix { inherit inputs; };
       };
-      #####################################
-      #                                   # 
-      #        <-=+=- Sasha -=+=->        #
-      #                                   # 
-      #####################################
-      sasha = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/sasha/configuration.nix
-          ./programs+services
-          #./programs+services/ollama-rocm.nix
-          ./programs+services/ollama-vulkan.nix
-          ./programs+services/chromecast.nix
-          #./programs+services/n8n-sasha.nix
-          ./programs+services/searx.nix
-          ./programs+services/openwebui.nix
-          ./programs+services/graphics-programs.nix
-          ./programs+services/virtualization.nix
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
-          NixVirt.nixosModules.default
-           {
-             nixpkgs.overlays = [
-               (final: prev: {
-                 nix-ai-tools = nix-ai-tools.packages.${prev.system};
-                 # Override ollama-vulkan with version 0.13.3
-                 ollama-vulkan = prev.ollama-vulkan.overrideAttrs (old: {
-                   version = "0.13.3";
-                   src = builtins.fetchurl {
-                     # source
-                     url = "https://github.com/ollama/ollama/archive/refs/tags/v0.13.3.tar.gz";
-                     sha256 = "11cigz2a2na2d0hxkwn0537g38qhkvficplzq9h4jhsqv2vcdnlv";
-                     # binary
-                     #url = "https://github.com/ollama/ollama/releases/download/v0.13.3/ollama-linux-amd64.tgz";
-                     #sha256 = "1sy60c8fq0pq81yl6z1r5r19mvcl6i55c7akqm0kc06drksd18vh";
-                   };
-                 });
-
-                 # Pin fastmcp to 2.11.0 to avoid breaking changes in 2.12.x
-                 python3Packages = prev.python3Packages.override {
-                   overrides = self: super: {
-                     fastmcp = super.fastmcp.overridePythonAttrs (old: {
-                       version = "2.11.0";
-                       src = prev.fetchFromGitHub {
-                         owner = "jlowin";
-                         repo = "fastmcp";
-                         #tag = "v${version}";
-                         tag = "v2.11.0";
-                         hash = "sha256-k96ki9ny1w5i47j9ry1762hhqf20fajnwkjg7vvh2l4h8sqnq6";
-                       };
-                     });
-                   };
-                 };
-               })
-             ];
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.kreator = import ./users+home;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-      };
-      wendy = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/wendy/configuration.nix
-          ./programs+services
-          ./programs+services/searx.nix
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                nix-ai-tools = nix-ai-tools.packages.${prev.system};
-              })
-            ];
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.kreator = import ./users+home;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
+       #####################################
+       #                                   #
+       #        <-=+=- Sasha -=+=->        #
+       #                                   #
+       #####################################
+       sasha = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         specialArgs = { inherit inputs; };
+         modules = import ./hosts/sasha/default.nix { inherit inputs; };
+       };
+       wendy = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         specialArgs = { inherit inputs; };
+         modules = import ./hosts/wendy/default.nix { inherit inputs; };
       };
     };
   };
