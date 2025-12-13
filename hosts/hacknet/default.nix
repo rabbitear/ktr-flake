@@ -5,11 +5,13 @@
   inputs.sops-nix.nixosModules.sops
   inputs.home-manager.nixosModules.home-manager
   {
-    nixpkgs.overlays = [
-      (final: prev: {
-        nix-ai-tools = inputs.nix-ai-tools.packages.${prev.system};
-      })
-    ];
+    nixpkgs = {
+      overlays = [
+        (final: prev: {
+          nix-ai-tools = inputs.nix-ai-tools.packages.${prev.system};
+        })
+      ];
+    };
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
