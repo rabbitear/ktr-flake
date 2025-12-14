@@ -53,6 +53,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.browserpass.enable = true;
 
   programs.tmux = {
     enable = true;
