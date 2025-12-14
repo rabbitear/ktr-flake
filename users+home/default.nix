@@ -91,18 +91,23 @@ in
      }
    '';
 
-   home.file.".config/opencode/opencode.json".text = ''
-     {
-       "$schema": "https://opencode.ai/config.json",
-       "mcp": {
-         "nixos": {
-           "type": "local",
-           "command": ["mcp-nixos"],
-           "enabled": true
-         }
-       }
-     }
-   '';
+    home.file.".config/opencode/opencode.json".text = ''
+      {
+        "$schema": "https://opencode.ai/config.json",
+        "mcp": {
+          "nixos": {
+            "type": "local",
+            "command": ["mcp-nixos"],
+            "enabled": true
+          },
+          "blender": {
+            "type": "local",
+            "command": ["blender-mcp"],
+            "enabled": true
+          }
+        }
+      }
+    '';
   programs.git = {
     enable = true;
     settings = {
