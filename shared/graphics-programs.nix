@@ -5,5 +5,6 @@
     pkgs.blender-hip
     pkgs.openscad
     pkgs.openscad-lsp
+    blender-mcp
   ];
 }

@@ -17,6 +17,7 @@
       overlays = [
         (final: prev: {
           nix-ai-tools = inputs.nix-ai-tools.packages.${prev.system};
+          blender-mcp = inputs.self.packages.${prev.system}.blender-mcp;
           # Override ollama-vulkan with version 0.13.3
           ollama-vulkan = prev.ollama-vulkan.overrideAttrs (old: {
             version = "0.13.3";

@@ -29,6 +29,7 @@
     # export the ort package built from ./ort.nix
     packages.${system} = {
       ort = pkgs.callPackage ./my-addition/packages/ort.nix {};
+      blender-mcp = pkgs.callPackage ./my-addition/packages/blender-mcp.nix {};
     };
 
     # a development shell to work on ort
