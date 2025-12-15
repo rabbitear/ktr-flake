@@ -5,6 +5,7 @@
   # Essential TUI applications configuration
   users.users.kreator.packages = with pkgs; [
     helix
+    helix-gpt
     nixd
     marksman
     fzf
