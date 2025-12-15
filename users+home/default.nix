@@ -142,6 +142,9 @@ in
         esc = [ "collapse_selection" "keep_primary_selection" ];
       };
     };
+    languages.languageServer.gpt = {
+      command = "helix-gpt";
+    };
     languages.language = [
       {
         name = "rust";
