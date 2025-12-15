@@ -97,58 +97,6 @@ ktr-flake/
 
 ## Core Architecture
 
-### Flake Structure
-
-```
-ktr-flake/
-├── flake.nix                    # Flake infrastructure & outputs
-├── hosts/                       # Per-host configurations
-│   ├── yoshi/
-│   │   ├── configuration.nix    # Hardware config
-│   │   ├── default.nix          # Module list & overlays
-│   │   └── modules/             # Host-specific modules
-│   ├── sasha/
-│   │   ├── configuration.nix
-│   │   ├── default.nix
-│   │   └── modules/
-│   ├── hacknet/
-│   ├── otternode/
-│   └── wendy/
-├── shared/                      # Shared service modules
-│   ├── default.nix             # Base system configuration
-│   ├── packages/               # Categorized system packages
-│   │   ├── desktop.nix         # Desktop & GUI apps
-│   │   ├── media.nix           # Media & casting tools
-│   │   └── utils.nix           # Utilities & misc
-│   ├── services/               # Service configurations
-│   │   ├── virtualization.nix  # Libvirt & VMs
-│   │   ├── searx.nix           # Search engine
-│   │   └── openwebui.nix       # AI web UI
-│   └── system/                 # System-wide configs
-│       ├── fonts.nix           # Font packages
-│       └── gpg.nix             # GPG/SSH setup
-├── users+home/                 # Home-manager configuration
-│   ├── default.nix             # Main user config
-│   ├── gnome.nix               # GNOME desktop settings
-│   ├── mutt.nix                # Email client config
-│   └── sync-jrnl.nix           # Journal sync systemd service
-├── my-addition/                # Custom packages & modules
-│   ├── packages/               # Custom derivations
-│   │   ├── ort.nix             # OpenRouter CLI tool
-│   │   └── mcpo.nix            # MCP-to-OpenAPI proxy
-│   ├── modules/                # Custom home-manager modules
-│   │   ├── journal-module.nix  # Journaling system
-│   │   ├── printer-module.nix  # File viewer/printer
-│   │   └── ingest-module.nix   # File ingestion
-│   └── scripts/                # Utility scripts
-│       ├── ai-scripts.nix      # AI-related scripts
-│       ├── vm-scripts/         # VM management scripts
-│       └── cliphist-fuzzel-img.sh
-├── crypt/                      # Encrypted secrets (sops)
-├── result/                     # Build artifacts
-└── tips.nix                    # Experimental features
-```
-
 ### Key Dependencies
 
 - **home-manager:** User environment management
