@@ -78,8 +78,9 @@
     #   22 - ssh
     # 3001 - searx
     # 3002 - open-webui
+    # 3003 - miniflux
     # 27036 - steam
-    allowedTCPPorts = [22 3001 3002 27036];
+    allowedTCPPorts = [22 3001 3002 3003 27036];
   };
 
   # ktr - flatpak
