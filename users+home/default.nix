@@ -282,6 +282,13 @@ in
       echo "GPG keys imported to user keyring"
     fi
   '';
+
+  home.activation.fixHelixLanguages = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    # Fix home-manager generated languages.toml to use correct section name
+    if [ -f ~/.config/helix/languages.toml ]; then
+      $DRY_RUN_CMD sed -i 's/\[languageServer\.gpt\]/[language-server.gpt]/' ~/.config/helix/languages.toml
+    fi
+  '';
    
   ### ======= more SHELL type things ======= ###
   # starship - an customizable prompt for any shell
