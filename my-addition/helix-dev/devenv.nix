@@ -30,7 +30,6 @@
     build.exec = "cd helix && cargo build --release";
     run.exec = "cd helix && ./target/release/hx --version";
     test.exec = "cd helix && cargo test";
-    custom-hx.exec = "cd helix && ./target/release/hx";
     test-ai.exec = ''
       echo "Testing AI setup..."
       echo "HANDLER: $HANDLER"
@@ -39,6 +38,11 @@
       echo "To test in Helix: run 'custom-hx test.rs', type inside {}, check for AI completions"
     '';
   };
+
+  enterShell = ''
+    alias custom-hx="./helix/target/release/hx"
+    echo "Custom Helix available as 'custom-hx'"
+  '';
 
   # If you want to include source, uncomment and adjust
   # enterShell = ''

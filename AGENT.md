@@ -449,6 +449,8 @@ The `b` alias handles system rebuilds:
 - **LSP Module:** Created shared/helix-and-lsps.nix module for system-wide LSP server management
 - **Home-Manager Config:** Added AI language server configurations for seamless completions
 - **Documentation:** Summarized setup in AGENT.md, removed detailed AGENT2.md
+- **Development Environment:** Set up devenv for Helix development with AI testing tools
+- **Future Plans:** Outlined AI interface enhancements (explain selection, more code actions) in HELIX_AI_DEVELOPMENT_PLANS.md
 
 ### 2025-12-10
 - **NixVirt Migration:** Converted libvirt XML configurations to declarative NixVirt attribute sets

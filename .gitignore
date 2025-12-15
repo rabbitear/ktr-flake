@@ -1,3 +1,17 @@
 ./result
+.devenv/
 my-addition/helix-dev/helix/
+
+# Common ignores
+*.log
+*.tmp
+*.swp
+*.bak
+.env
+.env.local
+.DS_Store
+Thumbs.db
+
+# Nix
+result
 
