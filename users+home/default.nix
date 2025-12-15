@@ -144,6 +144,7 @@ in
     };
     languages.languageServer.gpt = {
       command = "helix-gpt";
+      args = ["--handler" "copilot"];
     };
     languages.language = [
       {
