@@ -91,7 +91,8 @@
     export OPENROUTER_API_KEY="$(cat ${config.sops.secrets.openrouter_api_key.path})"
     export HF_TOKEN="$(cat ${config.sops.secrets.huggingface1_api_key.path})"
     export GEMINI_API_KEY="$(cat ${config.sops.secrets.gemini_api_key.path})"
-    export CONTEXT7_API_KEY="$(cat ${config.sops.secrets.context7_api_key.path})"
+    export CONTTEXT7_API_KEY="$(cat ${config.sops.secrets.context7_api_key.path})"
+    export COPILOT_APII_KEY="$(cat ${config.sops.secrets.copilot_api_key.path})"
   '';
 
   # gonna use this for Python dev envs .local/bin path

@@ -33,8 +33,9 @@
     test-ai.exec = ''
       echo "Testing AI setup..."
       echo "HANDLER: $HANDLER"
+      echo "COPILOT_API_KEY set: $(if [ -n "$COPILOT_API_KEY" ]; then echo "Yes"; else echo "No"; fi)"
       echo "helix-gpt available: $(which helix-gpt)"
-      echo "Note: helix-gpt requires API key/auth for full test"
+      echo "To test helix-gpt: export COPILOT_API_KEY=your_key_here && HANDLER=copilot helix-gpt (but key is in sops)"
       echo "To test in Helix: create test.rs with 'fn main() { }', open with ./target/release/hx test.rs, type inside {}, check for AI completions"
     '';
   };
