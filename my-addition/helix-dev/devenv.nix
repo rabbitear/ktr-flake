@@ -30,13 +30,13 @@
     build.exec = "cd helix && cargo build --release";
     run.exec = "cd helix && ./target/release/hx --version";
     test.exec = "cd helix && cargo test";
-    hx.exec = "cd helix && ./target/release/hx";
+    custom-hx.exec = "cd helix && ./target/release/hx";
     test-ai.exec = ''
       echo "Testing AI setup..."
       echo "HANDLER: $HANDLER"
       echo "COPILOT_API_KEY set: $(if [ -n "$COPILOT_API_KEY" ]; then echo "Yes"; else echo "No"; fi)"
       echo "helix-gpt available: $(which helix-gpt)"
-      echo "To test in Helix: run 'hx test.rs', type inside {}, check for AI completions"
+      echo "To test in Helix: run 'custom-hx test.rs', type inside {}, check for AI completions"
     '';
   };
 
