@@ -142,6 +142,60 @@ in
         esc = [ "collapse_selection" "keep_primary_selection" ];
       };
     };
+    languages = [
+      {
+        name = "rust";
+        language-servers = ["rust-analyzer" "gpt"];
+      }
+      {
+        name = "python";
+        language-servers = ["pylsp" "gpt"];
+      }
+      {
+        name = "typescript";
+        language-servers = ["typescript-language-server" "gpt"];
+      }
+      {
+        name = "javascript";
+        language-servers = ["typescript-language-server" "gpt"];
+      }
+      {
+        name = "go";
+        language-servers = ["gopls" "gpt"];
+      }
+      {
+        name = "cpp";
+        language-servers = ["clangd" "gpt"];
+      }
+      {
+        name = "c";
+        language-servers = ["clangd" "gpt"];
+      }
+      {
+        name = "nix";
+        language-servers = ["nil" "nixd" "gpt"];
+      }
+      {
+        name = "bash";
+        language-servers = ["bash-language-server" "gpt"];
+      }
+      {
+        name = "json";
+        language-servers = ["vscode-json-language-server" "gpt"];
+      }
+      {
+        name = "yaml";
+        language-servers = ["yaml-language-server" "gpt"];
+      }
+      {
+        name = "toml";
+        language-servers = ["taplo" "gpt"];
+      }
+      {
+        name = "markdown";
+        language-servers = ["marksman" "gpt"];
+      }
+    ];
   };
 
   # whats your favor one?
