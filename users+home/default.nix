@@ -311,11 +311,12 @@ in
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    bashrcExtra = ''
-      export EDITOR=hx
-      . /etc/profile.d/aikey.sh
-      set -o vi
-    '';
+     bashrcExtra = ''
+       export EDITOR=hx
+       export HANDLER=copilot
+       . /etc/profile.d/aikey.sh
+       set -o vi
+     '';
     shellAliases = {
       h = "hx";
       o = "xargs -0 ort";
