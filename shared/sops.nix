@@ -29,6 +29,12 @@
           group = "nogroup";
           mode = "0600";
         };
+        "copilot_api_key" = {
+          sopsFile = ../crypt/cipher.yaml;
+          owner = "kreator";
+          group = "nogroup";
+          mode = "0600";
+        };
         "huggingface1_api_key" = {
           sopsFile = ../crypt/cipher.yaml;
           owner = "kreator";

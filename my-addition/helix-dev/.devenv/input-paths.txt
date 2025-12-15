@@ -1,0 +1,8 @@
+/home/kreator/docs/ktr-flake/my-addition/helix-dev/.devenv/flake.json
+/home/kreator/docs/ktr-flake/my-addition/helix-dev/.devenv.flake.nix
+/home/kreator/docs/ktr-flake/my-addition/helix-dev/.env
+/home/kreator/docs/ktr-flake/my-addition/helix-dev/.env.example
+/home/kreator/docs/ktr-flake/my-addition/helix-dev/devenv.local.nix
+/home/kreator/docs/ktr-flake/my-addition/helix-dev/devenv.lock
+/home/kreator/docs/ktr-flake/my-addition/helix-dev/devenv.nix
+/home/kreator/docs/ktr-flake/my-addition/helix-dev/devenv.yaml
