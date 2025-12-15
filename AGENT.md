@@ -205,13 +205,16 @@ The `b` alias handles system rebuilds:
 
 ### Helix (Main Editor)
 
-**Theme:** `ayu_evolve`  
+**Theme:** `tokyonight` (journal: `focus_nova`)  
 **Line Numbers:** Relative  
+**AI Integration:** helix-gpt with Copilot backend for code completions  
 **Key Bindings:**
 - `space+space` → file picker
 - `space+w` → save
 - `space+q` → quit
 - `esc` → collapse selection
+- `ctrl+x` → manual AI completion
+- `space+a` → AI code actions
 
 ### Terminal Setup
 
@@ -439,6 +442,12 @@ The `b` alias handles system rebuilds:
 
 ## Development History
 
+### 2025-12-14
+- **Helix AI Setup:** Integrated helix-gpt with Copilot for AI code completions in popular languages (Rust, Python, JS/TS, Go, C/C++, Nix, etc.)
+- **LSP Module:** Created shared/helix-and-lsps.nix module for system-wide LSP server management
+- **Home-Manager Config:** Added AI language server configurations for seamless completions
+- **Documentation:** Summarized setup in AGENT.md, removed detailed AGENT2.md
+
 ### 2025-12-10
 - **NixVirt Migration:** Converted libvirt XML configurations to declarative NixVirt attribute sets
 - **VM Infrastructure:** Added Debian 13 and Fedora 43 test VMs with SPICE graphics and QEMU guest agents
@@ -548,4 +557,4 @@ The `b` alias handles system rebuilds:
 ---
 
 *This document is maintained by kreator with assistance from AI agents.  
-Last updated: 2025-12-08*
+Last updated: 2025-12-14*
