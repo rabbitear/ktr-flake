@@ -1,1 +1,6 @@
-fn main() {}
+// TODO:
+//  here is ai?
+
+fn main() {
+    // no AI !!
+}
