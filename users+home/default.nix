@@ -142,7 +142,7 @@ in
         esc = [ "collapse_selection" "keep_primary_selection" ];
       };
     };
-    languages = [
+    languages.language = [
       {
         name = "rust";
         language-servers = ["rust-analyzer" "gpt"];
