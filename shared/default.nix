@@ -8,6 +8,7 @@
     ./packages/desktop.nix
     ./packages/media.nix
     ./packages/utils.nix
+    ./helix-and-lsps.nix
   ];
 
   # Enable the X11 windowing system.
