@@ -149,55 +149,55 @@ in
     languages.language = [
       {
         name = "rust";
-        languageServers = ["rust-analyzer" "gpt"];
+        language-servers = ["rust-analyzer" "gpt"];
       }
       {
         name = "python";
-        languageServers = ["pylsp" "gpt"];
+        language-servers = ["pylsp" "gpt"];
       }
       {
         name = "typescript";
-        languageServers = ["typescript-language-server" "gpt"];
+        language-servers = ["typescript-language-server" "gpt"];
       }
       {
         name = "javascript";
-        languageServers = ["typescript-language-server" "gpt"];
+        language-servers = ["typescript-language-server" "gpt"];
       }
       {
         name = "go";
-        languageServers = ["gopls" "gpt"];
+        language-servers = ["gopls" "gpt"];
       }
       {
         name = "cpp";
-        languageServers = ["clangd" "gpt"];
+        language-servers = ["clangd" "gpt"];
       }
       {
         name = "c";
-        languageServers = ["clangd" "gpt"];
+        language-servers = ["clangd" "gpt"];
       }
       {
         name = "nix";
-        languageServers = ["nil" "nixd" "gpt"];
+        language-servers = ["nil" "nixd" "gpt"];
       }
       {
         name = "bash";
-        languageServers = ["bash-language-server" "gpt"];
+        language-servers = ["bash-language-server" "gpt"];
       }
       {
         name = "json";
-        languageServers = ["vscode-json-language-server" "gpt"];
+        language-servers = ["vscode-json-language-server" "gpt"];
       }
       {
         name = "yaml";
-        languageServers = ["yaml-language-server" "gpt"];
+        language-servers = ["yaml-language-server" "gpt"];
       }
       {
         name = "toml";
-        languageServers = ["taplo" "gpt"];
+        language-servers = ["taplo" "gpt"];
       }
       {
         name = "markdown";
-        languageServers = ["marksman" "gpt"];
+        language-servers = ["marksman" "gpt"];
       }
     ];
   };
