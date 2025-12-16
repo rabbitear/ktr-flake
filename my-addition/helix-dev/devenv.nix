@@ -13,6 +13,7 @@
     git
     gcc
     pkg-config
+    openssl.dev
 
     # For testing
     helix  # The stable version for comparison
@@ -27,7 +28,7 @@
 
   # Optional: Pre-commit hooks or scripts
   scripts = {
-    build.exec = "cd helix && cargo build --release";
+    build.exec = "export PKG_CONFIG_PATH=/nix/store/ccilc0vq8a5qvmjgp6qyg1jrfgjkrff4-openssl-3.6.0-dev/lib/pkgconfig:$PKG_CONFIG_PATH && cd helix && cargo build --release";
     run.exec = "cd helix && ./target/release/hx --version";
     test.exec = "cd helix && cargo test";
     test-ai.exec = ''
@@ -36,6 +37,7 @@
       echo "COPILOT_API_KEY set: $(if [ -n "$COPILOT_API_KEY" ]; then echo "Yes"; else echo "No"; fi)"
       echo "helix-gpt available: $(which helix-gpt)"
       echo "To test in Helix: run 'custom-hx test.rs', type inside {}, check for AI completions"
+      echo "Ollama test: :ai-generate hello world"
     '';
   };
 

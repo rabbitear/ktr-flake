@@ -156,5 +156,6 @@
 
     zmap
     rsstail-py
+    delta
   ];
 }
