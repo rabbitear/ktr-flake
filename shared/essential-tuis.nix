@@ -34,7 +34,9 @@
     btop
     pass
     passExtensions.pass-otp
+    passExtensions.pass-genphrase
     pass-wayland
+    xkcdpass
     tmuxPlugins.pass
     nix-ai-tools.copilot-cli
     nix-ai-tools.gemini-cli
