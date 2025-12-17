@@ -1,5 +1,8 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
+  environment.systemPackages = [
+    pkgs.shiori
+  ];
   services.shiori = {
     enable = true;
     port = 3004;
