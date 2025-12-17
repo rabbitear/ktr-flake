@@ -34,8 +34,7 @@
     gnumake
     btop
     pass
-    passExtensions.pass-otp
-    passExtensions.pass-genphrase
+    #pass.withExtensions (exts: [ exts.pass-otp ])
     pass-wayland
     oath-toolkit
     zbar
