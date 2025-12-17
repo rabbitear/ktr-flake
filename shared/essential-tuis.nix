@@ -33,6 +33,7 @@
     gnumake
     btop
     pass
+    passExtensions.pass-otp
     nix-ai-tools.copilot-cli
     nix-ai-tools.gemini-cli
     nix-ai-tools.opencode
