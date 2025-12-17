@@ -38,6 +38,7 @@
     passExtensions.pass-genphrase
     pass-wayland
     oath-toolkit
+    zbar
     xkcdpass
     tmuxPlugins.pass
     nix-ai-tools.copilot-cli
