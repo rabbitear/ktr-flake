@@ -22,6 +22,7 @@
     fd
     dmenu
     dmenu-bluetooth
+    dmenu-wayland
     bemenu
     fuzzel
     duckdb
