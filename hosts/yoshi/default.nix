@@ -3,6 +3,7 @@
   ./configuration.nix
   ../../shared
   ./modules/ollama-cuda.nix
+  ./modules/nvidia-cuda.nix
   #../../shared/openwebui.nix
   ../../shared/searx.nix
   ../../shared/flatpak.nix
