@@ -35,6 +35,7 @@
     btop
     pass
     #pass.withExtensions (exts: [ exts.pass-otp ])
+    passExtensions.pass-otp
     pass-wayland
     oath-toolkit
     zbar
