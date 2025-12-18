@@ -327,7 +327,7 @@ in
       pd = "dotdiff";
 
       j = lib.mkForce "journal";
-      ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
+      ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history --preview-window=left:60% --header=' =-=-=-=-=-> ' --footer=' -+- Nix -+- Search -+- Tv -+- ' --ghost=qUeRy_HeRe --preview-border=thinblock --list-border=thinblock --no-separator";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
       ga = "git add";
