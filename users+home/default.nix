@@ -26,6 +26,7 @@ in
     ./sync-jrnl.nix
     ./labwc.nix
     ./kanshi.nix
+    ./aider-chat.nix
     #./llamacpp.nix
   ];
 
