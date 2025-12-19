@@ -2,6 +2,7 @@
 [
   ./configuration.nix
   ../../shared
+  ../../shared/searx.nix
   inputs.sops-nix.nixosModules.sops
   inputs.home-manager.nixosModules.home-manager
   {
