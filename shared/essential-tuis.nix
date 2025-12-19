@@ -20,6 +20,7 @@
     w3m
     lynx
     fd
+    ictree
     dmenu
     dmenu-bluetooth
     dmenu-wayland
