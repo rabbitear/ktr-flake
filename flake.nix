@@ -29,7 +29,7 @@
     # export the ort package built from ./ort.nix
     packages.${system} = {
       ort = pkgs.callPackage ./my-addition/packages/ort.nix {};
-      blender-mcp = pkgs.callPackage ./my-addition/packages/blender-mcp.nix {};
+      #blender-mcp = pkgs.callPackage ./my-addition/packages/blender-mcp.nix {};
     };
 
     # a development shell to work on ort
@@ -102,6 +102,12 @@
          system = "x86_64-linux";
          specialArgs = { inherit inputs; };
          modules = import ./hosts/hacknet/default.nix { inherit inputs; };
+       };
+      ## Jenny
+       jenny = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         specialArgs = { inherit inputs; };
+         modules = import ./hosts/jenny/default.nix { inherit inputs; };
        };
       #########
       #       #

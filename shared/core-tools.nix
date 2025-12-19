@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../my-addition/packages/mcpo.nix
+    #../my-addition/packages/mcpo.nix
   ];
 
   # Core development tools and custom packages

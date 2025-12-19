@@ -6,6 +6,6 @@
     pkgs.openscad
     pkgs.openscad-lsp
     pkgs.gimp3
-    blender-mcp
+    #blender-mcp
   ];
 }
