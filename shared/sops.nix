@@ -73,6 +73,9 @@
           group = "nogroup";
           mode = "0600";
         };
+        "tailscale_preauth" = {
+          sopsFile = ../crypt/local-config.yaml;
+        };
       };
     };
   };

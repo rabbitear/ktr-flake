@@ -65,6 +65,41 @@
     };
   };
 
+  # Add tailscale to your system packages
+  environment.systemPackages = [ pkgs.tailscale ];
+
+  # Create a oneshot to autoconnect on rebuild/switch
+  systemd.services.tailscale-autoconnect = {
+    description = "Automatic connection to Tailscale";
+  
+    after = [ "network-pre.target" "tailscale.service" ];
+    wants = [ "network-pre.target" "tailscale.service" ];
+    wantedBy = [ "multi-user.target" ];
+  
+    serviceConfig = {
+      Type = "oneshot";
+  
+      # Pass our tailscale auth key from sops as a Environmental Variable
+      EnvironmentFile = config.sops.secrets.tailscale_preauth.path;
+    };
+  
+    # have the job run this shell script
+    script = with pkgs; ''
+      # wait for tailscaled to settle
+      sleep 2
+  
+      # check if we are already authenticated to tailscale
+      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
+      if [ $status = "Running" ]; then # if so, then do nothing
+        exit 0
+      fi
+  
+      # otherwise authenticate with tailscale using the key from secrets
+      ${tailscale}/bin/tailscale up -authkey "$TAILSCALE_AUTH_KEY" --accept-routes=true --reset
+    '';
+  };
+
+
   # Thinning down --- we need to clean up and trim the fat.
   #programs.adb.enable = true;
 
