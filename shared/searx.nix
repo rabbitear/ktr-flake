@@ -3,6 +3,14 @@
 #   * Do not depend on the env files in that home directory!
 {pkgs, config, lib, ...}:
 {
+  sops = {
+    secrets."searx" = {
+      sopsFile = ../crypt/local-config.yaml;
+      owner = "searx";
+      group = "nogroup";
+      mode = "0600";
+    };
+  };
   services.searx = {
     enable = true;
     redisCreateLocally = true;
