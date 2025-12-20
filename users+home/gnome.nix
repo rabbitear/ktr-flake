@@ -50,14 +50,14 @@ in
       picture-options = "zoom";  # or "scaled" or "stretched", ..
     };
     "org/gnome/desktop/wm/keybindings" = {
-  	  switch-to-workspace-1 = [ "<Control>1" ];
-      switch-to-workspace-2 = [ "<Control>2" ];
-      switch-to-workspace-3 = [ "<Control>3" ];
-      switch-to-workspace-4 = [ "<Control>4" ];
-	    move-to-workspace-1 = [ "<Control><Shift>1" ];
-      move-to-workspace-2 = [ "<Control><Shift>2" ];
-      move-to-workspace-3 = [ "<Control><Shift>3" ];
-      move-to-workspace-4 = [ "<Control><Shift>4" ];
+  	  switch-to-workspace-1 = [ "<Super>1" ];
+      switch-to-workspace-2 = [ "<Super>2" ];
+      switch-to-workspace-3 = [ "<Super>3" ];
+      switch-to-workspace-4 = [ "<Super>4" ];
+	    move-to-workspace-1 = [ "<Super><Shift>1" ];
+      move-to-workspace-2 = [ "<Super><Shift>2" ];
+      move-to-workspace-3 = [ "<Super><Shift>3" ];
+      move-to-workspace-4 = [ "<Super><Shift>4" ];
 	    toggle-fullscreen = [ "<Super>F" ];
 	    close = [ "<Super>q" ];
       activate-window-menu = [ "<Shift><Super>M" ];
