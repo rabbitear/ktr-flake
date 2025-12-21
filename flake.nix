@@ -120,8 +120,7 @@
                 })
               ];
             }
-            (import ./hosts/jenny/default.nix { inherit inputs; })
-          ];
+          ] ++ (import ./hosts/jenny/default.nix { inherit inputs; });
         };
       #########
       #       #
