@@ -29,7 +29,7 @@
        bun = prev.bun.overrideAttrs (oldAttrs: {
          src = prev.fetchurl {
            url = "https://github.com/oven-sh/bun/releases/download/bun-v${oldAttrs.version}/bun-linux-x64-baseline.zip";
-           hash = "sha256-09g9w8s63vkcfpxlvg1j9mn5kvpc1gkpnd8jy7z4i8s2jzhjjl9x";
+           hash = "sha256-PVEp4ZdCo0j+8RI1e+cL7O5ZbE0yvE37dWzuYTTi6SU=";
          };
        });
      })
