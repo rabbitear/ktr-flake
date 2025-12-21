@@ -31,28 +31,9 @@ in
     #./llamacpp.nix
   ];
 
+  # Overlays -- bun
   nixpkgs.overlays = [
-    (final: prev: {
-      bun = prev.bun.overrideAttrs (old: {
-        src = prev.fetchurl {
-          url = "https://github.com/oven-sh/bun/releases/download/bun-v1.1.6/bun-linux-x64-baseline.zip";
-          hash = "sha256-0728ag8ywpr59xlfmamn28avpsf1qr0pa4rizp97dyah7dbikg8q";
-        };
-        # Remove build phases, we're using prebuild.
-        configurePhase = true;
-        buildPhase = true;
-        dontStrip = true;
-        passthru = old.passthru // {
-          version = old.version;
-        };
-
-        # env = (old.env or {}) {
-        #   BUN_FEATURE_FLAGS = "-DUSE_SIMD false";
-        #   CFLAGS = "-march=x86-64 -mtune=generic";
-        #   CXXFLAGS = "-march=x86-64 -mtune=generic";
-        # };       
-      });
-    })
+    (import ./bun-overlay.nix) 
   ];
   # My shell scripts.
   systemd.user.enable = true;
