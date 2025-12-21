@@ -27,9 +27,21 @@ in
     ./labwc.nix
     ./kanshi.nix
     ./aider-chat.nix
+    ./bun.nix
     #./llamacpp.nix
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      bun = prev.bun.overrideAttrs (old: {
+        env = (old.env or {}) // {
+          BUN_FEATURE_FLAGS = "-DUSE_SIMD false";
+          CFLAGS = "-march=x86-64 -mtune=generic";
+          CXXFLAGS = "-march=x86-64 -mtune=generic";
+        };       
+      });
+    })
+  ];
   # My shell scripts.
   systemd.user.enable = true;
   programs.journal.enable = true;
