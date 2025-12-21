@@ -92,6 +92,7 @@ in
      }
    '';
 
+
     home.file.".config/opencode/opencode.json".text = ''
       {
         "$schema": "https://opencode.ai/config.json",
@@ -101,11 +102,6 @@ in
             "command": ["mcp-nixos"],
             "enabled": true
           },
-          "blender": {
-            "type": "local",
-            "command": ["blender-mcp"],
-            "enabled": true
-          }
         }
       }
     '';
