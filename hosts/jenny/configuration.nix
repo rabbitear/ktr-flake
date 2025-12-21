@@ -22,16 +22,4 @@
 
    time.timeZone = "America/Anchorage";
    system.stateVersion = "25.05"; # Did you read the comment?
-
-   # Overlay to use bun baseline for AVX compatibility on older CPUs
-   nixpkgs.overlays = [
-     (final: prev: {
-       bun = prev.bun.overrideAttrs (oldAttrs: {
-         src = prev.fetchurl {
-           url = "https://github.com/oven-sh/bun/releases/download/bun-v${oldAttrs.version}/bun-linux-x64-baseline.zip";
-           hash = "sha256-PVEp4ZdCo0j+8RI1e+cL7O5ZbE0yvE37dWzuYTTi6SU=";
-         };
-       });
-     })
-   ];
  }
