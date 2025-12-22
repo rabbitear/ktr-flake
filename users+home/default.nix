@@ -27,7 +27,7 @@ in
     ./labwc.nix
     ./kanshi.nix
     ./aider-chat.nix
-    ./bun.nix
+    #./bun.nix
     #./llamacpp.nix
   ];
 
