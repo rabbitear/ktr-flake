@@ -108,11 +108,11 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-              {
-                nixpkgs.config.packageOverrides = pkgs: {
-                  bun = pkgs.bun.override { target = "baseline"; };
-                };
-              }
+              # {
+                # nixpkgs.config.packageOverrides = pkgs: {
+                  # bun = pkgs.bun.override { target = "baseline"; };
+                # };
+              # }
             # {
             #   #nixpkgs.overlays = [
             #   #  (final: prev: {
