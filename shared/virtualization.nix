@@ -13,6 +13,9 @@ let
   nixvirtlib = inputs.NixVirt.lib;
   
 in {
+  # Enable podman daemon
+  virtualisation.podman.enable = true;
+
   # Enable libvirt daemon
   virtualisation.libvirtd.enable = true;
   
@@ -33,6 +36,8 @@ in {
     qemu
     spice
     spice-gtk
+    podman
+    toolbox
   ];
   
   # Create directories for templates
