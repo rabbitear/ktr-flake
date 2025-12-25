@@ -11,6 +11,8 @@
     gopls
     golangci-lint-langserver
     delve
+    httpie
+    httpie-desktop
   ];
 
   environment.systemPackages = with pkgs; [
