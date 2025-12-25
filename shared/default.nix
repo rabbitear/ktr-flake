@@ -115,7 +115,8 @@
     # 3002 - open-webui
     # 3003 - miniflux
     # 27036 - steam
-    allowedTCPPorts = [22 3001 3002 3003 27036];
+    #  adding 8000 for testing vllm
+    allowedTCPPorts = [22 3001 3002 3003 8000 27036];
   };
 
   # ktr - flatpak
