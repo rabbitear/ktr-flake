@@ -14,8 +14,8 @@ let
   
 in {
   # Enable podman daemon
-  virtualisation.containers = {
-    enable = true;
+  virtualisation = {
+    containers.enable = true;
     podman = {
       enable = true;
       dockerCompat = true; 
