@@ -14,7 +14,14 @@ let
   
 in {
   # Enable podman daemon
-  virtualisation.podman.enable = true;
+  virtualisation.containers = {
+    enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true; 
+      defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+    };
+  };
 
   # Enable libvirt daemon
   virtualisation.libvirtd.enable = true;
@@ -24,9 +31,6 @@ in {
   
   # Enable SPICE for remote display
   virtualisation.spiceUSBRedirection.enable = true;
-  
-  # User permissions for kreator
-  users.users.kreator.extraGroups = [ "libvirtd" "kvm" "input" ];
   
   # Required packages
   environment.systemPackages = with pkgs; [
