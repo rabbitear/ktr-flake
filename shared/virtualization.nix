@@ -37,6 +37,7 @@ in {
     spice
     spice-gtk
     podman
+    buildah
     toolbox
   ];
   
