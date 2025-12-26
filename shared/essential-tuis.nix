@@ -54,6 +54,7 @@
     alacritty-theme
     foot
     tmux
+    lazygit
     virt-viewer
     mpv
     bc

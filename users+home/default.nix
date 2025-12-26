@@ -141,6 +141,12 @@ in
         space.space = "file_picker";
         space.w = ":w";
         space.q = ":q";
+        space.l = [
+          ":new"
+          ":insert-output lazygit"
+          ":buffer-close!"
+          ":redraw"
+        ];
         esc = [ "collapse_selection" "keep_primary_selection" ];
       };
     };
