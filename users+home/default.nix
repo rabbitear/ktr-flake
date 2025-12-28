@@ -73,7 +73,7 @@ in
       if [[ -t 0 ]]; then
         # Interactive mode (terminal input)
         echo -e "\e[0m 🦉📥 \e[0;31m**$model:** \e[1;31mEnter \e[0;33mText \e[1;31mHere\e[0m 📡📝" >&2
-        (tee -p ./o_input.log; echo -e " 🦆🔍 [Searching] 🦜✨ <-+--\e[0;36m" >&2) | ort -m "$model" | tee ./o_output.log
+        (tee -p ./o_input.log; echo -e "\n 🦆🔍 \e[0;35m][\e[0;32mSeARchiNg\e[0;35m] 🦜✨\e[0;36m\n\n" >&2) | ort -m "$model" | tee ./o_output.log
       else
         # Pipe/redirection mode
         echo -e "\e[0;34mPlease \e[0;35mWait\e[0;34m... 🕰️ ⌛️ 🚥" >&2
@@ -83,8 +83,9 @@ in
       echo -e "\n\n\t==== $(date +%F) == $(date +%T) ====\n" | tee -a ~/.o_input.log ~/.o_output.log
       cat ./o_input.log >> ~/.o_input.log
       cat ./o_output.log >> ~/.o_output.log
-      echo -e "\e[1;31mTODO: \e[0m
+      echo -e "\e[1;31mTODO: \e[0m"
       echo "put the character length of all files changed in this script."
+      echo "go over spacing again"
       echo -en "\e[0m"
     '')
   ];
