@@ -59,7 +59,7 @@ in
     pkgs.keychain       # for our ssh server
     pkgs.devenv
     ## vibed by deepseek, trying this out instead of aliasing, below...
-    (pkgs.writeScriptBin "ai" ''
+    (pkgs.writeScriptBin "o" ''
       #!/usr/bin/env bash
       model=''${1:-"tngtech/tng-r1t-chimera:free"}
       echo -e "\t🦉📥 **$model:** 📡📝" >&2
@@ -343,7 +343,6 @@ in
      '';
     shellAliases = {
       h = "hx";
-      o = "xargs -0 ort";
       chat = "ai-chat";
       oc = "ai-opencode";
       cpu = "process-monitor";
