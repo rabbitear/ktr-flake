@@ -190,3 +190,17 @@ Your Nix+Home Manager Bash setup is **highly customized for productivity** with:
    - Git shortcuts (`gc`/`ga`/`gs`)
 
 The setup balances **reproducible config** (Nix) with **interactive usability** (previews, logging, VI mode). 🔄🦉
+What are 15 emoji's that are animals?
+I'm wondering about my ai alias.  I'm using home-manager, I'll paraphrase my nix config:
+ 
+programs.bash = {
+  ...
+  shellAliases = {
+    h = "hx";
+    ai = "echo '   🦉📥 **Your input here:** 📡📝' >&2 && (tee -a your_prompt.txt; echo -e '       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.log";
+  };
+}
+
+I like it, but, is it possible, maybe with a bash variable, that I can set to change the model?  And it have a default one, probably that tngtech/tng-r1t-chimera:free  
+
+also instead of Year input here, we put the name of the model from the variable ... I have to not use ${} for bash, because its going thru Nix.

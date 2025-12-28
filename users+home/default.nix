@@ -334,7 +334,12 @@ in
       psa = "process-monitor-all";
       pd = "dotdiff";
 
-      ai = "echo '   🦉📥 **Your input here:** 📡📝' >&2 && (tee -a your_prompt.txt; echo -e '       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.log";
+      # my original alias, not vibe coded :)
+      #ai = "echo '   🦉📥 **Your input here:** 📡📝' >&2 && (tee -a your_prompt.txt; echo -e '       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.log";
+
+      # the vibed advice one
+      ai = ''model=$1; if [ -z "$model" ]; then model="tngtech/tng-r1t-chimera:free"; fi; echo "   🦉📥 **\''${model}:** 📡📝" >&2 && (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log'';
+
 
 
       j = lib.mkForce "journal";
