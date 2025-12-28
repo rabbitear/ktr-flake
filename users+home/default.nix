@@ -67,12 +67,14 @@ in
       # Check if input is from pipe/redirection
       if [[ -t 0 ]]; then
         # Interactive mode (terminal input)
-        (tee -a your_prompt.txt; echo -e "\t--+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log
+        (tee -p ./o_input.log; echo -e "\t--+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log
       else
         # Pipe/redirection mode
         echo -e "\n\t\t\tPlease Wait... 🕰️ ⌛️ 🚥\n\n" >&2
-        ort -m "$model" | tee -a your_output.log
+        ort -m "$model" | tee -p ./o_output.log
       fi
+      cat ./o_input.log >> ~/.o_input.log
+      cat ./o_output.log >> ~/.o_output.log
     '')
   ];
   home = {
