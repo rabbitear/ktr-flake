@@ -74,7 +74,7 @@ in
         ort -m "$model" | tee -p ./o_output.log
       fi
       echo -e "\e[0m"
-      echo -e "\n\n==== $(date +%F) == $(date +%T) ====\n" | tee -a ~/.o_input.log ~/.o_output.log
+      echo -e "\n\n\t==== $(date +%F) == $(date +%T) ====\n" | tee -a ~/.o_input.log ~/.o_output.log
       cat ./o_input.log >> ~/.o_input.log
       cat ./o_output.log >> ~/.o_output.log
     '')
