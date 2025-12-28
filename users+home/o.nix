@@ -6,10 +6,10 @@ let
     text = ''
       #!/usr/bin/env bash
       model=''${1:-"tngtech/tng-r1t-chimera:free"}
-      mkdir "$HOME"/.o
+      [[ ! -d "$HOME"/.o ]] && mkdir "$HOME"/.o
       # Check if input is from pipe/redirection
-      outputfile="$HOME/.o/$(date +%F_%H_%M_%S)_output.log"
-      inputfile="$HOME/.o/$(date +%F_%H_%M_%S)_input.log"
+      outputfile="$HOME/.o/$(date +%F_%H_%M_%S)_output.md"
+      inputfile="$HOME/.o/$(date +%F_%H_%M_%S)_input.md"
       if [[ -t 0 ]]; then
         # Interactive mode (terminal input)
         echo -e "\e[0m 🦉📥 \e[0;31m**$model:** \e[1;31mEnter \e[0;33mText \e[1;31mHere\e[0m 📡📝" >&2
