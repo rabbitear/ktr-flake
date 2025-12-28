@@ -83,6 +83,7 @@ in
       cat ./o_input.log >> ~/.o_input.log
       cat ./o_output.log >> ~/.o_output.log
       echo -e "\e[1;31mTODO: \e[0;35m put the character length of all files changed in this script.\e[0m"
+      echo -e "\e[0;35m    - c_echo does not work, to tried right now, fix soon]"
     '')
   ];
   home = {
