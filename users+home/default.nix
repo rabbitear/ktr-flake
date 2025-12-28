@@ -62,7 +62,12 @@ in
     (pkgs.writeScriptBin "o" ''
       #!/usr/bin/env bash
       model=''${1:-"tngtech/tng-r1t-chimera:free"}
-      echo -e "\t\t🦉📥 **$model:** 📡📝" >&2
+      # Center messages
+      c_echo() {
+        text="$1"
+        printf "%*s\n" $(( (''${#text} + $(tput cols)) / 2 )) "$text"
+      }
+      c_echo "🦉📥 **$model:** 📡📝" >&2
 
       # Check if input is from pipe/redirection
       if [[ -t 0 ]]; then
