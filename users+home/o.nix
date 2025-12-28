@@ -19,11 +19,10 @@ let
         echo -e "\e[0;32mPlease \e[0;35mWait\e[0;34m... 🕰️ ⌛️ 🚥\e[0m" >&2
         ort -m "$model" | tee -p "$outputfile"
       fi
-      echo -e "\e[1;33m$(basename "$outputfile") \e[0;34m(\e[0;36m$(stat --printf="%s\n" "$outputfile")\e[0;34m) \e[0;35mbytes"
-      echo -e "\e[1;33m$(basename "$inputfile") \e[0;34m(\e[0;36m$(stat --printf="%s\n" "$inputfile")\e[0;34m) \e[0;35mbytes"
       echo
+      echo -e "\e[0m$(basename "$outputfile") \e[0;34m(\e[0;36m$(stat --printf="%s\n" "$outputfile")\e[0;34m) \e[0;35mbytes"
+      echo -e "\e[0m$(basename "$inputfile") \e[0;34m(\e[0;36m$(stat --printf="%s\n" "$inputfile")\e[0;34m) \e[0;35mbytes"
       echo -e "\n\e[0m\e[1;31mTODO: \e[0m"
-      echo "put the character length of all files changed in this script."
       echo "go over spacing again"
       echo -en "\e[0m"
     '';   
