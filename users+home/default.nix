@@ -334,6 +334,9 @@ in
       psa = "process-monitor-all";
       pd = "dotdiff";
 
+      ai = "echo '⬇️ Enter your input below:' >&2 && (tee -a your_prompt.txt; echo '==OK==' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.log";
+
+
       j = lib.mkForce "journal";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history --preview-window=left:60% --header=' =-=-=-=-=-> ' --footer=' -+- Nix -+- Search -+- Tv -+- ' --ghost=qUeRy_HeRe --preview-border=thinblock --list-border=thinblock --no-separator";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
