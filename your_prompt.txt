@@ -303,3 +303,23 @@ Can I put text say with cat to my ai script?  like:
 cat my_new_prompt.txt | ai 
 
 and it will use the piped in text as the prompt?
+This looks good, I'm testing it now.
+
+```nix
+home.packages = [
+  (pkgs.writeScriptBin "ai" ''
+    #!/usr/bin/env bash
+    model=''${1:-"tngtech/tng-r1t-chimera:free"}
+    echo "   🦉📥 **$model:** 📡📝" >&2
+
+    # Check if input is from pipe/redirection
+    if [ -t 0 ]; then
+      # Interactive mode (terminal input)
+      (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log
+    else
+      # Pipe/redirection mode
+      ort -m "$model" | tee -a your_output.log
+    fi
+  '')
+];
+```
