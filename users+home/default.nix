@@ -76,7 +76,7 @@ in
         (tee -p ./o_input.log; echo -e "\n 🦆🔍 \e[0;35m][\e[0;32mSeARchiNg\e[0;35m][ 🦜✨\e[0;36m\n" >&2) | ort -m "$model" | tee ./o_output.log
       else
         # Pipe/redirection mode
-        echo -e "\e[0;34mPlease \e[0;35mWait\e[0;34m... 🕰️ ⌛️ 🚥" >&2
+        echo -e "\e[0;32mPlease \e[0;35mWait\e[0;34m... 🕰️ ⌛️ 🚥\e[0m" >&2
         ort -m "$model" | tee -p ./o_output.log
       fi
       echo -e "\e[0m"
