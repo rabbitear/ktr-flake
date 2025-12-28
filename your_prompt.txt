@@ -205,3 +205,10 @@ I like it, but, is it possible, maybe with a bash variable, that I can set to ch
 
 also instead of Year input here, we put the name of the model from the variable ... I have to not use ${} for bash, because its going thru Nix.
 can you say a bedtime story?
+What model are you, and do you have tool calling?
+NixOS home-manager  I have a program.bash.shellAlaises = { ... }; 
+
+inside I have an alias called ai:
+
+      ai = ''model=$1; if [ -z "$model" ]; then model="tngtech/tng-r1t-chimera:free"; fi; echo "   🦉📥 **\''$model:** 📡📝" >&2 && (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log'';
+
