@@ -3,7 +3,9 @@
 
   config = {
     # ensure mutt is available in the user's profile too
-    home.packages = with pkgs; [ mutt ];
+    home.packages = with pkgs; [
+      mutt
+    ];
 
     # Replace the contents below with the full contents of your existing ~/.muttrc
     # cat /run/secrets/muttwords

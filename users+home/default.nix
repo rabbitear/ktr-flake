@@ -27,6 +27,7 @@ in
     ./labwc.nix
     ./kanshi.nix
     ./aider-chat.nix
+    ./o.nix
     #./bun.nix
     #./llamacpp.nix
   ];
@@ -58,36 +59,6 @@ in
     pkgs.nerd-fonts.fantasque-sans-mono
     pkgs.keychain       # for our ssh server
     pkgs.devenv
-    ## vibed by deepseek, trying this out instead of aliasing, below...
-    (pkgs.writeScriptBin "o" ''
-      #!/usr/bin/env bash
-      model=''${1:-"tngtech/tng-r1t-chimera:free"}
-      # Center messages
-      c_echo() {
-        # ktr - not used, doesn't work yet.
-        text="$1"
-        printf "%*s\n" $(( (''${#text} + $(tput cols)) / 2 )) "$text"
-      }
-
-      # Check if input is from pipe/redirection
-      if [[ -t 0 ]]; then
-        # Interactive mode (terminal input)
-        echo -e "\e[0m 🦉📥 \e[0;31m**$model:** \e[1;31mEnter \e[0;33mText \e[1;31mHere\e[0m 📡📝" >&2
-        (tee -p ./o_input.log; echo -e "\n 🦆🔍 \e[0;35m][\e[0;32mSeARchiNg\e[0;35m][ 🦜✨\e[0;36m\n" >&2) | ort -m "$model" | tee ./o_output.log
-      else
-        # Pipe/redirection mode
-        echo -e "\e[0;32mPlease \e[0;35mWait\e[0;34m... 🕰️ ⌛️ 🚥\e[0m" >&2
-        ort -m "$model" | tee -p ./o_output.log
-      fi
-      echo -e "\e[0m"
-      echo -e "\n\n == $(date +%F) == $(date +%T) ==" | tee -a ~/.o_input.log ~/.o_output.log > /dev/null
-      cat ./o_input.log >> ~/.o_input.log
-      cat ./o_output.log >> ~/.o_output.log
-      echo -e "\e[1;31mTODO: \e[0m"
-      echo "put the character length of all files changed in this script."
-      echo "go over spacing again"
-      echo -en "\e[0m"
-    '')
   ];
   home = {
     username = "kreator";
