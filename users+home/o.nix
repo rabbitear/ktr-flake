@@ -19,8 +19,8 @@ let
         echo -e "\e[0;32mPlease \e[0;35mWait\e[0;34m... 🕰️ ⌛️ 🚥\e[0m" >&2
         ort -m "$model" | tee -p "$outputfile"
       fi
-      echo -e "\n\e[1;31m$outputfile, $(wc -c "$outputfile") bytes"
-      echo -e "\n\e[1;31m$inputfile, $(wc -c "$inputfile") bytes"
+      echo -e "\n\e[1;31m$(basename "$outputfile"), $(wc -c "$outputfile") bytes"
+      echo -e "\n\e[1;31m$(basename "$inputfile"), $(wc -c "$inputfile") bytes"
       echo
       echo -e "\n\e[0m\e[1;31mTODO: \e[0m"
       echo "put the character length of all files changed in this script."
