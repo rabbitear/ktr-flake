@@ -204,3 +204,4 @@ programs.bash = {
 I like it, but, is it possible, maybe with a bash variable, that I can set to change the model?  And it have a default one, probably that tngtech/tng-r1t-chimera:free  
 
 also instead of Year input here, we put the name of the model from the variable ... I have to not use ${} for bash, because its going thru Nix.
+can you say a bedtime story?
