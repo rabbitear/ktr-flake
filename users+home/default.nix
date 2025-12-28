@@ -73,6 +73,7 @@ in
         echo -e "\n\t\t\tPlease Wait... 🕰️ ⌛️ 🚥\n\n" >&2
         ort -m "$model" | tee -p ./o_output.log
       fi
+      echo -e "\n\n==== $(date +%F) == $(date +%D) ====\n" | tee -a ~/.o_input.log ~/.o_output.log
       cat ./o_input.log >> ~/.o_input.log
       cat ./o_output.log >> ~/.o_output.log
     '')
