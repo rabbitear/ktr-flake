@@ -70,7 +70,7 @@ in
         (tee -a your_prompt.txt; echo -e "\t--+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log
       else
         # Pipe/redirection mode
-        echo -e "\n\tplease wait...\n\n" >&2 | ort -m "$model" | tee -a your_output.log
+        echo -e "\n\tplease wait... ⏳ ⌛️ 🚥\n\n" >&2 | ort -m "$model" | tee -a your_output.log
       fi
     '')
   ];
