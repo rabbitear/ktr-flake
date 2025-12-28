@@ -212,3 +212,94 @@ inside I have an alias called ai:
 
       ai = ''model=$1; if [ -z "$model" ]; then model="tngtech/tng-r1t-chimera:free"; fi; echo "   🦉📥 **\''$model:** 📡📝" >&2 && (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log'';
 
+ai
+   🦉📥 **$model:** 📡📝
+NixOS home-manager  I have a program.bash.shellAlaises = { ... };   
+
+inside I have an alias called ai:
+
+      ai = ''model=$1; if [ -z "$model" ]; then model="tngtech/tng-r1t-chimera:free"; fi; echo "   🦉📥 **\''$model:** 📡📝" >&2 && (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log'';
+
+       --+-> 🦆🔍 [Searching] 🦜✨ [...]
+
+
+
+Your `ai` alias uses Bash commands but may have quoting issues in Nix. For better reliability, either:
+
+1️⃣ **Escape Nix strings properly** (double single quotes `''` for literal `'`):
+```nix
+ai = ''model=$1; if [ -z "$model" ]; then model="tngtech/tng-r1t-chimera:free"; fi; echo "   🦉📥 **$model:** 📡📝" >&2 && (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log'';
+```
+
+2️⃣ **Or create a script** (cleaner):
+```nix
+home.packages = [
+  (pkgs.writeScriptBin "ai" ''
+    #!/usr/bin/env bash
+    model=''${1:-"tngtech/tng-r1t-chimera:free"}
+    echo "   🦉📥 **$model:** 📡📝" >&2
+    (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log
+  '')
+];
+```
+
+Use `ai` normally in terminal. 🛠️✨ The script approach avoids Nix string escaping headaches.
+
+Stats: tngtech/tng-r1t-chimera:free at Chutes. 0.0000 cents. 21s (986ms TTFT, 25ms ITL)
+ktr-flake on  master [!⇡] via 🦀 took 1m51s ❯ 
+ktr-flake on  master [!⇡] via 🦀 ❯ . ~/.bashrc 
+ktr-flake on  master [⇡] via 🦀 ❯ type ai
+ai is aliased to `model=$1; if [ -z "$model" ]; then model="tngtech/tng-r1t-chimera:free"; fi; echo "   🦉📥 **\$model:** 📡📝" >&2 && (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log'
+ 
+Why does type still say its an alias?
+ 
+📌 **Alias Shadowing**: Your `type ai` shows the alias because either:
+
+1. Your shell configuration (`.bashrc`/`.zshrc`) still contains the alias definition
+2. Nix home-manager didn't reload the shell properly after changes
+
+**Fix**:
+```bash
+unalias ai  # Remove alias temporarily
+hash -r     # Clear PATH cache
+type ai     # Should now show the script path
+```
+
+For permanent fix, remove the alias from Nix config and keep only the script version. 🔄✨
+
+*Bonus*: Run `home-manager switch` after changes to ensure config reload.
+ 
+okay, this works it looks like... it has the correct model now, fir its display. thanks!
+📌 **Alias Shadowing**: Your `type ai` shows the alias because either:
+
+1. Your shell configuration (`.bashrc`/`.zshrc`) still contains the alias definition
+2. Nix home-manager didn't reload the shell properly after changes
+
+**Fix**:
+```bash
+unalias ai  # Remove alias temporarily
+hash -r     # Clear PATH cache
+type ai     # Should now show the script path
+```
+
+For permanent fix, remove the alias from Nix config and keep only the script version. 🔄✨
+
+*Bonus*: Run `home-manager switch` after changes to ensure config reload.
+ 
+2️⃣ **Or create a script** (cleaner):
+```nix
+home.packages = [
+  (pkgs.writeScriptBin "ai" ''
+    #!/usr/bin/env bash
+    model=''${1:-"tngtech/tng-r1t-chimera:free"}
+    echo "   🦉📥 **$model:** 📡📝" >&2
+    (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log
+  '')
+];
+``` 
+ 
+Can I put text say with cat to my ai script?  like:
+
+cat my_new_prompt.txt | ai 
+
+and it will use the piped in text as the prompt?

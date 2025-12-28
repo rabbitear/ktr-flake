@@ -62,8 +62,16 @@ in
     (pkgs.writeScriptBin "ai" ''
       #!/usr/bin/env bash
       model=''${1:-"tngtech/tng-r1t-chimera:free"}
-      echo "   🦉📥 **$model:** 📡📝" >&2
-      (tee -a your_prompt.txt; echo -e "       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log
+      echo -e "\t🦉📥 **$model:** 📡📝" >&2
+
+      # Check if input is from pipe/redirection
+      if [[ -t 0 ]]; then
+        # Interactive mode (terminal input)
+        (tee -a your_prompt.txt; echo -e "\t--+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n" >&2) | ort -m "$model" | tee -a your_output.log
+      else
+        # Pipe/redirection mode
+        ort -m "$model" | tee -a your_output.log
+      fi
     '')
   ];
   home = {
