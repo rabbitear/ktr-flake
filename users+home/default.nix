@@ -72,10 +72,10 @@ in
       # Check if input is from pipe/redirection
       if [[ -t 0 ]]; then
         # Interactive mode (terminal input)
-        (tee -p ./o_input.log; echo -e "\t\t--+-> 🦆🔍 [Searching] 🦜✨ <-+--\n\n\n\e[0;36m" >&2) | ort -m "$model" | tee ./o_output.log
+        (tee -p ./o_input.log; c_echo "--+-> 🦆🔍 [Searching] 🦜✨ <-+--\n\n\n\e[0;36m" >&2) | ort -m "$model" | tee ./o_output.log
       else
         # Pipe/redirection mode
-        echo -e "\n\t\t\tPlease Wait... 🕰️ ⌛️ 🚥\n\n" >&2
+        c_echo "Please Wait... 🕰️ ⌛️ 🚥" >&2
         ort -m "$model" | tee -p ./o_output.log
       fi
       echo -e "\e[0m"
