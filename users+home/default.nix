@@ -334,7 +334,7 @@ in
       psa = "process-monitor-all";
       pd = "dotdiff";
 
-      ai = "echo '   🦉📥 **Your input here:** 📡📝' >&2 && (tee -a your_prompt.txt; echo -e 'OK\n\n\n     --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.log";
+      ai = "echo '   🦉📥 **Your input here:** 📡📝' >&2 && (tee -a your_prompt.txt; echo -e '       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.log";
 
 
       j = lib.mkForce "journal";

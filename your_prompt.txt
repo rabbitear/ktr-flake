@@ -90,3 +90,103 @@ y_HeRe --preview-border=thinblock --list-border=thinblock --no-separator";
       export EDITOR=hx
     '';
   };
+
+I like my nix bash home-manager setup:
+ 
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+     bashrcExtra = ''
+       export EDITOR=hx
+       export HANDLER=copilot
+       . /etc/profile.d/aikey.sh
+       set -o vi
+     '';
+    shellAliases = {
+      h = "hx";
+      o = "xargs -0 ort";
+      chat = "ai-chat";
+      oc = "ai-opencode";
+      cpu = "process-monitor";
+      psa = "process-monitor-all";
+      pd = "dotdiff";
+
+      ai = "echo '   🦉📥 **Your input here:** 📡📝' >&2 && (tee -a your_prompt.txt; echo -e ' --+-
+> 🦆🔍 [Searching] 🦜✨ [...]\n\n' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.
+log";
+
+
+      j = lib.mkForce "journal";
+      ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history --previ
+ew-window=left:60% --header=' =-=-=-=-=-> ' --footer=' -+- Nix -+- Search -+- Tv -+- ' --ghost=qUeR
+y_HeRe --preview-border=thinblock --list-border=thinblock --no-separator";
+      "?" = "${duckduckgo-search}/bin/duckduckgo-search";
+      gc = "git commit";
+      ga = "git add";
+      gs = "git status --short";
+      cow = "nix run nixpkgs#cowsay --";
+      y = "nix run nixpkgs#yazi --";
+      b = ''
+          _b() {
+            local target="$(hostname)"
+            echo "host target is: == $target =="
+            if [[ "$(basename $(pwd))" != "ktr-flake" ]]; then
+              echo 'in flake directory?'
+              fd -t d -1 ktr-flake
+              return 0
+            else
+              echo "inside ktr-flake already..."
+              sudo nixos-rebuild switch --flake .#$target
+              if [ $? -eq 0 ]; then
+                MSG="successful build: $(date)"
+                git add .
+                git commit -m "$MSG"
+                echo "$MSG"
+                echo "remember to reload ~/.bashrc"
+              else
+                echo "Not built right.. :("
+              fi
+            fi
+          }; _b
+        '';
+      m = ''
+        _m() {
+          echo " -==>> ktr's MENU -==>>"
+          echo "    j - journal <search>  j. to commit"
+          echo "   i - injest <file>     b build $(hostname)"
+          echo "  p - print <file>"
+        }; _m
+      '';
+      virsh = "virsh --connect=qemu:///system";
+    };
+    profileExtra = ''
+      export EDITOR=hx
+    '';
+  };
+ --+-> 🦆🔍 [Searching] 🦜✨ [...]
+
+
+Your Nix+Home Manager Bash setup is **highly customized for productivity** with:
+
+1. **Key environment**  
+   `EDITOR=hx`, VI mode, and `/etc/profile.d/aikey.sh` sourcing.
+
+2. **AI/LLM integration**  
+   Aliases like `ai`, `chat`, `oc` pipe content to `ort`/Copilot with logging.
+
+3. **Nix-specific helpers**  
+   - `ns`: FZF-powered Nix search with previews  
+   - `b`: Full system rebuild + Git auto-commit flow  
+   - `?`: DuckDuckGo search integration
+
+4. **System tools**  
+   - `cpu`/`psa` for process monitoring  
+   - `virsh` shortcut with QEMU connection  
+   - `y`: Yazi file manager on-demand  
+
+5. **Smart overrides**  
+   - `lib.mkForce` ensures `j=journal`  
+   - `m` gives quick CLI menu  
+   - Git shortcuts (`gc`/`ga`/`gs`)
+
+The setup balances **reproducible config** (Nix) with **interactive usability** (previews, logging, VI mode). 🔄🦉
