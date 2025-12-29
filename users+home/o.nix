@@ -6,7 +6,7 @@ let
     text = ''
       #!/usr/bin/env bash
       model=''${1:-"tngtech/tng-r1t-chimera:free"}
-      outdir="$HOME/.journal/o"
+      outdir="$HOME"/.journal/o
       [[ ! -d "$outdir" ]] && mkdir "$HOME"/.o
       # Check if input is from pipe/redirection
       outputfile="$outdir/$(date +%F_%H_%M_%S)_output.md"
