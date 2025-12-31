@@ -22,10 +22,10 @@
         #serect_key = config.sops.secrets.searx.path;
         theme = "mytheme";
       };
-      extra_files = {
+      #extra_files = {
         # this builtins.path should be a placeholder until have a real theme in a path
-        "themes/mhytheme" = lib.cleanSource builtins.path { path = ./.; filter = _: false; };
-      };
+        #"themes/mhytheme" = lib.cleanSource builtins.path { path = ./.; filter = _: false; };
+      #};
       general = {
         debug = true;
         donation_url = false;
