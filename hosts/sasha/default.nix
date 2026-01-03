@@ -50,7 +50,7 @@
       ];
     };
     home-manager = {
-      useGlobalPkgs = true;
+      useGlobalPkgs = false;
       useUserPackages = true;
       users.kreator = import ../../users+home;
       backupFileExtension = "backup";
