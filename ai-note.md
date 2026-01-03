@@ -12,3 +12,7 @@ It builds, and opencode glm4.6 moved the files out into more modular parts.  I w
 2025-12-12 20:48
 # ============ #
 Opencode with Zen Opencode Grok Fast 1 model has been doing great.  I think I've gotten it to pretty up the repo quiet a bit.
+
+2026-01-02_20:52:10
+# # # # # # # # # #
+I'm gonna almost stop making this flake, we're about to start with the 2026 flake taht is being made as I type...
