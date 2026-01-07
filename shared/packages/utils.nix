@@ -13,5 +13,11 @@
     # Utils
     mcp-nixos
     zmap
+
+    # Testing and docs
+    tldr-hs
+    tldr
+    iperf3
+    qemu
   ];
 }

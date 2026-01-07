@@ -167,8 +167,5 @@
     rsstail-py
     delta
     tig
-
-    # testing
-    iper3
   ];
 }
