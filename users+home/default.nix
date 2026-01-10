@@ -280,6 +280,10 @@ in
       size = 15;
       package = pkgs.nerd-fonts.fantasque-sans-mono;
     };
+    mouseBindings = {
+      "ctrl+left click" = "ungrabbed mouse_handle_click selection link prompt";
+      "left click" = "ungrabbed no-op";
+    };
   };
 
   home.activation.importGPGKeys = lib.hm.dag.entryAfter ["writeBoundary"] ''
