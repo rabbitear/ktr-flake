@@ -1,14 +1,13 @@
 # Sops for all hosts
-{ ... }: {
-  config = {
-    sops = {
-      #enable = true;
-      defaultSopsFile = ../crypt/cipher.yaml;
-      #gnupg.home = "/home/kreator/.gnupg";
-      defaultSopsFormat = "yaml";
-      age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
+{ config, ... }: {
+  sops = {
+    #enable = true;
+    defaultSopsFile = ../crypt/cipher.yaml;
+    #gnupg.home = "/home/kreator/.gnupg";
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/kreator/.config/sops/age/keys.txt";
 
-      secrets = {
+    secrets = {
         "kreator" = {
           sopsFile = ../crypt/cipher.yaml;
           owner = "kreator";
@@ -70,7 +69,6 @@
         "tailscale_preauth" = {
           sopsFile = ../crypt/local-config.yaml;
         };
-      };
     };
   };
 }

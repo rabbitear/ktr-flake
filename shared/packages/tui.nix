@@ -1,9 +1,8 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-
-  # Essential TUI applications configuration
   users.users.kreator.packages = with pkgs; [
+    clipse
     helix
     helix-gpt
     nixd
@@ -35,7 +34,6 @@
     gnumake
     btop
     pass
-    #pass.withExtensions (exts: [ exts.pass-otp ])
     passExtensions.pass-otp
     pass-wayland
     oath-toolkit
@@ -53,21 +51,20 @@
     alacritty-graphics
     alacritty-theme
     foot
-    tmux
     lazygit
     virt-viewer
     mpv
     bc
 
-    # experiment with these
     tldr
     iperf3
   ];
 
-  # Install firefox.
+  # Firefox
   programs.firefox.enable = true;
   programs.browserpass.enable = true;
 
+  # Tmux
   programs.tmux = {
     enable = true;
     shortcut = "a";
@@ -86,7 +83,7 @@
     ];
     terminal = "tmux-256color";
     baseIndex = 1;
-    newSession = false;   
+    newSession = false;
     extraConfig = "set -g mouse on";
   };
 }

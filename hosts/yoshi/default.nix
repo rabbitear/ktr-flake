@@ -4,9 +4,9 @@
   ../../shared
   ./modules/ollama-cuda.nix
   ./modules/nvidia-cuda.nix
-  #../../shared/openwebui.nix
-  ../../shared/searx.nix
-  ../../shared/flatpak.nix
+  #../../shared/services/openwebui.nix
+  ../../shared/services/searx.nix
+  ../../shared/services/flatpak.nix
   inputs.sops-nix.nixosModules.sops
   inputs.home-manager.nixosModules.home-manager
   {

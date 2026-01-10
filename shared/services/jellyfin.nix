@@ -3,7 +3,7 @@
   services.jellyfin = {
     enable = true;
     #user "kreator"
-    openFirewall = ture;    
+    openFirewall = true;
   };
 
   environment.systemPackages = with pkgs; [

@@ -3,13 +3,13 @@
   ./configuration.nix
   ../../shared
   ./modules/ollama-vulkan.nix
-  ../../shared/chromecast.nix
-  ../../shared/searx.nix
-  ../../shared/openwebui.nix
-  ../../shared/miniflux.nix
-  ../../shared/shiori.nix
-  ../../shared/graphics-programs.nix
-  ../../shared/virtualization.nix
+  ../../shared/services/avahi.nix
+  ../../shared/services/searx.nix
+  ../../shared/services/openwebui.nix
+  ../../shared/services/miniflux.nix
+  ../../shared/services/shiori.nix
+  ../../shared/packages/graphics.nix
+  ../../shared/services/virtualization.nix
   inputs.sops-nix.nixosModules.sops
   inputs.home-manager.nixosModules.home-manager
   inputs.NixVirt.nixosModules.default
