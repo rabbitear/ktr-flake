@@ -59,7 +59,9 @@
     mpv
     bc
 
-
+    # experiment with these
+    tldr
+    iperf3
   ];
 
   # Install firefox.
