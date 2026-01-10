@@ -5,7 +5,7 @@
 {
   sops = {
     secrets."searx" = {
-      sopsFile = ../crypt/local-config.yaml;
+      sopsFile = ../../crypt/local-config.yaml;
       owner = "searx";
       group = "nogroup";
       mode = "0600";

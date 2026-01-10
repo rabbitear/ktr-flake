@@ -1,7 +1,7 @@
 { config, ... }:
 {
   sops.secrets.miniflux-admin = {
-    sopsFile = ../crypt/miniflux.yaml;
+    sopsFile = ../../crypt/miniflux.yaml;
   };
   services.miniflux = {
     enable = true;
