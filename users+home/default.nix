@@ -332,6 +332,7 @@ in
      '';
     shellAliases = {
       h = "hx";
+      ed = "ed -p'🛠️ > '";
       chat = "ai-chat";
       oc = "ai-opencode";
       cpu = "process-monitor";
