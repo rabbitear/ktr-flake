@@ -25,6 +25,22 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/mnt/blue" = {
+    device = "/dev/disk/by-uuid/abbce8f4-26e2-4aef-b83c-327d944ccc88";
+    fsType = "ext4";
+    options = [
+      "nofail"
+      "exec"
+      "x-gvfs-show"
+      "noatime"
+      "nosuid"
+      "nodev"
+      "X-mount.owner=kreator"
+    ];
+  };
+
+
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/e1e205e6-84cd-466b-9ff5-c7d9868349ad"; }
     ];
