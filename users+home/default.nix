@@ -324,6 +324,7 @@ in
       # Bind ALT+UP to launch TUI program
       # uncomment below when I wrote the tui program :)
       #"\e[1;3A": "my-tui-program\n"
+      # 
       # Vim-style navigation
       "\C-h": backward-delete-char
       "\C-j": accept-line
@@ -333,9 +334,21 @@ in
       "\e[1;3C": forward-word    # Alt-Right
       "\e[5~": history-search-backward  # PageUp
       "\e[6~": history-search-forward   # PageDown
-    #'' + "\n" + ''  # Concatenated as requested
-    # Your ALT+UP binding
-    #"\e[1;3A": "your-tui-program\n"
+      #
+      # Your ALT+UP binding
+      #"\e[1;3A": "your-tui-program\n"
+      #
+      # Helix-style character deletion
+      "d": delete-char
+      "D": backward-delete-char
+      # Vertical selection style navigation
+      "\ej": next-history             # Alt+j = down
+      "\ek": previous-history         # Alt+k = up
+      # Word-wise movement
+      "\eh": backward-char            # Alt+h = left
+      "\el": forward-char             # Alt+l = right
+      # Basic undo/redo (Helix-like)
+      "u": revert-line
     '';
   };
   programs.fzf.enable = true;
