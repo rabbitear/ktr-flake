@@ -34,6 +34,9 @@
         privacypolicy_url = false;
         enable_metrics = false;
       };
+      search = {
+        formats = ["html" "json" "rss"];
+      };
       ui = {
         static_use_hash = true;
         default_locale = "en";
@@ -118,9 +121,6 @@
         pool_connections = 100;
         pool_maxsize = 15;
         enable_http2 = true;
-      };
-      search = {
-        format = [ "html" "csv" "JSON" "RSS" ];
       };
     };
   };  
