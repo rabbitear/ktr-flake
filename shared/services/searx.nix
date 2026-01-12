@@ -119,6 +119,9 @@
         pool_maxsize = 15;
         enable_http2 = true;
       };
+      search = {
+        format = [ "html" "csv" "JSON" "RSS" ];
+      };
     };
   };  
 }
