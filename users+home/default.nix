@@ -318,7 +318,26 @@ in
 
   programs.yazi.enableBashIntegration = true;
   programs.starship.enableBashIntegration = true;
-  programs.readline.enable = true; 
+  programs.readline = {
+    enable = true; 
+    extraConfig = ''
+      # Bind ALT+UP to launch TUI program
+      # uncomment below when I wrote the tui program :)
+      #"\e[1;3A": "my-tui-program\n"
+      # Vim-style navigation
+      "\C-h": backward-delete-char
+      "\C-j": accept-line
+      "\C-k": kill-line
+      "\C-l": clear-screen
+      "\e[1;3D": backward-word   # Alt-Left
+      "\e[1;3C": forward-word    # Alt-Right
+      "\e[5~": history-search-backward  # PageUp
+      "\e[6~": history-search-forward   # PageDown
+    #'' + "\n" + ''  # Concatenated as requested
+    # Your ALT+UP binding
+    #"\e[1;3A": "your-tui-program\n"
+    '';
+  };
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.bash = {
