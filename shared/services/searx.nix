@@ -20,6 +20,7 @@
         port = 3001;
         secret_key = "somekeythatissupposetoberandombutitisnotrandomhere";
         #serect_key = config.sops.secrets.searx.path;
+        formats = [ "html" "json" ];
         theme = "mytheme";
       };
       #extra_files = {
