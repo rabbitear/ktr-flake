@@ -64,9 +64,6 @@ in
     username = "kreator";
     homeDirectory = "/home/kreator";
     stateVersion = "25.05";
-    # sessionVariables = {
-      # EDITOR = "hx";
-    # };
     
     # This is for YOSHI!
     # Set the NVIDIA to be the what DRM runs on.
@@ -75,6 +72,7 @@ in
     sessionVariables = lib.mkIf (builtins.getEnv "HOSTNAME" == "yoshi") {
       WLR_DRM_DEVICES = "/dev/dri/by-path/pci-0000:01:00.0-card";
       EDITOR = "hx";
+      VISUAL = "hx";
     };
   };
 
@@ -339,16 +337,16 @@ in
       #"\e[1;3A": "your-tui-program\n"
       #
       # Helix-style character deletion
-      "d": delete-char
-      "D": backward-delete-char
+      #"d": delete-char
+      #"D": backward-delete-char
       # Vertical selection style navigation
-      "\ej": next-history             # Alt+j = down
-      "\ek": previous-history         # Alt+k = up
+      #"\ej": next-history             # Alt+j = down
+      #"\ek": previous-history         # Alt+k = up
       # Word-wise movement
-      "\eh": backward-char            # Alt+h = left
-      "\el": forward-char             # Alt+l = right
+      #"\eh": backward-char            # Alt+h = left
+      #"\el": forward-char             # Alt+l = right
       # Basic undo/redo (Helix-like)
-      "u": revert-line
+      #"u": revert-line
     '';
   };
   programs.fzf.enable = true;
@@ -358,6 +356,7 @@ in
     enableCompletion = true;
      bashrcExtra = ''
        export EDITOR=hx
+       export VISUAL=hx
        export HANDLER=copilot
        . /etc/profile.d/aikey.sh
        set -o vi
@@ -424,6 +423,7 @@ in
     };
     profileExtra = ''
       export EDITOR=hx
+      export VISUAL=hx
     '';
   };
 }

@@ -62,8 +62,8 @@
 
   # Editor configuration
   environment.variables = {
-    EDITOR = "vim";
-    VISUAL = "vim";
+    EDITOR = "hx";
+    VISUAL = "hx";
   };
 
   environment.etc."profile.d/aikey.sh".text = ''
