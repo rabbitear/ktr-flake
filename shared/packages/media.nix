@@ -5,6 +5,7 @@
     qt6Packages.qt6ct
     qutebrowser
     galculator
+    gnome-podcasts
     scrcpy
     avahi
     bemenu
