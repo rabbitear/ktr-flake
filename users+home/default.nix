@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   duckduckgo-search = pkgs.writeShellApplication {
     name = "duckduckgo-search";
@@ -312,6 +312,18 @@ in
       gcloud.disabled = true;
       line_break.disabled = true;
     };
+  };
+
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+    extraOptions = [
+      "-max-dedupe-search"
+      "10"
+      "-max-items"
+      "500"
+    ]; 
+    systemdTargets = [ config.wayland.systemd.target ];
   };
 
   programs.yazi.enableBashIntegration = true;
