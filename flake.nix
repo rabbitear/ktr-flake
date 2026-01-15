@@ -98,35 +98,29 @@
       #     ------------+->
       # 
       # 
-       hacknet = nixpkgs.lib.nixosSystem {
-         system = "x86_64-linux";
-         specialArgs = { inherit inputs; };
-         modules = import ./hosts/hacknet/default.nix { inherit inputs; };
-       };
-       ## Jenny
-        jenny = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-              # {
-                # nixpkgs.config.packageOverrides = pkgs: {
-                  # bun = pkgs.bun.override { target = "baseline"; };
-                # };
-              # }
-            # {
-            #   #nixpkgs.overlays = [
-            #   #  (final: prev: {
-            #   #    bun = prev.bun.overrideAttrs (oldAttrs: {
-            #   #      src = prev.fetchurl {
-            #   #        url = "https://github.com/oven-sh/bun/releases/download/bun-v${oldAttrs.version}/bun-linux-x64-baseline.zip";
-            #   #        hash = "sha256-PVEp4ZdCo0j+8RI1e+cL7O5ZbE0yvE37dWzuYTTi6SU=";
-            #   #      };
-            #   #    });
-            #   #  })
-            #   #];
-            # }
-          ] ++ (import ./hosts/jenny/default.nix { inherit inputs; });
-        };
+      hacknet = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = import ./hosts/hacknet/default.nix { inherit inputs; };
+      };
+      ## Jenny
+      jenny = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        # WHY is this like this?
+        # -- I do not remember!!
+        # -- it should be just the path inside!
+        modules = import ./hosts/jenny/default.nix { inherit inputs; };
+      };
+      #####################
+      # Welcome in nin150 #
+      #####################
+      # Small little guy
+      nin150 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = import ./hosts/nin150/default.nix { inherit inputs; };
+      };
       #########
       #       #
       #       #
