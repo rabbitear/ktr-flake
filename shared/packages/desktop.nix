@@ -22,5 +22,9 @@
     tldr
     iperf3
     qemu
+
+    # Looking for music
+    audacious
+    audacious-plugins
   ];
 }
