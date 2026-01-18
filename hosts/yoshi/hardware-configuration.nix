@@ -45,9 +45,12 @@
     device = "/dev/disk/by-uuid/857c6597-12ab-4c1e-a4c8-f8c88626afbe";
     fsType = "btrfs";
     options = [
-      "users"
       "nofail"
+      "exec"
+      "noatime"
+      "nodev"
       "x-gvfs-show"
+      "X-mount.owner=kreator"
     ];
   };
 
@@ -55,9 +58,12 @@
     device = "/dev/disk/by-uuid/63377460-3480-4445-bff6-db589cfd0a23";
     fsType = "ext4";
     options = [
-      "users"
       "nofail"
+      "exec"
+      "noatime"
+      "nodev"
       "x-gvfs-show"
+      "X-mount.owner=kreator"
     ];
   };
 
