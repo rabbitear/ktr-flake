@@ -58,6 +58,8 @@
 
     tldr
     iperf3
+
+    diffnav
   ];
 
   # Firefox
