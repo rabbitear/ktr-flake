@@ -59,15 +59,12 @@
     tldr
     iperf3
 
-<<<<<<< HEAD
     diffnav
-=======
     ## We need some kind of tui music player
     cmus
     fum
     ytui-music
     termusic
->>>>>>> 94d4f4d (successful build: Sat Jan 17 10:19:26 PM AKST 2026)
   ];
 
   # Firefox
