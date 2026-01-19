@@ -59,6 +59,7 @@ in
     pkgs.nerd-fonts.fantasque-sans-mono
     pkgs.keychain       # for our ssh server
     pkgs.devenv
+    (pkgs.callPackage ../my-addition/packages/ostt.nix {})
   ];
   home = {
     username = "kreator";
