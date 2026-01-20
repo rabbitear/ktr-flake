@@ -31,7 +31,28 @@ in
     #./bun.nix
     #./llamacpp.nix
   ];
+  #
+  # ================= w3m ==================
+  # I'm trying something here, w3m settings.
+  # ===========================is the best==
+  home.file.".w3m/config" = {
+    executable = false;  # Config isn't a script
+    text = ''
+      accept_encoding gzip
+    '';
+  };
+  # this is suppose to make sure the .w3m dir exists.
+  home.activation.ensureW3mDir =
+    lib.hm.dag.entryAfter ["writeBoundary"] ''
+      $DRY_RUN_CMD mkdir -p ~/.w3m
+    '';
 
+  # Did this work? (above?)
+  # FUTURE: did it work?
+  #
+  #   === HELL YEAH ===
+  # 
+  # 
   # Overlays -- bun
   nixpkgs.overlays = [
     (import ./bun-overlay.nix) 
