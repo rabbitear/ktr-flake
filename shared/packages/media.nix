@@ -10,5 +10,6 @@
     avahi
     bemenu
     wf-recorder
+    vhs
   ];
 }
