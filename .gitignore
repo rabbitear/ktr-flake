@@ -19,7 +19,6 @@ result
 
 # Python-specific patterns
 uv.lock
-pyproject.toml
 .python-version
 __pycache__/
 *.py[cod]
@@ -44,7 +43,7 @@ wheels/
 venv/
 ENV/
 env/
-.venv
+.venv/
 
 # Rust-specific patterns
 target/
@@ -54,10 +53,6 @@ Cargo.lock
 
 # Enhanced NixOS patterns
 result-*
-result-bin
-result-doc
-result-dev
-result-lib
 .direnv/
 
 # IDE additions
