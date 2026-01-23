@@ -28,6 +28,7 @@ in
     ./kanshi.nix
     ./aider-chat.nix
     ./o.nix
+    ./newsboat.nix
     #./bun.nix
     #./llamacpp.nix
   ];
