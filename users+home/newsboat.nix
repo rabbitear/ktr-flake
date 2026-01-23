@@ -36,6 +36,9 @@
       highlight article "^(Title):.*$" blue default
       highlight article "https?://[^ ]+" red default
       highlight article "\\[image\\ [0-9]+\\]" green default
+
+      # Experimental (to me) settings
+      download-full-page yes
     '';
   };
   home.shellAliases.news = "newsboat";
