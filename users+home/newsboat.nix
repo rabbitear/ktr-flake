@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.newsboat = {
     enable = true;
@@ -38,4 +38,5 @@
       highlight article "\\[image\\ [0-9]+\\]" green default
     '';
   };
+  home.shellAliases.news = "newsboat";
 }
