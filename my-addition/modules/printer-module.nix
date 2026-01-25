@@ -4,129 +4,109 @@ with lib;
 
 let
   cfg = config.programs.printer;
-  journal-dir = "${config.home.homeDirectory}/.journal";
+  #journal-dir = "${config.home.homeDirectory}/.journal";
 
   printer-script = pkgs.writeShellScript "printer1" ''
-    #!/usr/bin/env bash
-    if [[ "$#" -gt 0 ]]; then
-      for path in "$@"; do
-        if [[ $path =~ ^-[0-9]+$ ]]; then
-          days_ago=$(tr -d '-' <<< "$path")
-          YEAR=$(date -d "$days_ago days ago" +%Y)
-          DATE=$(date -d "$days_ago days ago" +%m-%d)
-          JOURNAL_FILE="${journal-dir}/$YEAR/$DATE.md"
-          if [[ -e "$JOURNAL_FILE" ]]; then
-            bat --style=header-filename,header-filesize,numbers,changes --paging=never -- "$JOURNAL_FILE"
-          else
-            echo "No journal, an opportunity to write :)"
-          fi
-          break
-        fi
-        if [[ ! -e "$path" ]]; then
-          printf '%s: file not found\n' "$path"
-          continue
-        fi
-        if [[ ! -r "$path" ]]; then
-          printf '%s: not readable\n' "$path"
-          continue
-        fi
-        mime=$(file --brief --mime-type -- "$1")
-        case "$mime" in
-          image/*)
-            echo "🖼️  $path → image ($mime) – opening with imv"
-            imv -- "$path" &
+    p() {
+      if [[ ! -t 0 ]]; then
+        local bytes
+        bat --style=numbers --pager=never /dev/stdin
+        return
+      fi
+    
+      local journal_days_ago=
+      OPTIND=1
+    
+      while getopts "j:" opt; do
+        case $opt in
+          j)
+            journal_days_ago=$OPTARG
             ;;
-
-          text/*)
-            bat --style=header-filename,header-filesize --paging=never -- "$path"
+          \?)
+            echo "Invalid option: -$OPTARG" >&2
+            return 1
             ;;
-
-          application/pdf)
-            echo "📄 $path is a PDF – opening with zathura"
-            zathura "$path" &
-            ;;
-
-          # ===============================================
-          # START -- mpv mime types handler -> gpt-oss-120b 
-          # ===============================================
-          # -----------------------------------------------------------------
-          #  MPV – the universal media player
-          #
-          #  mpv can decode *any* audio/video MIME type that the underlying
-          #  FFmpeg libraries understand.  The list below is the exhaustive
-          #  set of MIME types reported by `ffprobe -show_entries format=format_name`
-          #  (which is exactly what mpv uses internally).  We group them
-          #  into three convenient glob patterns:
-          #
-          #      • video/*                – all video types
-          #      • audio/*                – all audio types
-          #      • application/*          – container‑only types that have no
-          #                                 top‑level video/audio MIME (e.g.
-          #                                 Matroska, Ogg, WebM, etc.)
-          #
-          #  This single case entry therefore matches **every** file mpv
-          #  can play, without having to enumerate each individual subtype.
-          # -----------------------------------------------------------------
-          video/*|audio/*|application/ogg|application/vnd.apple.mpegurl|\
-          application/x-mpegURL|application/x-matroska|application/x-webm|\
-          application/x-flac|application/x-ogg|application/x-aac|\
-          application/x-wav|application/x-mp4|application/x-mpegurl|\
-          application/x-msvideo|application/x-quicktimeplayer|\
-          application/x-m4v|application/x-m4a|application/x-3gpp|\
-          application/x-3gpp2|application/x-hls|application/x-dash+xml|\
-          application/octet-stream)
-            # ---------------------------------------------------------
-            #  All of the above are known to be playable by mpv.
-            #  Feel free to add any extra mpv options here, e.g.
-            #      mpv --fs --no-border "$file_to_open"
-            # ---------------------------------------------------------
-              
-            echo "📄 $path is a $mime – opening with mpv"
-            mpv "$file_to_open"
-            ;;
-          # ===============================================
-          # STOP ---
-          # ===============================================
-
-          # -----------------------------------------------------------------
-          # Text‑like files – everything bat can colourise nicely
-          # -----------------------------------------------------------------
-          text/*|\
-          application/json|application/xml|application/javascript|\
-          application/x-yaml|application/x-toml|application/xhtml+xml|\
-          application/rtf|application/atom+xml|application/rss+xml|\
-          application/vnd.ms-excel|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|\
-          application/vnd.ms-powerpoint|application/vnd.openxmlformats-officedocument.presentationml.presentation|\
-          application/vnd.ms-word|application/vnd.openxmlformats-officedocument.wordprocessingml.document|\
-          application/x-markdown|text/markdown|text/x-markdown|\
-          application/x-php|application/x-perl|application/x-python|application/x-ruby|\
-          application/x-shellscript|application/x-csh|application/x-bash|\
-          application/x-asm|application/x-java|application/x-c|application/x-cpp|\
-          application/x-go|application/x-rust)
-              echo "📃 $path → $mime – displaying with bat"
-              # `bat` options you may like:
-              #   --style=header,grid   – show a header and a grid
-              #   --paging=always       – like `less`
-              #   --color=always        – force colour even when piped
-              bat --style=header,grid --paging=always --color=always -- "$path"
-              ;;
-         
-          *)
-            echo "??? $path -> $mime -- something esle"
+          :)
+            echo "Option -$OPTARG requires an argument." >&2
+            return 1
             ;;
         esac
       done
-    else
-      JOURNAL_DIR="${journal-dir}"
-      YEAR=$(date +%Y)
-      DATE=$(date +%m-%d)
-      JOURNAL_FILE="$JOURNAL_DIR/$YEAR/$DATE.md"
-      if [[ -e "$JOURNAL_FILE" ]]; then
-        bat --style=header-filename,header-filesize,numbers,changes --paging=never -- "$JOURNAL_FILE"
-      else
-        echo "No journal, an opportunity to write :)"
+      shift $((OPTIND-1))
+    
+      local journal_file
+      journal_file="$HOME/.journal/$(date +%Y)/$(date +%m-%d).md"
+      
+      if [[ -n "$journal_days_ago" ]]; then
+        journal_file="$HOME/.journal/$(date -d "$journal_days_ago days ago" +%Y)/$(date -d "$journal_days_ago days ago" +%m-%d).md"
+        
+        if [[ -f "$journal_file" ]]; then
+          local bytes
+          bytes=$(wc -c < "$journal_file")
+          bat --style=numbers --pager=never "$journal_file"
+          echo "EOF ($bytes bytes) $journal_file"
+        else
+          echo "Journal entry not found: $journal_file"
+        fi
+        return
       fi
-    fi
+      
+      if [[ $# -gt 0 ]]; then
+        for file_path in "$@"; do
+          if [[ -f "$file_path" ]]; then
+            if file -L "$file_path" | grep -q "text"; then
+              local bytes
+              bytes=$(wc -c < "$file_path")
+              bat --style=numbers --pager=never "$file_path"
+              echo "EOF ($bytes bytes) $file_path"
+            else
+              echo "📄 $(file -L "$file_path")"
+              echo "Use 'xxd \"$file_path\"' to view hex dump"
+            fi
+          else
+            echo "File not found: $file_path"
+          fi
+        done
+        return
+      fi
+      
+      local selected
+      selected=$({
+        printf "%s\n" "$journal_file (Today's journal 📝)"
+        find . -maxdepth 1 -type f 2>/dev/null | sort -r | head -n 15
+      } | fzf --height=7 \
+               --layout=reverse \
+               --prompt='🖨️  ' \
+               --no-info \
+               --color=bg+:235,bg:236,fg:244,hl:141,fg+:253,hl+:228 \
+               --border=none \
+               --cycle)
+      
+      local file_path
+      file_path=$(echo "$selected" | head -n 1)
+      
+      if [[ -z "$file_path" ]]; then
+        file_path="$journal_file"
+      fi
+      
+      if [[ "$file_path" == *" ("* ]]; then
+        file_path="''${file_path%% (*}"
+      fi
+      
+      if [[ -f "$file_path" ]]; then
+        if file -L "$file_path" | grep -q "text"; then
+          local bytes
+          bytes=$(wc -c < "$file_path")
+          bat --style=numbers --pager=never "$file_path"
+          echo "EOF ($bytes bytes) $file_path"
+        else
+          echo "📄 $(file -L "$file_path")"
+          echo "Use 'xxd \"$file_path\"' to view hex dump"
+        fi
+      else
+        echo "File not found: $file_path"
+      fi
+    }
   '';
 
 in {
