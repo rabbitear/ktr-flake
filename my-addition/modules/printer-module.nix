@@ -124,7 +124,9 @@ in {
       executable = true;
     };
 
-    home.packages = [ pkgs.bat pkgs.file pkgs.imv pkgs.zathura ];
-    home.shellAliases.p = "${printer-script}";
+    home.packages = [ pkgs.bat pkgs.file pkgs.xxd ];
+
+    programs.bash.initExtra = "source ${printer-script}";
+    programs.zsh.initExtra = "source ${printer-script}";
   };
 }
