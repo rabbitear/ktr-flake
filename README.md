@@ -3,6 +3,7 @@ Always a work in progress
 
 ![readme-art](./art2.png)
 
-I use AI a little bit, but vibing anything I want to use for myself, it always rubs me the wrong way, I've tried.  So I'll use AI in short controlled brusts on some occations.  Good tool if used correctly.  Don't believe the hype :)
+*AI* is not good, over hyped!
+Vibing always rubs me the wrong way, I've tried.  So I've found sometimes I can use short burst, or just plain chat.  Can be a pretty good rubber duck.  Don't believe the *hype*!  And it DOES feel like it _could_ lead to *apathy* :)
 
 🌟⭐✨ **Star my repo!** ⭐🌟🚀
