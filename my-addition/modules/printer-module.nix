@@ -119,7 +119,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.file.".local/bin/printer1" = {
+    home.file.".local/bin/printer2" = {
       source = printer-script;
       executable = true;
     };
@@ -127,6 +127,6 @@ in {
     home.packages = [ pkgs.bat pkgs.file pkgs.xxd ];
 
     programs.bash.initExtra = "source ${printer-script}";
-    programs.zsh.initExtra = "source ${printer-script}";
+    #programs.zsh.initExtra = "source ${printer-script}";
   };
 }
