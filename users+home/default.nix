@@ -61,9 +61,9 @@ in
   ];
   # My shell scripts.
   systemd.user.enable = true;
-  programs.journal.enable = true;
-  programs.journal.remoterepository = "";
-  programs.printer.enable = true;
+  #programs.journal.enable = true;
+  #programs.journal.remoterepository = "";
+  #programs.printer.enable = true;
   programs.ingest-to-journal.enable = true;
 
   home.packages = [
