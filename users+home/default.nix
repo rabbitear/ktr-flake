@@ -29,6 +29,7 @@ in
     ./aider-chat.nix
     ./o.nix
     ./newsboat.nix
+    #./stt-ptt.nix
     #./bun.nix
     #./llamacpp.nix
   ];

@@ -19,9 +19,13 @@
       url = "https://flakehub.com/f/AshleyYakeley/NixVirt/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    m3ta-nixpkgs = {
+      url = "git+https://code.m3ta.dev/m3tam3re/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, NixVirt, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, NixVirt, m3ta-nixpkgs, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
