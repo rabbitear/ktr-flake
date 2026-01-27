@@ -156,8 +156,8 @@ in {
     };
 
     home.packages = [ pkgs.helix pkgs.marksman pkgs.fzf pkgs.bat pkgs.ripgrep ];
-    home.shellAliases.j = "${journal-script}";
-    home.shellAliases."j." = ''
+    home.shellAliases.jjjjj = "${journal-script}";
+    home.shellAliases."j..." = ''
       _jupdate() {
         GITREMOTE="${cfg.remoterepository}"
         JOURNAL_DIR="${journal-dir}"

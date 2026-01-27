@@ -406,6 +406,10 @@ in
       psa = "process-monitor-all";
       pd = "dotdiff";
 
+      p = "nix run git+file:///home/kreator/.journal#printer";
+      j = "nix run git+file:///home/kreator/.journal#journal-entry";
+      "j." = "nix run git+file:///home/kreator/.journal#journal-updater";
+
       # my original alias, not vibe coded :)
       #ai = "echo '   🦉📥 **Your input here:** 📡📝' >&2 && (tee -a your_prompt.txt; echo -e '       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.log";
 
@@ -416,7 +420,7 @@ in
       # testing out pros/cons for having the home.packages version (see above)
 
 
-      j = lib.mkForce "journal";
+      #j = lib.mkForce "journal";
       ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history --preview-window=left:60% --header=' =-=-=-=-=-> ' --footer=' -+- Nix -+- Search -+- Tv -+- ' --ghost=qUeRy_HeRe --preview-border=thinblock --list-border=thinblock --no-separator";
       "?" = "${duckduckgo-search}/bin/duckduckgo-search";
       gc = "git commit";
