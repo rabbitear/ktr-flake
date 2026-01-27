@@ -409,6 +409,7 @@ in
       p = "nix run git+file:///home/kreator/.journal#printer";
       j = "nix run git+file:///home/kreator/.journal#journal-entry";
       "j." = "nix run git+file:///home/kreator/.journal#journal-updater";
+      "jj" = "nix run git+file:///home/kreator/.journal#journal-updater";
 
       # my original alias, not vibe coded :)
       #ai = "echo '   🦉📥 **Your input here:** 📡📝' >&2 && (tee -a your_prompt.txt; echo -e '       --+-> 🦆🔍 [Searching] 🦜✨ [...]\n\n\n' >&2) | ort -m tngtech/tng-r1t-chimera:free | tee -a your_output.log";
