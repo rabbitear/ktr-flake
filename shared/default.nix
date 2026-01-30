@@ -31,6 +31,11 @@
   # Add flatpak group to user
   users.users.kreator.extraGroups = [ "flatpak" ];
 
+  environment.systemPackages = with pkgs; [
+    piper-tts
+    espeak-ng
+  ];
+
   # Enable flatpak
   services.flatpak.enable = true;
 }

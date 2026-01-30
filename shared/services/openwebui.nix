@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ ...}:
 
 {
   # imports = [
@@ -37,7 +37,4 @@
   networking.firewall.allowedTCPPorts = [ 3002 ];
 
   #This is for the mcpo server, many mcp servers use npx.
-  # environment.systemPackages = [
-  #   pkgs.nodejs
-  # ];
 }
