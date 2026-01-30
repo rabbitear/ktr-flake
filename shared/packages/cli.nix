@@ -17,6 +17,8 @@
     sops
     age
 
+    git-filter-repo
+
     bluez-experimental
     blueman
 
