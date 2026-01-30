@@ -27,6 +27,8 @@ let
   notify_send_time = pkgs.writeShellApplication {
     name = "notify_send_time";
     text = ''
+      ${pkgs.mako}/bin/makoctl dismiss --all
+      sleep 0.5
       ${pkgs.libnotify}/bin/notify-send \
       --expire-time=5800 \
         "Time is:" \
@@ -279,7 +281,7 @@ in
             "@key" = "W-x";
             action = {
               "@name" = "Execute";
-              "@command" = "makoctl dismiss --all ; notify_send_time";
+              "@command" = "notify_send_time";
             };
           }
           # reset tv

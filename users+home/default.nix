@@ -97,10 +97,11 @@ in
       WLR_DRM_DEVICES = "/dev/dri/by-path/pci-0000:01:00.0-card";
       EDITOR = "hx";
       VISUAL = "hx";
+      NIXOS_OZONE_WL = "1";
     };
   };
 
-   home.file.".config/ort.json".text = ''
+  home.file.".config/ort.json".text = ''
      {
        "settings": {
          "save_to_file": true,
