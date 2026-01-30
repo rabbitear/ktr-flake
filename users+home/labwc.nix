@@ -279,7 +279,7 @@ in
             "@key" = "W-x";
             action = {
               "@name" = "Execute";
-              "@command" = "notify_send_time";
+              "@command" = "makoctl dismiss --all ; notify_send_time";
             };
           }
           # reset tv
