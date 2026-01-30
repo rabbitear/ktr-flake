@@ -34,6 +34,9 @@
   environment.systemPackages = with pkgs; [
     piper-tts
     espeak-ng
+    ffmpeg
+    whisper-cpp-vulkan
+    wyoming-faster-whisper
   ];
 
   # Enable flatpak
