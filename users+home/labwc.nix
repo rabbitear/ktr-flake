@@ -27,7 +27,7 @@ let
   notify_send_time = pkgs.writeShellApplication {
     name = "notify_send_time";
     text = ''
-      makoctl dismiss --all
+      ${pkgs.mako}/bin/makoctl dismiss --all
       sleep 0.5
       ${pkgs.libnotify}/bin/notify-send \
       --expire-time=5800 \
