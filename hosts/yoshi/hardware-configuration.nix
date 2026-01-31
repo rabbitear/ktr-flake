@@ -19,7 +19,7 @@
   boot.extraModulePackages = [ ];
 
   boot.kernelParams = [
-    "nvidia-drm.modeset=1"   # keep this
+    #"nvidia-drm.modeset=1"   # keep this
     "nvidia-drm.fbdev=0"   # ← remove or comment out
   ];
 
