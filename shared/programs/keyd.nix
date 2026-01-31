@@ -11,6 +11,8 @@
         settings = {
           main = {
             capslock = "overload(control, esc)";
+            volumeup = "command(wpctl set-volume @DEFAULT_SINK@ 5%+)";
+            volumedown = "command(wpctl set-volume @DEFAULT_SINK@ 5%-)";
           };
         };
       };
