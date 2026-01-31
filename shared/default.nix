@@ -28,6 +28,21 @@
     ./services/flatpak.nix
   ];
 
+  # FIXME: this SHOULD be a module
+  # 
+
+  # ktr-
+  # quick and dirty
+  # https://wiki.nixos.org/wiki/Steam#Gamescope_Compositor_/_%22Boot_to_Steam_Deck%22
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+  programs.steam.gamescopeSession = true;
+
+  # ktr- may have to remove this...
+  #services.xserver.enable = false;
+
   # Add flatpak group to user
   users.users.kreator.extraGroups = [ "flatpak" ];
 

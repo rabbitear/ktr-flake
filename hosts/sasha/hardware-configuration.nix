@@ -13,6 +13,7 @@
   boot.kernelModules = [ "kvm-amd" "bluetooth" "amdgpu" ];
   #boot.kernelModules = [ "bluetooth" ];
   boot.extraModulePackages = [ ];
+  boot.plymouth.enable = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/13adcf4c-ee6f-4847-aeca-d14c44c6fff9";
