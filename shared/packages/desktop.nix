@@ -12,6 +12,8 @@
     flatpak-xdg-utils
     xdg-desktop-portal-gnome
     xdg-desktop-portal-wlr
+    game-devices-udev-rules
+    gamescope
 
     # Utils
     mcp-nixos
