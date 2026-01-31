@@ -38,7 +38,10 @@
     enable = true;
     capSysNice = true;
   };
-  programs.steam.gamescopeSession = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
 
   # ktr- may have to remove this...
   #services.xserver.enable = false;
@@ -55,6 +58,7 @@
     # steam playing around, trying things
     gamescope-wsi
     steamcmd
+    steam-run
   ];
 
   # Enable flatpak
