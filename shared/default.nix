@@ -52,6 +52,8 @@
     ffmpeg
     whisper-cpp-vulkan
     wyoming-faster-whisper
+    # steam playing around, trying things
+    steamcmd
   ];
 
   # Enable flatpak
