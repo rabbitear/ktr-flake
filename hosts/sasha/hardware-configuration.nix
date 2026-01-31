@@ -58,7 +58,13 @@
   ### I'm putting ROCm stuff here.
   # Lets try out the new The Rock on Sasha :)
   hardware.amdgpu.opencl.enable = true;
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    ## amdvlk: open source vulkan for AMD
+    #extraPackages =  [ pkgs.amdvlk ];
+    #extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+  };
 
   #environment.systemPackages = with pkgs.rocmPackages; [  
   #packages = with pkgs.rocmPackages_6_4; [
