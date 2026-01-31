@@ -41,7 +41,25 @@
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
+    package = pkgs.steam.override {
+      extraPkgs = pkgs': with pkgs'; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+      ];
+    };
   };
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="input", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="310a", MODE="0660", GROUP="input"
+  '';
 
   # ktr- may have to remove this...
   #services.xserver.enable = false;
