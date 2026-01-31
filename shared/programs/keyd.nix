@@ -18,7 +18,8 @@
         ids = [ "0fac:0ade" ];
         settings = {
           main = {
-            
+            volumeup = "command(wpctl set-volume @DEFAULT_SINK@ 5%+)";
+            volumedown = "command(wpctl set-volume @DEFAULT_SINK@ 5%-)";
           };
         };
       };
