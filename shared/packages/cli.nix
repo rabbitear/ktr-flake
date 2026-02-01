@@ -60,5 +60,9 @@
     rsstail-py
     delta
     tig
+
+    # trying out cloudflared
+    cloudflare-cli
+    cloudflared
   ];
 }
