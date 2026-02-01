@@ -6,7 +6,7 @@
     helix
     helix-gpt
     nixd
-    marksman
+    markdown-oxide
     fzf
     bat
     glow

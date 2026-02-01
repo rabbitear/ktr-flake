@@ -155,7 +155,7 @@ in {
       executable = true;
     };
 
-    home.packages = [ pkgs.helix pkgs.marksman pkgs.fzf pkgs.bat pkgs.ripgrep ];
+    home.packages = [ pkgs.helix pkgs.markdown-oxide pkgs.fzf pkgs.bat pkgs.ripgrep ];
     home.shellAliases.jjjjj = "${journal-script}";
     home.shellAliases."j..." = ''
       _jupdate() {

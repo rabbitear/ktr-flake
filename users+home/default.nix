@@ -229,7 +229,7 @@ in
       }
       {
         name = "markdown";
-        language-servers = ["marksman" "gpt"];
+        language-servers = ["markdown-oxide" "gpt"];
       }
     ];
   };

@@ -28,7 +28,7 @@ let
     "nil"
     "nixd"
     "taplo"
-    "marksman"
+    "markdown-oxide"
     "helix-gpt"  # AI completions
   ];
 
