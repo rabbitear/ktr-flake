@@ -18,6 +18,7 @@ in
     gnomeExtensions.no-overview
     gnomeExtensions.appindicator
     gnomeExtensions.ddterm 
+    gjs
     cheese
     iagno   # go game
     hitori  # sudoku game
