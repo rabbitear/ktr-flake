@@ -7,6 +7,7 @@
       miniflux-url "http://sasha:3003/"
       miniflux-login "kreator"
       miniflux-password "some-pass"
+      browser "${pkgs.w3m}/bin/w3m"/bin/w3m -o 'config_qq 0' %u"
 
       # unbind keys
       #unbind-key ENTER
