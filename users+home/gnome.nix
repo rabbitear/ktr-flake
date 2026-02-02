@@ -19,6 +19,9 @@ in
     gnomeExtensions.appindicator
     gnomeExtensions.ddterm 
     gjs
+    gtk3
+    vte
+    libhandy
     cheese
     iagno   # go game
     hitori  # sudoku game
