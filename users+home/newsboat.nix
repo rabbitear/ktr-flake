@@ -8,7 +8,7 @@
       miniflux-login "kreator"
       miniflux-password "some-pass"
       #browser "${pkgs.w3m}/bin/w3m -o 'config_qq 0'" "%u"
-      browser "${pkgs.w3m}/bin/w3m -o 'config qq'"
+      browser "${pkgs.w3m}/bin/w3m -o 'config_qq=TRUE'"
 
       # unbind keys
       #unbind-key ENTER
