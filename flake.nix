@@ -11,6 +11,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";      
+    };
     nix-ai-tools = {
       url = "github:numtide/nix-ai-tools";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +29,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, nix-ai-tools, NixVirt, m3ta-nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, microvm, nix-ai-tools, NixVirt, m3ta-nixpkgs, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
@@ -136,27 +140,31 @@
       #       #
       #########
       yoshi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
+        #system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
           hostName = "yoshi";
         };
-         modules = import ./hosts/yoshi/default.nix { inherit inputs; };
+        modules = [
+          ./hosts/yoshi/default.nix
+          home-manager.nixosModules.home-manager
+        ];
       };
-       #####################################
-       #                                   #
-       #        <-=+=- Sasha -=+=->        #
-       #                                   #
-       #####################################
-       sasha = nixpkgs.lib.nixosSystem {
-         system = "x86_64-linux";
-         specialArgs = { inherit inputs; };
-         modules = import ./hosts/sasha/default.nix { inherit inputs; };
-       };
-       wendy = nixpkgs.lib.nixosSystem {
-         system = "x86_64-linux";
-         specialArgs = { inherit inputs; };
-         modules = import ./hosts/wendy/default.nix { inherit inputs; };
+      #####################################
+      #                                   #
+      #        <-=+=- Sasha -=+=->        #
+      #                                   #
+      #####################################
+      sasha = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = import ./hosts/sasha/default.nix { inherit inputs; };
+      };
+      wendy = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = import ./hosts/wendy/default.nix { inherit inputs; };
       };
     };
   };

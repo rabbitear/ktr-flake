@@ -40,9 +40,10 @@
     zbar
     xkcdpass
     tmuxPlugins.pass
-    nix-ai-tools.copilot-cli
-    nix-ai-tools.gemini-cli
-    nix-ai-tools.opencode
+    # need to take these out put them in vms
+    #nix-ai-tools.copilot-cli
+    #nix-ai-tools.gemini-cli
+    #nix-ai-tools.opencode
     wl-clipboard
     kitty
     kitty-img

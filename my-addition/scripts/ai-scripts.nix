@@ -39,7 +39,8 @@ let
   process-monitor = pkgs.writeShellApplication {
     name = "process-monitor";
     text = ''
-      exec ps k-%cpu -eo pid,ppid,cmd,%mem,%cpu -w 67 | head -16
+      #exec ps k-%cpu -eo pid,ppid,cmd,%mem,%cpu -w 67 | head -16
+      ps k-%cpu -eo pid,ppid,cmd,%mem,%cpu -w $COLUMNS | head -$LINES
     '';
   };
 
