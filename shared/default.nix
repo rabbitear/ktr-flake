@@ -77,6 +77,7 @@
     gamescope-wsi
     steamcmd
     steam-run
+    pass
   ];
 
   # Enable flatpak

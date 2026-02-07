@@ -33,8 +33,6 @@
     gcc
     gnumake
     btop
-    pass
-    passExtensions.pass-otp
     pass-wayland
     oath-toolkit
     zbar
