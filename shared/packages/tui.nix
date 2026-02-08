@@ -6,6 +6,8 @@
     helix
     helix-gpt
     nixd
+    nixfmt
+    nixfmt-tree
     markdown-oxide
     fzf
     bat
