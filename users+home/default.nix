@@ -401,11 +401,10 @@ in
     shellAliases = {
       h = "hx";
       ed = "ed -p'🛠️ > '";
-      chat = "ai-chat";
-      oc = "ai-opencode";
       cpu = "process-monitor";
       psa = "process-monitor-all";
-      pd = "dotdiff";
+
+      fl = "cd ~/docs/code/duck-flake";
 
       p = "nix run git+file:///home/kreator/.journal#printer --";
       j = "nix run git+file:///home/kreator/.journal#journal-entry --";
