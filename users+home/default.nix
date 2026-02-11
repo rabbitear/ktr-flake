@@ -21,7 +21,7 @@ in
     #../my-addition/modules/journal-module.nix
     #../my-addition/modules/printer-module.nix
     ../my-addition/modules/ingest-module.nix
-    ./gnome.nix
+    #./gnome.nix
     ./mutt.nix
     ./sync-jrnl.nix
     ./labwc.nix
