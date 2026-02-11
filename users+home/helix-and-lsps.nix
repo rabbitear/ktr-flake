@@ -29,7 +29,6 @@ let
     "nixd"
     "taplo"
     "markdown-oxide"
-    "helix-gpt"  # AI completions
   ];
 
   mediumLsps = [
@@ -167,7 +166,6 @@ in
   config = {
     environment.systemPackages = [
       pkgs.helix
-      pkgs.helix-gpt
     ] ++ map (name: 
       if builtins.hasAttr name pkgs then pkgs.${name} else null
     ) (

@@ -4,7 +4,6 @@
   users.users.kreator.packages = with pkgs; [
     clipse
     helix
-    helix-gpt
     nixd
     nixpkgs-fmt
     markdown-oxide
