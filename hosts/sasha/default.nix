@@ -18,21 +18,17 @@
       overlays = [
         (final: prev: {
           nix-ai-tools = inputs.nix-ai-tools.packages.${prev.system};
-<<<<<<< HEAD
-          blender-mcp = inputs.self.packages.${prev.system}.blender-mcp;
-=======
 
           # Override ollama-vulkan with version 0.13.3
           ollama-vulkan = prev.ollama-vulkan.overrideAttrs (old: {
             version = "0.15.6";
             src = builtins.fetchurl {
               # source
-              url = "https://github.com/ollama/ollama/archive/refs/tags/v0.13.3.tar.gz";
-              rev = "v${version}";
-              sha256 = "11cigz2a2na2d0hxkwn0537g38qhkvficplzq9h4jhsqv2vcdnlv";
+              url = "https://github.com/ollama/ollama/archive/refs/tags/v0.15.6.tar.gz";
+              #rev = "v${version}";
+              sha256 = "04854000yzmx5cg5azsa5lhx86c1h3xy9917xnqnr3qc15z5z3r0";
             };
           });
->>>>>>> e74b21c (fix ollama overlay1)
 
           # Pin fastmcp to 2.11.0 to avoid breaking changes in 2.12.x
           python3Packages = prev.python3Packages.override {
