@@ -1,8 +1,9 @@
 # this is the ollama service.
 
-{pkgs, ...}:
+{pkgs, inputs, ...}:
 
 {
+ 
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
