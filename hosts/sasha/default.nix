@@ -26,7 +26,7 @@
               # source
               url = "https://github.com/ollama/ollama/archive/refs/tags/v0.15.6.tar.gz";
               #rev = "v${version}";
-              sha256 = "04854000yzmx5cg5azsa5lhx86c1h3xy9917xnqnr3qc15z5z3r0";
+              sha256 = "0wb3b18gdr88vpx8hvbycy2q2b1imbq1vsnpb97zk1yrkk8qyqn5";
             };
           });
 
