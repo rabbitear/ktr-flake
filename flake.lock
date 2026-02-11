@@ -48,11 +48,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770779995,
-        "narHash": "sha256-Evbc+u49wYQ5uyEi/HHxVFEt3g/w4MZxkMXMe7McjRM=",
+        "lastModified": 1770818644,
+        "narHash": "sha256-DYS4jIRpRoKOzJjnR/QqEd/MlT4OZZpt8CrBLv+cjsE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b3f43db171474132528be57610bfa5fb3b766879",
+        "rev": "0acbd1180697de56724821184ad2c3e6e7202cd7",
         "type": "github"
       },
       "original": {
@@ -69,11 +69,11 @@
         "opencode": "opencode"
       },
       "locked": {
-        "lastModified": 1770775409,
-        "narHash": "sha256-ZijMd/HxLKQEC9CRfdr5enXrkZjR6fiCU93vfqiB9fM=",
+        "lastModified": 1770829411,
+        "narHash": "sha256-+aD4yHlXa63zSfTbz9IpcvhWSnwmI5ElR317XjzAAaA=",
         "ref": "refs/heads/master",
-        "rev": "19456800ed9d3ec26f07f807d96dfe09252123d4",
-        "revCount": 93,
+        "rev": "105629502a08c10e2bcffc19b391a514f2b6d4fc",
+        "revCount": 97,
         "type": "git",
         "url": "https://code.m3ta.dev/m3tam3re/nixpkgs"
       },
@@ -112,11 +112,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1770780014,
-        "narHash": "sha256-lcgSxJp7y13RqWfAO51UEcOOLQvTJewo+ZTEbEAcMMk=",
+        "lastModified": 1770832597,
+        "narHash": "sha256-YyeW1rkj+rz5RNpIy9G2vkfFio2Hmn0qYrO5LCYhwlY=",
         "owner": "numtide",
         "repo": "nix-ai-tools",
-        "rev": "a6a223b7f4c695fa470e9199a52fe3b13b0798f8",
+        "rev": "66c5c89adfd35e90e452c0d847aa04309d544e40",
         "type": "github"
       },
       "original": {
@@ -161,16 +161,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1770761545,
-        "narHash": "sha256-IHN7Rh/Wb4TKdT1rkJYgkI0CLBXCcrM0OpCkIlycW+Y=",
+        "lastModified": 1770824220,
+        "narHash": "sha256-+vvNQzfhuP91mK/BjBufWGdS+2vHJAtB8iDl14z4y48=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "1bbbd51d48f38014674eebe1588f556da95b7b1f",
+        "rev": "42bea5d297125c4f8ea5c1d6055fa06829de0a51",
         "type": "github"
       },
       "original": {
         "owner": "anomalyco",
-        "ref": "v1.1.56",
+        "ref": "v1.1.59",
         "repo": "opencode",
         "type": "github"
       }

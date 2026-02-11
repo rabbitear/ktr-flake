@@ -5,7 +5,7 @@
   ./modules/ollama-vulkan.nix
   ../../shared/services/avahi.nix
   ../../shared/services/searx.nix
-  #../../shared/services/openwebui.nix # was on 6.x 7.2 broke :(  fixme
+  ../../shared/services/openwebui.nix # was on 6.x 7.2 broke :(  fixme
   ../../shared/services/miniflux.nix
   ../../shared/services/shiori.nix
   ../../shared/packages/graphics.nix
