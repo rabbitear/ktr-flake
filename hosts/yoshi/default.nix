@@ -5,7 +5,7 @@
     ../../shared
     ./modules/ollama-cuda.nix
     ./modules/nvidia-cuda.nix
-    #../../shared/services/openwebui.nix
+    #../../remake2026/services/openwebui.nix
     ../../shared/services/searx.nix
     ../../shared/services/flatpak.nix
     inputs.sops-nix.nixosModules.sops

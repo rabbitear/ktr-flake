@@ -7,7 +7,8 @@ let
       #!/usr/bin/env bash
       # model2 is not used at all
       #model_a_goodie_one=''${1:-"tngtech/tng-r1t-chimera:free"}
-      model=''${1:-"z-ai/glm-4.5-air:free"}
+      #model=''${1:-"z-ai/glm-4.5-air:free"}
+      model=''${1:-"stepfun/step-3.5-flash:free"}
       outdir="$HOME"/.journal/o
       [[ ! -d "$outdir" ]] && mkdir "$outdir"
       # Check if input is from pipe/redirection
